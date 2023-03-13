@@ -1,0 +1,50 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "CustomKeyboardsWeb.Infrastructure/1.0.0": {
+        "dependencies": {
+          "CustomKeyboardsWeb.Application": "1.0.0",
+          "CustomKeyboardsWeb.Domain": "1.0.0"
+        },
+        "runtime": {
+          "CustomKeyboardsWeb.Infrastructure.dll": {}
+        }
+      },
+      "CustomKeyboardsWeb.Application/1.0.0": {
+        "dependencies": {
+          "CustomKeyboardsWeb.Domain": "1.0.0"
+        },
+        "runtime": {
+          "CustomKeyboardsWeb.Application.dll": {}
+        }
+      },
+      "CustomKeyboardsWeb.Domain/1.0.0": {
+        "runtime": {
+          "CustomKeyboardsWeb.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CustomKeyboardsWeb.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CustomKeyboardsWeb.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CustomKeyboardsWeb.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
