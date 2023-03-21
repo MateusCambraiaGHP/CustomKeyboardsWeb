@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CustomKeyboardsWeb.Infrastructure.Repository
 {
-    public abstract class Repository<TEntity> where TEntity : Entity
+    public abstract class Repository<TEntity> where TEntity : Entity 
     {
         protected readonly IApplicationDbContext _context;
         protected readonly DbSet<TEntity> _dbSet;
@@ -29,7 +29,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Repository
             return entityModel;
         }
 
-        public virtual async Task<TEntity?> FindById(int id)
+        public virtual async Task<TEntity> FindById(int id)
         {
             var currentEntity = await _dbSet.AsNoTracking()
                 .Where(c => c.Id == id).FirstOrDefaultAsync();

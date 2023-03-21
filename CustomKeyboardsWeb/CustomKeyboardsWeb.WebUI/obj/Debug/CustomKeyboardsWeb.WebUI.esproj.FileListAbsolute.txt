@@ -1,0 +1,2 @@
+C:\GitHubDir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.WebUI\obj\Debug\CustomKeyboardsWeb.WebUI.esproj.SuggestedBindingRedirects.cache
+C:\GitHubDir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.WebUI\obj\Debug\CustomKeyboardsWeb.WebUI.esproj.CoreCompileInputs.cache
