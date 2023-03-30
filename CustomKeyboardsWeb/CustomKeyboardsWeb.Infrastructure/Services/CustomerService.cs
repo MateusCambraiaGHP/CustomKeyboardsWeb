@@ -10,7 +10,8 @@ namespace MyHardwareWeb.Infrastructure.Services
         private readonly ICustomerRepository _customerRepository;
         private readonly IMapper _mapper;
 
-        public CustomerService(ICustomerRepository customerRepository,
+        public CustomerService(
+            ICustomerRepository customerRepository,
             IMapper mapper)
         {
             _mapper = mapper;

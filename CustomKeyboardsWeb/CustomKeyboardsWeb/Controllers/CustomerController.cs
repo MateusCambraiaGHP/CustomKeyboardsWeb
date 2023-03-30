@@ -2,8 +2,6 @@
 using CustomKeyboardsWeb.Application.Dto;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace CustomKeyboardsWeb.Controllers
 {
     [Route("api/v1.0/cliente/")]
@@ -19,13 +17,13 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpGet]
-        public async Task<List<CustomerDto>> Get()
+        public async Task<List<CustomerDto>> GetAll()
         {
             return await _customerService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public async Task<CustomerDto> Get(int id)
+        public async Task<CustomerDto> GetById(int id)
         {
             return await _customerService.FindByIdAsync(id);
         }

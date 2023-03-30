@@ -12,8 +12,18 @@ namespace CustomKeyboardsWeb.Infrastructure.Common.Extensions
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddScoped<IApplicationDbContext, ApplicationMySqlDbContext>();
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ISupplierService, SupplierService>();
+            services.AddScoped<ISupplierRepository, SupplierRepository>();
+            services.AddScoped<IKeyboardService, KeyboardService>();
+            services.AddScoped<IKeyboardRepository, KeyboardRepository>();
+            services.AddScoped<IKeyService, KeyService>();
+            services.AddScoped<IKeyRepository, KeyRepository>();
+            services.AddScoped<ISwitchService, SwitchService>();
+            services.AddScoped<ISwitchRepository, SwitchRepository>();
+            services.AddScoped<IPuchaseHistoryService, PuchaseHistoryService>();
+            services.AddScoped<IPuchaseHistoryRepository, PuchaseHistoryRepository>();
             return services;
         }
     }
