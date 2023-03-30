@@ -6,7 +6,7 @@ namespace CustomKeyboardsWeb.Application.Cummon.Interfaces
     {
         Task Create(Customer model);
         Task<Customer> Update(Customer model);
-        Task<Customer?> FindById(int id);
+        Task<Customer> FindById(int id);
         Task<List<Customer>> GetAll();
     }
 }
