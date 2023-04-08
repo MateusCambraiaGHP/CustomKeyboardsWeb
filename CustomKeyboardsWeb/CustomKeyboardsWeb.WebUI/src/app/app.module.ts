@@ -15,6 +15,7 @@ import { ButtonComponent } from './components/generics/button/button.component';
 import { CardComponent } from './components/generics/card/card.component';
 import { TableComponent } from './components/generics/table/table.component';
 import { InputComponent } from './components/generics/form/input/input.component';
+import { FormControl } from '@angular/forms';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { InputComponent } from './components/generics/form/input/input.component
     CardComponent,
     TableComponent,
     InputComponent,
+    FormControl,
   ],
   imports: [
     BrowserModule,

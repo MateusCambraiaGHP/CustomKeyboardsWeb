@@ -1,1 +1,53 @@
-<p>input works!</p>
+<div 
+	class="form-group" 
+	[class.checkboxFormGroup]="inputCustom.type == InputType.checkbox"
+	[class.notClick]="inputCustom.disabled"
+>
+	<ng-content></ng-content>
+	<div>
+		<label class="pt-0 mr-2" [class.disabledLabel]="inputCustom.disabled">
+			{{inputCustom.label}}
+		</label>
+	</div>
+	<input 
+		*ngIf="isTextField()" 
+		[type]="inputCustom.type" 
+		min="0"
+		class="form-control"
+		[class.disabled]="inputCustom.disabled"
+		[placeholder]="inputCustom.placeholder || inputCustom.label"
+		(ngModelChange)="onChangeValueInput($event)"	
+	>
+	<input 
+		*ngIf="inputCustom.type == InputType.checkbox"
+		[id]="id" 
+		class="checkbox_animated" 
+		type="checkbox"
+		[class.disabled]="inputCustom.disabled"
+		(ngModelChange)="onChangeValueInput($event)"	
+	>
+	<textarea 
+  	*ngIf="inputCustom.type == InputType.textArea" 
+		[id]="id"
+		class="form-control"
+		[rows]="inputCustom.rows || 2" 
+		[placeholder]="inputCustom.placeholder || inputCustom.label"
+		[class.disabled]="inputCustom.disabled"
+		(ngModelChange)="onChangeValueInput($event)"	
+	></textarea>
+	<select 
+		*ngIf="inputCustom.type == InputType.select" 
+		[id]="id"
+		class="form-control" 
+	>
+		<option value="" [attr.disabled]="true">
+			{{inputCustom.placeholder || 'Selecione uma opção'}}
+		</option>
+		<option *ngFor="let option of inputCustom.optionsSelect" [value]="getValueOptionSelect(option)">
+			{{getTextOptionSelect(option)}} 
+		</option>
+	</select>
+	<div *ngIf="isErrorValidate" class="msgError">
+		{{getErrorMessage()}}
+	</div>
+</div>
