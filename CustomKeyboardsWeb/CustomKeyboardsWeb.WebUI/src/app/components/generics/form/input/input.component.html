@@ -1,1 +1,18 @@
-<p>input works!</p>
+<div class="form-group">
+    <ng-content></ng-content>
+    <div>
+        <label class="pt-0 mr-2">
+            {{inputCustom.label}}
+        </label>
+    </div>
+    <div *ngIf="inputCustom.type == InputType.select">
+        <select *ngFor="let currentSelect of inputCustom.optionsSelect" class="form-control">
+            <option value="">
+                {{inputCustom.placeholder || 'Selecione uma opção'}}
+            </option>
+            <option *ngFor="let option of currentSelect.options" [value]="option.value">
+                {{option.text}}
+            </option>
+        </select>
+    </div>
+</div>

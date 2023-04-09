@@ -1,1 +1,21 @@
-<p>form works!</p>
+<div class="row form">
+    <div class="col-12">
+        <h4>{{title}}</h4>
+        <h6>{{subtitle}}</h6>
+        <form name="form" (ngSubmit)="_submit()">
+            <ng-content select="[beforeIputs]"> </ng-content>
+            <div class="row">
+                <ng-container *ngFor="let input of inputs">
+                    <ng-container [ngTemplateOutlet]="beforeInput"
+                        [ngTemplateOutletContext]="{ $implicit: input }"></ng-container>
+                    <app-input [class.col-md-6]="!input.class" [ngClass]="input.class" [inputCustom]="input">
+                        <ng-container [ngTemplateOutlet]="insideInput"
+                            [ngTemplateOutletContext]="{ $implicit: input }"></ng-container>
+                    </app-input>
+                </ng-container>
+            </div>
+            <ng-content> </ng-content>
+            <ng-content select="[actions]"> </ng-content>
+        </form>
+    </div>
+</div>

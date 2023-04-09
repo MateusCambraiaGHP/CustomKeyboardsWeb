@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { TemplateComponent } from './components/template/template.component';
 import { FooterComponent } from './components/template/footer/footer.component';
 import { NavbarComponent } from './components/template/navbar/navbar.component';
@@ -15,6 +15,9 @@ import { ButtonComponent } from './components/generics/button/button.component';
 import { CardComponent } from './components/generics/card/card.component';
 import { TableComponent } from './components/generics/table/table.component';
 import { InputComponent } from './components/generics/form/input/input.component';
+import { CustomerFormComponent } from './components/customer/customer-form/customer-form.component';
+import { CustomersDashboardComponent } from './components/customer/customers-dashboard/customers-dashboard.component';
+import { TableCustomersComponent } from './components/customer/table-customers/table-customers.component';
 
 
 @NgModule({
@@ -29,6 +32,9 @@ import { InputComponent } from './components/generics/form/input/input.component
     CardComponent,
     TableComponent,
     InputComponent,
+    CustomerFormComponent,
+    CustomersDashboardComponent,
+    TableCustomersComponent,
   ],
   imports: [
     BrowserModule,
