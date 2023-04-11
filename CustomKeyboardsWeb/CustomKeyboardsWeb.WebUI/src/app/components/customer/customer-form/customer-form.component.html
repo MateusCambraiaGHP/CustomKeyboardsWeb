@@ -1,6 +1,9 @@
 <app-form
 	[formGroup]="form"
-	[inputs]="inputs"
+	[rows]="rows"
+	[submit]="submitForm"
+	[title]="title"
+	[fillObject]="productReceived"
 >
 	<button *ngIf="!readonly" actions class="btn btn-primary btn-block mx-auto w-50 mt-5">
 		Salvar

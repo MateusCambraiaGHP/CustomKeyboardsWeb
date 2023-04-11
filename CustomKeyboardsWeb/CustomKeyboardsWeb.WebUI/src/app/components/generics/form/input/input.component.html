@@ -1,12 +1,23 @@
-<div class="form-group">
+<div class="form-group" [formGroup] = 'formGroup'>
     <ng-content></ng-content>
     <div>
         <label class="pt-0 mr-2">
             {{inputCustom.label}}
         </label>
     </div>
+	<input 
+		*ngIf="isTextField()" 
+		[type]="inputCustom.type" 
+		min="0"
+		class="form-control"
+		[placeholder]="inputCustom.placeholder || inputCustom.label"
+        [formControlName]="inputCustom.formControlName ?? ''"
+	>    
+    <input *ngIf="inputCustom.type == InputType.checkbox" class="checkbox_animated" type="checkbox" [formControlName]="inputCustom.formControlName ?? ''">
+    <textarea *ngIf="inputCustom.type == InputType.textArea" class="form-control"
+        [placeholder]="inputCustom.placeholder || inputCustom.label" [formControlName]="inputCustom.formControlName ?? ''"></textarea>
     <div *ngIf="inputCustom.type == InputType.select">
-        <select *ngFor="let currentSelect of inputCustom.optionsSelect" class="form-control">
+        <select *ngFor="let currentSelect of inputCustom.optionsSelect" class="form-control" [formControlName]="inputCustom.formControlName ?? ''">
             <option value="">
                 {{inputCustom.placeholder || 'Selecione uma opção'}}
             </option>
