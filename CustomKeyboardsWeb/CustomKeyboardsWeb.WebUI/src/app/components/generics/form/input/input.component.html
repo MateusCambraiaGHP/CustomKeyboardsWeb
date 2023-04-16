@@ -1,23 +1,23 @@
-<div class="form-group" [formGroup] = 'formGroup'>
+<div class="form-group" [formGroup]='formGroup'>
     <ng-content></ng-content>
     <div>
         <label class="pt-0 mr-2">
             {{inputCustom.label}}
         </label>
     </div>
-	<input 
-		*ngIf="isTextField()" 
-		[type]="inputCustom.type" 
-		min="0"
-		class="form-control"
-		[placeholder]="inputCustom.placeholder || inputCustom.label"
+    <input *ngIf="isTextField()" [type]="inputCustom.type" min="0" class="form-control"
+        [placeholder]="inputCustom.placeholder || inputCustom.label"
         [formControlName]="inputCustom.formControlName ?? ''"
-	>    
-    <input *ngIf="inputCustom.type == InputType.checkbox" class="checkbox_animated" type="checkbox" [formControlName]="inputCustom.formControlName ?? ''">
+        [ngClass]="{validateError: verificaValid(inputCustom.formControlName)} ">
+    <input *ngIf="inputCustom.type == InputType.checkbox" class="checkbox_animated" type="checkbox"
+        [formControlName]="inputCustom.formControlName ?? ''">
     <textarea *ngIf="inputCustom.type == InputType.textArea" class="form-control"
-        [placeholder]="inputCustom.placeholder || inputCustom.label" [formControlName]="inputCustom.formControlName ?? ''"></textarea>
+        [placeholder]="inputCustom.placeholder || inputCustom.label"
+        [formControlName]="inputCustom.formControlName ?? ''"></textarea>
     <div *ngIf="inputCustom.type == InputType.select">
-        <select *ngFor="let currentSelect of inputCustom.optionsSelect" class="form-control" [formControlName]="inputCustom.formControlName ?? ''">
+        <select *ngFor="let currentSelect of inputCustom.optionsSelect" class="form-control"
+            [formControlName]="inputCustom.formControlName ?? ''"
+            [ngClass]="{validateError: verificaValid(inputCustom.formControlName)} ">
             <option value="">
                 {{inputCustom.placeholder || 'Selecione uma opção'}}
             </option>
@@ -25,5 +25,13 @@
                 {{option.text}}
             </option>
         </select>
+        <div *ngIf="verificaValid(inputCustom.formControlName)" >
+            <div class="" >
+                {{getErrorMessage(inputCustom.formControlName)}}
+            </div>        
+        </div>
+    </div>
+    <div *ngIf="verificaValid(inputCustom.formControlName) && inputCustom.type != InputType.select">
+            {{getErrorMessage(inputCustom.formControlName)}}
     </div>
 </div>

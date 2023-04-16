@@ -5,14 +5,14 @@
           <h2>{{subtitle}}</h2>
           <div class="row form d-flex justify-content-center align-items-center ">
               <div class="col-12">
-                <form name="form" (ngSubmit)="_submit()" [formGroup]="formGroup">
+                <form name="form" (ngSubmit)="_submit()" [formGroup]="formGroup" >
                     <ng-content select="[beforeIputs]"> </ng-content>
                     <div *ngFor="let row of rows">
                         <div class="row">
                             <ng-container *ngFor="let input of row.inputCustom">
                                 <ng-container [ngTemplateOutlet]="beforeInput"
                                     [ngTemplateOutletContext]="{ $implicit: input }"></ng-container>
-                                <app-input [class.col-md-6]="!input.class" [ngClass]="input.class" [inputCustom]="input" [formGroup] = "formGroup">
+                                <app-input [class.col-md-6]="!input.class" [ngClass]="input.class" [inputCustom]="input" [formGroup] = "formGroup" [formEnviado] = "formEnviado">
                                     <ng-container [ngTemplateOutlet]="insideInput"
                                         [ngTemplateOutletContext]="{ $implicit: input }"></ng-container>
                                 </app-input>

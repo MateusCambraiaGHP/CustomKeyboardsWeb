@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Customer } from "../models/customer.model";
 import { InputType } from "../../generics/form/enums/input-type.enum";
 import { RowCustom } from "../../generics/form/models/row-input-custom.model";
@@ -18,9 +18,9 @@ export class CustomerFormComponent {
     form: FormGroup = new FormGroup({});
     title: string = "Customer";
 
-    customers = [
-        { text: "TesteSelect", value: "teste1" },
-        { text: "TesteSelect", value: "test 2" },
+    federativeUnit = [
+        { text: "MG", value: "1" },
+        { text: "SP", value: "1" },
     ];
 
     constructor(private customerService: CustomerService) {}
@@ -34,36 +34,24 @@ export class CustomerFormComponent {
             {
                 inputCustom: [
                     {
-                        label: "TesteSelect",
-                        formControlName: "teste1",
-                        control: new FormControl(""),
-                        optionsSelect: [
-                            { titleSelect: "", options: this.customers },
-                        ],
-                        type: InputType.select,
-                        optionTextKey: "key",
-                        optionValueKey: "value",
-                        class: "col-md-3",
+                        label: "Nome",
+                        formControlName: "name",
+                        control: new FormControl("", [Validators.required]),
+                        type: InputType.text,
+                        class: "col-md-4",
                     },
                     {
-                        label: "zzz",
-                        formControlName: "teste2",
-                        control: new FormControl(""),
-                        optionsSelect: [
-                            { titleSelect: "", options: this.customers },
-                        ],
-                        type: InputType.select,
-                        optionTextKey: "key",
-                        optionValueKey: "value",
-                        class: "col-md-3",
+                        label: "Nome Fantasia",
+                        formControlName: "fantasyName",
+                        control: new FormControl("", [Validators.required]),
+                        type: InputType.text,
+                        class: "col-md-4",
                     },
                     {
-                        label: "textarea",
-                        formControlName: "teste3",
-                        control: new FormControl(""),
-                        type: InputType.textArea,
-                        optionTextKey: "key",
-                        optionValueKey: "value",
+                        label: "Ativo?",
+                        formControlName: "active",
+                        control: new FormControl("", [Validators.required]),
+                        type: InputType.checkbox,
                         class: "col-md-3",
                     },
                 ],
@@ -71,37 +59,39 @@ export class CustomerFormComponent {
             {
                 inputCustom: [
                     {
-                        label: "TesteSelect",
-                        formControlName: "teste4",
-                        control: new FormControl(""),
-                        optionsSelect: [
-                            { titleSelect: "", options: this.customers },
-                        ],
-                        type: InputType.select,
-                        optionTextKey: "key",
-                        optionValueKey: "value",
-                        class: "col-md-3",
-                    },
-                    {
-                        label: "zzz",
-                        formControlName: "teste5",
-                        control: new FormControl(""),
-                        optionsSelect: [
-                            { titleSelect: "", options: this.customers },
-                        ],
-                        type: InputType.select,
-                        optionTextKey: "key",
-                        optionValueKey: "value",
-                        class: "col-md-3",
-                    },
-                    {
-                        label: "inputtext",
-                        formControlName: "teste6",
-                        control: new FormControl(""),
+                        label: "Cep",
+                        formControlName: "cep",
+                        control: new FormControl("", [Validators.required]),
                         type: InputType.text,
-                        optionTextKey: "key",
-                        optionValueKey: "value",
-                        class: "col-md-3",
+                        class: "col-md-4",
+                    },
+                    {
+                        label: "Endereço",
+                        formControlName: "adress",
+                        control: new FormControl("", [Validators.required]),
+                        type: InputType.text,
+                        class: "col-md-4",
+                    },
+                    {
+                        label: "UF",
+                        formControlName: "federativeUnit",
+                        control: new FormControl("1", [Validators.required]),
+                        optionsSelect: [
+                            { titleSelect: "", options: this.federativeUnit },
+                        ],
+                        type: InputType.select,
+                        class: "col-md-1",
+                    },
+                ],
+            },
+            {
+                inputCustom: [
+                    {
+                        label: "Telefone",
+                        formControlName: "phone",
+                        control: new FormControl("", [Validators.required]),
+                        type: InputType.text,
+                        class: "col-md-4",
                     },
                 ],
             },
@@ -114,7 +104,6 @@ export class CustomerFormComponent {
             ...this.form.value,
         };
 
-        console.log(product);
         const resp = this.productReceived
             ? await this.customerService.update(product)
             : await this.customerService.create(product);
