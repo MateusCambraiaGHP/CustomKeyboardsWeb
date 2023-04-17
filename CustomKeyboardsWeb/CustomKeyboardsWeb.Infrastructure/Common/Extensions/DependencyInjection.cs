@@ -24,6 +24,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Common.Extensions
             services.AddScoped<ISwitchRepository, SwitchRepository>();
             services.AddScoped<IPuchaseHistoryService, PuchaseHistoryService>();
             services.AddScoped<IPuchaseHistoryRepository, PuchaseHistoryRepository>();
+            services.AddAutoMapper(typeof(MappingProfile));
             return services;
         }
     }

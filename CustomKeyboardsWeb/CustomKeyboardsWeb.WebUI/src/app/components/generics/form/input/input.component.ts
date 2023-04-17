@@ -15,6 +15,8 @@ export class InputComponent {
     formControl = new FormControl();
     @Input()
     formGroup!: FormGroup;
+    @Input()
+    formEnviado!: boolean;
 
     getValueOptionSelect(option: any) {
         return option;
@@ -36,4 +38,16 @@ export class InputComponent {
                 return false;
         }
     };
+
+    getErrorMessage(campo: any): any {
+        if (this.formGroup.get(campo)?.hasError("required"))
+            return "Campo obrigatório";
+
+        if (this.formGroup.get(campo)?.hasError("email"))
+            return "Email inválido";
+    }
+
+    verificaValid(campo: any) {
+        return this.formEnviado && !this.formGroup.get(campo)?.valid;
+    }
 }

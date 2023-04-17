@@ -20,14 +20,14 @@ namespace MyHardwareWeb.Infrastructure.Services
 
         public async Task<CustomerDto> Save(CustomerDto model)
         {
-            var customerMap = _mapper.Map<Customer>(model);
+            Customer customerMap = _mapper.Map<Customer>(model);
             await _customerRepository.Create(customerMap);
             return model;
         }
 
         public async Task<CustomerDto> Edit(CustomerDto model)
         {
-            var customerMap = _mapper.Map<Customer>(model);
+            Customer customerMap = _mapper.Map<CustomerDto, Customer>(model);
             await _customerRepository.Update(customerMap);
             return model;
         }

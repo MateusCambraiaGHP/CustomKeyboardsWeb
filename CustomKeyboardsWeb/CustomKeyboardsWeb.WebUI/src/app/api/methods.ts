@@ -15,12 +15,15 @@ async function baseRequest<T>(
     route: string,
     options?: OptionsRequest
 ): Promise<T> {
-    const body = options?.body ? JSON.stringify(options.body) : null;
-    const headers = HEADERS;
+    const body = JSON.stringify(options?.body);
+    console.log(body)
     try {
         return await fetch(
             `${API_URL}${route}`,
-            Object.assign({ method, headers } as any, { body } || {})
+            Object.assign({ method,    headers: {
+                'Content-Type': 'application/json'
+            },
+            mode: 'cors', } as any, { body } || {})
         )
             .then((r) => {
                 if (!r.ok) throw r;

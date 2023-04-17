@@ -30,6 +30,7 @@ export class FormComponent implements OnChanges {
     @Input() inputs!: InputCustom[];
     @Input() rows!: RowCustom[];
     loading: boolean = false;
+    formEnviado = false;
     constructor(public formBuilder: FormBuilder) {}
 
     bindInputs() {
@@ -87,6 +88,9 @@ export class FormComponent implements OnChanges {
     }
 
     async _submit() {
+        if (!this.formGroup.valid) {
+            this.formEnviado = true;
+        }
         this.submitContinuing();
     }
 
