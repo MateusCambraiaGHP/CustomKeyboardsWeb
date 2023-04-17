@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\CustomKeyboardsWeb.Infrastructure.csproj": {}
+    "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\CustomKeyboardsWeb.Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj": {
+    "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj",
+        "projectUniqueName": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj",
         "projectName": "CustomKeyboardsWeb.Application",
-        "projectPath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj",
-        "packagesPath": "C:\\Users\\MateusCambraia\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\obj\\",
+        "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
+        "outputPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\MateusCambraia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,16 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/hJ9X4F2WjixoUN9rTJXPBg8sI3qldlifY6oe7z4CnBLTGIYwto/api": {},
-          "https://pris.pkgs.visualstudio.com/c7fff5c7-4b07-4c33-be75-7dffbbf24305/_packaging/OptionsReport/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj": {
-                "projectPath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj"
+              "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj": {
+                "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj"
               }
             }
           }
@@ -74,24 +73,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj": {
+    "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
+        "projectUniqueName": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
         "projectName": "CustomKeyboardsWeb.Domain",
-        "projectPath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
-        "packagesPath": "C:\\Users\\MateusCambraia\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\obj\\",
+        "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
+        "outputPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\MateusCambraia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,9 +99,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/hJ9X4F2WjixoUN9rTJXPBg8sI3qldlifY6oe7z4CnBLTGIYwto/api": {},
-          "https://pris.pkgs.visualstudio.com/c7fff5c7-4b07-4c33-be75-7dffbbf24305/_packaging/OptionsReport/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -134,24 +132,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\CustomKeyboardsWeb.Infrastructure.csproj": {
+    "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\CustomKeyboardsWeb.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\CustomKeyboardsWeb.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\CustomKeyboardsWeb.Infrastructure.csproj",
         "projectName": "CustomKeyboardsWeb.Infrastructure",
-        "projectPath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\CustomKeyboardsWeb.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\MateusCambraia\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\obj\\",
+        "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\CustomKeyboardsWeb.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
+        "outputPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\MateusCambraia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mateu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -159,19 +158,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/hJ9X4F2WjixoUN9rTJXPBg8sI3qldlifY6oe7z4CnBLTGIYwto/api": {},
-          "https://pris.pkgs.visualstudio.com/c7fff5c7-4b07-4c33-be75-7dffbbf24305/_packaging/OptionsReport/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj": {
-                "projectPath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj"
+              "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj": {
+                "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj"
               },
-              "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj": {
-                "projectPath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj"
+              "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj": {
+                "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj"
               }
             }
           }
@@ -186,6 +183,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -219,7 +220,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

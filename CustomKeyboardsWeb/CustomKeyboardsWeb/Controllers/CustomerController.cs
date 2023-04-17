@@ -29,7 +29,6 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpPost("save")]
-        [ValidateAntiForgeryToken]
         public async Task<CustomerDto> Save(CustomerDto model)
         {
             return await _customerService.Save(model);

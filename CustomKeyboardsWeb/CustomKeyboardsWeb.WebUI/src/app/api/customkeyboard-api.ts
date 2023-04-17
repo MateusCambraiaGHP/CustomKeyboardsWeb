@@ -7,11 +7,11 @@ export const CustomKeyboardApi = {
         getAll: () => get<Customer[]>(`/Vitrine/ListaProdutos`),
         deleteCustomerById: (id: string) =>
             del<boolean>(
-                `/AdminProdutos/DeletarProduto?${qs.stringify({ id })}`
+                `/cliente/DeletarProduto?${qs.stringify({ id })}`
             ),
         updateCustomer: (body: Customer) =>
-            put<boolean>(`/AdminProdutos/AtualizarProduto`, { body }),
+            put<boolean>(`/cliente/update`, { body }),
         createCustomer: (body: Customer) =>
-            post<boolean>(`/AdminProdutos/NovoProduto`, { body }),
+            post<boolean>(`/cliente/save`, { body }),
     },
 };

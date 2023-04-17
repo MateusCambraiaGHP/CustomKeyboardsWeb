@@ -1,5 +1,4 @@
 export interface Customer{
-    id?: number
     active: string
     name: string
     fantasyName: string
@@ -7,8 +6,4 @@ export interface Customer{
     adress: string
     fedarativeUnit: string
     phone?: string
-    createdBy: Date
-    createdAt: string
-    updatedBy?: Date
-    uptdatedAt?: string
 }

@@ -10,3 +10,15 @@ C:\GitHubDir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj
 C:\GitHubDir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\refint\CustomKeyboardsWeb.Domain.dll
 C:\GitHubDir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\CustomKeyboardsWeb.Domain.pdb
 C:\GitHubDir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\ref\CustomKeyboardsWeb.Domain.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\bin\Debug\net6.0\CustomKeyboardsWeb.Domain.deps.json
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\bin\Debug\net6.0\CustomKeyboardsWeb.Domain.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\bin\Debug\net6.0\CustomKeyboardsWeb.Domain.pdb
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\CustomKeyboardsWeb.Domain.csproj.AssemblyReference.cache
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\CustomKeyboardsWeb.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\CustomKeyboardsWeb.Domain.AssemblyInfoInputs.cache
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\CustomKeyboardsWeb.Domain.AssemblyInfo.cs
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\CustomKeyboardsWeb.Domain.csproj.CoreCompileInputs.cache
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\CustomKeyboardsWeb.Domain.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\refint\CustomKeyboardsWeb.Domain.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\CustomKeyboardsWeb.Domain.pdb
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Domain\obj\Debug\net6.0\ref\CustomKeyboardsWeb.Domain.dll

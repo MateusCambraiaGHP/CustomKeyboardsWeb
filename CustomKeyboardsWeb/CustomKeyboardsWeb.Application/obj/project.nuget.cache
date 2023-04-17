@@ -1,16 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "T59bQK7fGcGSq5kdEd7lDIRKOmNw0aSPk15FMwZP9FPQab2/tROMvNVpkVkVYKqnelTwqp0sKku/g7gLrsamIA==",
+  "dgSpecHash": "OoofyUbMR/I7K/GqoCSAUpQZx+DqCcVeGoNhEi6ku8jUJpoPyylg66YU7F1UDla6IwvISwa57yW6VxM/NkVI1g==",
   "success": true,
-  "projectFilePath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj",
+  "projectFilePath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\MateusCambraia\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
-    "C:\\Users\\MateusCambraia\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
-    "C:\\Users\\MateusCambraia\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
-    "C:\\Users\\MateusCambraia\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\MateusCambraia\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
-    "C:\\Users\\MateusCambraia\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
-    "C:\\Users\\MateusCambraia\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\mateu\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }

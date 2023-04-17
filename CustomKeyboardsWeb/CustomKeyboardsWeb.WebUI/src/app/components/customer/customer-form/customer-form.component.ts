@@ -51,8 +51,8 @@ export class CustomerFormComponent {
                         label: "Ativo?",
                         formControlName: "active",
                         control: new FormControl("", [Validators.required]),
-                        type: InputType.checkbox,
-                        class: "col-md-3",
+                        type: InputType.text,
+                        class: "col-md-4",
                     },
                 ],
             },
@@ -99,14 +99,14 @@ export class CustomerFormComponent {
     }
 
     submitForm = async () => {
-        const product: Customer = {
+        const Customer: Customer = {
             ...this.productReceived,
             ...this.form.value,
         };
 
         const resp = this.productReceived
-            ? await this.customerService.update(product)
-            : await this.customerService.create(product);
+            ? await this.customerService.update(Customer)
+            : await this.customerService.create(Customer);
 
         if (!resp) return;
     };
