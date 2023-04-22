@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ElementColumnType } from '../../generics/table/enums/element-column-type';
+import { HeaderTable } from '../../generics/table/models/header-table.model';
+import { CustomerService } from '../services/products.service';
 
 @Component({
   selector: 'app-table-customers',
@@ -6,5 +9,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./table-customers.component.scss']
 })
 export class TableCustomersComponent {
+    loading: Boolean = true;
 
+	headers: HeaderTable[] = [
+		{ title: 'Nome', prop: "name", width: '80px' },
+		{ title: 'Nome Fantasia', prop: "fantasyName", width: '80px', textAlign: 'center' },
+		{ title: 'Ativo?', prop: "active",  width: '80px', textAlign: 'center' },
+        { title: 'Telefone', prop: "phone", width: '80px', textAlign: 'center' },
+        { title: 'Endereço', prop: "adress",  width: '80px', textAlign: 'center' },
+	]
+
+	constructor(
+		public customersService: CustomerService,
+	) {
+		customersService.loadProducts()
+	}
+
+	ngOnInit(): void { }
+
+	deleteProduct = (productId: string) =>
+		async () => {
+			const resp = await this.customersService.delete(productId)
+		}
+
+	get products() {
+		return this.customersService.customers;
+	}
 }

@@ -5,7 +5,7 @@ namespace CustomKeyboardsWeb.Application.Dto
 {
     public class CustomerDto 
     {
-
+        public int? Id { get; set; }
         [Required]
         public string? Active { get; set; }
         [Required]
@@ -18,6 +18,7 @@ namespace CustomKeyboardsWeb.Application.Dto
         public string? Adress { get; set; }
         [Required]
         public string? FederativeUnit { get; set; }
+        public Dictionary<string, string[]>? Errors { get; set; }
         [Required]
         public string? Phone { get; set; }
         public string CreatedBy { get; set; } = "Administrator";

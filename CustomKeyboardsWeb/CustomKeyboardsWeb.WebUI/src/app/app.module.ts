@@ -19,6 +19,8 @@ import { CustomerFormComponent } from "./components/customer/customer-form/custo
 import { CustomersDashboardComponent } from "./components/customer/customers-dashboard/customers-dashboard.component";
 import { TableCustomersComponent } from "./components/customer/table-customers/table-customers.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { OverlayLoadingComponent } from './components/generics/overlay-loading/overlay-loading.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
     declarations: [
@@ -35,6 +37,7 @@ import { ReactiveFormsModule } from "@angular/forms";
         CustomerFormComponent,
         CustomersDashboardComponent,
         TableCustomersComponent,
+        OverlayLoadingComponent,
     ],
     imports: [
         BrowserModule,
@@ -43,6 +46,7 @@ import { ReactiveFormsModule } from "@angular/forms";
         MatIconModule,
         MatToolbarModule,
         ReactiveFormsModule,
+        MatProgressSpinnerModule
     ],
     providers: [],
     bootstrap: [AppComponent],

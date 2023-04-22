@@ -4,7 +4,7 @@ import { get, put, post, del } from "./methods";
 
 export const CustomKeyboardApi = {
     Customer: {
-        getAll: () => get<Customer[]>(`/Vitrine/ListaProdutos`),
+        getAll: () => get<Customer[]>(`/cliente/getall`),
         deleteCustomerById: (id: string) =>
             del<boolean>(
                 `/cliente/DeletarProduto?${qs.stringify({ id })}`
@@ -12,6 +12,6 @@ export const CustomKeyboardApi = {
         updateCustomer: (body: Customer) =>
             put<boolean>(`/cliente/update`, { body }),
         createCustomer: (body: Customer) =>
-            post<boolean>(`/cliente/save`, { body }),
+            post<Customer>(`/cliente/save`, { body }),
     },
 };

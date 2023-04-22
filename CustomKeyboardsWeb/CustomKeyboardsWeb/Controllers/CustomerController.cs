@@ -16,7 +16,7 @@ namespace CustomKeyboardsWeb.Controllers
             _customerService = customerService;
         }
 
-        [HttpGet]
+        [HttpGet("getall")]
         public async Task<List<CustomerDto>> GetAll()
         {
             return await _customerService.GetAll();
@@ -31,6 +31,20 @@ namespace CustomKeyboardsWeb.Controllers
         [HttpPost("save")]
         public async Task<CustomerDto> Save(CustomerDto model)
         {
+            if (model.Active.Length > 1)
+            {
+                ModelState.AddModelError("active", "MUITO GRANDE.");
+                if (!ModelState.IsValid)
+                {
+                    model.Errors = ModelState.ToDictionary(
+             kvp => kvp.Key,
+             kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                    );
+
+                    return model;
+                }
+
+            }
             return await _customerService.Save(model);
         }
 

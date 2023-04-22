@@ -2,6 +2,7 @@ import { Component, Input } from "@angular/core";
 import { InputCustom } from "../models/input-custom.model";
 import { InputType } from "../enums/input-type.enum";
 import { FormControl, FormGroup } from "@angular/forms";
+import { BackendErrors } from "src/app/components/customer/models/banck.model.erros";
 
 @Component({
     selector: "app-input",
@@ -17,14 +18,9 @@ export class InputComponent {
     formGroup!: FormGroup;
     @Input()
     formEnviado!: boolean;
-
-    getValueOptionSelect(option: any) {
-        return option;
-    }
-
-    getTextOptionSelect(option: any) {
-        return option;
-    }
+    @Input()
+    backendErrors: BackendErrors | undefined;
+    @Input() isErro: boolean = false;
 
     isTextField = () => {
         switch (this.inputCustom.type) {
@@ -39,15 +35,33 @@ export class InputComponent {
         }
     };
 
-    getErrorMessage(campo: any): any {
-        if (this.formGroup.get(campo)?.hasError("required"))
-            return "Campo obrigatório";
+    definirErrosBackend() {
+        for (const controlName in this.formGroup.controls) {
+            if (this.formGroup.controls.hasOwnProperty(controlName)) {
+                const control = this.formGroup.get(controlName);
+                const field = controlName;
+                const erro = this.getErrorMessage(field, "");
+                if (erro)
+                    control?.setErrors({ backendError: erro });
+            }
+        }
+    }
 
-        if (this.formGroup.get(campo)?.hasError("email"))
+    getErrorMessage(field: any,fieldName: any ): any {
+
+        const key = field.toString();
+        if (this.backendErrors && this.backendErrors[key]) {
+            return this.backendErrors[key][0];
+        }
+
+        if (this.formGroup.get(field)?.hasError("required"))
+            return `O ${fieldName} é obrigatório`;
+
+        if (this.formGroup.get(field)?.hasError("email"))
             return "Email inválido";
     }
 
-    verificaValid(campo: any) {
-        return this.formEnviado && !this.formGroup.get(campo)?.valid;
+    validateForm(field: any, isErro: boolean) {
+        return (this.formEnviado && !this.formGroup.get(field)?.valid) || this.isErro;
     }
 }

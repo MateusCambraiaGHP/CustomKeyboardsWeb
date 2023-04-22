@@ -9,7 +9,7 @@ import {
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { InputCustom } from "./models/input-custom.model";
 import { RowCustom } from "./models/row-input-custom.model";
-import { Customer } from "../../customer/models/customer.model";
+import { BackendErrors } from "../../customer/models/banck.model.erros";
 
 @Component({
     selector: "app-form",
@@ -29,9 +29,11 @@ export class FormComponent implements OnChanges {
     @Input() _class!: string;
     @Input() inputs!: InputCustom[];
     @Input() rows!: RowCustom[];
+    @Input() backendErrors: BackendErrors | undefined;
+    @Input() isErro: boolean = false;
     loading: boolean = false;
     formEnviado = false;
-    constructor(public formBuilder: FormBuilder) {}
+    constructor(public formBuilder: FormBuilder) { }
 
     bindInputs() {
         this.formGroup.controls = {};
@@ -49,30 +51,25 @@ export class FormComponent implements OnChanges {
                     currentFormGroup,
                     currentChildForm,
                     keys,
-                    indexKey + 1
+                    indexKey ++
                 );
+
             } else {
                 formGroup.addControl(keys[indexKey], currentChildForm);
             }
         };
 
         this.rows.forEach((r) => {
-            if (r.inputCustom !== undefined) {
+            if (r.inputCustom?.length) {
                 r.inputCustom.forEach((e) => {
-                    if (e.formControlName != undefined) {
+                    if (e.formControlName?.length) {
                         const keys = e.formControlName.split(".");
                         let childForm = {};
-                        for (let i = keys.length; i > 0; i--) {
-                            const key = keys[i - 1];
-                            childForm =
-                                i == keys.length
-                                    ? { [key]: e.control }
-                                    : {
-                                          [key]: this.formBuilder.group(
-                                              childForm
-                                          ),
-                                      };
-                        }
+                        keys.forEach((key, index) => {
+                            childForm = index === keys.length - 1
+                                ? { [key]: e.control }
+                                : { [key]: this.formBuilder.group(childForm) };
+                        });
                         entriesForm(this.formGroup, childForm, keys);
                     }
                 });
@@ -82,21 +79,31 @@ export class FormComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         this.rows.forEach((e) => {
-            if (e.inputCustom) this.bindInputs();
+            if (e.inputCustom)
+                this.bindInputs()
         });
-        if (this.fillObject) this.formGroup.patchValue(this.fillObject);
+        if (this.fillObject)
+        this.formGroup.patchValue(this.fillObject);
     }
 
     async _submit() {
         if (!this.formGroup.valid) {
+            this.loading = true
             this.formEnviado = true;
         }
+        this.loading = true
         this.submitContinuing();
+        if (this.backendErrors)
+            this.isErro = true;
     }
 
     submitContinuing = async () => {
-        if (this.showLoading) this.loading = true;
+        if (this.showLoading) this.loading = true
+        this.loading = true
         await this.submit();
+
+
         this.loading = false;
     };
+
 }

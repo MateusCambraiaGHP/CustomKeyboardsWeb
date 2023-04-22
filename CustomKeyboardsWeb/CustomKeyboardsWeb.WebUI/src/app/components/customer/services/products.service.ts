@@ -19,9 +19,8 @@ export class CustomerService {
     };
 
     create = async (product: Customer) => {
-        console.log(product)
         const resp = await CustomKeyboardApi.Customer.createCustomer(product);
-        if (resp) this.loadProducts();
+        // if (resp) this.loadProducts();
         return resp;
     };
 

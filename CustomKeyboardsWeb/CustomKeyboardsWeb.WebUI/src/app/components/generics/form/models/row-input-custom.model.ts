@@ -1,5 +1,5 @@
 import { InputCustom } from "./input-custom.model";
 
-export interface RowCustom{
+export interface RowCustom {
     inputCustom?: InputCustom[]
 }
