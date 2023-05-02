@@ -117,3 +117,6 @@ C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\ne
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\CustomKeyboardsWeb.pdb
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\CustomKeyboardsWeb.genruntimeconfig.cache
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\ref\CustomKeyboardsWeb.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\MediatR.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\MediatR.Contracts.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

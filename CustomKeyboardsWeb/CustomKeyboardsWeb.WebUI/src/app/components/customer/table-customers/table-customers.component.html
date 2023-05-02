@@ -1,5 +1,6 @@
 <app-table [headers]="headers" [items]="products"
-		[loading]="customersService.loading">
+		[loading]="customersService.loading"
+        [typeObject]="typeObject">
 
 		<ng-template #customColumn let-item>
 

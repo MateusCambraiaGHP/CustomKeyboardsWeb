@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ElementColumnType } from '../../generics/table/enums/element-column-type';
 import { HeaderTable } from '../../generics/table/models/header-table.model';
 import { CustomerService } from '../services/products.service';
 
@@ -9,7 +8,8 @@ import { CustomerService } from '../services/products.service';
   styleUrls: ['./table-customers.component.scss']
 })
 export class TableCustomersComponent {
-    loading: Boolean = true;
+    loading = true as boolean;
+    typeObject = 'customer' as string;
 
 	headers: HeaderTable[] = [
 		{ title: 'Nome', prop: "name", width: '80px' },

@@ -18,6 +18,8 @@ export class TableComponent {
 	@Input() title!: string;
 	@Input() _class!: string;
 	@Input() loading: boolean = false;
+    @Input()
+    typeObject!: string;
 
 	ngOnInit(): void {	}
 
@@ -68,7 +70,7 @@ export class TableComponent {
 		return child;
 	}
 
-    EditItem(idItem: any){
-        this.router.navigate(['form-customer', idItem.id])
+    EditItem(idItem: any, item: Object){
+        this.router.navigate([`form-${this.typeObject}`], { queryParams: { item: JSON.stringify(item) } })
     }
 }

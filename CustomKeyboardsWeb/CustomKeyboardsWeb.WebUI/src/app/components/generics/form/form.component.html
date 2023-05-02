@@ -11,13 +11,9 @@
                             <div *ngFor="let row of rows">
                                 <div class="row">
                                     <ng-container *ngFor="let input of row.inputCustom">
-                                        <ng-container [ngTemplateOutlet]="beforeInput"
-                                            [ngTemplateOutletContext]="{ $implicit: input }"></ng-container>
                                         <app-input [class.col-md-6]="!input.class" [ngClass]="input.class"
                                             [backendErrors]="backendErrors" [isErro]="isErro" [inputCustom]="input"
                                             [formGroup]="formGroup" [formEnviado]="formEnviado">
-                                            <ng-container [ngTemplateOutlet]="insideInput"
-                                                [ngTemplateOutletContext]="{ $implicit: input }"></ng-container>
                                         </app-input>
                                     </ng-container>
                                 </div>

@@ -18,6 +18,13 @@ export class CustomerService {
         this.loading = false;
     };
 
+    getById = async (id: number) => {
+        this.loading = true;
+        const resp = await CustomKeyboardApi.Customer.getById(id);
+        if (resp) this.customers = resp;
+        this.loading = false;
+    };
+
     create = async (product: Customer) => {
         const resp = await CustomKeyboardApi.Customer.createCustomer(product);
         // if (resp) this.loadProducts();

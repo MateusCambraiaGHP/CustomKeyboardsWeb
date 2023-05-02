@@ -9,7 +9,7 @@
 		</thead>
 
 		<tbody *ngIf="items?.length">
-			<tr *ngFor="let __ of [].constructor(items.length); let indexItem = index" (click)="EditItem(items[indexItem])">
+			<tr *ngFor="let __ of [].constructor(items.length); let indexItem = index" (click)="EditItem(items[indexItem], items)">
 				<td *ngFor="let _ of [].constructor(headers.length); let indexHeader = index"
 					[style.min-width]="headers[indexHeader].minWidth"
 					[style.width]="headers[indexHeader].width"

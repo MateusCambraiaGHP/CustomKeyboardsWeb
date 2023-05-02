@@ -1,5 +1,9 @@
 ﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
+using CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCustomer;
+using CustomKeyboardsWeb.Application.Features.Customers.Queries.GetCustomerById;
+using CustomKeyboardsWeb.Application.Features.Customers.Queries.GetCustomerList;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -9,43 +13,33 @@ namespace CustomKeyboardsWeb.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerService _customerService;
+        private readonly IMediator _mediator;
 
         public CustomerController(
-            ICustomerService customerService)
+            ICustomerService customerService,
+            IMediator mediator)
         {
             _customerService = customerService;
+            _mediator = mediator;
         }
 
         [HttpGet("getall")]
         public async Task<List<CustomerDto>> GetAll()
         {
-            return await _customerService.GetAll();
+            var customers = await _mediator.Send(new GetCustomerListQuery());
+            return customers;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getbyid/{id}")]
         public async Task<CustomerDto> GetById(int id)
         {
-            return await _customerService.FindByIdAsync(id);
+            return await _mediator.Send(new GetCustumerByIdQuery(id));
         }
 
         [HttpPost("save")]
         public async Task<CustomerDto> Save(CustomerDto model)
         {
-            if (model.Active.Length > 1)
-            {
-                ModelState.AddModelError("active", "MUITO GRANDE.");
-                if (!ModelState.IsValid)
-                {
-                    model.Errors = ModelState.ToDictionary(
-             kvp => kvp.Key,
-             kvp => kvp.Value.Errors.Select(e => e.ErrorMessage).ToArray()
-                    );
-
-                    return model;
-                }
-
-            }
-            return await _customerService.Save(model);
+            return await _mediator.Send(new CreateCustomerCommand(model));
         }
 
         [HttpPost("update")]

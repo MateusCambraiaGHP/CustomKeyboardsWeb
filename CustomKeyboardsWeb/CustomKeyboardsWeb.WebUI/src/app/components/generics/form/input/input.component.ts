@@ -20,20 +20,7 @@ export class InputComponent {
     formEnviado!: boolean;
     @Input()
     backendErrors: BackendErrors | undefined;
-    @Input() isErro: boolean = false;
-
-    isTextField = () => {
-        switch (this.inputCustom.type) {
-            case undefined:
-            case InputType.text:
-            case InputType.password:
-            case InputType.date:
-            case InputType.number:
-                return true;
-            default:
-                return false;
-        }
-    };
+    @Input() isErro = false as boolean;
 
     definirErrosBackend() {
         for (const controlName in this.formGroup.controls) {
@@ -47,12 +34,10 @@ export class InputComponent {
         }
     }
 
-    getErrorMessage(field: any,fieldName: any ): any {
-
+    getErrorMessage(field: any, fieldName: any): any {
         const key = field.toString();
-        if (this.backendErrors && this.backendErrors[key]) {
+        if (this.backendErrors && this.backendErrors[key])
             return this.backendErrors[key][0];
-        }
 
         if (this.formGroup.get(field)?.hasError("required"))
             return `O ${fieldName} é obrigatório`;
@@ -61,7 +46,7 @@ export class InputComponent {
             return "Email inválido";
     }
 
-    validateForm(field: any, isErro: boolean) {
+    validateForm(field: any) {
         return (this.formEnviado && !this.formGroup.get(field)?.valid) || this.isErro;
     }
 }

@@ -7,7 +7,7 @@ import { FormComponent } from './components/generics/form/form.component';
 const routes: Routes = [
     { path: '', component: TableCustomersComponent },
     {
-        path: 'form-customer/:id', // Defina o nome do parâmetro precedido por ':' na URL da rota
+        path: 'form-customer',
         component: CustomerFormComponent
       }
   ];

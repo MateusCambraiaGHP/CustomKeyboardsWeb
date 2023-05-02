@@ -13,14 +13,15 @@ import { ActivatedRoute } from "@angular/router";
     styleUrls: ["./customer-form.component.scss"],
 })
 export class CustomerFormComponent {
-    @Input() readonly: boolean = false;
+    @Input() readonly = false as boolean
     @Input()
     productReceived!: Customer;
     rows: RowCustom[] = [];
     form: FormGroup = new FormGroup({});
-    title: string = "Customer";
+    title = "Customer" as string;
     backendErrors: BackendErrors | undefined;
-    isErro: boolean = false;
+    item: any;
+    isErro = false as boolean;
 
     federativeUnit = [
         { text: "MG", value: "1" },
@@ -31,8 +32,12 @@ export class CustomerFormComponent {
         private route: ActivatedRoute) { }
 
     ngOnInit(): void {
-        const id = this.route.snapshot.params['id'];
-        console.log('ID:', id);
+        this.route.queryParams.subscribe(params => {
+            if (params['item']) {
+                this.item = JSON.parse(params['item']);
+                console.log(this.item);
+            }
+        });
         this.fillInputs();
     }
 
