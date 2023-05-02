@@ -5,33 +5,58 @@
             {{inputCustom.label}}
         </label>
     </div>
-    <input *ngIf="isTextField()" [type]="inputCustom.type" min="0" class="form-control"
-        [placeholder]="inputCustom.placeholder || inputCustom.label"
-        [formControlName]="inputCustom.formControlName ?? ''"
-        [ngClass]="{validateError: verificaValid(inputCustom.formControlName)} ">
-    <input *ngIf="inputCustom.type == InputType.checkbox" class="checkbox_animated" type="checkbox"
-        [formControlName]="inputCustom.formControlName ?? ''">
-    <textarea *ngIf="inputCustom.type == InputType.textArea" class="form-control"
-        [placeholder]="inputCustom.placeholder || inputCustom.label"
-        [formControlName]="inputCustom.formControlName ?? ''"></textarea>
-    <div *ngIf="inputCustom.type == InputType.select">
-        <select *ngFor="let currentSelect of inputCustom.optionsSelect" class="form-control"
-            [formControlName]="inputCustom.formControlName ?? ''"
-            [ngClass]="{validateError: verificaValid(inputCustom.formControlName)} ">
-            <option value="">
-                {{inputCustom.placeholder || 'Selecione uma opção'}}
-            </option>
-            <option *ngFor="let option of currentSelect.options" [value]="option.value">
-                {{option.text}}
-            </option>
-        </select>
-        <div *ngIf="verificaValid(inputCustom.formControlName)" >
-            <div class="" >
-                {{getErrorMessage(inputCustom.formControlName)}}
-            </div>        
+    <ng-container [ngSwitch]="inputCustom.type">
+        <div *ngSwitchCase="'text'">
+            <input [type]="inputCustom.type" min="0" class="form-control"
+                [placeholder]="inputCustom.placeholder || inputCustom.label"
+                [formControlName]="inputCustom.formControlName ?? ''"
+                [ngClass]="{validateError: validateForm(inputCustom.formControlName)} ">
         </div>
-    </div>
-    <div *ngIf="verificaValid(inputCustom.formControlName) && inputCustom.type != InputType.select">
-            {{getErrorMessage(inputCustom.formControlName)}}
+        <div *ngSwitchCase="'number'">
+            <input [type]="inputCustom.type" min="0" class="form-control"
+                [placeholder]="inputCustom.placeholder || inputCustom.label"
+                [formControlName]="inputCustom.formControlName ?? ''"
+                [ngClass]="{validateError: validateForm(inputCustom.formControlName)} ">
+        </div>
+        <div *ngSwitchCase="'password'">
+            <input [type]="inputCustom.type" min="0" class="form-control"
+                [placeholder]="inputCustom.placeholder || inputCustom.label"
+                [formControlName]="inputCustom.formControlName ?? ''"
+                [ngClass]="{validateError: validateForm(inputCustom.formControlName)} ">
+        </div>
+        <div *ngSwitchCase="'date'">
+            <input [type]="inputCustom.type" min="0" class="form-control"
+                [placeholder]="inputCustom.placeholder || inputCustom.label"
+                [formControlName]="inputCustom.formControlName ?? ''"
+                [ngClass]="{validateError: validateForm(inputCustom.formControlName)} ">
+        </div>
+        <div *ngSwitchCase="'checkbox'">
+            <input class="checkbox_animated" [type]="inputCustom.type"
+                [formControlName]="inputCustom.formControlName ?? ''">
+        </div>
+        <div *ngSwitchCase="InputType.textArea">
+            <textarea class="form-control" [placeholder]="inputCustom.placeholder || inputCustom.label"
+                [formControlName]="inputCustom.formControlName ?? ''"></textarea>
+        </div>
+        <div *ngSwitchCase="InputType.select">
+            <select *ngFor="let currentSelect of inputCustom.optionsSelect" class="form-control"
+                [formControlName]="inputCustom.formControlName ?? ''"
+                [ngClass]="{validateError: validateForm(inputCustom.formControlName)} ">
+                <option value="">
+                    {{inputCustom.placeholder || 'Selecione uma opção'}}
+                </option>
+                <option *ngFor="let option of currentSelect.options" [value]="option.value">
+                    {{option.text}}
+                </option>
+            </select>
+            <div *ngIf="validateForm(inputCustom.formControlName)">
+                <div class="">
+                    {{getErrorMessage(inputCustom.formControlName, inputCustom.label)}}
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <div *ngIf="validateForm(inputCustom.formControlName) && inputCustom.type != InputType.select">
+        {{getErrorMessage(inputCustom.formControlName, inputCustom.label)}}
     </div>
 </div>

@@ -1,0 +1,21 @@
+{
+  "tabWidth": 2,
+  "useEditorConfig": false,
+  "singleQuote": true,
+  "semi": false,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "bracesSpacing": true,
+  "useTabs": false,
+  "trailingComma": "none",
+  "withNodeModules": false,
+  "printWidth": 80,
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "options": {
+        "printWidth": 120
+      }
+    }
+  ]
+}

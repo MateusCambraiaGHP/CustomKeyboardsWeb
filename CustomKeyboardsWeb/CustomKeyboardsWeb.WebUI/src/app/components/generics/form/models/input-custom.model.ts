@@ -12,7 +12,6 @@ export interface InputCustom {
     optionValueKey?: string;
     optionTextKey?: string;
     optionsSelect?: {
-        titleSelect?: string;
         options?: { value?: any; text?: string }[];
     }[];
     control?: FormControl | FormGroup;

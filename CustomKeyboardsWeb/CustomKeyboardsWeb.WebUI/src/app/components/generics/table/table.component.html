@@ -1,1 +1,54 @@
-<p>table works!</p>
+<div class="table-responsive {{_class}}">
+
+	<table class="table table-hover">
+
+		<thead>
+			<th *ngFor="let header of headers" [style.text-align]="header.textAlign">
+				{{header.title}}
+			</th>
+		</thead>
+
+		<tbody *ngIf="items?.length">
+			<tr *ngFor="let __ of [].constructor(items.length); let indexItem = index" (click)="EditItem(items[indexItem], items)">
+				<td *ngFor="let _ of [].constructor(headers.length); let indexHeader = index"
+					[style.min-width]="headers[indexHeader].minWidth"
+					[style.width]="headers[indexHeader].width"
+					[style.max-width]="headers[indexHeader].maxWidth"
+					[style.text-align]="headers[indexHeader].textAlign"
+					[style]="headers[indexHeader].style"
+				>
+					<ng-container *ngIf="valueIsTypeText(headers[indexHeader])">
+						{{headers[indexHeader].prefix}}
+						{{formatValue(items[indexItem], headers[indexHeader])}}
+						{{headers[indexHeader].sufix}}
+					</ng-container>
+
+					<ng-container *ngIf="headers[indexHeader].type == 'badge'">
+						<span
+							class="badge badge-pill"
+						>
+							{{formatValue(items[indexItem], headers[indexHeader])}}
+						</span>
+					</ng-container>
+
+					<div class="d-flex" *ngIf="headers[indexHeader].custom">
+						<ng-container
+							[ngTemplateOutlet]="customColumn"
+							[ngTemplateOutletContext]="{ $implicit: items[indexItem], title: headers[indexHeader].title, indexItem: indexItem }">
+						</ng-container>
+					</div>
+
+				</td>
+
+			</tr>
+
+		</tbody>
+
+	</table>
+
+	<div *ngIf="(!items?.length) && headers.length" class="text-center my-3">
+		<mat-spinner *ngIf="loading" diameter="50" class="mx-auto"></mat-spinner>
+		<p *ngIf="!loading">Nenhum item encontrado</p>
+	</div>
+
+</div>

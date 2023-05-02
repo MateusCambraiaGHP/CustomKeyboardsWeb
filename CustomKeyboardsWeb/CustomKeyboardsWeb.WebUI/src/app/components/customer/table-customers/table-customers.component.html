@@ -1,1 +1,23 @@
-<p>table-customers works!</p>
+<app-table [headers]="headers" [items]="products"
+		[loading]="customersService.loading"
+        [typeObject]="typeObject">
+
+		<ng-template #customColumn let-item>
+
+			<!-- <app-modal [size]="'lg'">
+				<i click class="material-icons mx-2 text-primary">visibility</i>
+				<app-product-form content [productReceived]="item" [readonly]="true"></app-product-form>
+			</app-modal> -->
+
+			<!-- <app-modal [size]="'lg'">
+				<i click class="material-icons mx-2 text-primary">edit</i>
+				<app-product-form content [productReceived]="item"></app-product-form>
+			</app-modal>
+
+			<app-confirmation  [callback]="deleteProduct(item.id)">
+				<i class="material-icons mx-2 text-danger">delete_forever</i>
+			</app-confirmation> -->
+
+		</ng-template>
+
+	</app-table>

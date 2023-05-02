@@ -16,23 +16,29 @@ async function baseRequest<T>(
     options?: OptionsRequest
 ): Promise<T> {
     const body = JSON.stringify(options?.body);
-    console.log(body)
     try {
-        return await fetch(
+        const response = await fetch(
             `${API_URL}${route}`,
-            Object.assign({ method,    headers: {
-                'Content-Type': 'application/json'
-            },
-            mode: 'cors', } as any, { body } || {})
-        )
-            .then((r) => {
-                if (!r.ok) throw r;
-                return r.json();
-            })
-            .then((json) => {
-                return json;
-            });
+            {
+                method,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors',
+                body
+            }
+        );
+        if (response.ok) {
+            const json = await response.json();
+            return json;
+        } else {
+            const errorResponse = await response.json();
+            // const backendErrors = [];
+            // backendErrors.push(...errorResponse.errors);
+            return errorResponse;
+        }
     } catch (error) {
+        console.error('Erro na chamada da API:', error);
         return false as any;
     }
 }

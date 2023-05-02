@@ -4,6 +4,8 @@ import { Customer } from "../models/customer.model";
 import { InputType } from "../../generics/form/enums/input-type.enum";
 import { RowCustom } from "../../generics/form/models/row-input-custom.model";
 import { CustomerService } from "../services/products.service";
+import { BackendErrors } from "../models/banck.model.erros";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: "app-customer-form",
@@ -11,21 +13,31 @@ import { CustomerService } from "../services/products.service";
     styleUrls: ["./customer-form.component.scss"],
 })
 export class CustomerFormComponent {
-    @Input() readonly: boolean = false;
+    @Input() readonly = false as boolean
     @Input()
     productReceived!: Customer;
     rows: RowCustom[] = [];
     form: FormGroup = new FormGroup({});
-    title: string = "Customer";
+    title = "Customer" as string;
+    backendErrors: BackendErrors | undefined;
+    item: any;
+    isErro = false as boolean;
 
     federativeUnit = [
         { text: "MG", value: "1" },
         { text: "SP", value: "1" },
     ];
 
-    constructor(private customerService: CustomerService) {}
+    constructor(private customerService: CustomerService,
+        private route: ActivatedRoute) { }
 
     ngOnInit(): void {
+        this.route.queryParams.subscribe(params => {
+            if (params['item']) {
+                this.item = JSON.parse(params['item']);
+                console.log(this.item);
+            }
+        });
         this.fillInputs();
     }
 
@@ -77,10 +89,10 @@ export class CustomerFormComponent {
                         formControlName: "federativeUnit",
                         control: new FormControl("1", [Validators.required]),
                         optionsSelect: [
-                            { titleSelect: "", options: this.federativeUnit },
+                            { options: this.federativeUnit },
                         ],
                         type: InputType.select,
-                        class: "col-md-1",
+                        class: "col-md-2",
                     },
                 ],
             },
@@ -92,7 +104,7 @@ export class CustomerFormComponent {
                         control: new FormControl("", [Validators.required]),
                         type: InputType.text,
                         class: "col-md-4",
-                    },
+                    }
                 ],
             },
         ];
@@ -104,10 +116,15 @@ export class CustomerFormComponent {
             ...this.form.value,
         };
 
-        const resp = this.productReceived
-            ? await this.customerService.update(Customer)
-            : await this.customerService.create(Customer);
+        // const resp = this.productReceived
+        //     ? await this.customerService.update(Customer)
+        //     : await this.customerService.create(Customer);
 
-        if (!resp) return;
+        const resp = await this.customerService.create(Customer);
+
+        this.backendErrors = resp?.errors;
+        if (this.backendErrors)
+            this.isErro = true;
+        return resp;
     };
 }

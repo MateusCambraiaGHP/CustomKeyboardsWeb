@@ -1,0 +1,6 @@
+<div class="overlay-loading">
+    <ng-content></ng-content>
+    <div class="overlay" *ngIf="isLoading || loading">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+  </div>
