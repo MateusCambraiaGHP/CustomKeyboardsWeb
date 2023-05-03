@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5VvMwSCCw65qiTC0LrFwB3/hrTwsKJtx9BSlgnpc1qsU35ik5eQYEBX/cxWuKbu8NQO+dmER5tLNAtHCEhoZYw==",
+  "dgSpecHash": "Uztm5euE2jcPRVXG4vjkQV1vK+EpST76nk8Dw+V6Qa1+4jtEH0mgLruYpv/WfTp0vMDoY3RrC/te+T4WkdeEUw==",
   "success": true,
-  "projectFilePath": "C:\\GitHubDir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
+  "projectFilePath": "C:\\GitTortoise\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

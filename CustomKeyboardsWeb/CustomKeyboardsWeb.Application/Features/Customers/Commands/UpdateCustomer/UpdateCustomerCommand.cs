@@ -3,5 +3,5 @@ using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.UpdateCustomer
 {
-    public record UpdateKeyCommand(CustomerDto CustomerDto) : IRequest<CustomerDto>;
+    public record UpdateCustomerCommand(CustomerDto CustomerDto) : IRequest<CustomerDto>;
 }
