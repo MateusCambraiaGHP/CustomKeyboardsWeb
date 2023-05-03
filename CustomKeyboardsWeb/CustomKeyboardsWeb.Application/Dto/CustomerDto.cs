@@ -1,5 +1,4 @@
-﻿using CustomKeyboardsWeb.Domain.Entity;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace CustomKeyboardsWeb.Application.Dto
 {

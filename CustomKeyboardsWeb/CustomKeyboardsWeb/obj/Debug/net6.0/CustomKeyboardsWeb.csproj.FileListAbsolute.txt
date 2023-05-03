@@ -120,3 +120,6 @@ C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\ne
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\MediatR.dll
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\MediatR.Contracts.dll
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\GitHubDir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\MediatR.dll
+C:\GitHubDir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\MediatR.Contracts.dll
+C:\GitHubDir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
