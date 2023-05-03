@@ -2,8 +2,8 @@
 using CustomKeyboardsWeb.Infrastructure.Common.Interfaces;
 using CustomKeyboardsWeb.Infrastructure.Data;
 using CustomKeyboardsWeb.Infrastructure.Repositories;
+using CustomKeyboardsWeb.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
-using MyHardwareWeb.Infrastructure.Services;
 
 namespace CustomKeyboardsWeb.Infrastructure.Common.Extensions
 {

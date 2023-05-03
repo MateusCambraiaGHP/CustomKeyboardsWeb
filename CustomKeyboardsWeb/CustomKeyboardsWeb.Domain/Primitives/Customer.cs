@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CustomKeyboardsWeb.Domain.Entity
+namespace CustomKeyboardsWeb.Domain.Primitives
 {
-    public class Supplier : Entity
+    public class Customer : Entity
     {
         [Column(TypeName = "varchar(20)")]
         public string Name { get; set; }

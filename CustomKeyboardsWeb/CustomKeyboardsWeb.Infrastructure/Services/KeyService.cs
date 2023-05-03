@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Domain.Entity;
+using CustomKeyboardsWeb.Domain.Primitives;
 
-namespace MyHardwareWeb.Infrastructure.Services
+namespace CustomKeyboardsWeb.Infrastructure.Services
 {
     public class KeyService : IKeyService
     {

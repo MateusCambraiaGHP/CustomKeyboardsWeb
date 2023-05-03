@@ -1,4 +1,4 @@
-﻿using CustomKeyboardsWeb.Domain.Entity;
+﻿using CustomKeyboardsWeb.Domain.Primitives;
 using Microsoft.EntityFrameworkCore;
 
 namespace CustomKeyboardsWeb.Infrastructure.Common.Interfaces

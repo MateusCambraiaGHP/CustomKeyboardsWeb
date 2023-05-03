@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Domain.Entity;
+using CustomKeyboardsWeb.Domain.Primitives;
 
-namespace MyHardwareWeb.Infrastructure.Services
+namespace CustomKeyboardsWeb.Infrastructure.Services
 {
     public class SupplierService : ISupplierService
     {
@@ -35,13 +35,13 @@ namespace MyHardwareWeb.Infrastructure.Services
         public async Task<SupplierDto> FindByIdAsync(int id)
         {
             var currentSupplier = await _supplierRepository.FindById(id) ?? new Supplier();
-            var supplierMap     = _mapper.Map<SupplierDto>(currentSupplier);
+            var supplierMap = _mapper.Map<SupplierDto>(currentSupplier);
             return supplierMap;
         }
 
         public async Task<List<SupplierDto>> GetAll()
         {
-            var listSupplier    = await _supplierRepository.GetAll() ?? new List<Supplier>();
+            var listSupplier = await _supplierRepository.GetAll() ?? new List<Supplier>();
             var listSupplierMap = _mapper.Map<List<SupplierDto>>(listSupplier);
             return listSupplierMap;
         }

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\GitTortoise\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
+      "projectUniqueName": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
       "projectName": "CustomKeyboardsWeb.Domain",
-      "projectPath": "C:\\GitTortoise\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
+      "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
       "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
-      "outputPath": "C:\\GitTortoise\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\obj\\",
+      "outputPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

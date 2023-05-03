@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CustomKeyboardsWeb.Domain.Entity
+namespace CustomKeyboardsWeb.Domain.Primitives
 {
-    public class Switch : Entity
+    public class Keyboard : Entity
     {
-        [Column(TypeName = "varchar(15)")]
+        [Column(TypeName = "varchar(20)")]
         public string Name { get; set; }
-        [Column(TypeName = "varchar(15)")]
-        public string Color { get; set; }
+        public int? IdSwitch { get; set; }
+        public int? IdKey { get; set; }
         [Column(TypeName = "decimal(15,2)")]
         public double Price { get; set; }
         public string CreatedBy { get; set; }

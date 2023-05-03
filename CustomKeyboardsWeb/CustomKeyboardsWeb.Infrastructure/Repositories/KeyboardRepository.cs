@@ -1,7 +1,6 @@
 ﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
-using CustomKeyboardsWeb.Domain.Entity;
+using CustomKeyboardsWeb.Domain.Primitives;
 using CustomKeyboardsWeb.Infrastructure.Common.Interfaces;
-using CustomKeyboardsWeb.Infrastructure.Repository;
 
 namespace CustomKeyboardsWeb.Infrastructure.Repositories
 {

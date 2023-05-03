@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Domain.Entity;
+using CustomKeyboardsWeb.Domain.Primitives;
 
-namespace MyHardwareWeb.Infrastructure.Services
+namespace CustomKeyboardsWeb.Infrastructure.Services
 {
     public class SwitchService : ISwitchService
     {
@@ -41,7 +41,7 @@ namespace MyHardwareWeb.Infrastructure.Services
 
         public async Task<List<SwitchDto>> GetAll()
         {
-            var listSwitch    = await _switchRepository.GetAll() ?? new List<Switch>();
+            var listSwitch = await _switchRepository.GetAll() ?? new List<Switch>();
             var listSwitchMap = _mapper.Map<List<SwitchDto>>(listSwitch);
             return listSwitchMap;
         }

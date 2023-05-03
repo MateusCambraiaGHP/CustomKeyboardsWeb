@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Domain.Entity;
+using CustomKeyboardsWeb.Domain.Primitives;
 
 namespace CustomKeyboardsWeb.Infrastructure.Common.Extensions
 {
