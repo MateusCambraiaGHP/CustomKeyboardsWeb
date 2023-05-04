@@ -3,5 +3,5 @@ using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.Supplier.Commands.CreateSupplier
 {
-    public record CreateSupplierCommand(SupplierDto SupplierDto) : IRequest<SupplierDto>;
+    public record CreateSupplierCommand(CreateSupplierDto CreateSupplierDto) : IRequest<SupplierDto>;
 }

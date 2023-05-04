@@ -1,19 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CustomKeyboardsWeb.Application.Dto
+namespace CustomKeyboardsWeb.Application.Features.Supplier.Commands.CreateSupplier
 {
-    public class CustomerDto 
+    public class CreateSupplierDto
     {
+        [Required]
         public string? Active { get; set; }
+        [Required]
         public string? Name { get; set; }
+        [Required]
         public string? FantasyName { get; set; }
+        [Required]
         public string? Cep { get; set; }
+        [Required]
         public string? Adress { get; set; }
+        [Required]
         public string? FederativeUnit { get; set; }
+        [Required]
         public string? Phone { get; set; }
-        public string CreatedBy { get; set; } = "Administrator";
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public string? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
     }
 }

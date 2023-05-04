@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CustomKeyboardsWeb.Application.Dto;
+using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.Switch.Query.GetSwitchById
 {
-    internal class GetSwitchByIdCommand
-    {
-    }
+    public record GetSwitchByIdQuery(int id) : IRequest<SwitchDto>;
 }

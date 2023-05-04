@@ -1,13 +1,18 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CustomKeyboardsWeb.Application.Dto
+namespace CustomKeyboardsWeb.Application.Features.Keyboard.Commands.UpdateKeyboard
 {
-    public class KeyboardDto
+    public class UpdateKeyboardDto
     {
+        [Required]
+        public int? Id { get; set; }
+        [Required]
         public string? Active { get; set; }
+        [Required]
         public string? Name { get; set; }
         public int? IdSwitch { get; set; }
         public int? IdKey { get; set; }
+        [Required]
         public double? Price { get; set; }
     }
 }

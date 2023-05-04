@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CustomKeyboardsWeb.Application.Features.Key.Commands.UpdateKey
+namespace CustomKeyboardsWeb.Application.Features.Switch.Commands.UpdateSwitch
 {
-    public class UpdateKeyDto
+    public class UpdateSwitchDto
     {
         [Required]
         public int? Id { get; set; }
@@ -10,6 +10,8 @@ namespace CustomKeyboardsWeb.Application.Features.Key.Commands.UpdateKey
         public string? Active { get; set; }
         [Required]
         public string? Name { get; set; }
+        [Required]
+        public string? Color { get; set; }
         [Required]
         public double? Price { get; set; }
     }

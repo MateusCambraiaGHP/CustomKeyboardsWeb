@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
+using CustomKeyboardsWeb.Application.Features.Switch.Commands.CreateSwitch;
+using CustomKeyboardsWeb.Application.Features.Switch.Commands.UpdateSwitch;
 using CustomKeyboardsWeb.Domain.Primitives;
 
 namespace CustomKeyboardsWeb.Infrastructure.Services
@@ -18,18 +20,24 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
             _switchRepository = switchRepository;
         }
 
-        public async Task<SwitchDto> Save(SwitchDto model)
+        public async Task<SwitchDto> Save(CreateSwitchDto model)
         {
             var switchMap = _mapper.Map<Switch>(model);
+            switchMap.CreatedAt = DateTime.UtcNow;
+            switchMap.CreatedBy = "Administrator";
             await _switchRepository.Create(switchMap);
-            return model;
+            var switchDtoMap = _mapper.Map<SwitchDto>(model);
+            return switchDtoMap;
         }
 
-        public async Task<SwitchDto> Edit(SwitchDto model)
+        public async Task<SwitchDto> Edit(UpdateSwitchDto model)
         {
             var switchMap = _mapper.Map<Switch>(model);
+            switchMap.CreatedAt = DateTime.UtcNow;
+            switchMap.CreatedBy = "Administrator";
             await _switchRepository.Update(switchMap);
-            return model;
+            var switchDtoMap = _mapper.Map<SwitchDto>(model);
+            return switchDtoMap;
         }
 
         public async Task<SwitchDto> FindByIdAsync(int id)

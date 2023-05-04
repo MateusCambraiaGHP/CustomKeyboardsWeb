@@ -4,7 +4,7 @@ using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.Keyboard.Query.GetKeyboardById
 {
-    public class GetKeyboardByIdHandler : IRequestHandler<GetKeyboardByIdCommand, KeyboardDto>
+    public class GetKeyboardByIdHandler : IRequestHandler<GetKeyboardByIdQuery, KeyboardDto>
     {
         private readonly IKeyboardService _keyboardService;
 
@@ -13,7 +13,7 @@ namespace CustomKeyboardsWeb.Application.Features.Keyboard.Query.GetKeyboardById
             _keyboardService = keyboardService;
         }
 
-        public Task<KeyboardDto> Handle(GetKeyboardByIdCommand request, CancellationToken cancellationToken)
+        public Task<KeyboardDto> Handle(GetKeyboardByIdQuery request, CancellationToken cancellationToken)
         {
             var currentKeyboard = _keyboardService.FindByIdAsync(request.Id);
             return currentKeyboard;

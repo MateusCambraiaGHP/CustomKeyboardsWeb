@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
+using CustomKeyboardsWeb.Application.Features.Supplier.Commands.CreateSupplier;
+using CustomKeyboardsWeb.Application.Features.Supplier.Commands.UpdateSupplier;
 using CustomKeyboardsWeb.Domain.Primitives;
 
 namespace CustomKeyboardsWeb.Infrastructure.Services
@@ -18,18 +20,24 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
             _supplierRepository = supplierRepository;
         }
 
-        public async Task<SupplierDto> Save(SupplierDto model)
+        public async Task<SupplierDto> Save(CreateSupplierDto model)
         {
             var supplierMap = _mapper.Map<Supplier>(model);
+            supplierMap.CreatedAt = DateTime.UtcNow;
+            supplierMap.CreatedBy = "Administrator";
             await _supplierRepository.Create(supplierMap);
-            return model;
+            var supplierDtoMap = _mapper.Map<SupplierDto>(model);
+            return supplierDtoMap;
         }
 
-        public async Task<SupplierDto> Edit(SupplierDto model)
+        public async Task<SupplierDto> Edit(UpdateSupplierDto model)
         {
             var supplierMap = _mapper.Map<Supplier>(model);
+            supplierMap.CreatedAt = DateTime.UtcNow;
+            supplierMap.CreatedBy = "Administrator";
             await _supplierRepository.Update(supplierMap);
-            return model;
+            var supplierDtoMap = _mapper.Map<SupplierDto>(model);
+            return supplierDtoMap;
         }
 
         public async Task<SupplierDto> FindByIdAsync(int id)
