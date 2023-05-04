@@ -15,7 +15,7 @@ namespace CustomKeyboardsWeb.Application.Features.Supplier.Commands.CreateSuppli
 
         public async Task<SupplierDto> Handle(CreateSupplierCommand request, CancellationToken cancellationToken)
         {
-            var currentSupplier = await _supplierService.Save(request.SupplierDto);
+            var currentSupplier = await _supplierService.Save(request.CreateSupplierDto);
             return currentSupplier;
         }
     }

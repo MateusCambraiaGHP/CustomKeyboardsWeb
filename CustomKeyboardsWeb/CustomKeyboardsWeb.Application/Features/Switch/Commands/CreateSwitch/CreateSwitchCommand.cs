@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CustomKeyboardsWeb.Application.Dto;
+using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.Switch.Commands.CreateSwitch
 {
-    internal class CreateSwitchCommand
-    {
-    }
+    public record CreateSwitchCommand(CreateSwitchDto SwitchDto) : IRequest<SwitchDto>;
 }

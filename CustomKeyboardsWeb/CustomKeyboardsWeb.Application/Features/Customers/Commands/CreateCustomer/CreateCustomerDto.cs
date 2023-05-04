@@ -5,7 +5,6 @@ namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCusto
     [Serializable]
     public class CreateCustomerDto
     {
-        public int? Id { get; set; }
         [Required]
         public string? Active { get; set; }
         [Required]
@@ -18,12 +17,7 @@ namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCusto
         public string? Adress { get; set; }
         [Required]
         public string? FederativeUnit { get; set; }
-        public Dictionary<string, string[]>? Errors { get; set; }
         [Required]
         public string? Phone { get; set; }
-        public string CreatedBy { get; set; } = "Administrator";
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public string? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
     }
 }

@@ -2,8 +2,9 @@
 
 namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.UpdateCustomer
 {
-    public class UpdateKeyDto
+    public class UpdateCustomerDto
     {
+        [Required]
         public int? Id { get; set; }
         [Required]
         public string? Active { get; set; }
@@ -17,12 +18,7 @@ namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.UpdateCusto
         public string? Adress { get; set; }
         [Required]
         public string? FederativeUnit { get; set; }
-        public Dictionary<string, string[]>? Errors { get; set; }
         [Required]
         public string? Phone { get; set; }
-        public string CreatedBy { get; set; } = "Administrator";
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public string? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
     }
 }

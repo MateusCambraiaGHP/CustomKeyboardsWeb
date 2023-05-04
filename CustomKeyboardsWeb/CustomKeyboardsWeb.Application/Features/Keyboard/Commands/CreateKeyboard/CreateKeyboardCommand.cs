@@ -3,5 +3,5 @@ using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.Keyboard.Commands.CreateKeyboard
 {
-    public record CreateKeyboardCommand(KeyboardDto KeyboardDto) : IRequest<KeyboardDto>;
+    public record CreateKeyboardCommand(CreateKeyboardDto KeyboardDto) : IRequest<KeyboardDto>;
 }

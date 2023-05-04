@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NCCs+RfWaxAiEiWNZw/urL/4EA+CPWyUU37UydwpGLjOvRlqhdAGa8iL172T+BjLp6TIRRG8wL1i2vvcnSCBNQ==",
+  "dgSpecHash": "RaSicia/sRleGFSPIjcCM8LYDUYlPVsPqQ8xbO6CPvX2HgsJaVNfYVD66S0VZeB6FLBW6WLclx1ItpRBw4rHTQ==",
   "success": true,
-  "projectFilePath": "C:\\GitTortoise\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.csproj",
+  "projectFilePath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mateu\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

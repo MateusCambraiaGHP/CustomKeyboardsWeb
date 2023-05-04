@@ -1,5 +1,9 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
-using CustomKeyboardsWeb.Application.Dto;
+﻿using CustomKeyboardsWeb.Application.Dto;
+using CustomKeyboardsWeb.Application.Features.Key.Commands.CreateKey;
+using CustomKeyboardsWeb.Application.Features.Key.Commands.UpdateKey;
+using CustomKeyboardsWeb.Application.Features.Key.Query.GetKeyById;
+using CustomKeyboardsWeb.Application.Features.Key.Query.GetKeyList;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -8,38 +12,39 @@ namespace CustomKeyboardsWeb.Controllers
     [ApiController]
     public class KeyController : ControllerBase
     {
-        private readonly IKeyService _keyService;
+        private readonly IMediator _mediator;
 
-        public KeyController(
-            IKeyService keyService)
+        public KeyController(IMediator mediator)
         {
-            _keyService = keyService;
+            _mediator = mediator;
         }
 
-        [HttpGet]
-        public async Task<List<KeyDto>> Get()
+        [HttpGet("getall")]
+        public async Task<List<KeyDto>> GetAll()
         {
-            return await _keyService.GetAll();
+            var currentKeyList = await _mediator.Send(new GetKeyListQuery());
+            return currentKeyList;
         }
 
         [HttpGet("{id}")]
         public async Task<KeyDto> Get(int id)
         {
-            return await _keyService.FindByIdAsync(id);
+            var currentKey = await _mediator.Send(new GetKeyByIdQuery(id));
+            return currentKey;
         }
 
         [HttpPost("save")]
-        [ValidateAntiForgeryToken]
-        public async Task<KeyDto> Save(KeyDto model)
+        public async Task<KeyDto> Save(CreateKeyDto model)
         {
-            return await _keyService.Save(model);
+            var currentKey = await _mediator.Send(new CreateKeyCommand(model));
+            return currentKey;
         }
 
         [HttpPost("update")]
-        [ValidateAntiForgeryToken]
-        public async Task<KeyDto> Edit(KeyDto model)
+        public async Task<KeyDto> Edit(UpdateKeyDto model)
         {
-            return await _keyService.Edit(model);
+            var currentKey = await _mediator.Send(new UpdateKeyCommand(model));
+            return currentKey;
         }
 
     }

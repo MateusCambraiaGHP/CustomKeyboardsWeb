@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CustomKeyboardsWeb.Domain.Entity
+namespace CustomKeyboardsWeb.Domain.Primitives
 {
     public  abstract class Entity
     {

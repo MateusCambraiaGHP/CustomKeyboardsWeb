@@ -15,7 +15,7 @@ namespace CustomKeyboardsWeb.Application.Features.Key.Commands.UpdateKey
 
         public async Task<KeyDto> Handle(UpdateKeyCommand request, CancellationToken cancellationToken)
         {
-            var currentKey = await _keyService.Edit(request.keyDto);
+            var currentKey = await _keyService.Edit(request.UpdateKeyDto);
             return currentKey;
         }
     }

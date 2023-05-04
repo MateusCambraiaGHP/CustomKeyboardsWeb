@@ -1,5 +1,4 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
-using CustomKeyboardsWeb.Application.Dto;
+﻿using CustomKeyboardsWeb.Application.Dto;
 using CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCustomer;
 using CustomKeyboardsWeb.Application.Features.Customers.Commands.UpdateCustomer;
 using CustomKeyboardsWeb.Application.Features.Customers.Queries.GetCustomerById;
@@ -15,8 +14,7 @@ namespace CustomKeyboardsWeb.Controllers
     {
         private readonly IMediator _mediator;
 
-        public CustomerController(
-            IMediator mediator)
+        public CustomerController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -36,15 +34,14 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpPost("save")]
-        public async Task<CustomerDto> Save(CustomerDto model)
+        public async Task<CustomerDto> Save(CreateCustomerDto model)
         {
             var currentCustomer = await _mediator.Send(new CreateCustomerCommand(model));
             return currentCustomer;
         }
 
         [HttpPost("update")]
-        [ValidateAntiForgeryToken]
-        public async Task<CustomerDto> Edit(CustomerDto model)
+        public async Task<CustomerDto> Edit(UpdateCustomerDto model)
         {
             var currentCustomer = await _mediator.Send(new UpdateCustomerCommand(model));
             return currentCustomer;

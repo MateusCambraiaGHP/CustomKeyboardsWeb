@@ -3,5 +3,5 @@ using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.Keyboard.Query.GetKeyboardById
 {
-    public record GetKeyboardByIdCommand(int Id) : IRequest<KeyboardDto>;
+    public record GetKeyboardByIdQuery(int Id) : IRequest<KeyboardDto>;
 }

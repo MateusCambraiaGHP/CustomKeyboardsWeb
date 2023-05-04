@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Domain.Entity;
+using CustomKeyboardsWeb.Application.Features.Switch.Commands.CreateSwitch;
+using CustomKeyboardsWeb.Application.Features.Switch.Commands.UpdateSwitch;
+using CustomKeyboardsWeb.Domain.Primitives;
 
-namespace MyHardwareWeb.Infrastructure.Services
+namespace CustomKeyboardsWeb.Infrastructure.Services
 {
     public class SwitchService : ISwitchService
     {
@@ -18,18 +20,24 @@ namespace MyHardwareWeb.Infrastructure.Services
             _switchRepository = switchRepository;
         }
 
-        public async Task<SwitchDto> Save(SwitchDto model)
+        public async Task<SwitchDto> Save(CreateSwitchDto model)
         {
             var switchMap = _mapper.Map<Switch>(model);
+            switchMap.CreatedAt = DateTime.UtcNow;
+            switchMap.CreatedBy = "Administrator";
             await _switchRepository.Create(switchMap);
-            return model;
+            var switchDtoMap = _mapper.Map<SwitchDto>(model);
+            return switchDtoMap;
         }
 
-        public async Task<SwitchDto> Edit(SwitchDto model)
+        public async Task<SwitchDto> Edit(UpdateSwitchDto model)
         {
             var switchMap = _mapper.Map<Switch>(model);
+            switchMap.CreatedAt = DateTime.UtcNow;
+            switchMap.CreatedBy = "Administrator";
             await _switchRepository.Update(switchMap);
-            return model;
+            var switchDtoMap = _mapper.Map<SwitchDto>(model);
+            return switchDtoMap;
         }
 
         public async Task<SwitchDto> FindByIdAsync(int id)
@@ -41,7 +49,7 @@ namespace MyHardwareWeb.Infrastructure.Services
 
         public async Task<List<SwitchDto>> GetAll()
         {
-            var listSwitch    = await _switchRepository.GetAll() ?? new List<Switch>();
+            var listSwitch = await _switchRepository.GetAll() ?? new List<Switch>();
             var listSwitchMap = _mapper.Map<List<SwitchDto>>(listSwitch);
             return listSwitchMap;
         }

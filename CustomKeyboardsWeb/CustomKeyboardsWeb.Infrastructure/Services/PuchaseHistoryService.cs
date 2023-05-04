@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Domain.Entity;
+using CustomKeyboardsWeb.Domain.Primitives;
 
-namespace MyHardwareWeb.Infrastructure.Services
+namespace CustomKeyboardsWeb.Infrastructure.Services
 {
     public class PuchaseHistoryService : IPuchaseHistoryService
     {
@@ -41,7 +41,7 @@ namespace MyHardwareWeb.Infrastructure.Services
 
         public async Task<List<PuchaseHistoryDto>> GetAll()
         {
-            var listPuchaseHistory    = await _puchaseHistoryRepository.GetAll() ?? new List<PuchaseHistory>();
+            var listPuchaseHistory = await _puchaseHistoryRepository.GetAll() ?? new List<PuchaseHistory>();
             var listPuchaseHistoryMap = _mapper.Map<List<PuchaseHistoryDto>>(listPuchaseHistory);
             return listPuchaseHistoryMap;
         }

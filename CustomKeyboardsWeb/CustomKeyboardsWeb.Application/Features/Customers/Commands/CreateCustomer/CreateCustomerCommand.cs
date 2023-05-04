@@ -3,5 +3,5 @@ using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCustomer
 {
-    public record class CreateCustomerCommand(CustomerDto createCustomerDto) : IRequest<CustomerDto>;
+    public record class CreateCustomerCommand(CreateCustomerDto createCustomerDto) : IRequest<CustomerDto>;
 }

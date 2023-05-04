@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Domain.Entity;
+using CustomKeyboardsWeb.Application.Features.Key.Commands.CreateKey;
+using CustomKeyboardsWeb.Application.Features.Key.Commands.UpdateKey;
+using CustomKeyboardsWeb.Domain.Primitives;
 
-namespace MyHardwareWeb.Infrastructure.Services
+namespace CustomKeyboardsWeb.Infrastructure.Services
 {
     public class KeyService : IKeyService
     {
@@ -18,18 +20,24 @@ namespace MyHardwareWeb.Infrastructure.Services
             _keyRepository = keyRepository;
         }
 
-        public async Task<KeyDto> Save(KeyDto model)
+        public async Task<KeyDto> Save(CreateKeyDto model)
         {
             var keyMap = _mapper.Map<Key>(model);
+            keyMap.CreatedAt = DateTime.UtcNow;
+            keyMap.CreatedBy = "Administrator";
             await _keyRepository.Create(keyMap);
-            return model;
+            var keyDtoMap = _mapper.Map<KeyDto>(model);
+            return keyDtoMap;
         }
 
-        public async Task<KeyDto> Edit(KeyDto model)
+        public async Task<KeyDto> Edit(UpdateKeyDto model)
         {
             var keyMap = _mapper.Map<Key>(model);
+            keyMap.CreatedAt = DateTime.UtcNow;
+            keyMap.CreatedBy = "Administrator";
             await _keyRepository.Update(keyMap);
-            return model;
+            var keyDtoMap = _mapper.Map<KeyDto>(model);
+            return keyDtoMap;
         }
 
         public async Task<KeyDto> FindByIdAsync(int id)
