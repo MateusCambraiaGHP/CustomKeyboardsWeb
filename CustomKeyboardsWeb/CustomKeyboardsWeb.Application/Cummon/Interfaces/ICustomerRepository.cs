@@ -1,5 +1,4 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives;
-
 namespace CustomKeyboardsWeb.Application.Cummon.Interfaces
 {
     public interface ICustomerRepository

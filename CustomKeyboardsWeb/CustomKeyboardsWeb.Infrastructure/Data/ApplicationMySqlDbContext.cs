@@ -21,6 +21,12 @@ namespace CustomKeyboardsWeb.Infrastructure.Data
                       ServerVersion.AutoDetect(_configuration.GetConnectionString("DefaultConnection")));
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationMySqlDbContext).Assembly);
+            base.OnModelCreating(modelBuilder);
+        }
+
         public DbSet<Customer> Customer { get; set; }
         public DbSet<Key> Key { get; set; }
         public DbSet<Keyboard> Keyboard { get; set; }

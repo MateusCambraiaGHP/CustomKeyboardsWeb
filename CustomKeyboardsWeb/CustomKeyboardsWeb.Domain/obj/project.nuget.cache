@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5sZI9ZLM5HQLobrQo2NgbMqw/zyLWkWiUJP4KByLaRXYIZgS9cEMgIHvSGGVpZIFUpoWMyqF/eONLmsQWwib/w==",
+  "dgSpecHash": "Hy2VJjr/KUb/a15OCSETqSOq6qpZsNTD2Dvk457130BHTOIUUgLLxBkIY7/jW4bLHTeCIPxaXiiJzPJtlO0wlg==",
   "success": true,
   "projectFilePath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.4\\microsoft.entityframeworkcore.abstractions.7.0.4.nupkg.sha512"
+  ],
   "logs": []
 }

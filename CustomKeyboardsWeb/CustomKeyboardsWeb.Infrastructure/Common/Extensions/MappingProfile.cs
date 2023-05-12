@@ -11,6 +11,7 @@ using CustomKeyboardsWeb.Application.Features.Supplier.Commands.UpdateSupplier;
 using CustomKeyboardsWeb.Application.Features.Switch.Commands.CreateSwitch;
 using CustomKeyboardsWeb.Application.Features.Switch.Commands.UpdateSwitch;
 using CustomKeyboardsWeb.Domain.Primitives;
+using Switch = CustomKeyboardsWeb.Domain.Primitives.Switch;
 
 namespace CustomKeyboardsWeb.Infrastructure.Common.Extensions
 {

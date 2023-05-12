@@ -2,8 +2,9 @@
 
 namespace CustomKeyboardsWeb.Domain.Primitives
 {
-    public  abstract class Entity
+    public abstract class Entity
     {
+        protected Entity() { }
         public int Id { get; set; }
         [Column(TypeName = "varchar(1)")]
         public string Active { get; set; }
