@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oQeBvxbYxs+LI0pKIgTaGp06a2eP8t0Zs3suSoSIkpx9m8fAMwlXIYV1QrEfa/ZN0mv5BIudspisGXmHy+7lGA==",
+  "dgSpecHash": "mNTRXGRR0orv9SAS0ixDCIsxCTXGh+gTYuJOiDH0XBf05dNI1FewcDpUPjM78NNQw0zcoBrTP4QIzBWWwAuHbQ==",
   "success": true,
   "projectFilePath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\mateu\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.4\\microsoft.entityframeworkcore.abstractions.7.0.4.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",

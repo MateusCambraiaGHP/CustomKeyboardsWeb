@@ -376,6 +376,9 @@
         }
       },
       "CustomKeyboardsWeb.Domain/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4"
+        },
         "runtime": {
           "CustomKeyboardsWeb.Domain.dll": {}
         }

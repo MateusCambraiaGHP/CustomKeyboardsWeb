@@ -42,7 +42,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
 
         public async Task<SupplierDto> FindByIdAsync(int id)
         {
-            var currentSupplier = await _supplierRepository.FindById(id) ?? new Supplier();
+            var currentSupplier = await _supplierRepository.FindById(id);
             var supplierMap = _mapper.Map<SupplierDto>(currentSupplier);
             return supplierMap;
         }

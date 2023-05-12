@@ -7,8 +7,19 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "CustomKeyboardsWeb.Domain/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4"
+        },
         "runtime": {
           "CustomKeyboardsWeb.Domain.dll": {}
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Abstractions/7.0.4": {
+        "runtime": {
+          "lib/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll": {
+            "assemblyVersion": "7.0.4.0",
+            "fileVersion": "7.0.423.11504"
+          }
         }
       }
     }
@@ -18,6 +29,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Microsoft.EntityFrameworkCore.Abstractions/7.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6GbYvs4L5oFpYpMzwF05kdDgvX09UmMX7MpDtDlGI5ymijFwquwv+yvdijbtodOuu0yLUpc4n71x6eBdJ8v1xQ==",
+      "path": "microsoft.entityframeworkcore.abstractions/7.0.4",
+      "hashPath": "microsoft.entityframeworkcore.abstractions.7.0.4.nupkg.sha512"
     }
   }
 }

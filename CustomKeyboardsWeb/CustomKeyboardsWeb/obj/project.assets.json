@@ -594,6 +594,9 @@
       "CustomKeyboardsWeb.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4"
+        },
         "compile": {
           "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
         },
