@@ -1,10 +1,52 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CustomKeyboardsWeb.Domain.Primitives
 {
     public class Keyboard : AggregateRoot
     {
+        private Keyboard() { }
+
+        private Keyboard(
+            Name name,
+            int? idSwitch,
+            int? idKey,
+            Price price,
+            string active,
+            string createdBy,
+            DateTime createdAt,
+            string? updatedBy,
+            DateTime? updatedAt)
+        {
+            Name = name;
+            IdSwitch = idSwitch;
+            IdKey = idKey;
+            Price = price;
+            Active = active;
+            CreatedBy = createdBy;
+            CreatedAt = createdAt;
+            UpdatedBy = updatedBy;
+            UpdatedAt = updatedAt;
+        }
+
+        public static Keyboard Create(
+            Name name,
+            int? idSwitch,
+            int? idKey,
+            Price price,
+            string active)
+        {
+            return new Keyboard(
+                name,
+                idSwitch,
+                idKey,
+                price,
+                active,
+                "Administrator",
+                DateTime.UtcNow,
+                null,
+                null);
+        }
+
         public Name Name { get; set; }
         public int? IdSwitch { get; set; }
         public int? IdKey { get; set; }

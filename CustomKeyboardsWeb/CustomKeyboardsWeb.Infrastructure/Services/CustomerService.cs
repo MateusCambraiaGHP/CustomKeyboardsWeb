@@ -4,6 +4,7 @@ using CustomKeyboardsWeb.Application.Dto;
 using CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCustomer;
 using CustomKeyboardsWeb.Application.Features.Customers.Commands.UpdateCustomer;
 using CustomKeyboardsWeb.Domain.Primitives;
+using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 
 namespace CustomKeyboardsWeb.Infrastructure.Services
 {
@@ -22,12 +23,18 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
 
         public async Task<CustomerDto> Save(CreateCustomerDto model)
         {
-            Customer customerMap = _mapper.Map<Customer>(model);
-            customerMap.CreatedAt = DateTime.UtcNow;
-            customerMap.CreatedBy = "Administrator";
-            await _customerRepository.Create(customerMap);
-            CustomerDto customerDtoMap = _mapper.Map<CustomerDto>(model);
-            return customerDtoMap;
+            var customer = Customer.Create(
+                Name.Create(model.Name),
+                FantasyName.Create(model.FantasyName),
+                Cep.Create(model.Cep),
+                Address.Create(model.Adress),
+                FederativeUnit.Create(model.FederativeUnit),
+                Phone.Create(model.Phone),
+                model.Active);
+
+            await _customerRepository.Create(customer);
+            CustomerDto customerDto = _mapper.Map<CustomerDto>(customer);
+            return customerDto;
         }
 
         public async Task<CustomerDto> Edit(UpdateCustomerDto model)

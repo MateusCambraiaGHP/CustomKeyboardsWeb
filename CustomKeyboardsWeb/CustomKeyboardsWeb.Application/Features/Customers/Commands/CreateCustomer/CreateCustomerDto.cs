@@ -2,22 +2,14 @@
 
 namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCustomer
 {
-    [Serializable]
     public class CreateCustomerDto
     {
-        [Required]
-        public string? Active { get; set; }
-        [Required]
-        public string? Name { get; set; }
-        [Required]
-        public string? FantasyName { get; set; }
-        [Required]
-        public string? Cep { get; set; }
-        [Required]
-        public string? Adress { get; set; }
-        [Required]
-        public string? FederativeUnit { get; set; }
-        [Required]
-        public string? Phone { get; set; }
+        public string Active { get; set; } = null!;
+        public string Name { get; set; } = null!;
+        public string FantasyName { get; set; } = null!;
+        public string Cep { get; set; } = null!;
+        public string Adress { get; set; } = null!;
+        public string FederativeUnit { get; set; } = null!;
+        public string Phone { get; set; } = null!;
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects
+﻿namespace CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects
 {
     public sealed class Address : ValueObject
     {

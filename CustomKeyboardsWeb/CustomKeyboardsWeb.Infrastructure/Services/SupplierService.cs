@@ -4,6 +4,7 @@ using CustomKeyboardsWeb.Application.Dto;
 using CustomKeyboardsWeb.Application.Features.Supplier.Commands.CreateSupplier;
 using CustomKeyboardsWeb.Application.Features.Supplier.Commands.UpdateSupplier;
 using CustomKeyboardsWeb.Domain.Primitives;
+using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 
 namespace CustomKeyboardsWeb.Infrastructure.Services
 {
@@ -22,12 +23,18 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
 
         public async Task<SupplierDto> Save(CreateSupplierDto model)
         {
-            var supplierMap = _mapper.Map<Supplier>(model);
-            supplierMap.CreatedAt = DateTime.UtcNow;
-            supplierMap.CreatedBy = "Administrator";
-            await _supplierRepository.Create(supplierMap);
-            var supplierDtoMap = _mapper.Map<SupplierDto>(model);
-            return supplierDtoMap;
+            var supplier = Supplier.Create(
+                Name.Create(model.Name),
+                FantasyName.Create(model.FantasyName),
+                Cep.Create(model.Cep),
+                Address.Create(model.Adress),
+                FederativeUnit.Create(model.FederativeUnit),
+                Phone.Create(model.Phone),
+                model.Active);
+
+            await _supplierRepository.Create(supplier);
+            var supplierDto = _mapper.Map<SupplierDto>(supplier);
+            return supplierDto;
         }
 
         public async Task<SupplierDto> Edit(UpdateSupplierDto model)

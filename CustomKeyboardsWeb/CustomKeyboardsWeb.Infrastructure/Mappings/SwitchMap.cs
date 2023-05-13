@@ -27,6 +27,9 @@ namespace CustomKeyboardsWeb.Infrastructure.Mappings
                 .HasColumnName("Price")
                 .HasPrecision(15, 4);
 
+            entity.Property(e => e.Active)
+                .HasMaxLength(1);
+
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime");
 
