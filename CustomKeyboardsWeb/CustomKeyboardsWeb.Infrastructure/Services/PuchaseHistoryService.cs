@@ -2,6 +2,7 @@
 using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
 using CustomKeyboardsWeb.Domain.Primitives;
+using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 
 namespace CustomKeyboardsWeb.Infrastructure.Services
 {
@@ -20,9 +21,16 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
 
         public async Task<PuchaseHistoryDto> Save(PuchaseHistoryDto model)
         {
-            var puchaseHistoryMap = _mapper.Map<PuchaseHistory>(model);
-            await _puchaseHistoryRepository.Create(puchaseHistoryMap);
-            return model;
+            var puchaseHistory = PuchaseHistory.Create(
+                model.IdCustomer,
+                model.IdSupplier,
+                model.IdKeyboard,
+                Price.Create(model.Price),
+                model.Active);
+
+            await _puchaseHistoryRepository.Create(puchaseHistory);
+            var puchaseHistoryDto = _mapper.Map<PuchaseHistoryDto>(puchaseHistory);
+            return puchaseHistoryDto;
         }
 
         public async Task<PuchaseHistoryDto> Edit(PuchaseHistoryDto model)
@@ -34,7 +42,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
 
         public async Task<PuchaseHistoryDto> FindByIdAsync(int id)
         {
-            var currentPuchaseHistory = await _puchaseHistoryRepository.FindById(id) ?? new PuchaseHistory();
+            var currentPuchaseHistory = await _puchaseHistoryRepository.FindById(id);
             var puchaseHistoryMap = _mapper.Map<PuchaseHistoryDto>(currentPuchaseHistory);
             return puchaseHistoryMap;
         }

@@ -1,14 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CustomKeyboardsWeb.Application.Features.Key.Commands.CreateKey
+﻿namespace CustomKeyboardsWeb.Application.Features.Key.Commands.CreateKey
 {
     public  class CreateKeyDto
     {
-        [Required]
-        public string? Active { get; set; }
-        [Required]
-        public string? Name { get; set; }
-        [Required]
-        public double? Price { get; set; }
+        public string Active { get; set; } = null!;
+        public string Name { get; set; } = null!;
+        public double Price { get; set; }
     }
 }

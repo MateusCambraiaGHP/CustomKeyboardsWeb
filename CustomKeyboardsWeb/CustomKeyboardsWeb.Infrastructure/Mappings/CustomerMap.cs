@@ -41,6 +41,9 @@ namespace CustomKeyboardsWeb.Infrastructure.Mappings
                 .HasColumnName("Phone")
                 .HasMaxLength(20);
 
+            entity.Property(e => e.Active)
+                .HasMaxLength(1);
+
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime");
 

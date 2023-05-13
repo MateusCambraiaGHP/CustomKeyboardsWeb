@@ -16,7 +16,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.4")
+                .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Customer", b =>
@@ -27,6 +27,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.Property<string>("Active")
                         .IsRequired()
+                        .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -57,6 +58,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.Property<string>("Active")
                         .IsRequired()
+                        .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -87,6 +89,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.Property<string>("Active")
                         .IsRequired()
+                        .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -137,6 +140,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.Property<string>("Active")
                         .IsRequired()
+                        .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
                     b.Property<int>("CustomerId")
@@ -185,6 +189,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.Property<string>("Active")
                         .IsRequired()
+                        .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -215,6 +220,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.Property<string>("Active")
                         .IsRequired()
+                        .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
                     b.Property<DateTime>("CreatedAt")

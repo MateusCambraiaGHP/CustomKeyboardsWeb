@@ -20,6 +20,9 @@ namespace CustomKeyboardsWeb.Infrastructure.Mappings
             entity.Property(e => e.PuchaseDate)
                 .HasColumnType("datetime");
 
+            entity.Property(e => e.Active)
+                .HasMaxLength(1);
+
             entity.HasOne<Customer>()
                 .WithMany()
                 .HasForeignKey(e => e.IdCustomer)

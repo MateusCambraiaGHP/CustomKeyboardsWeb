@@ -1,5 +1,4 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
-using Microsoft.EntityFrameworkCore;
 
 namespace CustomKeyboardsWeb.Domain.Primitives
 {
@@ -14,6 +13,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives
             Address address,
             FederativeUnit federativeUnit,
             Phone? phone,
+            string active,
             string createdBy,
             DateTime createdAt,
             string? updatedBy,
@@ -25,10 +25,34 @@ namespace CustomKeyboardsWeb.Domain.Primitives
             Address = address;
             FederativeUnit = federativeUnit;
             Phone = phone;
+            Active = active;
             CreatedBy = createdBy;
             CreatedAt = createdAt;
             UpdatedBy = updatedBy;
             UpdatedAt = updatedAt;
+        }
+
+        public static Customer Create(
+            Name name,
+            FantasyName fantasyName,
+            Cep cep,
+            Address address,
+            FederativeUnit federativeUnit,
+            Phone? phone,
+            string active) 
+        {
+            return new Customer(
+                name,
+                fantasyName,
+                cep,
+                address,
+                federativeUnit,
+                phone,
+                active,
+                "Administrator",
+                DateTime.UtcNow,
+                null,
+                null);
         }
 
         public Name Name { get; set; } = null!;

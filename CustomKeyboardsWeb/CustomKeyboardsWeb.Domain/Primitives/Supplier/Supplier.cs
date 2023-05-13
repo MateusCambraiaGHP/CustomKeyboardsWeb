@@ -1,22 +1,19 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CustomKeyboardsWeb.Domain.Primitives
 {
     public class Supplier : AggregateRoot
     {
-        public Supplier()
-        {
+        private Supplier() { }
 
-        }
-
-        public Supplier(
+        private Supplier(
             Name name,
             FantasyName fantasyName,
             Cep cep,
             Address address,
             FederativeUnit federativeUnit,
             Phone? phone,
+            string active,
             string createdBy,
             DateTime createdAt,
             string? updatedBy,
@@ -28,10 +25,34 @@ namespace CustomKeyboardsWeb.Domain.Primitives
             Address = address;
             FederativeUnit = federativeUnit;
             Phone = phone;
+            Active = active;
             CreatedBy = createdBy;
             CreatedAt = createdAt;
             UpdatedBy = updatedBy;
             UpdatedAt = updatedAt;
+        }
+
+        public static Supplier Create(
+            Name name,
+            FantasyName fantasyName,
+            Cep cep,
+            Address address,
+            FederativeUnit federativeUnit,
+            Phone? phone,
+            string active) 
+        {
+            return new Supplier(
+                name,
+                fantasyName,
+                cep,
+                address,
+                federativeUnit,
+                phone,
+                active,
+                "Administrator",
+                DateTime.UtcNow,
+                null,
+                null);
         }
 
         public Name Name { get; set; }

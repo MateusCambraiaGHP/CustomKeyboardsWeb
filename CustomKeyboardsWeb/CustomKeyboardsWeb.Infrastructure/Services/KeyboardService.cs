@@ -4,6 +4,8 @@ using CustomKeyboardsWeb.Application.Dto;
 using CustomKeyboardsWeb.Application.Features.Keyboard.Commands.CreateKeyboard;
 using CustomKeyboardsWeb.Application.Features.Keyboard.Commands.UpdateKeyboard;
 using CustomKeyboardsWeb.Domain.Primitives;
+using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
+using CustomKeyboardsWeb.Infrastructure.Mappings;
 
 namespace CustomKeyboardsWeb.Infrastructure.Services
 {
@@ -22,11 +24,16 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
 
         public async Task<KeyboardDto> Save(CreateKeyboardDto model)
         {
-            var keyboardMap = _mapper.Map<Keyboard>(model);
-            keyboardMap.CreatedAt = DateTime.UtcNow;
-            keyboardMap.CreatedBy = "Administrator";
-            await _keyboardRepository.Create(keyboardMap);
-            var keyboardDtoMap = _mapper.Map<KeyboardDto>(model);
+
+            var keyboard = Keyboard.Create(
+                Name.Create(model.Name),
+                model.IdSwitch,
+                model.IdKey,
+                Price.Create(model.Price),
+                model.Active);
+            
+            await _keyboardRepository.Create(keyboard);
+            var keyboardDtoMap = _mapper.Map<KeyboardDto>(keyboard);
             return keyboardDtoMap;
         }
 

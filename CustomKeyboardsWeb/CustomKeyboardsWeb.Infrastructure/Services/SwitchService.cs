@@ -4,6 +4,7 @@ using CustomKeyboardsWeb.Application.Dto;
 using CustomKeyboardsWeb.Application.Features.Switch.Commands.CreateSwitch;
 using CustomKeyboardsWeb.Application.Features.Switch.Commands.UpdateSwitch;
 using CustomKeyboardsWeb.Domain.Primitives;
+using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 
 namespace CustomKeyboardsWeb.Infrastructure.Services
 {
@@ -22,12 +23,15 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
 
         public async Task<SwitchDto> Save(CreateSwitchDto model)
         {
-            var switchMap = _mapper.Map<Switch>(model);
-            switchMap.CreatedAt = DateTime.UtcNow;
-            switchMap.CreatedBy = "Administrator";
-            await _switchRepository.Create(switchMap);
-            var switchDtoMap = _mapper.Map<SwitchDto>(model);
-            return switchDtoMap;
+            var _switch = Switch.Create(
+                Name.Create(model.Name),
+                Color.Create(model.Color),
+                Price.Create(model.Price),
+                model.Active);
+
+            await _switchRepository.Create(_switch);
+            var switchDto = _mapper.Map<SwitchDto>(_switch);
+            return switchDto;
         }
 
         public async Task<SwitchDto> Edit(UpdateSwitchDto model)

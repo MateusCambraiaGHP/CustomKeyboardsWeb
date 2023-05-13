@@ -34,6 +34,9 @@ namespace CustomKeyboardsWeb.Infrastructure.Mappings
             entity.Property(e => e.UpdatedBy)
                 .HasMaxLength(20);
 
+            entity.Property(e => e.Active)
+                .HasMaxLength(1);
+
             entity.HasOne<Key>()
                 .WithMany()
                 .HasForeignKey(e => e.IdKey)
