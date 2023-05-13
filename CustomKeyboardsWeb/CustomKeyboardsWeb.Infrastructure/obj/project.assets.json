@@ -1331,7 +1331,9 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.1",
       "CustomKeyboardsWeb.Application >= 1.0.0",
       "CustomKeyboardsWeb.Domain >= 1.0.0",
+      "Microsoft.EntityFrameworkCore >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.5",
+      "Microsoft.EntityFrameworkCore.Relational >= 7.0.5",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.5",
       "Pomelo.EntityFrameworkCore.MySql >= 7.0.0"
     ]
@@ -1391,9 +1393,17 @@
             "target": "Package",
             "version": "[12.0.1, )"
           },
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[7.0.5, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[7.0.5, )"
+          },
+          "Microsoft.EntityFrameworkCore.Relational": {
             "target": "Package",
             "version": "[7.0.5, )"
           },
