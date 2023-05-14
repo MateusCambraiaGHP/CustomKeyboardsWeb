@@ -1,9 +1,25 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCustomer
+﻿namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCustomer
 {
     public class CreateCustomerDto
     {
+        public CreateCustomerDto(
+            string active,
+            string name,
+            string fantasyName,
+            string cep,
+            string adress,
+            string federativeUnit,
+            string phone)
+        {
+            Active = active;
+            Name = name;
+            FantasyName = fantasyName;
+            Cep = cep;
+            Adress = adress;
+            FederativeUnit = federativeUnit;
+            Phone = phone;
+        }
+
         public string Active { get; set; } = null!;
         public string Name { get; set; } = null!;
         public string FantasyName { get; set; } = null!;

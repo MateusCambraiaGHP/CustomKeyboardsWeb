@@ -16,7 +16,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Mappings
                 .Property(n => n.Value)
                 .HasColumnName("Name")
                 .HasMaxLength(20);
-
+                
             entity.OwnsOne(e => e.FantasyName)
                 .Property(n => n.Value)
                 .HasColumnName("FantasyName")

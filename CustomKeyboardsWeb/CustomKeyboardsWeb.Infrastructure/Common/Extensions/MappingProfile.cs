@@ -11,6 +11,7 @@ using CustomKeyboardsWeb.Application.Features.Supplier.Commands.UpdateSupplier;
 using CustomKeyboardsWeb.Application.Features.Switch.Commands.CreateSwitch;
 using CustomKeyboardsWeb.Application.Features.Switch.Commands.UpdateSwitch;
 using CustomKeyboardsWeb.Domain.Primitives;
+using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using Switch = CustomKeyboardsWeb.Domain.Primitives.Switch;
 
 namespace CustomKeyboardsWeb.Infrastructure.Common.Extensions
@@ -20,6 +21,14 @@ namespace CustomKeyboardsWeb.Infrastructure.Common.Extensions
         public MappingProfile()
         {
             CreateMap<CustomerDto, Customer>();
+            CreateMap<Name, string>().ConvertUsing(n => n.Value);
+            CreateMap<FantasyName, string>().ConvertUsing(fn => fn.Value);
+            CreateMap<Cep, string>().ConvertUsing(c => c.Value);
+            CreateMap<Address, string>().ConvertUsing(a => a.Value);
+            CreateMap<Price, double>().ConvertUsing(p => p.Value);
+            CreateMap<Phone, string>().ConvertUsing(p => p.Value);
+            CreateMap<FederativeUnit, string>().ConvertUsing(fu => fu.Value);
+            CreateMap<Color, string>().ConvertUsing(c => c.Value);
             CreateMap<Customer, CustomerDto>();
             CreateMap<CreateCustomerDto, CustomerDto>();
             CreateMap<CreateCustomerDto, Customer>();

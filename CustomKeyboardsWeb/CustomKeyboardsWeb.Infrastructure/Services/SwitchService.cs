@@ -46,7 +46,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
 
         public async Task<SwitchDto> FindByIdAsync(int id)
         {
-            var currentSwitch = await _switchRepository.FindById(id) ?? new Switch();
+            var currentSwitch = await _switchRepository.FindById(id);
             var switchMap = _mapper.Map<SwitchDto>(currentSwitch);
             return switchMap;
         }

@@ -45,7 +45,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
 
         public async Task<KeyDto> FindByIdAsync(int id)
         {
-            var currentKey = await _keyRepository.FindById(id) ?? new Key();
+            var currentKey = await _keyRepository.FindById(id);
             var keyMap = _mapper.Map<KeyDto>(currentKey);
             return keyMap;
         }

@@ -49,7 +49,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
 
         public async Task<KeyboardDto> FindByIdAsync(int id)
         {
-            var currentKeyboard = await _keyboardRepository.FindById(id) ?? new Keyboard();
+            var currentKeyboard = await _keyboardRepository.FindById(id);
             var keyboardMap = _mapper.Map<KeyboardDto>(currentKeyboard);
             return keyboardMap;
         }
