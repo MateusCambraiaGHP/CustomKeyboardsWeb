@@ -16,7 +16,7 @@ export class TableCustomersComponent {
 		{ title: 'Nome Fantasia', prop: "fantasyName", width: '80px', textAlign: 'center' },
 		{ title: 'Ativo?', prop: "active",  width: '80px', textAlign: 'center' },
         { title: 'Telefone', prop: "phone", width: '80px', textAlign: 'center' },
-        { title: 'Endereço', prop: "adress",  width: '80px', textAlign: 'center' },
+        { title: 'Cadatro', prop: "adress",  width: '80px', textAlign: 'center' },
 	]
 
 	constructor(
