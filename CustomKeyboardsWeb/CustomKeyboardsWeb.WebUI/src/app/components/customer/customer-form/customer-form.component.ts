@@ -34,8 +34,7 @@ export class CustomerFormComponent {
     ngOnInit(): void {
         this.route.queryParams.subscribe(params => {
             if (params['item']) {
-                this.item = JSON.parse(params['item']);
-                console.log(this.item);
+                this.productReceived = JSON.parse(params['item']);
             }
         });
         this.fillInputs();
@@ -79,7 +78,7 @@ export class CustomerFormComponent {
                     },
                     {
                         label: "Endereço",
-                        formControlName: "adress",
+                        formControlName: "address",
                         control: new FormControl("", [Validators.required]),
                         type: InputType.text,
                         class: "col-md-4",

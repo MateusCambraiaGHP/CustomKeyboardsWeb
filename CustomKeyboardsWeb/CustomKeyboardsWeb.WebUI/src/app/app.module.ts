@@ -21,6 +21,7 @@ import { TableCustomersComponent } from "./components/customer/table-customers/t
 import { ReactiveFormsModule } from "@angular/forms";
 import { OverlayLoadingComponent } from './components/generics/overlay-loading/overlay-loading.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
     declarations: [
@@ -46,7 +47,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
         MatIconModule,
         MatToolbarModule,
         ReactiveFormsModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatTableModule
     ],
     providers: [],
     bootstrap: [AppComponent],
