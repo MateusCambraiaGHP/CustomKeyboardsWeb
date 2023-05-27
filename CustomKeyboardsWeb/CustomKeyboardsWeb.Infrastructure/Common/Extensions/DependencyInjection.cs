@@ -1,9 +1,12 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
+﻿using AutoMapper;
+using CustomKeyboardsWeb.Application.Cummon.Interfaces;
+using CustomKeyboardsWeb.Infrastructure.Common.Extensions.MappingProfiles;
 using CustomKeyboardsWeb.Infrastructure.Common.Interfaces;
 using CustomKeyboardsWeb.Infrastructure.Data;
 using CustomKeyboardsWeb.Infrastructure.Repositories;
 using CustomKeyboardsWeb.Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace CustomKeyboardsWeb.Infrastructure.Common.Extensions
 {
@@ -24,7 +27,12 @@ namespace CustomKeyboardsWeb.Infrastructure.Common.Extensions
             services.AddScoped<ISwitchRepository, SwitchRepository>();
             services.AddScoped<IPuchaseHistoryService, PuchaseHistoryService>();
             services.AddScoped<IPuchaseHistoryRepository, PuchaseHistoryRepository>();
-            services.AddAutoMapper(typeof(MappingProfile));
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            var mappingProfiles = assembly.GetTypes().Where(a => a.Name.Contains("MappingProfile"));
+            foreach (var mappingProfile in mappingProfiles)
+            {
+                services.AddAutoMapper(mappingProfile);
+            }
             return services;
         }
     }

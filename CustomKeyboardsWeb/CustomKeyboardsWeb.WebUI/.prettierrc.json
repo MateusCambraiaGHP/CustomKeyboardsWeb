@@ -2,7 +2,7 @@
   "tabWidth": 2,
   "useEditorConfig": false,
   "singleQuote": true,
-  "semi": false,
+  "semi": true,
   "arrowParens": "avoid",
   "bracketSpacing": true,
   "bracesSpacing": true,

@@ -76,7 +76,12 @@ export class FormComponent implements OnChanges {
                 this.bindInputs()
         });
         if (this.fillObject)
-            this.formGroup.patchValue(this.fillObject);
+        {
+            this.fillObject.forEach((item: any) => {
+                this.formGroup.patchValue(item)
+          });
+        }
+
     }
 
     async _submit() {
