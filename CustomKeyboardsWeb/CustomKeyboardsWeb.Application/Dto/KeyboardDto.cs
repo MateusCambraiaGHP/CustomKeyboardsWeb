@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CustomKeyboardsWeb.Domain.Primitives;
 
 namespace CustomKeyboardsWeb.Application.Dto
 {
@@ -9,5 +9,7 @@ namespace CustomKeyboardsWeb.Application.Dto
         public int? IdSwitch { get; set; }
         public int? IdKey { get; set; }
         public double? Price { get; set; }
+        public Switch Switch { get; set; }
+        public Key Key { get; set; }
     }
 }

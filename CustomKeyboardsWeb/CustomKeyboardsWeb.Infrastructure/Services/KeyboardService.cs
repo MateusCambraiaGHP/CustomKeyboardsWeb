@@ -5,7 +5,6 @@ using CustomKeyboardsWeb.Application.Features.Keyboard.Commands.CreateKeyboard;
 using CustomKeyboardsWeb.Application.Features.Keyboard.Commands.UpdateKeyboard;
 using CustomKeyboardsWeb.Domain.Primitives;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
-using CustomKeyboardsWeb.Infrastructure.Mappings;
 
 namespace CustomKeyboardsWeb.Infrastructure.Services
 {
@@ -13,38 +12,62 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
     {
         private readonly IKeyboardRepository _keyboardRepository;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IKeyRepository _keyRepository;
+        private readonly ISwitchRepository _switchRepository;
 
         public KeyboardService(
             IKeyboardRepository keyboardRepository,
-            IMapper mapper)
+            IMapper mapper,
+            IUnitOfWork unitOfWork,
+            IKeyRepository keyRepository,
+            ISwitchRepository switchRepository)
         {
             _mapper = mapper;
+            _unitOfWork = unitOfWork;
+            _keyRepository = keyRepository;
+            _switchRepository = switchRepository;
             _keyboardRepository = keyboardRepository;
         }
 
         public async Task<KeyboardDto> Save(CreateKeyboardDto model)
         {
-
-            var keyboard = Keyboard.Create(
-                Name.Create(model.Name),
-                model.IdSwitch,
-                model.IdKey,
-                Price.Create(model.Price),
-                model.Active);
-            
-            await _keyboardRepository.Create(keyboard);
-            var keyboardDtoMap = _mapper.Map<KeyboardDto>(keyboard);
-            return keyboardDtoMap;
+            try
+            {
+                var keyboard = Keyboard.Create(
+                    Name.Create(model.Name),
+                    model.IdSwitch,
+                    model.IdKey,
+                    Price.Create(model.Price),
+                    model.Active);
+                await _keyboardRepository.Create(keyboard);
+                await _unitOfWork.CommitChangesAsync();
+                var keyboardDtoMap = _mapper.Map<KeyboardDto>(keyboard);
+                return keyboardDtoMap;
+            }
+            catch (Exception)
+            {
+                var keyboardDtoMap = _mapper.Map<KeyboardDto>(model);
+                return keyboardDtoMap;
+            }
         }
 
         public async Task<KeyboardDto> Edit(UpdateKeyboardDto model)
         {
-            var keyboardMap = _mapper.Map<Keyboard>(model);
-            keyboardMap.CreatedAt = DateTime.UtcNow;
-            keyboardMap.CreatedBy = "Administrator";
-            await _keyboardRepository.Update(keyboardMap);
-            var keyboardDtoMap = _mapper.Map<KeyboardDto>(model);
-            return keyboardDtoMap;
+            try
+            {
+                var keyboardMap = _mapper.Map<Keyboard>(model);
+                keyboardMap.CreatedAt = DateTime.UtcNow;
+                keyboardMap.CreatedBy = "Administrator";
+                await _keyboardRepository.Update(keyboardMap);
+                await _unitOfWork.CommitChangesAsync();
+                var keyboardDtoMap = _mapper.Map<KeyboardDto>(model);
+                return keyboardDtoMap;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<KeyboardDto> FindByIdAsync(int id)
@@ -58,6 +81,10 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
         {
             var listKeyboard = await _keyboardRepository.GetAll() ?? new List<Keyboard>();
             var listKeyboardMap = _mapper.Map<List<KeyboardDto>>(listKeyboard);
+            foreach (var keyboard in listKeyboardMap)
+            {
+                keyboard.Price += keyboard.Switch.Price.Value + keyboard.Key.Price.Value;
+            }
             return listKeyboardMap;
         }
     }

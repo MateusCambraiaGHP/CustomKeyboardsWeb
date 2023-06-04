@@ -106,12 +106,6 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.Property<int?>("IdSwitch")
                         .HasColumnType("int");
 
-                    b.Property<int>("KeyId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SwitchId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime");
 
@@ -124,10 +118,6 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.HasIndex("IdKey");
 
                     b.HasIndex("IdSwitch");
-
-                    b.HasIndex("KeyId");
-
-                    b.HasIndex("SwitchId");
 
                     b.ToTable("Keyboard", (string)null);
                 });
@@ -143,9 +133,6 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
                     b.Property<int>("IdCustomer")
                         .HasColumnType("int");
 
@@ -155,28 +142,16 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.Property<int>("IdSupplier")
                         .HasColumnType("int");
 
-                    b.Property<int>("KeyboardId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("PuchaseDate")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("SupplierId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
 
                     b.HasIndex("IdCustomer");
 
                     b.HasIndex("IdKeyboard");
 
                     b.HasIndex("IdSupplier");
-
-                    b.HasIndex("KeyboardId");
-
-                    b.HasIndex("SupplierId");
 
                     b.ToTable("PuchaseHistory", (string)null);
                 });
@@ -424,27 +399,15 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
             modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Keyboard", b =>
                 {
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Key", null)
+                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Key", "Key")
                         .WithMany()
                         .HasForeignKey("IdKey")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Switch", null)
+                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Switch", "Switch")
                         .WithMany()
                         .HasForeignKey("IdSwitch")
                         .OnDelete(DeleteBehavior.NoAction);
-
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Key", "Key")
-                        .WithMany()
-                        .HasForeignKey("KeyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Switch", "Switch")
-                        .WithMany()
-                        .HasForeignKey("SwitchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Name", "Name", b1 =>
                         {
@@ -498,38 +461,20 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                 {
                     b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Customer", "Customer")
                         .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Customer", null)
-                        .WithMany()
                         .HasForeignKey("IdCustomer")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Keyboard", null)
-                        .WithMany()
-                        .HasForeignKey("IdKeyboard")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Supplier", null)
-                        .WithMany()
-                        .HasForeignKey("IdSupplier")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Keyboard", "Keyboard")
                         .WithMany()
-                        .HasForeignKey("KeyboardId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("IdKeyboard")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Supplier", "Supplier")
                         .WithMany()
-                        .HasForeignKey("SupplierId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("IdSupplier")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Price", "Price", b1 =>

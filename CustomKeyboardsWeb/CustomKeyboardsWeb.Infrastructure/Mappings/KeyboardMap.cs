@@ -12,6 +12,10 @@ namespace CustomKeyboardsWeb.Infrastructure.Mappings
 
             entity.HasKey(e => e.Id);
 
+            entity.Property(e => e.IdKey);
+
+            entity.Property(e => e.IdSwitch);
+
             entity.OwnsOne(e => e.Name)
                 .Property(n => n.Value)
                 .HasColumnName("Name")
@@ -37,12 +41,12 @@ namespace CustomKeyboardsWeb.Infrastructure.Mappings
             entity.Property(e => e.Active)
                 .HasMaxLength(1);
 
-            entity.HasOne<Key>()
+            entity.HasOne(e => e.Key)
                 .WithMany()
                 .HasForeignKey(e => e.IdKey)
                 .OnDelete(DeleteBehavior.NoAction);
             
-            entity.HasOne<Switch>()
+            entity.HasOne(e => e.Switch)
                 .WithMany()
                 .HasForeignKey(e => e.IdSwitch)
                 .OnDelete(DeleteBehavior.NoAction);

@@ -3,7 +3,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives
 {
     public class Key : AggregateRoot
     {
-        private Key() { }
+        protected Key() { }
 
         private Key(
             Name name,
