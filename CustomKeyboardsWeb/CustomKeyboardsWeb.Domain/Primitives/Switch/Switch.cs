@@ -4,7 +4,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives
 {
     public class Switch : AggregateRoot
     {
-        private Switch() { }
+        protected Switch() { }
 
         private Switch(
             Name name,

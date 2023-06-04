@@ -12,39 +12,57 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
     {
         private readonly ICustomerRepository _customerRepository;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
         public CustomerService(
             ICustomerRepository customerRepository,
-            IMapper mapper)
+            IMapper mapper,
+            IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
+            _unitOfWork = unitOfWork;
             _customerRepository = customerRepository;
         }
 
         public async Task<CustomerDto> Save(CreateCustomerDto model)
         {
-            var customer = Customer.Create(
-                Name.Create(model.Name),
-                FantasyName.Create(model.FantasyName),
-                Cep.Create(model.Cep),
-                Address.Create(model.Adress),
-                FederativeUnit.Create(model.FederativeUnit),
-                Phone.Create(model.Phone),
-                model.Active);
-
-            await _customerRepository.Create(customer);
-            CustomerDto customerDto = _mapper.Map<CustomerDto>(customer);
-            return customerDto;
+            try
+            {
+                var customer = Customer.Create(
+                            Name.Create(model.Name),
+                            FantasyName.Create(model.FantasyName),
+                            Cep.Create(model.Cep),
+                            Address.Create(model.Adress),
+                            FederativeUnit.Create(model.FederativeUnit),
+                            Phone.Create(model.Phone),
+                            model.Active);
+                await _customerRepository.Create(customer);
+                await _unitOfWork.CommitChangesAsync();
+                CustomerDto customerDto = _mapper.Map<CustomerDto>(customer);
+                return customerDto;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<CustomerDto> Edit(UpdateCustomerDto model)
         {
-            Customer customerMap = _mapper.Map<Customer>(model);
-            customerMap.CreatedAt = DateTime.UtcNow;
-            customerMap.CreatedBy = "Administrator";
-            await _customerRepository.Update(customerMap);
-            CustomerDto customerDtoMap = _mapper.Map<CustomerDto>(model);
-            return customerDtoMap;
+            try
+            {
+                Customer customerMap = _mapper.Map<Customer>(model);
+                customerMap.CreatedAt = DateTime.UtcNow;
+                customerMap.CreatedBy = "Administrator";
+                await _customerRepository.Update(customerMap);
+                await _unitOfWork.CommitChangesAsync();
+                CustomerDto customerDtoMap = _mapper.Map<CustomerDto>(model);
+                return customerDtoMap;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<CustomerDto> FindByIdAsync(int id)

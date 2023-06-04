@@ -5,6 +5,7 @@ using CustomKeyboardsWeb.Infrastructure.Common.Interfaces;
 using CustomKeyboardsWeb.Infrastructure.Data;
 using CustomKeyboardsWeb.Infrastructure.Repositories;
 using CustomKeyboardsWeb.Infrastructure.Services;
+using CustomKeyboardsWeb.Infrastructure.Transaction;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -23,6 +24,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Common.Extensions
             services.AddScoped<IKeyboardRepository, KeyboardRepository>();
             services.AddScoped<IKeyService, KeyService>();
             services.AddScoped<IKeyRepository, KeyRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ISwitchService, SwitchService>();
             services.AddScoped<ISwitchRepository, SwitchRepository>();
             services.AddScoped<IPuchaseHistoryService, PuchaseHistoryService>();

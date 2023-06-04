@@ -12,36 +12,56 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
     {
         private readonly ISwitchRepository _switchRepository;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
         public SwitchService(
             ISwitchRepository switchRepository,
-            IMapper mapper)
+            IMapper mapper,
+            IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
+            _unitOfWork = unitOfWork;
             _switchRepository = switchRepository;
         }
 
         public async Task<SwitchDto> Save(CreateSwitchDto model)
         {
-            var _switch = Switch.Create(
-                Name.Create(model.Name),
-                Color.Create(model.Color),
-                Price.Create(model.Price),
-                model.Active);
+            try
+            {
+                var _switch = Switch.Create(
+                    Name.Create(model.Name),
+                    Color.Create(model.Color),
+                    Price.Create(model.Price),
+                    model.Active);
 
-            await _switchRepository.Create(_switch);
-            var switchDto = _mapper.Map<SwitchDto>(_switch);
-            return switchDto;
+                await _switchRepository.Create(_switch);
+                await _unitOfWork.CommitChangesAsync();
+                var switchDto = _mapper.Map<SwitchDto>(_switch);
+                return switchDto;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<SwitchDto> Edit(UpdateSwitchDto model)
         {
-            var switchMap = _mapper.Map<Switch>(model);
-            switchMap.CreatedAt = DateTime.UtcNow;
-            switchMap.CreatedBy = "Administrator";
-            await _switchRepository.Update(switchMap);
-            var switchDtoMap = _mapper.Map<SwitchDto>(model);
-            return switchDtoMap;
+            try
+            {
+                var switchMap = _mapper.Map<Switch>(model);
+                switchMap.CreatedAt = DateTime.UtcNow;
+                switchMap.CreatedBy = "Administrator";
+                await _switchRepository.Update(switchMap);
+                await _unitOfWork.CommitChangesAsync();
+                var switchDtoMap = _mapper.Map<SwitchDto>(model);
+                return switchDtoMap;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<SwitchDto> FindByIdAsync(int id)

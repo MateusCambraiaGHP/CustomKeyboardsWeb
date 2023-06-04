@@ -19,13 +19,11 @@ namespace CustomKeyboardsWeb.Infrastructure.Repositories
         public virtual async Task Create(TEntity entityModel)
         {
             await _dbSet.AddAsync(entityModel);
-            await _context.Save();
         }
 
         public virtual async Task<TEntity> Update(TEntity entityModel)
         {
             _dbSet.Update(entityModel);
-            await _context.Save();
             return entityModel;
         }
 

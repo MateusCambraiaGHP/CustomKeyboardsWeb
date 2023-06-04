@@ -12,39 +12,58 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
     {
         private readonly ISupplierRepository _supplierRepository;
         private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
         public SupplierService(
             ISupplierRepository supplierRepository,
-            IMapper mapper)
+            IMapper mapper,
+            IUnitOfWork unitOfWork)
         {
             _mapper = mapper;
+            _unitOfWork = unitOfWork;
             _supplierRepository = supplierRepository;
         }
 
         public async Task<SupplierDto> Save(CreateSupplierDto model)
         {
-            var supplier = Supplier.Create(
-                Name.Create(model.Name),
-                FantasyName.Create(model.FantasyName),
-                Cep.Create(model.Cep),
-                Address.Create(model.Adress),
-                FederativeUnit.Create(model.FederativeUnit),
-                Phone.Create(model.Phone),
-                model.Active);
+            try
+            {
+                var supplier = Supplier.Create(
+               Name.Create(model.Name),
+               FantasyName.Create(model.FantasyName),
+               Cep.Create(model.Cep),
+               Address.Create(model.Adress),
+               FederativeUnit.Create(model.FederativeUnit),
+               Phone.Create(model.Phone),
+               model.Active);
 
-            await _supplierRepository.Create(supplier);
-            var supplierDto = _mapper.Map<SupplierDto>(supplier);
-            return supplierDto;
+                await _supplierRepository.Create(supplier);
+                await _unitOfWork.CommitChangesAsync();
+                var supplierDto = _mapper.Map<SupplierDto>(supplier);
+                return supplierDto;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<SupplierDto> Edit(UpdateSupplierDto model)
         {
-            var supplierMap = _mapper.Map<Supplier>(model);
-            supplierMap.CreatedAt = DateTime.UtcNow;
-            supplierMap.CreatedBy = "Administrator";
-            await _supplierRepository.Update(supplierMap);
-            var supplierDtoMap = _mapper.Map<SupplierDto>(model);
-            return supplierDtoMap;
+            try
+            {
+                var supplierMap = _mapper.Map<Supplier>(model);
+                supplierMap.CreatedAt = DateTime.UtcNow;
+                supplierMap.CreatedBy = "Administrator";
+                await _supplierRepository.Update(supplierMap);
+                await _unitOfWork.CommitChangesAsync();
+                var supplierDtoMap = _mapper.Map<SupplierDto>(model);
+                return supplierDtoMap;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<SupplierDto> FindByIdAsync(int id)
