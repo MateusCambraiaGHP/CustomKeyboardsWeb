@@ -13,8 +13,6 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
         private readonly IKeyboardRepository _keyboardRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IKeyRepository _keyRepository;
-        private readonly ISwitchRepository _switchRepository;
 
         public KeyboardService(
             IKeyboardRepository keyboardRepository,
@@ -25,8 +23,6 @@ namespace CustomKeyboardsWeb.Infrastructure.Services
         {
             _mapper = mapper;
             _unitOfWork = unitOfWork;
-            _keyRepository = keyRepository;
-            _switchRepository = switchRepository;
             _keyboardRepository = keyboardRepository;
         }
 

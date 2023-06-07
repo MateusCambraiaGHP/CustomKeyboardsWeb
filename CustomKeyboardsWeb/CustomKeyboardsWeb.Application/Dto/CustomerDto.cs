@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CustomKeyboardsWeb.Application.Dto
+﻿namespace CustomKeyboardsWeb.Application.Dto
 {
     public class CustomerDto 
     {
