@@ -1,4 +1,4 @@
-﻿namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCustomer
+﻿namespace CustomKeyboardsWeb.Application.Features.Commands.Customers.CreateCustomer
 {
     public class CreateCustomerRequest
     {

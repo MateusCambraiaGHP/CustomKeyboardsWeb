@@ -1,8 +1,8 @@
 ﻿using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Application.Features.Supplier.Commands.CreateSupplier;
-using CustomKeyboardsWeb.Application.Features.Supplier.Commands.UpdateSupplier;
-using CustomKeyboardsWeb.Application.Features.Supplier.Query.GetSupplierById;
-using CustomKeyboardsWeb.Application.Features.Supplier.Query.GetSupplierList;
+using CustomKeyboardsWeb.Application.Features.Commands.Suppliers.CreateSupplier;
+using CustomKeyboardsWeb.Application.Features.Commands.Suppliers.UpdateSupplier;
+using CustomKeyboardsWeb.Application.Features.Queries.Suppliers.GetSupplierById;
+using CustomKeyboardsWeb.Application.Features.Queries.Suppliers.GetSupplierList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,22 +1,28 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
+﻿using AutoMapper;
+using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
 using MediatR;
 
-namespace CustomKeyboardsWeb.Application.Features.Customers.Queries.GetCustomerById
+namespace CustomKeyboardsWeb.Application.Features.Queries.Customers.GetCustomerById
 {
     public class GetCustomerByIdHandler : IRequestHandler<GetCustumerByIdQuery, CustomerDto>
     {
-        private readonly ICustomerService _customerService;
+        private readonly ICustomerRepository _customerRepository;
+        private readonly IMapper _mapper;
 
-        public GetCustomerByIdHandler(ICustomerService customerService)
+        public GetCustomerByIdHandler(
+            ICustomerRepository customerRepository,
+            IMapper mapper)
         {
-            _customerService = customerService;
+            _customerRepository = customerRepository;
+            _mapper = mapper;
         }
 
         public async Task<CustomerDto> Handle(GetCustumerByIdQuery request, CancellationToken cancellationToken)
         {
-            var customer = await _customerService.FindByIdAsync(request.id);
-            return customer;
+            var currentCustomer = await _customerRepository.FindById(request.id);
+            var customerMap = _mapper.Map<CustomerDto>(currentCustomer);
+            return customerMap;
         }
     }
 }
