@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.UpdateCustomer
+namespace CustomKeyboardsWeb.Application.Features.Commands.Customers.UpdateCustomer
 {
     public class UpdateCustomerDto
     {

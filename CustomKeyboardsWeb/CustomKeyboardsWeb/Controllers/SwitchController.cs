@@ -1,8 +1,8 @@
 ﻿using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Application.Features.Switch.Commands.CreateSwitch;
-using CustomKeyboardsWeb.Application.Features.Switch.Commands.UpdateSwitch;
-using CustomKeyboardsWeb.Application.Features.Switch.Query.GetSwitchById;
-using CustomKeyboardsWeb.Application.Features.Switch.Query.GetSwitchList;
+using CustomKeyboardsWeb.Application.Features.Commands.Switchies.CreateSwitch;
+using CustomKeyboardsWeb.Application.Features.Commands.Switchies.UpdateSwitch;
+using CustomKeyboardsWeb.Application.Features.Queries.Switchies.GetSwitchById;
+using CustomKeyboardsWeb.Application.Features.Queries.Switchies.GetSwitchList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

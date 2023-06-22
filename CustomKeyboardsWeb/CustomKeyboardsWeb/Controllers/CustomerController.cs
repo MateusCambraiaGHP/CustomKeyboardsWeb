@@ -1,8 +1,8 @@
 ﻿using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Application.Features.Customers.Commands.CreateCustomer;
-using CustomKeyboardsWeb.Application.Features.Customers.Commands.UpdateCustomer;
-using CustomKeyboardsWeb.Application.Features.Customers.Queries.GetCustomerById;
-using CustomKeyboardsWeb.Application.Features.Customers.Queries.GetCustomerList;
+using CustomKeyboardsWeb.Application.Features.Commands.Customers.CreateCustomer;
+using CustomKeyboardsWeb.Application.Features.Commands.Customers.UpdateCustomer;
+using CustomKeyboardsWeb.Application.Features.Queries.Customers.GetCustomerById;
+using CustomKeyboardsWeb.Application.Features.Queries.Customers.GetCustomerList;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

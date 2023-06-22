@@ -169,9 +169,7 @@ C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\ne
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Application.dll
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Domain.dll
-C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Infrastructure.dll
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Application.pdb
-C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Infrastructure.pdb
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Domain.pdb
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\staticwebassets.build.json
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\staticwebassets.development.json
@@ -182,4 +180,5 @@ C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\ne
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\CustomKeyboardsWeb.pdb
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\CustomKeyboardsWeb.genruntimeconfig.cache
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\ref\CustomKeyboardsWeb.dll
-C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\CustomKeyboardsWeb.MvcApplicationPartsAssemblyInfo.cs
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Data.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Data.pdb

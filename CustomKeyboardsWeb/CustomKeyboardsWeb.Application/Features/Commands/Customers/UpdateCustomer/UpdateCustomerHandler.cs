@@ -1,22 +1,43 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
+﻿using AutoMapper;
+using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Dto;
+using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using MediatR;
 
-namespace CustomKeyboardsWeb.Application.Features.Customers.Commands.UpdateCustomer
+namespace CustomKeyboardsWeb.Application.Features.Commands.Customers.UpdateCustomer
 {
     public class UpdateCustomerHandler : IRequestHandler<UpdateCustomerCommand, CustomerDto>
     {
-        private readonly ICustomerService _customerService;
+        private readonly ICustomerRepository _customerRepository;
+        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UpdateCustomerHandler(ICustomerService customerService)
+        public UpdateCustomerHandler(
+            ICustomerRepository customerRepository,
+            IUnitOfWork unitOfWork,
+            IMapper mapper)
         {
-            _customerService = customerService;
+            _customerRepository = customerRepository;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public async Task<CustomerDto> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
         {
-            var currentCustomer = await _customerService.Edit(request.CustomerDto);
-            return currentCustomer;
+            try
+            {
+                Customer customerMap = _mapper.Map<Customer>(request.CustomerDto);
+                customerMap.CreatedAt = DateTime.UtcNow;
+                customerMap.CreatedBy = "Administrator";
+                await _customerRepository.Update(customerMap);
+                await _unitOfWork.CommitChangesAsync();
+                CustomerDto customerDtoMap = _mapper.Map<CustomerDto>(customerMap);
+                return customerDtoMap;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

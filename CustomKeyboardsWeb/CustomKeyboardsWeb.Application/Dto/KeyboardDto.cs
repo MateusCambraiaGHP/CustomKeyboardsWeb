@@ -1,4 +1,4 @@
-﻿using CustomKeyboardsWeb.Domain.Primitives;
+﻿using CustomKeyboardsWeb.Domain.Primitives.Entities;
 
 namespace CustomKeyboardsWeb.Application.Dto
 {

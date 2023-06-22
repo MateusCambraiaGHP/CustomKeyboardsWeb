@@ -591,20 +591,7 @@
           "bin/placeholder/CustomKeyboardsWeb.Application.dll": {}
         }
       },
-      "CustomKeyboardsWeb.Domain/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4"
-        },
-        "compile": {
-          "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
-        }
-      },
-      "CustomKeyboardsWeb.Infrastructure/1.0.0": {
+      "CustomKeyboardsWeb.Data/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -616,10 +603,23 @@
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },
         "compile": {
-          "bin/placeholder/CustomKeyboardsWeb.Infrastructure.dll": {}
+          "bin/placeholder/CustomKeyboardsWeb.Data.dll": {}
         },
         "runtime": {
-          "bin/placeholder/CustomKeyboardsWeb.Infrastructure.dll": {}
+          "bin/placeholder/CustomKeyboardsWeb.Data.dll": {}
+        }
+      },
+      "CustomKeyboardsWeb.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4"
+        },
+        "compile": {
+          "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
         }
       }
     }
@@ -1726,21 +1726,21 @@
       "path": "../CustomKeyboardsWeb.Application/CustomKeyboardsWeb.Application.csproj",
       "msbuildProject": "../CustomKeyboardsWeb.Application/CustomKeyboardsWeb.Application.csproj"
     },
+    "CustomKeyboardsWeb.Data/1.0.0": {
+      "type": "project",
+      "path": "../CustomKeyboardsWeb.Data/CustomKeyboardsWeb.Data.csproj",
+      "msbuildProject": "../CustomKeyboardsWeb.Data/CustomKeyboardsWeb.Data.csproj"
+    },
     "CustomKeyboardsWeb.Domain/1.0.0": {
       "type": "project",
       "path": "../CustomKeyboardsWeb.Domain/CustomKeyboardsWeb.Domain.csproj",
       "msbuildProject": "../CustomKeyboardsWeb.Domain/CustomKeyboardsWeb.Domain.csproj"
-    },
-    "CustomKeyboardsWeb.Infrastructure/1.0.0": {
-      "type": "project",
-      "path": "../CustomKeyboardsWeb.Infrastructure/CustomKeyboardsWeb.Infrastructure.csproj",
-      "msbuildProject": "../CustomKeyboardsWeb.Infrastructure/CustomKeyboardsWeb.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "CustomKeyboardsWeb.Application >= 1.0.0",
-      "CustomKeyboardsWeb.Infrastructure >= 1.0.0",
+      "CustomKeyboardsWeb.Data >= 1.0.0",
       "MediatR >= 12.0.1",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
       "Swashbuckle.AspNetCore >= 6.5.0"
@@ -1781,8 +1781,8 @@
             "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj": {
               "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj"
             },
-            "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\CustomKeyboardsWeb.Infrastructure.csproj": {
-              "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Infrastructure\\CustomKeyboardsWeb.Infrastructure.csproj"
+            "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Data\\CustomKeyboardsWeb.Data.csproj": {
+              "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Data\\CustomKeyboardsWeb.Data.csproj"
             }
           }
         }
