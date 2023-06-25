@@ -1,5 +1,6 @@
 using CustomKeyboardsWeb.Application.Cummon.Extensions;
 using CustomKeyboardsWeb.Data.Common.Extensions;
+using CustomKeyboardsWeb.Mediator;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,8 +14,9 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo { Title = "CustomKeyboards", Version = "v1" });
 });
-builder.Services.AddData();
+builder.Services.AddMediator();
 builder.Services.AddApplication();
+builder.Services.AddData();
 
 
 var app = builder.Build();

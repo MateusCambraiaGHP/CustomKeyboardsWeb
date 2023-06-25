@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Application.Features.Commands.Customers.CreateCustomer;
-using CustomKeyboardsWeb.Application.Features.Commands.Customers.UpdateCustomer;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 
 namespace CustomKeyboardsWeb.Data.Common.Extensions.MappingProfiles
@@ -10,11 +8,7 @@ namespace CustomKeyboardsWeb.Data.Common.Extensions.MappingProfiles
     {
         public CustomerMappingProfile()
         {
-            CreateMap<CustomerDto, Customer>().ReverseMap();
-            CreateMap<CreateCustomerDto, CustomerDto>();
-            CreateMap<CreateCustomerDto, Customer>();
-            CreateMap<UpdateCustomerDto, CustomerDto>();
-            CreateMap<UpdateCustomerDto, Customer>();
+            CreateMap<CustomerViewModel, Customer>().ReverseMap();
         }
     }
 }

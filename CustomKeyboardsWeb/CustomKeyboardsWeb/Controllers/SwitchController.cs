@@ -1,9 +1,8 @@
-﻿using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Application.Features.Commands.Switchies.CreateSwitch;
-using CustomKeyboardsWeb.Application.Features.Commands.Switchies.UpdateSwitch;
-using CustomKeyboardsWeb.Application.Features.Queries.Switchies.GetSwitchById;
-using CustomKeyboardsWeb.Application.Features.Queries.Switchies.GetSwitchList;
-using MediatR;
+﻿using CustomKeyboardsWeb.Application.Features.Commands.Switchies;
+using CustomKeyboardsWeb.Application.Features.Queries.Switchies;
+using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
+using CustomKeyboardsWeb.Mediator.Abstractions.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -12,40 +11,39 @@ namespace CustomKeyboardsWeb.Controllers
     [ApiController]
     public class SwitchController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly IMediatorHandler _mediator;
 
-        public SwitchController(IMediator mediator)
+        public SwitchController(IMediatorHandler mediator)
         {
             _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<List<SwitchDto>> GetAll()
+        public async Task<GetSwitchListQueryResponse> GetAll()
         {
-            var currentSwitchList = await _mediator.Send(new GetSwitchListQuery());
+            var currentSwitchList = await _mediator.SendQuery(new GetSwitchListQuery());
             return currentSwitchList;
         }
 
         [HttpGet("{id}")]
-        public async Task<SwitchDto> Get(int id)
+        public async Task<GetSwitchByIdQueryResponse> Get(int id)
         {
-            var currentSwitch = await _mediator.Send(new GetSwitchByIdQuery(id));
+            var currentSwitch = await _mediator.SendQuery(new GetSwitchByIdQuery(id));
             return currentSwitch;
         }
 
         [HttpPost("save")]
-        public async Task<SwitchDto> Save(CreateSwitchDto model)
+        public async Task<CreateSwitchCommandResponse> Save(SwitchViewModel model)
         {
-            var currentSwitch = await _mediator.Send(new CreateSwitchCommand(model));
+            var currentSwitch = await _mediator.SendCommand(new CreateSwitchCommand(model));
             return currentSwitch;
         }
 
         [HttpPost("update")]
-        public async Task<SwitchDto> Edit(UpdateSwitchDto model)
+        public async Task<UpdateSwitchCommandResponse> Edit(SwitchViewModel model)
         {
-            var currentSwitch = await _mediator.Send(new UpdateSwitchCommand(model));
+            var currentSwitch = await _mediator.SendCommand(new UpdateSwitchCommand(model));
             return currentSwitch;
         }
-
     }
 }

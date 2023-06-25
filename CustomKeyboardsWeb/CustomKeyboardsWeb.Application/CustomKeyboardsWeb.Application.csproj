@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomKeyboardsWeb.Domain\CustomKeyboardsWeb.Domain.csproj" />
+    <ProjectReference Include="..\CustomKeyboardsWeb.Mediator\CustomKeyboardsWeb.Mediator.csproj" />
   </ItemGroup>
 
   <ItemGroup>

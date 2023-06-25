@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "j2/4AT+5hPi44+c9Hmnbmza2skfPy3HjrKSaUe6pWODuHNWS75+/5JyRwcAP0ErLLhbo29Bnf/0KE86Mqwe3cw==",
+  "dgSpecHash": "TZ3a29E1PmKD9AZW3M2YIcfoIP4rSSnV8T6ztcOivLodmmkNhk93R7jwQ7W1cj7X5ie+oGIezqIcwaaLFQWo8Q==",
   "success": true,
   "projectFilePath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Data\\CustomKeyboardsWeb.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mateu\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\mateu\\.nuget\\packages\\fluentvalidation\\11.5.2\\fluentvalidation.11.5.2.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
     "C:\\Users\\mateu\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",

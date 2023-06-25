@@ -22,3 +22,5 @@ C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Data\obj\Deb
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Data\obj\Debug\net6.0\CustomKeyboardsWeb.Data.pdb
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Data\obj\Debug\net6.0\CustomKeyboardsWeb.Data.genruntimeconfig.cache
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Data\obj\Debug\net6.0\ref\CustomKeyboardsWeb.Data.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Data\bin\Debug\net6.0\CustomKeyboardsWeb.Mediator.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Data\bin\Debug\net6.0\CustomKeyboardsWeb.Mediator.pdb

@@ -1,9 +1,8 @@
-﻿using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Application.Features.Commands.Keys.CreateKey;
-using CustomKeyboardsWeb.Application.Features.Commands.Keys.UpdateKey;
-using CustomKeyboardsWeb.Application.Features.Queries.Keys.GetKeyById;
-using CustomKeyboardsWeb.Application.Features.Queries.Keys.GetKeyList;
-using MediatR;
+﻿using CustomKeyboardsWeb.Application.Features.Commands.Keys;
+using CustomKeyboardsWeb.Application.Features.Queries.Keys;
+using CustomKeyboardsWeb.Application.Features.Responses.Keys;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
+using CustomKeyboardsWeb.Mediator.Abstractions.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -12,40 +11,39 @@ namespace CustomKeyboardsWeb.Controllers
     [ApiController]
     public class KeyController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly IMediatorHandler _mediator;
 
-        public KeyController(IMediator mediator)
+        public KeyController(IMediatorHandler mediator)
         {
             _mediator = mediator;
         }
 
-        [HttpGet("getall")]
-        public async Task<List<KeyDto>> GetAll()
+        [HttpGet]
+        public async Task<GetKeyListQueryResponse> GetAll()
         {
-            var currentKeyList = await _mediator.Send(new GetKeyListQuery());
+            var currentKeyList = await _mediator.SendQuery(new GetKeyListQuery());
             return currentKeyList;
         }
 
         [HttpGet("{id}")]
-        public async Task<KeyDto> Get(int id)
+        public async Task<GetKeyByIdQueryResponse> Get(int id)
         {
-            var currentKey = await _mediator.Send(new GetKeyByIdQuery(id));
+            var currentKey = await _mediator.SendQuery(new GetKeyByIdQuery(id));
             return currentKey;
         }
 
         [HttpPost("save")]
-        public async Task<KeyDto> Save(CreateKeyDto model)
+        public async Task<CreateKeyCommandResponse> Save(KeyViewModel model)
         {
-            var currentKey = await _mediator.Send(new CreateKeyCommand(model));
+            var currentKey = await _mediator.SendCommand(new CreateKeyCommand(model));
             return currentKey;
         }
 
         [HttpPost("update")]
-        public async Task<KeyDto> Edit(UpdateKeyDto model)
+        public async Task<UpdateKeyCommandResponse> Edit(KeyViewModel model)
         {
-            var currentKey = await _mediator.Send(new UpdateKeyCommand(model));
+            var currentKey = await _mediator.SendCommand(new UpdateKeyCommand(model));
             return currentKey;
         }
-
     }
 }
