@@ -1,6 +1,6 @@
 using CustomKeyboardsWeb.Application.Cummon.Extensions;
 using CustomKeyboardsWeb.Data.Common.Extensions;
-using CustomKeyboardsWeb.Mediator;
+using CustomKeyboardsWeb.Mediator.Cummon.Extensions;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);

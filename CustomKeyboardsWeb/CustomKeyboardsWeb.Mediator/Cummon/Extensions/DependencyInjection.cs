@@ -1,8 +1,7 @@
-﻿using CustomKeyboardsWeb.Mediator.Abstractions.Interfaces;
+﻿using CustomKeyboardsWeb.Mediator.Cummon.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
-namespace CustomKeyboardsWeb.Mediator
+namespace CustomKeyboardsWeb.Mediator.Cummon.Extensions
 {
     public static class MediatorIoc
     {
