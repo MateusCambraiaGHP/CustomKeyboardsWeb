@@ -1,9 +1,8 @@
-﻿using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Application.Features.Commands.Suppliers.CreateSupplier;
-using CustomKeyboardsWeb.Application.Features.Commands.Suppliers.UpdateSupplier;
-using CustomKeyboardsWeb.Application.Features.Queries.Suppliers.GetSupplierById;
-using CustomKeyboardsWeb.Application.Features.Queries.Suppliers.GetSupplierList;
-using MediatR;
+﻿using CustomKeyboardsWeb.Application.Features.Commands.Suppliers;
+using CustomKeyboardsWeb.Application.Features.Queries.Suppliers;
+using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
+using CustomKeyboardsWeb.Mediator.Abstractions.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -12,40 +11,39 @@ namespace CustomKeyboardsWeb.Controllers
     [ApiController]
     public class SupplierController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly IMediatorHandler _mediator;
 
-        public SupplierController(IMediator mediator)
+        public SupplierController(IMediatorHandler mediator)
         {
             _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<List<SupplierDto>> GetAll()
+        public async Task<GetSupplierListQueryResponse> GetAll()
         {
-            var currentSupplierList = await _mediator.Send(new GetSupplierListQuery());
+            var currentSupplierList = await _mediator.SendQuery(new GetSupplierListQuery());
             return currentSupplierList;
         }
 
         [HttpGet("{id}")]
-        public async Task<SupplierDto> Get(int id)
+        public async Task<GetSupplierByIdQueryResponse> Get(int id)
         {
-            var currentSupplier = await _mediator.Send(new GetSupplierByIdQuery(id));
+            var currentSupplier = await _mediator.SendQuery(new GetSupplierByIdQuery(id));
             return currentSupplier;
         }
 
         [HttpPost("save")]
-        public async Task<SupplierDto> Save(CreateSupplierDto model)
+        public async Task<CreateSupplierCommandResponse> Save(SupplierViewModel model)
         {
-            var currentSupplier = await _mediator.Send(new CreateSupplierCommand(model));
+            var currentSupplier = await _mediator.SendCommand(new CreateSupplierCommand(model));
             return currentSupplier;
         }
 
         [HttpPost("update")]
-        public async Task<SupplierDto> Edit(UpdateSupplierDto model)
+        public async Task<UpdateSupplierCommandResponse> Edit(SupplierViewModel model)
         {
-            var currentSupplier = await _mediator.Send(new UpdateSupplierCommand(model));
+            var currentSupplier = await _mediator.SendCommand(new UpdateSupplierCommand(model));
             return currentSupplier;
         }
-
     }
 }

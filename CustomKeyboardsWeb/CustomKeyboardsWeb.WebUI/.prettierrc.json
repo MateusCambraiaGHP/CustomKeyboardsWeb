@@ -14,7 +14,15 @@
     {
       "files": ["*.html"],
       "options": {
-        "printWidth": 120
+        "printWidth": 120,
+        "parser": "angular"
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "options": {
+        "parser": "typescript",
+        "singleQuote": false
       }
     }
   ]

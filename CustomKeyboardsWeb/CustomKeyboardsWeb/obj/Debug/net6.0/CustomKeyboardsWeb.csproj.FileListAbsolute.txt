@@ -182,3 +182,7 @@ C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\ne
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\ref\CustomKeyboardsWeb.dll
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Data.dll
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Data.pdb
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\obj\Debug\net6.0\CustomKeyboardsWeb.MvcApplicationPartsAssemblyInfo.cs
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\FluentValidation.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Mediator.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb\bin\Debug\net6.0\CustomKeyboardsWeb.Mediator.pdb

@@ -31,6 +31,19 @@
           "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "FluentValidation/11.5.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "MediatR/12.0.1": {
         "type": "package",
         "dependencies": {
@@ -176,6 +189,22 @@
         "runtime": {
           "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
         }
+      },
+      "CustomKeyboardsWeb.Mediator/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "FluentValidation": "11.5.2",
+          "MediatR": "12.0.1",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0"
+        },
+        "compile": {
+          "bin/placeholder/CustomKeyboardsWeb.Mediator.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomKeyboardsWeb.Mediator.dll": {}
+        }
       }
     }
   },
@@ -207,6 +236,29 @@
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.1/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
+      ]
+    },
+    "FluentValidation/11.5.2": {
+      "sha512": "kj/hW/iusp2zq1Vt1YPLgDj6UG0DhoJXGkLwjLwm3j7vUtRF8DVA5vHJfItG3BxDjLWJUR2pvw8fK7rnuysZNA==",
+      "type": "package",
+      "path": "fluentvalidation/11.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.11.5.2.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net5.0/FluentValidation.dll",
+        "lib/net5.0/FluentValidation.xml",
+        "lib/net6.0/FluentValidation.dll",
+        "lib/net6.0/FluentValidation.xml",
+        "lib/net7.0/FluentValidation.dll",
+        "lib/net7.0/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml",
+        "lib/netstandard2.1/FluentValidation.dll",
+        "lib/netstandard2.1/FluentValidation.xml"
       ]
     },
     "MediatR/12.0.1": {
@@ -439,6 +491,11 @@
       "type": "project",
       "path": "../CustomKeyboardsWeb.Domain/CustomKeyboardsWeb.Domain.csproj",
       "msbuildProject": "../CustomKeyboardsWeb.Domain/CustomKeyboardsWeb.Domain.csproj"
+    },
+    "CustomKeyboardsWeb.Mediator/1.0.0": {
+      "type": "project",
+      "path": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Mediator.csproj",
+      "msbuildProject": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Mediator.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -446,6 +503,7 @@
       "AutoMapper >= 12.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.0",
       "CustomKeyboardsWeb.Domain >= 1.0.0",
+      "CustomKeyboardsWeb.Mediator >= 1.0.0",
       "MediatR >= 12.0.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 11.1.0"
     ]
@@ -484,6 +542,9 @@
           "projectReferences": {
             "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj": {
               "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj"
+            },
+            "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj": {
+              "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj"
             }
           }
         }

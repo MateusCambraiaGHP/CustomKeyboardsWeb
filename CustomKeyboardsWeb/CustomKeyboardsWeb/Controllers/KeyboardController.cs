@@ -1,9 +1,8 @@
-﻿using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Application.Features.Commands.Keyboards.CreateKeyboard;
-using CustomKeyboardsWeb.Application.Features.Commands.Keyboards.UpdateKeyboard;
-using CustomKeyboardsWeb.Application.Features.Queries.Keyboards.GetKeyboardById;
-using CustomKeyboardsWeb.Application.Features.Queries.Keyboards.GetKeyboardList;
-using MediatR;
+﻿using CustomKeyboardsWeb.Application.Features.Commands.Keyboards;
+using CustomKeyboardsWeb.Application.Features.Queries.Keyboards;
+using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
+using CustomKeyboardsWeb.Mediator.Abstractions.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -12,40 +11,39 @@ namespace CustomKeyboardsWeb.Controllers
     [ApiController]
     public class KeyboardController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly IMediatorHandler _mediator;
 
-        public KeyboardController(IMediator mediator)
+        public KeyboardController(IMediatorHandler mediator)
         {
             _mediator = mediator;
         }
 
-        [HttpGet("getall")]
-        public async Task<List<KeyboardDto>> GetAll()
+        [HttpGet]
+        public async Task<GetKeyboardListQueryResponse> GetAll()
         {
-            var currentKeyboardList = await _mediator.Send(new GetKeyboardListQuery());
+            var currentKeyboardList = await _mediator.SendQuery(new GetKeyboardListQuery());
             return currentKeyboardList;
         }
 
         [HttpGet("{id}")]
-        public async Task<KeyboardDto> Get(int id)
+        public async Task<GetKeyboardByIdQueryResponse> Get(int id)
         {
-            var currentKeyboard = await _mediator.Send(new GetKeyboardByIdQuery(id));
+            var currentKeyboard = await _mediator.SendQuery(new GetKeyboardByIdQuery(id));
             return currentKeyboard;
         }
 
         [HttpPost("save")]
-        public async Task<KeyboardDto> Save(CreateKeyboardDto model)
+        public async Task<CreateKeyboardCommandResponse> Save(KeyboardViewModel model)
         {
-            var currentKeyboard = await _mediator.Send(new CreateKeyboardCommand(model));
+            var currentKeyboard = await _mediator.SendCommand(new CreateKeyboardCommand(model));
             return currentKeyboard;
         }
 
         [HttpPost("update")]
-        public async Task<KeyboardDto> Edit(UpdateKeyboardDto model)
+        public async Task<UpdateKeyboardCommandResponse> Edit(KeyboardViewModel model)
         {
-            var currentKeyboard = await _mediator.Send(new UpdateKeyboardCommand(model));
+            var currentKeyboard = await _mediator.SendCommand(new UpdateKeyboardCommand(model));
             return currentKeyboard;
         }
-
     }
 }

@@ -1,9 +1,8 @@
-﻿using CustomKeyboardsWeb.Application.Dto;
-using CustomKeyboardsWeb.Application.Features.Commands.Customers.CreateCustomer;
-using CustomKeyboardsWeb.Application.Features.Commands.Customers.UpdateCustomer;
-using CustomKeyboardsWeb.Application.Features.Queries.Customers.GetCustomerById;
-using CustomKeyboardsWeb.Application.Features.Queries.Customers.GetCustomerList;
-using MediatR;
+﻿using CustomKeyboardsWeb.Application.Features.Commands.Customers;
+using CustomKeyboardsWeb.Application.Features.Queries.Customers;
+using CustomKeyboardsWeb.Application.Features.Responses.Customers;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
+using CustomKeyboardsWeb.Mediator.Abstractions.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -12,38 +11,38 @@ namespace CustomKeyboardsWeb.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly IMediatorHandler _mediator;
 
-        public CustomerController(IMediator mediator)
+        public CustomerController(IMediatorHandler mediator)
         {
             _mediator = mediator;
         }
 
-        [HttpGet("getall")]
-        public async Task<List<CustomerDto>> GetAll()
+        [HttpGet]
+        public async Task<GetCustomerListQueryResponse> GetAll()
         {
-            var customers = await _mediator.Send(new GetCustomerListQuery());
+            var customers = await _mediator.SendQuery(new GetCustomerListQuery());
             return customers;
         }
 
-        [HttpGet("getbyid/{id}")]
-        public async Task<CustomerDto> GetById(int id)
+        [HttpGet("{id}")]
+        public async Task<GetCustomerByIdQueryResponse> GetById(int id)
         {
-            var currentCustomer = await _mediator.Send(new GetCustumerByIdQuery(id));
+            var currentCustomer = await _mediator.SendQuery(new GetCustumerByIdQuery(id));
             return currentCustomer;
         }
 
         [HttpPost("save")]
-        public async Task<CustomerDto> Save(CreateCustomerDto model)
+        public async Task<CreateCustomerCommandResponse> Save(CustomerViewModel model)
         {
-            var currentCustomer = await _mediator.Send(new CreateCustomerCommand(model));
+            var currentCustomer = await _mediator.SendCommand(new CreateCustomerCommand(model));
             return currentCustomer;
         }
 
         [HttpPost("update")]
-        public async Task<CustomerDto> Edit(UpdateCustomerDto model)
+        public async Task<UpdateCustomerCommandResponse> Edit(CustomerViewModel model)
         {
-            var currentCustomer = await _mediator.Send(new UpdateCustomerCommand(model));
+            var currentCustomer = await _mediator.SendCommand(new UpdateCustomerCommand(model));
             return currentCustomer;
         }
     }
