@@ -2,7 +2,7 @@
 using CustomKeyboardsWeb.Application.Features.Queries.Keys;
 using CustomKeyboardsWeb.Application.Features.Responses.Keys;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
-using CustomKeyboardsWeb.Mediator.Abstractions.Interfaces;
+using CustomKeyboardsWeb.Mediator.Cummon.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers

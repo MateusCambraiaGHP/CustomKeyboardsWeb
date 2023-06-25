@@ -1,5 +1,5 @@
-﻿using CustomKeyboardsWeb.Mediator.Abstractions.Interfaces;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+﻿using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+using CustomKeyboardsWeb.Mediator.Cummon.Interfaces;
 using MediatR;
 
 namespace CustomKeyboardsWeb.Mediator
