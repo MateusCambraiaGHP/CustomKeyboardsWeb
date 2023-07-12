@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Features.Commands.Suppliers;
+using CustomKeyboardsWeb.Application.Features.Events;
 using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
 using CustomKeyboardsWeb.Application.Features.Validations.Suppliers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Mediator;
 using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+using CustomKeyboardsWeb.Mediator.Cummon.Interfaces;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
@@ -16,16 +19,19 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
         private readonly ISupplierRepository _supplierRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private IMediatorHandler _mediatorHandler;
 
         public CreateSupplierHandler(
             ISupplierRepository supplierRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork,
+            IMediatorHandler mediatorHandler)
             :base(mapper)
         {
             _supplierRepository = supplierRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _mediatorHandler = mediatorHandler;
         }
 
         public override async Task<CreateSupplierCommandResponse> Handle(CreateSupplierCommand request, CancellationToken cancellationToken)
@@ -45,6 +51,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                     FederativeUnit.Create(request.SupplierViewModel.FederativeUnit),
                     Phone.Create(request.SupplierViewModel.Phone),
                     request.SupplierViewModel.Active);
+
+                var @event = new CreateCustomerEvent(supplier);
+                _mediatorHandler.PublishEvent(@event);
 
                 await _supplierRepository.Create(supplier);
                 await _unitOfWork.CommitChangesAsync();
