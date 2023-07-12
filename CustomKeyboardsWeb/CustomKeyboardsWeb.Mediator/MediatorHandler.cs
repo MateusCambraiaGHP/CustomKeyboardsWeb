@@ -31,5 +31,9 @@ namespace CustomKeyboardsWeb.Mediator
             return await _mediator.Send(query);
         }
 
+        public async Task PublishEvent<TEvent>(TEvent @event)
+        {
+            await _mediator.Publish(@event);
+        }
     }
 }

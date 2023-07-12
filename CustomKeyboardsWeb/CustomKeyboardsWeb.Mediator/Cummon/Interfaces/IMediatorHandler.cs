@@ -10,5 +10,7 @@ namespace CustomKeyboardsWeb.Mediator.Cummon.Interfaces
 
         Task<TResponse> SendQuery<TResponse>(BaseMessage<TResponse> query)
             where TResponse : BaseHandlerResponse;
+
+        Task PublishEvent<TEvent>(TEvent @event);
     }
 }
