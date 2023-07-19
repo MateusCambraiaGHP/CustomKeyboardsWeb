@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomKeyboardsWeb.Data", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomKeyboardsWeb.Infrastructure", "CustomKeyboardsWeb.Infrastructure\CustomKeyboardsWeb.Infrastructure.csproj", "{A2DC080B-4C1C-4FCB-9474-9570C45D10C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomKeyboardsWeb.Mediator", "CustomKeyboardsWeb.Mediator\CustomKeyboardsWeb.Mediator.csproj", "{33F843F2-CD71-41B4-A68A-C5E9249CFCF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomKeyboardsWeb.Core", "CustomKeyboardsWeb.Mediator\CustomKeyboardsWeb.Core.csproj", "{33F843F2-CD71-41B4-A68A-C5E9249CFCF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

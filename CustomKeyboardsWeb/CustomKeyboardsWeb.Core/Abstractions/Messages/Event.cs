@@ -8,7 +8,7 @@ namespace CustomKeyboardsWeb.Mediator.Abstractions.Messages
 
         protected Event()
         {
-            Timestamp = DateTime.Now;
+            Timestamp = DateTime.UtcNow;
         }
     }
 }

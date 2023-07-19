@@ -593,8 +593,8 @@
         "dependencies": {
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
+          "CustomKeyboardsWeb.Core": "1.0.0",
           "CustomKeyboardsWeb.Domain": "1.0.0",
-          "CustomKeyboardsWeb.Mediator": "1.0.0",
           "MediatR": "12.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0"
         },
@@ -603,6 +603,22 @@
         },
         "runtime": {
           "bin/placeholder/CustomKeyboardsWeb.Application.dll": {}
+        }
+      },
+      "CustomKeyboardsWeb.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "FluentValidation": "11.5.2",
+          "MediatR": "12.0.1",
+          "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0"
+        },
+        "compile": {
+          "bin/placeholder/CustomKeyboardsWeb.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomKeyboardsWeb.Core.dll": {}
         }
       },
       "CustomKeyboardsWeb.Data/1.0.0": {
@@ -634,22 +650,6 @@
         },
         "runtime": {
           "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
-        }
-      },
-      "CustomKeyboardsWeb.Mediator/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "AutoMapper": "12.0.1",
-          "FluentValidation": "11.5.2",
-          "MediatR": "12.0.1",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0"
-        },
-        "compile": {
-          "bin/placeholder/CustomKeyboardsWeb.Mediator.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CustomKeyboardsWeb.Mediator.dll": {}
         }
       }
     }
@@ -1779,6 +1779,11 @@
       "path": "../CustomKeyboardsWeb.Application/CustomKeyboardsWeb.Application.csproj",
       "msbuildProject": "../CustomKeyboardsWeb.Application/CustomKeyboardsWeb.Application.csproj"
     },
+    "CustomKeyboardsWeb.Core/1.0.0": {
+      "type": "project",
+      "path": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Core.csproj",
+      "msbuildProject": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Core.csproj"
+    },
     "CustomKeyboardsWeb.Data/1.0.0": {
       "type": "project",
       "path": "../CustomKeyboardsWeb.Data/CustomKeyboardsWeb.Data.csproj",
@@ -1788,18 +1793,13 @@
       "type": "project",
       "path": "../CustomKeyboardsWeb.Domain/CustomKeyboardsWeb.Domain.csproj",
       "msbuildProject": "../CustomKeyboardsWeb.Domain/CustomKeyboardsWeb.Domain.csproj"
-    },
-    "CustomKeyboardsWeb.Mediator/1.0.0": {
-      "type": "project",
-      "path": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Mediator.csproj",
-      "msbuildProject": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Mediator.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "CustomKeyboardsWeb.Application >= 1.0.0",
+      "CustomKeyboardsWeb.Core >= 1.0.0",
       "CustomKeyboardsWeb.Data >= 1.0.0",
-      "CustomKeyboardsWeb.Mediator >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
@@ -1842,8 +1842,8 @@
             "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Data\\CustomKeyboardsWeb.Data.csproj": {
               "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Data\\CustomKeyboardsWeb.Data.csproj"
             },
-            "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj": {
-              "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj"
+            "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Core.csproj": {
+              "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Core.csproj"
             }
           }
         }

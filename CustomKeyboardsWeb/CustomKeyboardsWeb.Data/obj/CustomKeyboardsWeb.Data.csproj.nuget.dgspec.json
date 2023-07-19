@@ -35,8 +35,8 @@
               "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj": {
                 "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj"
               },
-              "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj": {
-                "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj"
+              "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Core.csproj": {
+                "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Core.csproj"
               }
             }
           }
@@ -249,12 +249,12 @@
         }
       }
     },
-    "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj": {
+    "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj",
-        "projectName": "CustomKeyboardsWeb.Mediator",
-        "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj",
+        "projectUniqueName": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Core.csproj",
+        "projectName": "CustomKeyboardsWeb.Core",
+        "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Core.csproj",
         "packagesPath": "C:\\Users\\mateu\\.nuget\\packages\\",
         "outputPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\obj\\",
         "projectStyle": "PackageReference",

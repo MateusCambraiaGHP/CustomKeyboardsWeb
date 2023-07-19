@@ -43,5 +43,5 @@ C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Application\
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Application\obj\Debug\net6.0\refint\CustomKeyboardsWeb.Application.dll
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Application\obj\Debug\net6.0\CustomKeyboardsWeb.Application.pdb
 C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Application\obj\Debug\net6.0\ref\CustomKeyboardsWeb.Application.dll
-C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Application\bin\Debug\net6.0\CustomKeyboardsWeb.Mediator.dll
-C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Application\bin\Debug\net6.0\CustomKeyboardsWeb.Mediator.pdb
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Application\bin\Debug\net6.0\CustomKeyboardsWeb.Core.dll
+C:\Workdir\CustomKeyboardsWeb\CustomKeyboardsWeb\CustomKeyboardsWeb.Application\bin\Debug\net6.0\CustomKeyboardsWeb.Core.pdb
