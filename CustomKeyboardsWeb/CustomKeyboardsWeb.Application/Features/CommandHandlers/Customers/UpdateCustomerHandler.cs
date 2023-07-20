@@ -32,7 +32,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
         {
             try
             {
-                request.ValidationResult = await Validate(request);
+                request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
                     return ResponseOnFailValidation("", request.ValidationResult);
@@ -52,9 +52,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
             }
         }
 
-        public override async Task<List<ValidationFailure>> Validate(UpdateCustomerCommand request)
+        public override List<ValidationFailure> Validate(UpdateCustomerCommand request)
         {
-            var erros = await new UpdateCustomerCommandValidation().ValidateAsync(request);
+            var erros = new UpdateCustomerCommandValidation().Validate(request);
             return erros.Errors;
         }
     }

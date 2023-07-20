@@ -36,7 +36,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keys
             }
         }
 
-        public override Task<List<ValidationFailure>> Validate(GetKeyListQuery request)
+        public override List<ValidationFailure> Validate(GetKeyListQuery request)
         {
             throw new NotImplementedException();
         }

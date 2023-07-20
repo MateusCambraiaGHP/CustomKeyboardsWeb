@@ -47,25 +47,24 @@ namespace CustomKeyboardsWeb.Data.Data
 
         private void PublishEvents()
         {
-            //var domainEntities = ChangeTracker
-            //    .Entries<Entity>()
-            //    .Where(x => x.Entity.EventNotifications != null && x.Entity.EventNotifications.Any());
+            var domainEntities = ChangeTracker
+                .Entries<Entity>()
+                .Where(x => x.Entity.EventNotifications != null && x.Entity.EventNotifications.Any());
 
-            //var domainEvents = domainEntities
-            //    .SelectMany(x => x.Entity.EventNotifications)
-            //    .ToList();
+            var domainEvents = domainEntities
+                .SelectMany(x => x.Entity.EventNotifications)
+                .ToList();
 
-            //domainEntities.ToList()
-            //    .ForEach(entity => entity.Entity.ClearEvents());
+            domainEntities.ToList()
+                .ForEach(entity => entity.Entity.ClearEvents());
 
-            //var tasks = domainEvents
-            //.Select(async (domainEvent) =>
-            //{
-            //    await _mediator.PublishEvent(domainEvent);
-            //});
+            var tasks = domainEvents
+            .Select(async (domainEvent) =>
+            {
+                await _mediator.PublishEvent(domainEvent);
+            });
 
-            //Task.WhenAll(tasks).Wait();
-
+            Task.WhenAll(tasks).Wait();
         }
 
         public new DbSet<TEntity> Set<TEntity>() where TEntity : Entity => base.Set<TEntity>();

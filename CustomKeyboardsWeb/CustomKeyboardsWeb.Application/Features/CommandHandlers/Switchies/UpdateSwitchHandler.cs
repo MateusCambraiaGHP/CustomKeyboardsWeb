@@ -32,7 +32,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
         {
             try
             {
-                request.ValidationResult = await Validate(request);
+                request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
                     return ResponseOnFailValidation("", request.ValidationResult);
@@ -52,9 +52,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
             }
         }
 
-        public override async Task<List<ValidationFailure>> Validate(UpdateSwitchCommand request)
+        public override List<ValidationFailure> Validate(UpdateSwitchCommand request)
         {
-            var erros = await new UpdateSwitchCommandValidation().ValidateAsync(request);
+            var erros = new UpdateSwitchCommandValidation().Validate(request);
             return erros.Errors;
         }
     }

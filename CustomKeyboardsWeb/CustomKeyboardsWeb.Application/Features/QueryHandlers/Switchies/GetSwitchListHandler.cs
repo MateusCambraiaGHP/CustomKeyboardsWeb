@@ -36,7 +36,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Switchies
             }
         }
 
-        public override Task<List<ValidationFailure>> Validate(GetSwitchListQuery request)
+        public override List<ValidationFailure> Validate(GetSwitchListQuery request)
         {
             throw new NotImplementedException();
         }

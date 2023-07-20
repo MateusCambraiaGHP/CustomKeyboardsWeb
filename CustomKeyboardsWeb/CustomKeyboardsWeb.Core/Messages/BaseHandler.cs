@@ -17,7 +17,7 @@ namespace CustomKeyboardsWeb.Core.Messages
 
         public abstract Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken);
 
-        public abstract Task<List<ValidationFailure>> Validate(TRequest request);
+        public abstract List<ValidationFailure> Validate(TRequest request);
 
         protected virtual TResponse ResponseOnFailValidation(string message, List<ValidationFailure> validationResults)
         {

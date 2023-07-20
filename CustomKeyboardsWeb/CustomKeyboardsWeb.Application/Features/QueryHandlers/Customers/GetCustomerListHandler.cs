@@ -38,7 +38,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers
             }
         }
 
-        public override Task<List<ValidationFailure>> Validate(GetCustomerListQuery request)
+        public override List<ValidationFailure> Validate(GetCustomerListQuery request)
         {
             throw new NotImplementedException();
         }

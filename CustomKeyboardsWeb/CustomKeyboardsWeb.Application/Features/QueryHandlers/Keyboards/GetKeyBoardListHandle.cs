@@ -40,7 +40,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
             }
         }
 
-        public override Task<List<ValidationFailure>> Validate(GetKeyboardListQuery request)
+        public override List<ValidationFailure> Validate(GetKeyboardListQuery request)
         {
             throw new NotImplementedException();
         }

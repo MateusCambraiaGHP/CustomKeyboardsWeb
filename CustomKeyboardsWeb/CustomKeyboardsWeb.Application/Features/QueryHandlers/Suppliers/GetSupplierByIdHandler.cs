@@ -36,7 +36,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Suppliers
             }
         }
 
-        public override Task<List<ValidationFailure>> Validate(GetSupplierByIdQuery request)
+        public override List<ValidationFailure> Validate(GetSupplierByIdQuery request)
         {
             throw new NotImplementedException();
         }
