@@ -1,4 +1,6 @@
-﻿using CustomKeyboardsWeb.Data.Common.Interfaces;
+﻿using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
+using CustomKeyboardsWeb.Core.DomainObjects;
+using CustomKeyboardsWeb.Data.Common.Interfaces;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +10,7 @@ namespace CustomKeyboardsWeb.Data.Data
     public class ApplicationMySqlDbContext : DbContext, IApplicationDbContext
     {
         private IConfiguration _configuration { get; set; }
+        private readonly IMediatorHandler _mediator;
 
 
         public ApplicationMySqlDbContext(IConfiguration configuration)
@@ -36,12 +39,34 @@ namespace CustomKeyboardsWeb.Data.Data
 
         public async Task<int> Save()
         {
-            return await SaveChangesAsync();
+            var success = await SaveChangesAsync();
+            if (success > 0) PublishEvents();
+
+            return success;
         }
 
-        public new DbSet<TEntity> Set<TEntity>() where TEntity : Entity
+        private void PublishEvents()
         {
-            return base.Set<TEntity>();
+            var domainEntities = ChangeTracker
+                .Entries<Entity>()
+                .Where(x => x.Entity.EventNotifications != null && x.Entity.EventNotifications.Any());
+
+            var domainEvents = domainEntities
+                .SelectMany(x => x.Entity.EventNotifications)
+                .ToList();
+
+            domainEntities.ToList()
+                .ForEach(entity => entity.Entity.ClearEvents());
+
+            var tasks = domainEvents
+            .Select(async (domainEvent) =>
+            {
+                await _mediator.PublishEvent(domainEvent);
+            });
+
+            Task.WhenAll(tasks).Wait();
         }
+
+        public new DbSet<TEntity> Set<TEntity>() where TEntity : Entity => base.Set<TEntity>();
     }
 }

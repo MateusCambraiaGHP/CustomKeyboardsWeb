@@ -4,9 +4,10 @@ using CustomKeyboardsWeb.Application.Features.Commands.Keyboards;
 using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
 using CustomKeyboardsWeb.Application.Features.Validations.Keyboards;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
+using CustomKeyboardsWeb.Core.Data;
+using CustomKeyboardsWeb.Core.Messages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
@@ -32,7 +33,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
         {
             try
             {
-                request.ValidationResult = await Validate(request);
+                request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
                     return ResponseOnFailValidation("", request.ValidationResult);
@@ -56,9 +57,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
             }
         }
 
-        public override async Task<List<ValidationFailure>> Validate(CreateKeyboardCommand request)
+        public override List<ValidationFailure> Validate(CreateKeyboardCommand request)
         {
-            var erros = await new CreateKeyboardCommandValidation().ValidateAsync(request);
+            var erros = new CreateKeyboardCommandValidation().Validate(request);
             return erros.Errors;
         }
     }

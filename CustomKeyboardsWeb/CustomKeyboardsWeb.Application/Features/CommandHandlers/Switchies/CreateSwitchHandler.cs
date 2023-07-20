@@ -4,9 +4,10 @@ using CustomKeyboardsWeb.Application.Features.Commands.Switchies;
 using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.Validations.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
+using CustomKeyboardsWeb.Core.Data;
+using CustomKeyboardsWeb.Core.Messages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
@@ -32,7 +33,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
         {
             try
             {
-                request.ValidationResult = await Validate(request);
+                request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
                     return ResponseOnFailValidation("", request.ValidationResult);
@@ -55,9 +56,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
             }
         }
 
-        public override async Task<List<ValidationFailure>> Validate(CreateSwitchCommand request)
+        public override List<ValidationFailure> Validate(CreateSwitchCommand request)
         {
-            var erros = await new CreateSwitchCommandValidation().ValidateAsync(request);
+            var erros = new CreateSwitchCommandValidation().Validate(request);
             return erros.Errors;
         }
     }

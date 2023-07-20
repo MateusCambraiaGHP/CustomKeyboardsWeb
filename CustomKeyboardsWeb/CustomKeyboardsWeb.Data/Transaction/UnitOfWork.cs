@@ -1,5 +1,7 @@
 ﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
+using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Data.Common.Interfaces;
+using CustomKeyboardsWeb.Domain.Primitives.Entities;
 
 namespace CustomKeyboardsWeb.Data.Transaction
 {
@@ -13,6 +15,5 @@ namespace CustomKeyboardsWeb.Data.Transaction
         }
 
         public async Task CommitChangesAsync() => await _applicationDbContext.Save();
-
     }
 }

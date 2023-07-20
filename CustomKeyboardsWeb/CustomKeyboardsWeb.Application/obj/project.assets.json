@@ -177,20 +177,7 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
-      "CustomKeyboardsWeb.Domain/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4"
-        },
-        "compile": {
-          "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
-        }
-      },
-      "CustomKeyboardsWeb.Mediator/1.0.0": {
+      "CustomKeyboardsWeb.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -200,10 +187,24 @@
           "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0"
         },
         "compile": {
-          "bin/placeholder/CustomKeyboardsWeb.Mediator.dll": {}
+          "bin/placeholder/CustomKeyboardsWeb.Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/CustomKeyboardsWeb.Mediator.dll": {}
+          "bin/placeholder/CustomKeyboardsWeb.Core.dll": {}
+        }
+      },
+      "CustomKeyboardsWeb.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "CustomKeyboardsWeb.Core": "1.0.0",
+          "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4"
+        },
+        "compile": {
+          "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CustomKeyboardsWeb.Domain.dll": {}
         }
       }
     }
@@ -487,23 +488,23 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "CustomKeyboardsWeb.Core/1.0.0": {
+      "type": "project",
+      "path": "../CustomKeyboardsWeb.Core/CustomKeyboardsWeb.Core.csproj",
+      "msbuildProject": "../CustomKeyboardsWeb.Core/CustomKeyboardsWeb.Core.csproj"
+    },
     "CustomKeyboardsWeb.Domain/1.0.0": {
       "type": "project",
       "path": "../CustomKeyboardsWeb.Domain/CustomKeyboardsWeb.Domain.csproj",
       "msbuildProject": "../CustomKeyboardsWeb.Domain/CustomKeyboardsWeb.Domain.csproj"
-    },
-    "CustomKeyboardsWeb.Mediator/1.0.0": {
-      "type": "project",
-      "path": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Mediator.csproj",
-      "msbuildProject": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Mediator.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper >= 12.0.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.0",
+      "CustomKeyboardsWeb.Core >= 1.0.0",
       "CustomKeyboardsWeb.Domain >= 1.0.0",
-      "CustomKeyboardsWeb.Mediator >= 1.0.0",
       "MediatR >= 12.0.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 11.1.0"
     ]
@@ -540,11 +541,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Core\\CustomKeyboardsWeb.Core.csproj": {
+              "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Core\\CustomKeyboardsWeb.Core.csproj"
+            },
             "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj": {
               "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj"
             },
-            "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj": {
-              "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Mediator.csproj"
+            "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Core.csproj": {
+              "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Mediator\\CustomKeyboardsWeb.Core.csproj"
             }
           }
         }

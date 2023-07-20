@@ -1,6 +1,6 @@
 ﻿using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+using CustomKeyboardsWeb.Core.Messages;
 using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.Queries.Keyboards

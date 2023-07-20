@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomKeyboardsWeb.Data", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomKeyboardsWeb.Infrastructure", "CustomKeyboardsWeb.Infrastructure\CustomKeyboardsWeb.Infrastructure.csproj", "{A2DC080B-4C1C-4FCB-9474-9570C45D10C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomKeyboardsWeb.Mediator", "CustomKeyboardsWeb.Mediator\CustomKeyboardsWeb.Mediator.csproj", "{33F843F2-CD71-41B4-A68A-C5E9249CFCF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomKeyboardsWeb.Core", "CustomKeyboardsWeb.Core\CustomKeyboardsWeb.Core.csproj", "{DD1C169C-4759-49ED-BBBE-016A4DD7A82E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +53,10 @@ Global
 		{A2DC080B-4C1C-4FCB-9474-9570C45D10C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2DC080B-4C1C-4FCB-9474-9570C45D10C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2DC080B-4C1C-4FCB-9474-9570C45D10C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33F843F2-CD71-41B4-A68A-C5E9249CFCF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33F843F2-CD71-41B4-A68A-C5E9249CFCF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33F843F2-CD71-41B4-A68A-C5E9249CFCF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33F843F2-CD71-41B4-A68A-C5E9249CFCF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD1C169C-4759-49ED-BBBE-016A4DD7A82E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD1C169C-4759-49ED-BBBE-016A4DD7A82E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD1C169C-4759-49ED-BBBE-016A4DD7A82E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD1C169C-4759-49ED-BBBE-016A4DD7A82E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,7 +69,7 @@ Global
 		{3A617344-6CBB-4228-852D-563866286DB7} = {2210578C-69E4-443C-BE3E-F924F8C68DA1}
 		{D0380A17-26B4-4486-B8B7-60F96A317623} = {2210578C-69E4-443C-BE3E-F924F8C68DA1}
 		{A2DC080B-4C1C-4FCB-9474-9570C45D10C9} = {2210578C-69E4-443C-BE3E-F924F8C68DA1}
-		{33F843F2-CD71-41B4-A68A-C5E9249CFCF1} = {2210578C-69E4-443C-BE3E-F924F8C68DA1}
+		{DD1C169C-4759-49ED-BBBE-016A4DD7A82E} = {2210578C-69E4-443C-BE3E-F924F8C68DA1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {485507F6-69AF-4CDF-B9C6-0EE6DD8C7C47}

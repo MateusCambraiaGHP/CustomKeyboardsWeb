@@ -3,7 +3,7 @@ using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Features.Queries.Keyboards;
 using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+using CustomKeyboardsWeb.Core.Messages;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
@@ -37,7 +37,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
             }
         }
 
-        public override Task<List<ValidationFailure>> Validate(GetKeyboardByIdQuery request)
+        public override List<ValidationFailure> Validate(GetKeyboardByIdQuery request)
         {
             throw new NotImplementedException();
         }

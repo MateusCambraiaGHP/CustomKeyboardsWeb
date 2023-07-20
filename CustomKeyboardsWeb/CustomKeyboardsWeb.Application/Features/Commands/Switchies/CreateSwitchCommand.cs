@@ -1,6 +1,6 @@
 ﻿using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+using CustomKeyboardsWeb.Core.Messages;
 
 namespace CustomKeyboardsWeb.Application.Features.Commands.Switchies
 {
