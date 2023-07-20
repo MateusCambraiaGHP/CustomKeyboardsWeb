@@ -1,4 +1,4 @@
-﻿namespace CustomKeyboardsWeb.Application.Cummon.Interfaces
+﻿namespace CustomKeyboardsWeb.Core.Data
 {
     public interface IUnitOfWork
     {

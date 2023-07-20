@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
 using MediatR;
 
-namespace CustomKeyboardsWeb.Mediator.Abstractions.Messages
+namespace CustomKeyboardsWeb.Core.Messages
 {
     public abstract class BaseMessage<TResponse> : IRequest<TResponse>
     {

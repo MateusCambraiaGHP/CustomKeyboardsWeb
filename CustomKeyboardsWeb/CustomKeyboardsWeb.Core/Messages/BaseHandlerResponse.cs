@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace CustomKeyboardsWeb.Mediator.Abstractions.Messages
+﻿namespace CustomKeyboardsWeb.Core.Messages
 {
     public class BaseHandlerResponse
     {

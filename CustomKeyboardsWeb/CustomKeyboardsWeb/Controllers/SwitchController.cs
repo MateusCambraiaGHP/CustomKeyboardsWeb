@@ -2,7 +2,7 @@
 using CustomKeyboardsWeb.Application.Features.Queries.Switchies;
 using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
-using CustomKeyboardsWeb.Mediator.Cummon.Interfaces;
+using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers

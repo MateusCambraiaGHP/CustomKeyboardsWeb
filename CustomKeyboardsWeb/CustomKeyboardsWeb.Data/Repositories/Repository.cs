@@ -1,10 +1,11 @@
-﻿using CustomKeyboardsWeb.Data.Common.Interfaces;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
+﻿using CustomKeyboardsWeb.Core.Data;
+using CustomKeyboardsWeb.Core.DomainObjects;
+using CustomKeyboardsWeb.Data.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CustomKeyboardsWeb.Data.Repositories
 {
-    public abstract class Repository<TEntity> where TEntity : Entity
+    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
     {
         protected readonly IApplicationDbContext _context;
         protected readonly DbSet<TEntity> _dbSet;

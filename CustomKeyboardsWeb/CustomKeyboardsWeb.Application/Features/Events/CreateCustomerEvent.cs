@@ -1,5 +1,5 @@
-﻿using CustomKeyboardsWeb.Domain.Primitives.Entities;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+﻿using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Domain.Primitives.Entities;
 
 namespace CustomKeyboardsWeb.Application.Features.Events
 {

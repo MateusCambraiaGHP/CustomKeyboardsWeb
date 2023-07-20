@@ -4,8 +4,9 @@ using CustomKeyboardsWeb.Application.Features.Commands.Switchies;
 using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.Validations.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
+using CustomKeyboardsWeb.Core.Data;
+using CustomKeyboardsWeb.Core.Messages;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies

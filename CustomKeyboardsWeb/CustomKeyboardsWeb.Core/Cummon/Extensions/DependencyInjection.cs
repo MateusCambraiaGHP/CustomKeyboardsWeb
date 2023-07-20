@@ -1,7 +1,8 @@
-﻿using CustomKeyboardsWeb.Mediator.Cummon.Interfaces;
+﻿using CustomKeyboardsWeb.Core.Communication.Mediator;
+using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CustomKeyboardsWeb.Mediator.Cummon.Extensions
+namespace CustomKeyboardsWeb.Core.Cummon.Extensions
 {
     public static class MediatorIoc
     {

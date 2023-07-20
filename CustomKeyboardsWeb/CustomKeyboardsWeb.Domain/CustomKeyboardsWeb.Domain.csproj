@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="7.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CustomKeyboardsWeb.Core\CustomKeyboardsWeb.Core.csproj" />
+  </ItemGroup>
+
 </Project>

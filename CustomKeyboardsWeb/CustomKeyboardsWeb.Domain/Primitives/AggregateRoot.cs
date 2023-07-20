@@ -1,9 +1,7 @@
-﻿using CustomKeyboardsWeb.Domain.Primitives.Entities;
+﻿
+using CustomKeyboardsWeb.Core.DomainObjects;
 
-namespace CustomKeyboardsWeb.Domain.Primitives
+public abstract class AggregateRoot : Entity
 {
-    public abstract class AggregateRoot : Entity
-    {
-        protected AggregateRoot() { }
-    }
+    protected AggregateRoot() { }
 }

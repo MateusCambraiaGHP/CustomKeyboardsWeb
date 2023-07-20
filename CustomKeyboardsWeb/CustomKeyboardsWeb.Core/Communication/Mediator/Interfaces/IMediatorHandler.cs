@@ -1,6 +1,6 @@
-﻿using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+﻿using CustomKeyboardsWeb.Core.Messages;
 
-namespace CustomKeyboardsWeb.Mediator.Cummon.Interfaces
+namespace CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces
 {
     public interface IMediatorHandler
     {

@@ -3,7 +3,7 @@ using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Features.Queries.Switchies;
 using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+using CustomKeyboardsWeb.Core.Messages;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Switchies

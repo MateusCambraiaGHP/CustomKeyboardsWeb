@@ -3,7 +3,7 @@ using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Features.Queries.Keys;
 using CustomKeyboardsWeb.Application.Features.Responses.Keys;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+using CustomKeyboardsWeb.Core.Messages;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keys

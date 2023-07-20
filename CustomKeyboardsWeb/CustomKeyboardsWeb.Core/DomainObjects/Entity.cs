@@ -1,4 +1,4 @@
-﻿namespace CustomKeyboardsWeb.Domain.Primitives.Entities
+﻿namespace CustomKeyboardsWeb.Core.DomainObjects
 {
     public abstract class Entity
     {

@@ -5,11 +5,11 @@ using CustomKeyboardsWeb.Application.Features.Events;
 using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
 using CustomKeyboardsWeb.Application.Features.Validations.Suppliers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
+using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
+using CustomKeyboardsWeb.Core.Data;
+using CustomKeyboardsWeb.Core.Messages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
-using CustomKeyboardsWeb.Mediator;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
-using CustomKeyboardsWeb.Mediator.Cummon.Interfaces;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
@@ -17,7 +17,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
     public class CreateSupplierHandler : Handler<CreateSupplierCommand, CreateSupplierCommandResponse>
     {
         private readonly ISupplierRepository _supplierRepository;
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private IMediatorHandler _mediatorHandler;
 
@@ -29,7 +28,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
             :base(mapper)
         {
             _supplierRepository = supplierRepository;
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _mediatorHandler = mediatorHandler;
         }

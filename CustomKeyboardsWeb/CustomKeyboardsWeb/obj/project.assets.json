@@ -627,6 +627,7 @@
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "CustomKeyboardsWeb.Application": "1.0.0",
+          "CustomKeyboardsWeb.Core": "1.0.0",
           "CustomKeyboardsWeb.Domain": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.5",
           "Microsoft.EntityFrameworkCore.Relational": "7.0.5",
@@ -643,6 +644,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "CustomKeyboardsWeb.Core": "1.0.0",
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4"
         },
         "compile": {
@@ -1781,8 +1783,8 @@
     },
     "CustomKeyboardsWeb.Core/1.0.0": {
       "type": "project",
-      "path": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Core.csproj",
-      "msbuildProject": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Core.csproj"
+      "path": "../CustomKeyboardsWeb.Core/CustomKeyboardsWeb.Core.csproj",
+      "msbuildProject": "../CustomKeyboardsWeb.Core/CustomKeyboardsWeb.Core.csproj"
     },
     "CustomKeyboardsWeb.Data/1.0.0": {
       "type": "project",
@@ -1838,6 +1840,9 @@
           "projectReferences": {
             "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj": {
               "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Application\\CustomKeyboardsWeb.Application.csproj"
+            },
+            "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Core\\CustomKeyboardsWeb.Core.csproj": {
+              "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Core\\CustomKeyboardsWeb.Core.csproj"
             },
             "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Data\\CustomKeyboardsWeb.Data.csproj": {
               "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Data\\CustomKeyboardsWeb.Data.csproj"

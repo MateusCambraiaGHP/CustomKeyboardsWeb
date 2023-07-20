@@ -197,6 +197,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "CustomKeyboardsWeb.Core": "1.0.0",
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4"
         },
         "compile": {
@@ -489,8 +490,8 @@
     },
     "CustomKeyboardsWeb.Core/1.0.0": {
       "type": "project",
-      "path": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Core.csproj",
-      "msbuildProject": "../CustomKeyboardsWeb.Mediator/CustomKeyboardsWeb.Core.csproj"
+      "path": "../CustomKeyboardsWeb.Core/CustomKeyboardsWeb.Core.csproj",
+      "msbuildProject": "../CustomKeyboardsWeb.Core/CustomKeyboardsWeb.Core.csproj"
     },
     "CustomKeyboardsWeb.Domain/1.0.0": {
       "type": "project",
@@ -540,6 +541,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Core\\CustomKeyboardsWeb.Core.csproj": {
+              "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Core\\CustomKeyboardsWeb.Core.csproj"
+            },
             "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj": {
               "projectPath": "C:\\Workdir\\CustomKeyboardsWeb\\CustomKeyboardsWeb\\CustomKeyboardsWeb.Domain\\CustomKeyboardsWeb.Domain.csproj"
             },

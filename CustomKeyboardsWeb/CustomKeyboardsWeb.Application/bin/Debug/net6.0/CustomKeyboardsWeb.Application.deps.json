@@ -136,6 +136,7 @@
       },
       "CustomKeyboardsWeb.Domain/1.0.0": {
         "dependencies": {
+          "CustomKeyboardsWeb.Core": "1.0.0",
           "Microsoft.EntityFrameworkCore.Abstractions": "7.0.4"
         },
         "runtime": {

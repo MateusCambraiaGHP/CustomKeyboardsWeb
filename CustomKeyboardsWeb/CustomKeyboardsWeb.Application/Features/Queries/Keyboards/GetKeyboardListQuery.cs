@@ -1,5 +1,5 @@
 ﻿using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
-using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
+using CustomKeyboardsWeb.Core.Messages;
 
 namespace CustomKeyboardsWeb.Application.Features.Queries.Keyboards
 {

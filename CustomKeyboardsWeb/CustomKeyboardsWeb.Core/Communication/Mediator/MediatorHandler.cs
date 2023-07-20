@@ -1,8 +1,8 @@
-﻿using CustomKeyboardsWeb.Mediator.Abstractions.Messages;
-using CustomKeyboardsWeb.Mediator.Cummon.Interfaces;
+﻿using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
+using CustomKeyboardsWeb.Core.Messages;
 using MediatR;
 
-namespace CustomKeyboardsWeb.Mediator
+namespace CustomKeyboardsWeb.Core.Communication.Mediator
 {
     public class MediatorHandler : IMediatorHandler
     {

@@ -1,4 +1,4 @@
-﻿namespace CustomKeyboardsWeb.Mediator.Abstractions.Messages
+﻿namespace CustomKeyboardsWeb.Core.Messages
 {
     public abstract class Command<TResponse> : BaseMessage<TResponse>
     {
