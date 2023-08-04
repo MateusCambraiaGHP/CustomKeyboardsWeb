@@ -18,7 +18,6 @@
     <ProjectReference Include="..\CustomKeyboardsWeb.Application\CustomKeyboardsWeb.Application.csproj" />
     <ProjectReference Include="..\CustomKeyboardsWeb.Core\CustomKeyboardsWeb.Core.csproj" />
     <ProjectReference Include="..\CustomKeyboardsWeb.Data\CustomKeyboardsWeb.Data.csproj" />
-    <ProjectReference Include="..\CustomKeyboardsWeb.Mediator\CustomKeyboardsWeb.Core.csproj" />
   </ItemGroup>
 
 </Project>
