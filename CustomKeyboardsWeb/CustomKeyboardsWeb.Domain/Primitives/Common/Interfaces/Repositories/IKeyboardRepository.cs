@@ -1,6 +1,6 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Entities;
 
-namespace CustomKeyboardsWeb.Application.Cummon.Interfaces
+namespace CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories
 {
     public interface IKeyboardRepository
     {

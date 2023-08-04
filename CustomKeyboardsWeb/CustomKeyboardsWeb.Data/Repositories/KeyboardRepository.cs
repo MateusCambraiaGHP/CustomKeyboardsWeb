@@ -1,5 +1,5 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
-using CustomKeyboardsWeb.Data.Common.Interfaces;
+﻿using CustomKeyboardsWeb.Data.Common.Interfaces;
+using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using Microsoft.EntityFrameworkCore;
 

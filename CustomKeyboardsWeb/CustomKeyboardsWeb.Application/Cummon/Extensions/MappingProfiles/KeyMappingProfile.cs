@@ -2,7 +2,7 @@
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 
-namespace CustomKeyboardsWeb.Data.Common.Extensions.MappingProfiles
+namespace CustomKeyboardsWeb.Application.Cummon.Extensions.MappingProfiles
 {
     public class KeyMappingProfile : Profile
     {

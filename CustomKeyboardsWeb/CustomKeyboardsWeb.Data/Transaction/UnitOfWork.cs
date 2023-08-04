@@ -1,7 +1,5 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
-using CustomKeyboardsWeb.Core.Data;
+﻿using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Data.Common.Interfaces;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
 
 namespace CustomKeyboardsWeb.Data.Transaction
 {

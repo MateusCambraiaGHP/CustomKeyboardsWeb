@@ -4,11 +4,20 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
 {
     public class Keyboard : AggregateRoot
     {
-#pragma warning disable CS8618
+        public Name Name { get; private set; }
+        public int? IdSwitch { get; private set; }
+        public int? IdKey { get; private set; }
+        public Price Price { get; private set; }
+        public Switch Switch { get; private set; }
+        public Key Key { get; private set; }
+        public string CreatedBy { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public string? UpdatedBy { get; private set; }
+        public DateTime? UpdatedAt { get; private set; }
+
         private Keyboard() { }
 
         private Keyboard(
-#pragma warning restore CS8618
             Name name,
             int? idSwitch,
             int? idKey,
@@ -48,16 +57,5 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
                 null,
                 null);
         }
-
-        public Name Name { get; set; }
-        public int? IdSwitch { get; set; }
-        public int? IdKey { get; set; }
-        public Price Price { get; set; }
-        public Switch Switch { get; set; }
-        public Key Key { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public string? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
     }
 }
