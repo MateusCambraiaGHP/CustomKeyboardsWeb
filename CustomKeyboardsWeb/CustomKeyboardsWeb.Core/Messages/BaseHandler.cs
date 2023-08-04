@@ -23,12 +23,13 @@ namespace CustomKeyboardsWeb.Core.Messages
         {
             var response = Activator.CreateInstance<TResponse>();
             response.Success = false;
-            validationResults.ForEach(e =>
-            {
-                message += $"{e.ErrorMessage}, ";
-            });
-
             response.Message = message;
+            response.ValidationErrors = new List<string>();
+
+            validationResults.ForEach(vr =>
+            {
+                response.ValidationErrors.Add(vr.ErrorMessage);
+            });
 
             return response;
         }

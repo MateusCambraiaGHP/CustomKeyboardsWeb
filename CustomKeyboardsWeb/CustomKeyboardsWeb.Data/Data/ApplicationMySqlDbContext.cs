@@ -1,5 +1,6 @@
 ﻿using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using CustomKeyboardsWeb.Core.DomainObjects;
+using CustomKeyboardsWeb.Core.Messages;
 using CustomKeyboardsWeb.Data.Common.Interfaces;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace CustomKeyboardsWeb.Data.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Ignore<Event>();
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationMySqlDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
         }
