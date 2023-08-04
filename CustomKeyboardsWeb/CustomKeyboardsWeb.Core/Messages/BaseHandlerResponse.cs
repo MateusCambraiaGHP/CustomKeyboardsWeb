@@ -8,6 +8,7 @@
 
         public BaseHandlerResponse()
         {
+            Success = true;
         }
 
         public BaseHandlerResponse(string message = "")
