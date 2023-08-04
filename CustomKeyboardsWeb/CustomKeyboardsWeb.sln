@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomKeyboardsWeb.Infrastr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomKeyboardsWeb.Core", "CustomKeyboardsWeb.Core\CustomKeyboardsWeb.Core.csproj", "{DD1C169C-4759-49ED-BBBE-016A4DD7A82E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomKeyboardsWeb.Tests", "CustomKeyboardsWeb.Tests\CustomKeyboardsWeb.Tests.csproj", "{F85D5D00-9D4E-409E-A710-741396D7A7CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{DD1C169C-4759-49ED-BBBE-016A4DD7A82E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD1C169C-4759-49ED-BBBE-016A4DD7A82E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD1C169C-4759-49ED-BBBE-016A4DD7A82E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F85D5D00-9D4E-409E-A710-741396D7A7CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F85D5D00-9D4E-409E-A710-741396D7A7CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F85D5D00-9D4E-409E-A710-741396D7A7CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F85D5D00-9D4E-409E-A710-741396D7A7CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +76,7 @@ Global
 		{D0380A17-26B4-4486-B8B7-60F96A317623} = {2210578C-69E4-443C-BE3E-F924F8C68DA1}
 		{A2DC080B-4C1C-4FCB-9474-9570C45D10C9} = {2210578C-69E4-443C-BE3E-F924F8C68DA1}
 		{DD1C169C-4759-49ED-BBBE-016A4DD7A82E} = {2210578C-69E4-443C-BE3E-F924F8C68DA1}
+		{F85D5D00-9D4E-409E-A710-741396D7A7CF} = {2210578C-69E4-443C-BE3E-F924F8C68DA1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {485507F6-69AF-4CDF-B9C6-0EE6DD8C7C47}

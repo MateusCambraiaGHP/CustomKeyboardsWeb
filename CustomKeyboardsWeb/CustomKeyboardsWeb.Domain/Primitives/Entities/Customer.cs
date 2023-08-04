@@ -4,7 +4,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
 {
     public class Customer : AggregateRoot
     {
-        private Customer() { }
+        public Customer() { }
 
         private Customer(
             Name name,
