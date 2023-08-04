@@ -4,6 +4,15 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
 {
     public class PuchaseHistory : AggregateRoot
     {
+        public int IdCustomer { get; private set; }
+        public int IdSupplier { get; private set; }
+        public int IdKeyboard { get; private set; }
+        public Customer? Customer { get; private set; }
+        public Supplier? Supplier { get; private set; }
+        public Keyboard? Keyboard { get; private set; }
+        public Price Price { get; private set; }
+        public DateTime PuchaseDate { get; private set; }
+
         private PuchaseHistory() { }
 
         private PuchaseHistory(
@@ -37,14 +46,5 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
                 active,
                 DateTime.UtcNow);
         }
-
-        public int IdCustomer { get; set; }
-        public int IdSupplier { get; set; }
-        public int IdKeyboard { get; set; }
-        public Customer? Customer { get; set; }
-        public Supplier? Supplier { get; set; }
-        public Keyboard? Keyboard { get; set; }
-        public Price Price { get; set; }
-        public DateTime PuchaseDate { get; set; }
     }
 }

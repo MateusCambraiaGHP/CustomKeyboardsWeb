@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using CustomKeyboardsWeb.Application.Cummon.Interfaces;
 using CustomKeyboardsWeb.Application.Features.Queries.Keys;
 using CustomKeyboardsWeb.Application.Features.Responses.Keys;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
 using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keys

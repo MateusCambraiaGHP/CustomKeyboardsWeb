@@ -8,12 +8,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomKeyboardsWeb.Core\CustomKeyboardsWeb.Core.csproj" />
+    <ProjectReference Include="..\CustomKeyboardsWeb.Data\CustomKeyboardsWeb.Data.csproj" />
     <ProjectReference Include="..\CustomKeyboardsWeb.Domain\CustomKeyboardsWeb.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="MediatR" Version="12.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
   </ItemGroup>

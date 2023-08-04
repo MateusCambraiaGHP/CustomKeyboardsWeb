@@ -4,6 +4,17 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
 {
     public class Supplier : AggregateRoot
     {
+        public Name Name { get; private set; }
+        public FantasyName FantasyName { get; private set; }
+        public Cep Cep { get; private set; }
+        public Address Address { get; private set; }
+        public FederativeUnit FederativeUnit { get; private set; }
+        public Phone? Phone { get; private set; }
+        public string CreatedBy { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public string? UpdatedBy { get; private set; }
+        public DateTime? UpdatedAt { get; private set; }
+
         private Supplier() { }
 
         private Supplier(
@@ -54,16 +65,5 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
                 null,
                 null);
         }
-
-        public Name Name { get; set; }
-        public FantasyName FantasyName { get; set; }
-        public Cep Cep { get; set; }
-        public Address Address { get; set; }
-        public FederativeUnit FederativeUnit { get; set; }
-        public Phone? Phone { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public string? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 
-namespace CustomKeyboardsWeb.Data.Common.Extensions.MappingProfiles
+namespace CustomKeyboardsWeb.Application.Cummon.Extensions.MappingProfiles
 {
     public class ValueObjectsMappingProfile : Profile
     {

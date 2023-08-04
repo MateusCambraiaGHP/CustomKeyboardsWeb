@@ -4,6 +4,13 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
 {
     public class Key : AggregateRoot
     {
+        public Name Name { get; private set; }
+        public Price Price { get; private set; }
+        public string CreatedBy { get; private set; }
+        public DateTime CreatedAt { get; private set; }
+        public string? UpdatedBy { get; private set; }
+        public DateTime? UpdatedAt { get; private set; }
+
         protected Key() { }
 
         private Key(
@@ -38,12 +45,5 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
                 null,
                 null);
         }
-
-        public Name Name { get; set; }
-        public Price Price { get; set; }
-        public string CreatedBy { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public string? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
     }
 }

@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace CustomKeyboardsWeb.Domain.Primitives
+﻿namespace CustomKeyboardsWeb.Domain.Primitives
 {
     public abstract class ValueObject : IEquatable<ValueObject>
     {
