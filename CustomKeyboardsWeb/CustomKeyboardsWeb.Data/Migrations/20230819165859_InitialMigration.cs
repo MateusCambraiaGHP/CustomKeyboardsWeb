@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace CustomKeyboardsWeb.Infrastructure.Migrations
+namespace CustomKeyboardsWeb.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration
@@ -19,8 +18,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                 name: "Customer",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Name = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FantasyName = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: false)
@@ -52,8 +50,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                 name: "Key",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Name = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Price = table.Column<double>(type: "double", precision: 15, scale: 4, nullable: false),
@@ -76,8 +73,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                 name: "Supplier",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Name = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     FantasyName = table.Column<string>(type: "varchar(40)", maxLength: 40, nullable: false)
@@ -109,8 +105,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                 name: "Switch",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Name = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Color = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
@@ -135,12 +130,11 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                 name: "Keyboard",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Name = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    IdSwitch = table.Column<int>(type: "int", nullable: true),
-                    IdKey = table.Column<int>(type: "int", nullable: true),
+                    IdSwitch = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
+                    IdKey = table.Column<Guid>(type: "char(36)", nullable: true, collation: "ascii_general_ci"),
                     Price = table.Column<double>(type: "double", precision: 15, scale: 4, nullable: false),
                     CreatedBy = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -171,11 +165,10 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                 name: "PuchaseHistory",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IdCustomer = table.Column<int>(type: "int", nullable: false),
-                    IdSupplier = table.Column<int>(type: "int", nullable: false),
-                    IdKeyboard = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    IdCustomer = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    IdSupplier = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
+                    IdKeyboard = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
                     Price = table.Column<double>(type: "double", precision: 15, scale: 4, nullable: false),
                     PuchaseDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     Active = table.Column<string>(type: "varchar(1)", maxLength: 1, nullable: false)

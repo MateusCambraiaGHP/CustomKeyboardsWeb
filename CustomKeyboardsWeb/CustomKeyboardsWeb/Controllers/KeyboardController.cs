@@ -9,7 +9,7 @@ namespace CustomKeyboardsWeb.Controllers
 {
     [Route("api/v1.0/teclado/")]
     [ApiController]
-    public class KeyboardController : ControllerBase
+    public class KeyboardController : BaseController
     {
         private readonly IMediatorHandler _mediator;
 
@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<GetKeyboardByIdQueryResponse> Get(int id)
+        public async Task<GetKeyboardByIdQueryResponse> Get(Guid id)
         {
             var currentKeyboard = await _mediator.SendQuery(new GetKeyboardByIdQuery(id));
             return currentKeyboard;

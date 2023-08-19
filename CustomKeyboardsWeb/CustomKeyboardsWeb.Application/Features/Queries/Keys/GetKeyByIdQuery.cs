@@ -5,7 +5,7 @@ namespace CustomKeyboardsWeb.Application.Features.Queries.Keys
 {
     public class GetKeyByIdQuery : Query<GetKeyByIdQueryResponse>
     {
-        public int IdKey { get; set; }
-        public GetKeyByIdQuery(int idKey) => IdKey = idKey;
+        public Guid IdKey { get; set; }
+        public GetKeyByIdQuery(Guid idKey) => IdKey = idKey;
     }
 }

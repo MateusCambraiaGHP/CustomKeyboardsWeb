@@ -6,7 +6,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories
     {
         Task Create(Switch model);
         Task<Switch> Update(Switch model);
-        Task<Switch> FindById(int id);
+        Task<Switch> FindById(Guid id);
         Task<List<Switch>> GetAll();
     }
 }

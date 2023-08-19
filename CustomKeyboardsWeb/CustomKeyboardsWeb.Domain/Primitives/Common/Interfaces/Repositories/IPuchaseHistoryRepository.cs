@@ -6,7 +6,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories
     {
         Task Create(PuchaseHistory model);
         Task<PuchaseHistory> Update(PuchaseHistory model);
-        Task<PuchaseHistory> FindById(int id);
+        Task<PuchaseHistory> FindById(Guid id);
         Task<List<PuchaseHistory>> GetAll();
     }
 }

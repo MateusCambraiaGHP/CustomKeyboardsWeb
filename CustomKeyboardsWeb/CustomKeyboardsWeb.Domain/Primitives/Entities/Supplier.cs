@@ -10,10 +10,10 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
         public Address Address { get; private set; }
         public FederativeUnit FederativeUnit { get; private set; }
         public Phone? Phone { get; private set; }
-        public string CreatedBy { get; private set; }
-        public DateTime CreatedAt { get; private set; }
-        public string? UpdatedBy { get; private set; }
-        public DateTime? UpdatedAt { get; private set; }
+        public string CreatedBy { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public string? UpdatedBy { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         private Supplier() { }
 

@@ -4,9 +4,9 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
 {
     public class PuchaseHistory : AggregateRoot
     {
-        public int IdCustomer { get; private set; }
-        public int IdSupplier { get; private set; }
-        public int IdKeyboard { get; private set; }
+        public Guid IdCustomer { get; private set; }
+        public Guid IdSupplier { get; private set; }
+        public Guid IdKeyboard { get; private set; }
         public Customer? Customer { get; private set; }
         public Supplier? Supplier { get; private set; }
         public Keyboard? Keyboard { get; private set; }
@@ -16,9 +16,9 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
         private PuchaseHistory() { }
 
         private PuchaseHistory(
-            int idCustomer,
-            int idSupplier,
-            int idKeyboard,
+            Guid idCustomer,
+            Guid idSupplier,
+            Guid idKeyboard,
             Price price,
             string active,
             DateTime puchaseDate)
@@ -32,9 +32,9 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
         }
 
         public static PuchaseHistory Create(
-            int idCustomer,
-            int idSupplier,
-            int idKeyboard,
+            Guid idCustomer,
+            Guid idSupplier,
+            Guid idKeyboard,
             Price price,
             string active)
         {

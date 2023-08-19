@@ -9,7 +9,7 @@ namespace CustomKeyboardsWeb.Controllers
 {
     [Route("api/v1.0/tecla/")]
     [ApiController]
-    public class KeyController : ControllerBase
+    public class KeyController : BaseController
     {
         private readonly IMediatorHandler _mediator;
 
@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<GetKeyByIdQueryResponse> Get(int id)
+        public async Task<GetKeyByIdQueryResponse> Get(Guid id)
         {
             var currentKey = await _mediator.SendQuery(new GetKeyByIdQuery(id));
             return currentKey;

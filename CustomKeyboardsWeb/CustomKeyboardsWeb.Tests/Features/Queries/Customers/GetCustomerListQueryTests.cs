@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Tests.Features.Queries.Customers
         public async Task Handle_ValidRequest_ReturnsCustomerByIdQueryResponse()
         {
             // Arrange
-            var customerId = 95;
+            var customerId = Guid.NewGuid();
             var customerViewModel = new CustomerViewModel
             {
                 Id = customerId,
@@ -67,7 +67,7 @@ namespace CustomKeyboardsWeb.Tests.Features.Queries.Customers
         public async Task Handle_ExceptionThrown_ThrowsException()
         {
             // Arrange
-            var customerId = 1;
+            var customerId = Guid.NewGuid();
             var request = new GetCustumerByIdQuery(customerId);
             var cancellationToken = new CancellationToken();
 

@@ -9,7 +9,7 @@ namespace CustomKeyboardsWeb.Controllers
 {
     [Route("api/v1.0/fornecedor/")]
     [ApiController]
-    public class SupplierController : ControllerBase
+    public class SupplierController : BaseController
     {
         private readonly IMediatorHandler _mediator;
 
@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<GetSupplierByIdQueryResponse> Get(int id)
+        public async Task<GetSupplierByIdQueryResponse> Get(Guid id)
         {
             var currentSupplier = await _mediator.SendQuery(new GetSupplierByIdQuery(id));
             return currentSupplier;

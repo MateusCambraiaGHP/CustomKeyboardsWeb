@@ -15,7 +15,7 @@ namespace CustomKeyboardsWeb.Data.Repositories
             context.Set<Keyboard>();
         }
 
-        public override async Task<Keyboard> FindById(int id)
+        public override async Task<Keyboard> FindById(Guid id)
         {
             var currentKeyboard = await _dbSet
                 .AsNoTracking()

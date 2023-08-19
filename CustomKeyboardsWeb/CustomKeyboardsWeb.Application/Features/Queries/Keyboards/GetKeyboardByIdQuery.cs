@@ -1,13 +1,11 @@
 ﻿using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
 using CustomKeyboardsWeb.Core.Messages;
-using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.Queries.Keyboards
 {
     public class GetKeyboardByIdQuery : Query<GetKeyboardByIdQueryResponse> 
     {
-        public int IdKeyboard { get; set; }
-        public GetKeyboardByIdQuery(int idKeyboard) => IdKeyboard = idKeyboard;
+        public Guid IdKeyboard { get; set; }
+        public GetKeyboardByIdQuery(Guid idKeyboard) => IdKeyboard = idKeyboard;
     }
 }

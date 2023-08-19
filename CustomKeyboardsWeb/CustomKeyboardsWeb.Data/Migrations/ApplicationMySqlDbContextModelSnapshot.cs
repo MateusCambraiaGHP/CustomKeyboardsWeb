@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CustomKeyboardsWeb.Infrastructure.Migrations
+namespace CustomKeyboardsWeb.Data.Migrations
 {
     [DbContext(typeof(ApplicationMySqlDbContext))]
     partial class ApplicationMySqlDbContextModelSnapshot : ModelSnapshot
@@ -19,11 +19,11 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Customer", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Customer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Active")
                         .IsRequired()
@@ -50,11 +50,11 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.ToTable("Customer", (string)null);
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Key", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Key", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Active")
                         .IsRequired()
@@ -81,11 +81,11 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.ToTable("Key", (string)null);
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Keyboard", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboard", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Active")
                         .IsRequired()
@@ -100,11 +100,11 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<int?>("IdKey")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("IdKey")
+                        .HasColumnType("char(36)");
 
-                    b.Property<int?>("IdSwitch")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("IdSwitch")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime");
@@ -122,25 +122,25 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.ToTable("Keyboard", (string)null);
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.PuchaseHistory", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.PuchaseHistory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Active")
                         .IsRequired()
                         .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
-                    b.Property<int>("IdCustomer")
-                        .HasColumnType("int");
+                    b.Property<Guid>("IdCustomer")
+                        .HasColumnType("char(36)");
 
-                    b.Property<int>("IdKeyboard")
-                        .HasColumnType("int");
+                    b.Property<Guid>("IdKeyboard")
+                        .HasColumnType("char(36)");
 
-                    b.Property<int>("IdSupplier")
-                        .HasColumnType("int");
+                    b.Property<Guid>("IdSupplier")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("PuchaseDate")
                         .HasColumnType("datetime");
@@ -156,11 +156,11 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.ToTable("PuchaseHistory", (string)null);
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Supplier", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Supplier", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Active")
                         .IsRequired()
@@ -187,11 +187,11 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.ToTable("Supplier", (string)null);
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Switch", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Switch", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Active")
                         .IsRequired()
@@ -218,12 +218,12 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.ToTable("Switch", (string)null);
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Customer", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Customer", b =>
                 {
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Address", "Address", b1 =>
                         {
-                            b1.Property<int>("CustomerId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("CustomerId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -240,8 +240,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Cep", "Cep", b1 =>
                         {
-                            b1.Property<int>("CustomerId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("CustomerId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -259,8 +259,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.FantasyName", "FantasyName", b1 =>
                         {
-                            b1.Property<int>("CustomerId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("CustomerId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -278,8 +278,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.FederativeUnit", "FederativeUnit", b1 =>
                         {
-                            b1.Property<int>("CustomerId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("CustomerId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -297,8 +297,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Name", "Name", b1 =>
                         {
-                            b1.Property<int>("CustomerId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("CustomerId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -316,8 +316,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Phone", "Phone", b1 =>
                         {
-                            b1.Property<int>("CustomerId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("CustomerId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -351,12 +351,12 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.Navigation("Phone");
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Key", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Key", b =>
                 {
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Name", "Name", b1 =>
                         {
-                            b1.Property<int>("KeyId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("KeyId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -374,8 +374,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Price", "Price", b1 =>
                         {
-                            b1.Property<int>("KeyId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("KeyId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<double>("Value")
                                 .HasPrecision(15, 4)
@@ -397,22 +397,22 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Keyboard", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboard", b =>
                 {
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Key", "Key")
+                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Entities.Key", "Key")
                         .WithMany()
                         .HasForeignKey("IdKey")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Switch", "Switch")
+                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Entities.Switch", "Switch")
                         .WithMany()
                         .HasForeignKey("IdSwitch")
                         .OnDelete(DeleteBehavior.NoAction);
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Name", "Name", b1 =>
                         {
-                            b1.Property<int>("KeyboardId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("KeyboardId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -430,8 +430,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Price", "Price", b1 =>
                         {
-                            b1.Property<int>("KeyboardId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("KeyboardId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<double>("Value")
                                 .HasPrecision(15, 4)
@@ -457,21 +457,21 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.Navigation("Switch");
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.PuchaseHistory", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.PuchaseHistory", b =>
                 {
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Customer", "Customer")
+                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Entities.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("IdCustomer")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Keyboard", "Keyboard")
+                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboard", "Keyboard")
                         .WithMany()
                         .HasForeignKey("IdKeyboard")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
-                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Supplier", "Supplier")
+                    b.HasOne("CustomKeyboardsWeb.Domain.Primitives.Entities.Supplier", "Supplier")
                         .WithMany()
                         .HasForeignKey("IdSupplier")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -479,8 +479,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Price", "Price", b1 =>
                         {
-                            b1.Property<int>("PuchaseHistoryId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("PuchaseHistoryId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<double>("Value")
                                 .HasPrecision(15, 4)
@@ -505,12 +505,12 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.Navigation("Supplier");
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Supplier", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Supplier", b =>
                 {
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Address", "Address", b1 =>
                         {
-                            b1.Property<int>("SupplierId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("SupplierId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -528,8 +528,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Cep", "Cep", b1 =>
                         {
-                            b1.Property<int>("SupplierId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("SupplierId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -547,8 +547,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.FantasyName", "FantasyName", b1 =>
                         {
-                            b1.Property<int>("SupplierId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("SupplierId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -566,8 +566,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.FederativeUnit", "FederativeUnit", b1 =>
                         {
-                            b1.Property<int>("SupplierId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("SupplierId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -585,8 +585,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Name", "Name", b1 =>
                         {
-                            b1.Property<int>("SupplierId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("SupplierId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -604,8 +604,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Phone", "Phone", b1 =>
                         {
-                            b1.Property<int>("SupplierId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("SupplierId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -639,12 +639,12 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
                     b.Navigation("Phone");
                 });
 
-            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Switch", b =>
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Switch", b =>
                 {
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Color", "Color", b1 =>
                         {
-                            b1.Property<int>("SwitchId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("SwitchId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -662,8 +662,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Name", "Name", b1 =>
                         {
-                            b1.Property<int>("SwitchId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("SwitchId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<string>("Value")
                                 .IsRequired()
@@ -681,8 +681,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Migrations
 
                     b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Price", "Price", b1 =>
                         {
-                            b1.Property<int>("SwitchId")
-                                .HasColumnType("int");
+                            b1.Property<Guid>("SwitchId")
+                                .HasColumnType("char(36)");
 
                             b1.Property<double>("Value")
                                 .HasPrecision(15, 4)
