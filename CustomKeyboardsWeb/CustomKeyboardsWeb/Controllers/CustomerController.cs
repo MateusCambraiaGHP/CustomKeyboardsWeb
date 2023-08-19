@@ -39,7 +39,7 @@ namespace CustomKeyboardsWeb.Controllers
             return currentCustomer;
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<UpdateCustomerCommandResponse> Edit(CustomerViewModel model)
         {
             var currentCustomer = await _mediator.SendCommand(new UpdateCustomerCommand(model));

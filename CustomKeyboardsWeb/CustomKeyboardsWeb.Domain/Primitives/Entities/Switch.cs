@@ -8,9 +8,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
         public Color Color { get; private set; }
         public Price Price { get; private set; }
         public string CreatedBy { get; set; }
-        public DateTime CreatedAt { get; set; }
         public string? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
 
         private Switch() { }
 
@@ -20,18 +18,14 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
             Price price,
             string active,
             string createdBy,
-            DateTime createdAt,
-            string? updatedBy,
-            DateTime? updatedAt)
+            string? updatedBy)
         {
             Name = name;
             Color = color;
             Price = price;
             Active = active;
             CreatedBy = createdBy;
-            CreatedAt = createdAt;
             UpdatedBy = updatedBy;
-            UpdatedAt = updatedAt;
         }
 
         public static Switch Create(
@@ -46,8 +40,6 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
                 price,
                 active,
                 "Administator",
-                DateTime.UtcNow,
-                null,
                 null);
         }
     }

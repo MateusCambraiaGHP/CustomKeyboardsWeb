@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using CustomKeyboardsWeb.Core.Data;
+﻿using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Data.Common.Interfaces;
 using CustomKeyboardsWeb.Data.Data;
 using CustomKeyboardsWeb.Data.Repositories;
@@ -21,6 +20,7 @@ namespace CustomKeyboardsWeb.Data.Common.Extensions
             services.AddScoped<IKeyRepository, KeyRepository>();
             services.AddScoped<IPuchaseHistoryRepository, PuchaseHistoryRepository>();
             services.AddScoped<ISwitchRepository, SwitchRepository>();
+            services.AddScoped<IMemberRepository, MemberRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             Assembly assembly = Assembly.GetExecutingAssembly();
             var mappingProfiles = assembly.GetTypes().Where(a => a.Name.Contains("MappingProfile"));

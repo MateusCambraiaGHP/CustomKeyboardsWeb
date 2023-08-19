@@ -38,7 +38,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
                     return ResponseOnFailValidation("", request.ValidationResult);
 
                 Customer customerMap = _mapper.Map<Customer>(request.CustomerViewModel);
-                customerMap.CreatedAt = DateTime.UtcNow;
                 customerMap.CreatedBy = "Administrator";
                 await _customerRepository.Update(customerMap);
                 await _unitOfWork.CommitChangesAsync();

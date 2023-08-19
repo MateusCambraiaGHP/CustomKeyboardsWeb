@@ -38,7 +38,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
                     return ResponseOnFailValidation("", request.ValidationResult);
 
                 var keyboardMap = _mapper.Map<Keyboard>(request.KeyboardViewModel);
-                keyboardMap.CreatedAt = DateTime.UtcNow;
                 keyboardMap.CreatedBy = "Administrator";
                 await _keyboardRepository.Update(keyboardMap);
                 await _unitOfWork.CommitChangesAsync();

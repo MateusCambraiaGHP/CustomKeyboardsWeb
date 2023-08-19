@@ -39,7 +39,7 @@ namespace CustomKeyboardsWeb.Controllers
             return currentSwitch;
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<UpdateSwitchCommandResponse> Edit(SwitchViewModel model)
         {
             var currentSwitch = await _mediator.SendCommand(new UpdateSwitchCommand(model));

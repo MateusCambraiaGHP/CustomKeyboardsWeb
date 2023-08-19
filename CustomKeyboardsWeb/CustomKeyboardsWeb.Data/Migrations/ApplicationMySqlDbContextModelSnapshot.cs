@@ -30,15 +30,15 @@ namespace CustomKeyboardsWeb.Data.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("InsertionDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("LastModification")
                         .HasColumnType("datetime");
 
                     b.Property<string>("UpdatedBy")
@@ -61,15 +61,15 @@ namespace CustomKeyboardsWeb.Data.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("InsertionDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("LastModification")
                         .HasColumnType("datetime");
 
                     b.Property<string>("UpdatedBy")
@@ -92,9 +92,6 @@ namespace CustomKeyboardsWeb.Data.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -106,7 +103,10 @@ namespace CustomKeyboardsWeb.Data.Migrations
                     b.Property<Guid?>("IdSwitch")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("InsertionDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("LastModification")
                         .HasColumnType("datetime");
 
                     b.Property<string>("UpdatedBy")
@@ -120,6 +120,37 @@ namespace CustomKeyboardsWeb.Data.Migrations
                     b.HasIndex("IdSwitch");
 
                     b.ToTable("Keyboard", (string)null);
+                });
+
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Member", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Active")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("varchar(1)");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.Property<DateTime>("InsertionDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("LastModification")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Member", (string)null);
                 });
 
             modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.PuchaseHistory", b =>
@@ -167,15 +198,15 @@ namespace CustomKeyboardsWeb.Data.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("InsertionDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("LastModification")
                         .HasColumnType("datetime");
 
                     b.Property<string>("UpdatedBy")
@@ -198,15 +229,15 @@ namespace CustomKeyboardsWeb.Data.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("varchar(1)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime");
-
                     b.Property<string>("CreatedBy")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
-                    b.Property<DateTime?>("UpdatedAt")
+                    b.Property<DateTime>("InsertionDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("LastModification")
                         .HasColumnType("datetime");
 
                     b.Property<string>("UpdatedBy")
@@ -455,6 +486,118 @@ namespace CustomKeyboardsWeb.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Switch");
+                });
+
+            modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.Member", b =>
+                {
+                    b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Email", "Email", b1 =>
+                        {
+                            b1.Property<Guid>("MemberId")
+                                .HasColumnType("char(36)");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasMaxLength(40)
+                                .HasColumnType("varchar(40)")
+                                .HasColumnName("Email");
+
+                            b1.HasKey("MemberId");
+
+                            b1.ToTable("Member");
+
+                            b1.WithOwner()
+                                .HasForeignKey("MemberId");
+                        });
+
+                    b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Password", "Password", b1 =>
+                        {
+                            b1.Property<Guid>("MemberId")
+                                .HasColumnType("char(36)");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasMaxLength(60)
+                                .HasColumnType("varchar(60)")
+                                .HasColumnName("Password");
+
+                            b1.HasKey("MemberId");
+
+                            b1.ToTable("Member");
+
+                            b1.WithOwner()
+                                .HasForeignKey("MemberId");
+                        });
+
+                    b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Address", "Address", b1 =>
+                        {
+                            b1.Property<Guid>("MemberId")
+                                .HasColumnType("char(36)");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasColumnType("longtext")
+                                .HasColumnName("AddressValue");
+
+                            b1.HasKey("MemberId");
+
+                            b1.ToTable("Member");
+
+                            b1.WithOwner()
+                                .HasForeignKey("MemberId");
+                        });
+
+                    b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Name", "Name", b1 =>
+                        {
+                            b1.Property<Guid>("MemberId")
+                                .HasColumnType("char(36)");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasMaxLength(20)
+                                .HasColumnType("varchar(20)")
+                                .HasColumnName("Name");
+
+                            b1.HasKey("MemberId");
+
+                            b1.ToTable("Member");
+
+                            b1.WithOwner()
+                                .HasForeignKey("MemberId");
+                        });
+
+                    b.OwnsOne("CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects.Phone", "Phone", b1 =>
+                        {
+                            b1.Property<Guid>("MemberId")
+                                .HasColumnType("char(36)");
+
+                            b1.Property<string>("Value")
+                                .IsRequired()
+                                .HasMaxLength(20)
+                                .HasColumnType("varchar(20)")
+                                .HasColumnName("Phone");
+
+                            b1.HasKey("MemberId");
+
+                            b1.ToTable("Member");
+
+                            b1.WithOwner()
+                                .HasForeignKey("MemberId");
+                        });
+
+                    b.Navigation("Address")
+                        .IsRequired();
+
+                    b.Navigation("Email")
+                        .IsRequired();
+
+                    b.Navigation("Name")
+                        .IsRequired();
+
+                    b.Navigation("Password")
+                        .IsRequired();
+
+                    b.Navigation("Phone")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CustomKeyboardsWeb.Domain.Primitives.Entities.PuchaseHistory", b =>

@@ -39,7 +39,7 @@ namespace CustomKeyboardsWeb.Controllers
             return currentKeyboard;
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<UpdateKeyboardCommandResponse> Edit(KeyboardViewModel model)
         {
             var currentKeyboard = await _mediator.SendCommand(new UpdateKeyboardCommand(model));

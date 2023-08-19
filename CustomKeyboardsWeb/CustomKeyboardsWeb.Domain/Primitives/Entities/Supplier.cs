@@ -11,9 +11,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
         public FederativeUnit FederativeUnit { get; private set; }
         public Phone? Phone { get; private set; }
         public string CreatedBy { get; set; }
-        public DateTime CreatedAt { get; set; }
         public string? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
 
         private Supplier() { }
 
@@ -26,9 +24,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
             Phone? phone,
             string active,
             string createdBy,
-            DateTime createdAt,
-            string? updatedBy,
-            DateTime? updatedAt)
+            string? updatedBy)
         {
             Name = name;
             FantasyName = fantasyName;
@@ -38,9 +34,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
             Phone = phone;
             Active = active;
             CreatedBy = createdBy;
-            CreatedAt = createdAt;
             UpdatedBy = updatedBy;
-            UpdatedAt = updatedAt;
         }
 
         public static Supplier Create(
@@ -61,8 +55,6 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
                 phone,
                 active,
                 "Administrator",
-                DateTime.UtcNow,
-                null,
                 null);
         }
     }

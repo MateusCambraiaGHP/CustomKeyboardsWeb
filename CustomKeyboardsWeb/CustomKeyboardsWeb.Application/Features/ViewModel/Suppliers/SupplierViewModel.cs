@@ -2,6 +2,7 @@
 {
     public class SupplierViewModel
     {
+        public Guid? Id { get; set; }
         public string? Active { get; set; }
         public string? Name { get; set; }
         public string? FantasyName { get; set; }

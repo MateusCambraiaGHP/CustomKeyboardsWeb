@@ -39,7 +39,7 @@ namespace CustomKeyboardsWeb.Controllers
             return currentSupplier;
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<UpdateSupplierCommandResponse> Edit(SupplierViewModel model)
         {
             var currentSupplier = await _mediator.SendCommand(new UpdateSupplierCommand(model));

@@ -15,6 +15,8 @@ namespace CustomKeyboardsWeb.Application.Cummon.Extensions.MappingProfiles
             CreateMap<Phone, string>().ConvertUsing(p => p.Value);
             CreateMap<FederativeUnit, string>().ConvertUsing(fu => fu.Value);
             CreateMap<Color, string>().ConvertUsing(c => c.Value);
+            CreateMap<Email, string>().ConvertUsing(c => c.Value);
+            CreateMap<Password, string>().ConvertUsing(c => c.Value);
         }
     }
 }
