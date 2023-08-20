@@ -9,7 +9,7 @@ namespace CustomKeyboardsWeb.Controllers
 {
     [Route("api/v1.0/switch/")]
     [ApiController]
-    public class SwitchController : ControllerBase
+    public class SwitchController : BaseController
     {
         private readonly IMediatorHandler _mediator;
 
@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<GetSwitchByIdQueryResponse> Get(int id)
+        public async Task<GetSwitchByIdQueryResponse> Get(Guid id)
         {
             var currentSwitch = await _mediator.SendQuery(new GetSwitchByIdQuery(id));
             return currentSwitch;
@@ -39,7 +39,7 @@ namespace CustomKeyboardsWeb.Controllers
             return currentSwitch;
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<UpdateSwitchCommandResponse> Edit(SwitchViewModel model)
         {
             var currentSwitch = await _mediator.SendCommand(new UpdateSwitchCommand(model));

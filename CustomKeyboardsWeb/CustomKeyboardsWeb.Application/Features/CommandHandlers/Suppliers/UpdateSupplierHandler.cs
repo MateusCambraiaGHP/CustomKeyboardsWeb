@@ -38,7 +38,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                     return ResponseOnFailValidation("", request.ValidationResult);
 
                 var supplierMap = _mapper.Map<Supplier>(request.SupplierViewModel);
-                supplierMap.CreatedAt = DateTime.UtcNow;
                 supplierMap.CreatedBy = "Administrator";
                 await _supplierRepository.Update(supplierMap);
                 await _unitOfWork.CommitChangesAsync();

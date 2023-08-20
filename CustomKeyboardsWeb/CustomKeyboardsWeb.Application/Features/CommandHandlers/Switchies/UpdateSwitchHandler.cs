@@ -38,7 +38,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
                     return ResponseOnFailValidation("", request.ValidationResult);
 
                 var switchMap = _mapper.Map<Switch>(request.SwitchViewModel);
-                switchMap.CreatedAt = DateTime.UtcNow;
                 switchMap.CreatedBy = "Administrator";
                 await _switchRepository.Update(switchMap);
                 await _unitOfWork.CommitChangesAsync();

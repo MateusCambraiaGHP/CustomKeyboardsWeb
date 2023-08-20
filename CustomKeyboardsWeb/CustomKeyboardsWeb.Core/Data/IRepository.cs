@@ -6,7 +6,7 @@
 
         Task<TEntity> Update(TEntity entityModel);
 
-        Task<TEntity> FindById(int id);
+        Task<TEntity> FindById(Guid id);
 
         Task<List<TEntity>> GetAll();
     }

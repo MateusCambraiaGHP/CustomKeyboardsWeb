@@ -26,13 +26,13 @@ namespace CustomKeyboardsWeb.Data.Mappings
                 .HasColumnName("Price")
                 .HasPrecision(15, 4);
 
-            entity.Property(e => e.CreatedAt)
+            entity.Property(e => e.InsertionDate)
                 .HasColumnType("datetime");
 
             entity.Property(e => e.CreatedBy)
                 .HasMaxLength(20);
 
-            entity.Property(e => e.UpdatedAt)
+            entity.Property(e => e.LastModification)
                 .HasColumnType("datetime");
 
             entity.Property(e => e.UpdatedBy)

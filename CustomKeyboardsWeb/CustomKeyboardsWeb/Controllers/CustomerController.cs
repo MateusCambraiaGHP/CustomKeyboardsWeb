@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
-    [Route("api/v1.0/cliente/")]
+    [Route("api/v1.0/customer/")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CustomerController : BaseController
     {
         private readonly IMediatorHandler _mediator;
 
@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<GetCustomerByIdQueryResponse> GetById(int id)
+        public async Task<GetCustomerByIdQueryResponse> GetById(Guid id)
         {
             var currentCustomer = await _mediator.SendQuery(new GetCustumerByIdQuery(id));
             return currentCustomer;
@@ -39,7 +39,7 @@ namespace CustomKeyboardsWeb.Controllers
             return currentCustomer;
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<UpdateCustomerCommandResponse> Edit(CustomerViewModel model)
         {
             var currentCustomer = await _mediator.SendCommand(new UpdateCustomerCommand(model));

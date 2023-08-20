@@ -6,7 +6,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories
     {
         Task Create(Supplier model);
         Task<Supplier> Update(Supplier model);
-        Task<Supplier> FindById(int id);
+        Task<Supplier> FindById(Guid id);
         Task<List<Supplier>> GetAll();
     }
 }

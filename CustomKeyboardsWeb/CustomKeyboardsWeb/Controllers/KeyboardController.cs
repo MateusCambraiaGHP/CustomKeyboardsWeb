@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
-    [Route("api/v1.0/teclado/")]
+    [Route("api/v1.0/keyboard/")]
     [ApiController]
-    public class KeyboardController : ControllerBase
+    public class KeyboardController : BaseController
     {
         private readonly IMediatorHandler _mediator;
 
@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<GetKeyboardByIdQueryResponse> Get(int id)
+        public async Task<GetKeyboardByIdQueryResponse> Get(Guid id)
         {
             var currentKeyboard = await _mediator.SendQuery(new GetKeyboardByIdQuery(id));
             return currentKeyboard;
@@ -39,7 +39,7 @@ namespace CustomKeyboardsWeb.Controllers
             return currentKeyboard;
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public async Task<UpdateKeyboardCommandResponse> Edit(KeyboardViewModel model)
         {
             var currentKeyboard = await _mediator.SendCommand(new UpdateKeyboardCommand(model));

@@ -38,9 +38,32 @@ namespace CustomKeyboardsWeb.Data.Data
         public DbSet<PuchaseHistory> PuchaseHistory { get; set; }
         public DbSet<Supplier> Supplier { get; set; }
         public DbSet<Switch> Switch { get; set; }
+        public DbSet<Member> Member { get; set; }
 
         public async Task<int> Save()
         {
+            var entries = ChangeTracker.Entries()
+                .Where(e => e.Entity is EntityBase &&
+                    (e.State == EntityState.Added ||
+                     e.State == EntityState.Modified));
+
+            foreach (var entry in entries)
+            {
+                var entity = ((EntityBase)entry.Entity);
+                entity.SetLastModification(DateTime.Now);
+
+                switch (entry.State)
+                {
+                    case EntityState.Detached:
+                    case EntityState.Modified:
+                        entry.Property(nameof(entity.InsertionDate)).IsModified = false;
+                        break;
+                    case EntityState.Added:
+                        entity.SetInsertionDate(DateTime.Now);
+                        break;
+                }
+            }
+
             var success = await SaveChangesAsync();
             if (success > 0) PublishEvents();
 

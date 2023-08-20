@@ -28,7 +28,7 @@ namespace CustomKeyboardsWeb.Data.Repositories
             return entityModel;
         }
 
-        public virtual async Task<TEntity> FindById(int id)
+        public virtual async Task<TEntity> FindById(Guid id)
         {
             var currentEntity = await _dbSet.AsNoTracking()
                 .Where(c => c.Id == id).FirstOrDefaultAsync();

@@ -5,8 +5,8 @@ namespace CustomKeyboardsWeb.Application.Features.Queries.Customers
 {
     public class GetCustumerByIdQuery : Query<GetCustomerByIdQueryResponse> 
     {
-        public int IdCustomer { get; set; }
+        public Guid IdCustomer { get; set; }
 
-        public GetCustumerByIdQuery(int idCustomer) => IdCustomer = idCustomer;
+        public GetCustumerByIdQuery(Guid idCustomer) => IdCustomer = idCustomer;
     }
 }

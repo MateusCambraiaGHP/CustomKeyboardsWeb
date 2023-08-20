@@ -5,7 +5,7 @@ namespace CustomKeyboardsWeb.Application.Features.Queries.Suppliers
 {
     public class GetSupplierByIdQuery : Query<GetSupplierByIdQueryResponse>
     {
-        public int IdSupplier { get; set; }
-        public GetSupplierByIdQuery(int idSupplier) => IdSupplier = idSupplier;
+        public Guid IdSupplier { get; set; }
+        public GetSupplierByIdQuery(Guid idSupplier) => IdSupplier = idSupplier;
     }
 }

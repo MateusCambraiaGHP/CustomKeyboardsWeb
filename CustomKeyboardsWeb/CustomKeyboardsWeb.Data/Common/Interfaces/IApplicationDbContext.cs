@@ -12,6 +12,7 @@ namespace CustomKeyboardsWeb.Data.Common.Interfaces
         public DbSet<PuchaseHistory> PuchaseHistory { get; set; }
         public DbSet<Supplier> Supplier { get; set; }
         public DbSet<Switch> Switch { get; set; }
+        public DbSet<Member> Member { get; set; }
         public Task<int> Save();
         DbSet<TEntity> Set<TEntity>() where TEntity : Entity;
     }

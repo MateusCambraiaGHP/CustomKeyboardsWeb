@@ -20,6 +20,10 @@ namespace CustomKeyboardsWeb.Data.Mappings
             entity.Property(e => e.PuchaseDate)
                 .HasColumnType("datetime");
 
+            entity.Ignore(e => e.InsertionDate);
+
+            entity.Ignore(e => e.LastModification);
+
             entity.Property(e => e.Active)
                 .HasMaxLength(1);
 
