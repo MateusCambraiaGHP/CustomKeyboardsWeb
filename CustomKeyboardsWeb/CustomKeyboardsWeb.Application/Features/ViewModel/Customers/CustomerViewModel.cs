@@ -11,8 +11,8 @@
         public string? FederativeUnit { get; set; }
         public string? Phone { get; set; }
         public string CreatedBy { get; set; } = "Administrator";
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
         public string? UpdatedBy { get; set; }
-        public DateTime? UpdatedAt { get; set; }
+        public DateTime InsertionDate { get; protected set; }
+        public DateTime LastModification { get; protected set; }
     }
 }

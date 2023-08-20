@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
-    [Route("api/v1.0/tecla/")]
+    [Route("api/v1.0/key/")]
     [ApiController]
     public class KeyController : BaseController
     {

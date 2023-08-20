@@ -12,5 +12,7 @@ namespace CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards
         public double Price { get; set; }
         public Switch Switch { get; set; }
         public Key Key { get; set; }
+        public DateTime InsertionDate { get; protected set; }
+        public DateTime LastModification { get; protected set; }
     }
 }

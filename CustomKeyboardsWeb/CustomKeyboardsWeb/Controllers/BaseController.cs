@@ -3,6 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public abstract class BaseController : ControllerBase { }
 }

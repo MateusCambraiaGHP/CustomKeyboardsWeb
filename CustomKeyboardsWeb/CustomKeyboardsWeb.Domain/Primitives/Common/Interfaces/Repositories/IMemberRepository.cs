@@ -7,6 +7,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories
         Task Create(Member model);
         Task<Member> Update(Member model);
         Task<Member> FindById(Guid id);
+        Task<Member> FindByEmailAndPasswork(Member model);
         Task<List<Member>> GetAll();
     }
 }

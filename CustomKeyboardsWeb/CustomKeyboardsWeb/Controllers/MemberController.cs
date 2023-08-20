@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
-    [Route("api/v1.0/membro/")]
+    [Route("api/v1.0/member/")]
     [ApiController]
     public class MemberController : BaseController
     {

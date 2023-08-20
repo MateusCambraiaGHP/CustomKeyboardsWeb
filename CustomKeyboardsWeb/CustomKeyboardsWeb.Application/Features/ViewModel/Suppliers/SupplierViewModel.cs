@@ -10,5 +10,7 @@
         public string? Adress { get; set; }
         public string? FederativeUnit { get; set; }
         public string? Phone { get; set; }
+        public DateTime InsertionDate { get; protected set; }
+        public DateTime LastModification { get; protected set; }
     }
 }
