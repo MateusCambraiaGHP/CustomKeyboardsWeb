@@ -52,7 +52,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Login
                 if (currentMember is null)
                     return new TryLoginCommandResponse(false, "Usuário não existente");
 
-                string token = _jwtProvider.Generate(currentMember);
+                string token = _jwtProvider.GenerateToken(currentMember);
 
                 return new TryLoginCommandResponse(token);
             }

@@ -17,7 +17,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Authentication
             _jwtOptions = options.Value;
         }
 
-        public string Generate(Member member)
+        public string GenerateToken(Member member)
         {
             var claims = new Claim[] { 
                 new Claim(JwtRegisteredClaimNames.Sub, member.Id.ToString()),
@@ -34,7 +34,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Authentication
                 _jwtOptions.Audience,
                 claims,
                 null,
-                DateTime.Now.AddDays(5),
+                DateTime.UtcNow.AddHours(10),
                 signingCredentials);
 
             string tokenValue = new JwtSecurityTokenHandler()
