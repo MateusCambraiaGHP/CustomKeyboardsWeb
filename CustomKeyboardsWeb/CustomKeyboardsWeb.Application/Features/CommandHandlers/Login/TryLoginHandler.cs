@@ -50,7 +50,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Login
                 var currentMember = await _memberRepository.FindByEmailAndPasswork(member);
 
                 if (currentMember is null)
-                    return new TryLoginCommandResponse(false, "Usuário não existente");
+                    return new TryLoginCommandResponse(false, "Não foi possivel gerar o token");
 
                 string token = _jwtProvider.GenerateToken(currentMember);
 
