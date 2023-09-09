@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  db:
+    image: mysql
+    environment:
+      TZ: UTC
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: custom-keyboards-web
+      MYSQL_PASSWORD: root123
+    ports:
+      - "1433:3306"
+
+  customkeyboardsweb: 
+    image: custom-keyboards-web:latest
+    build:
+      context: .
+      dockerfile: CustomKeyboardsWeb/Dockerfile
+    environment:
+      TZ: UTC
+      ASPNETCORE_ENVIRONMENT: Production
+    ports:
+      - "44300:80"
+    depends_on:
+      - db
+

@@ -43,6 +43,7 @@ builder.Services.AddSwaggerGen(options =>
         });
 });
 
+
 builder.Services.AddMediator();
 builder.Services.AddInfrastructure();
 builder.Services.AddApplication();
@@ -76,6 +77,8 @@ builder.Services.AddCors(options =>
         });
 });
 var app = builder.Build();
+
+app.Services.MigrateDatabase();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

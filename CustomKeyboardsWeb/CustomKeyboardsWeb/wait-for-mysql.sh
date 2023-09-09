@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Wait for MySQL to become available
+until nc -z -v -w30 <root> 3306
+do
+  echo "Waiting for MySQL server to start..."
+  sleep 5
+done
+
+echo "MySQL is available, starting the application."
+
+# Execute your application's entry point command
+exec "$@"

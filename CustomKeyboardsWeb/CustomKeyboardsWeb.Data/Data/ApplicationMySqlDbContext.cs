@@ -4,6 +4,7 @@ using CustomKeyboardsWeb.Core.Messages;
 using CustomKeyboardsWeb.Data.Common.Interfaces;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 
 namespace CustomKeyboardsWeb.Data.Data
@@ -39,6 +40,7 @@ namespace CustomKeyboardsWeb.Data.Data
         public DbSet<Supplier> Supplier { get; set; }
         public DbSet<Switch> Switch { get; set; }
         public DbSet<Member> Member { get; set; }
+        public override DatabaseFacade Database => base.Database;
 
         public async Task<int> Save()
         {
