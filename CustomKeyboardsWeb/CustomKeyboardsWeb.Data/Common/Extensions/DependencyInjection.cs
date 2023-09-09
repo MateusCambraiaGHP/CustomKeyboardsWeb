@@ -4,6 +4,7 @@ using CustomKeyboardsWeb.Data.Data;
 using CustomKeyboardsWeb.Data.Repositories;
 using CustomKeyboardsWeb.Data.Transaction;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -29,6 +30,15 @@ namespace CustomKeyboardsWeb.Data.Common.Extensions
                 services.AddAutoMapper(mappingProfile);
             }
             return services;
+        }
+
+        public static void MigrateDatabase(this IServiceProvider provider)
+        {
+            using var scope = provider.CreateScope();
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<IApplicationDbContext>();
+            if (context.Database.GetPendingMigrations().Any())
+                context.Database.Migrate();
         }
     }
 }

@@ -43,12 +43,15 @@ builder.Services.AddSwaggerGen(options =>
         });
 });
 
+
 builder.Services.AddMediator();
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddData();
 
 var app = builder.Build();
+
+app.Services.MigrateDatabase();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

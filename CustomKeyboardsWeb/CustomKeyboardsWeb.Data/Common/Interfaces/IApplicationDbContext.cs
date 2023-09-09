@@ -1,6 +1,7 @@
 ﻿using CustomKeyboardsWeb.Core.DomainObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace CustomKeyboardsWeb.Data.Common.Interfaces
 {
@@ -13,6 +14,7 @@ namespace CustomKeyboardsWeb.Data.Common.Interfaces
         public DbSet<Supplier> Supplier { get; set; }
         public DbSet<Switch> Switch { get; set; }
         public DbSet<Member> Member { get; set; }
+        public DatabaseFacade Database { get;}
         public Task<int> Save();
         DbSet<TEntity> Set<TEntity>() where TEntity : Entity;
     }

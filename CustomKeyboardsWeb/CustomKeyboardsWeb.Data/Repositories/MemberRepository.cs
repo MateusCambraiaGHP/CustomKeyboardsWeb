@@ -20,7 +20,7 @@ namespace CustomKeyboardsWeb.Data.Repositories
         {
             var currentMember = await _context.Member
                 .AsNoTracking()
-                .FirstAsync(m =>
+                .FirstOrDefaultAsync(m =>
                     m.Email.Value == model.Email.Value &&
                     m.Password.Value == m.Password.Value);
 
