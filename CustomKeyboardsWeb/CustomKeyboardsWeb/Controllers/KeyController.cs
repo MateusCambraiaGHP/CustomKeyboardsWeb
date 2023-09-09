@@ -1,46 +1,49 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
-using CustomKeyboardsWeb.Application.Dto;
+﻿using CustomKeyboardsWeb.Application.Features.Commands.Keys;
+using CustomKeyboardsWeb.Application.Features.Queries.Keys;
+using CustomKeyboardsWeb.Application.Features.Responses.Keys;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
+using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
-    [Route("api/v1.0/tecla/")]
+    [Route("api/v1.0/key/")]
     [ApiController]
-    public class KeyController : ControllerBase
+    public class KeyController : BaseController
     {
-        private readonly IKeyService _keyService;
+        private readonly IMediatorHandler _mediator;
 
-        public KeyController(
-            IKeyService keyService)
+        public KeyController(IMediatorHandler mediator)
         {
-            _keyService = keyService;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<List<KeyDto>> Get()
+        public async Task<GetKeyListQueryResponse> GetAll()
         {
-            return await _keyService.GetAll();
+            var currentKeyList = await _mediator.SendQuery(new GetKeyListQuery());
+            return currentKeyList;
         }
 
         [HttpGet("{id}")]
-        public async Task<KeyDto> Get(int id)
+        public async Task<GetKeyByIdQueryResponse> Get(Guid id)
         {
-            return await _keyService.FindByIdAsync(id);
+            var currentKey = await _mediator.SendQuery(new GetKeyByIdQuery(id));
+            return currentKey;
         }
 
         [HttpPost("save")]
-        [ValidateAntiForgeryToken]
-        public async Task<KeyDto> Save(KeyDto model)
+        public async Task<CreateKeyCommandResponse> Save(KeyViewModel model)
         {
-            return await _keyService.Save(model);
+            var currentKey = await _mediator.SendCommand(new CreateKeyCommand(model));
+            return currentKey;
         }
 
-        [HttpPost("update")]
-        [ValidateAntiForgeryToken]
-        public async Task<KeyDto> Edit(KeyDto model)
+        [HttpPut("update")]
+        public async Task<UpdateKeyCommandResponse> Edit(KeyViewModel model)
         {
-            return await _keyService.Edit(model);
+            var currentKey = await _mediator.SendCommand(new UpdateKeyCommand(model));
+            return currentKey;
         }
-
     }
 }

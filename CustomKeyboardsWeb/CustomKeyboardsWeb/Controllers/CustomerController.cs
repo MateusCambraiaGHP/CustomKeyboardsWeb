@@ -1,46 +1,49 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
-using CustomKeyboardsWeb.Application.Dto;
+﻿using CustomKeyboardsWeb.Application.Features.Commands.Customers;
+using CustomKeyboardsWeb.Application.Features.Queries.Customers;
+using CustomKeyboardsWeb.Application.Features.Responses.Customers;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
+using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
-    [Route("api/v1.0/cliente/")]
+    [Route("api/v1.0/customer/")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class CustomerController : BaseController
     {
-        private readonly ICustomerService _customerService;
+        private readonly IMediatorHandler _mediator;
 
-        public CustomerController(
-            ICustomerService customerService)
+        public CustomerController(IMediatorHandler mediator)
         {
-            _customerService = customerService;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<List<CustomerDto>> GetAll()
+        public async Task<GetCustomerListQueryResponse> GetAll()
         {
-            return await _customerService.GetAll();
+            var customers = await _mediator.SendQuery(new GetCustomerListQuery());
+            return customers;
         }
 
         [HttpGet("{id}")]
-        public async Task<CustomerDto> GetById(int id)
+        public async Task<GetCustomerByIdQueryResponse> GetById(Guid id)
         {
-            return await _customerService.FindByIdAsync(id);
+            var currentCustomer = await _mediator.SendQuery(new GetCustumerByIdQuery(id));
+            return currentCustomer;
         }
 
         [HttpPost("save")]
-        [ValidateAntiForgeryToken]
-        public async Task<CustomerDto> Save(CustomerDto model)
+        public async Task<CreateCustomerCommandResponse> Save(CustomerViewModel model)
         {
-            return await _customerService.Save(model);
+            var currentCustomer = await _mediator.SendCommand(new CreateCustomerCommand(model));
+            return currentCustomer;
         }
 
-        [HttpPost("update")]
-        [ValidateAntiForgeryToken]
-        public async Task<CustomerDto> Edit(CustomerDto model)
+        [HttpPut("update")]
+        public async Task<UpdateCustomerCommandResponse> Edit(CustomerViewModel model)
         {
-            return await _customerService.Edit(model);
+            var currentCustomer = await _mediator.SendCommand(new UpdateCustomerCommand(model));
+            return currentCustomer;
         }
-
     }
 }

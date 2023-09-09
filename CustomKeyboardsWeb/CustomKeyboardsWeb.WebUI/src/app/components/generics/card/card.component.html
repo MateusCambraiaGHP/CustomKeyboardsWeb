@@ -1,1 +1,10 @@
-<p>card works!</p>
+<div class="card {{_class}}">
+	<div *ngIf="title" class="card-header card-header-primary">
+    <h4 class="card-title ">{{title}}</h4>
+    <p class="card-category"> {{subtitle}}</p>
+  </div>
+	<div class="card-body">
+		<ng-content> </ng-content>
+	</div>
+	<ng-content select="[footer]"> </ng-content>
+</div>

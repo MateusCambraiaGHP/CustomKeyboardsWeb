@@ -1,0 +1,29 @@
+{
+  "tabWidth": 2,
+  "useEditorConfig": false,
+  "singleQuote": true,
+  "semi": true,
+  "arrowParens": "avoid",
+  "bracketSpacing": true,
+  "bracesSpacing": true,
+  "useTabs": false,
+  "trailingComma": "none",
+  "withNodeModules": false,
+  "printWidth": 80,
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "options": {
+        "printWidth": 120,
+        "parser": "angular"
+      }
+    },
+    {
+      "files": ["*.ts"],
+      "options": {
+        "parser": "typescript",
+        "singleQuote": false
+      }
+    }
+  ]
+}

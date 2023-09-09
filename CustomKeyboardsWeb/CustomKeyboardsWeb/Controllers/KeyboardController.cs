@@ -1,46 +1,49 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
-using CustomKeyboardsWeb.Application.Dto;
+﻿using CustomKeyboardsWeb.Application.Features.Commands.Keyboards;
+using CustomKeyboardsWeb.Application.Features.Queries.Keyboards;
+using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
+using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
-    [Route("api/v1.0/teclado/")]
+    [Route("api/v1.0/keyboard/")]
     [ApiController]
-    public class KeyboardController : ControllerBase
+    public class KeyboardController : BaseController
     {
-        private readonly IKeyboardService _keyboardService;
+        private readonly IMediatorHandler _mediator;
 
-        public KeyboardController(
-            IKeyboardService keyboardService)
+        public KeyboardController(IMediatorHandler mediator)
         {
-            _keyboardService = keyboardService;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<List<KeyboardDto>> Get()
+        public async Task<GetKeyboardListQueryResponse> GetAll()
         {
-            return await _keyboardService.GetAll();
+            var currentKeyboardList = await _mediator.SendQuery(new GetKeyboardListQuery());
+            return currentKeyboardList;
         }
 
         [HttpGet("{id}")]
-        public async Task<KeyboardDto> Get(int id)
+        public async Task<GetKeyboardByIdQueryResponse> Get(Guid id)
         {
-            return await _keyboardService.FindByIdAsync(id);
+            var currentKeyboard = await _mediator.SendQuery(new GetKeyboardByIdQuery(id));
+            return currentKeyboard;
         }
 
         [HttpPost("save")]
-        [ValidateAntiForgeryToken]
-        public async Task<KeyboardDto> Save(KeyboardDto model)
+        public async Task<CreateKeyboardCommandResponse> Save(KeyboardViewModel model)
         {
-            return await _keyboardService.Save(model);
+            var currentKeyboard = await _mediator.SendCommand(new CreateKeyboardCommand(model));
+            return currentKeyboard;
         }
 
-        [HttpPost("update")]
-        [ValidateAntiForgeryToken]
-        public async Task<KeyboardDto> Edit(KeyboardDto model)
+        [HttpPut("update")]
+        public async Task<UpdateKeyboardCommandResponse> Edit(KeyboardViewModel model)
         {
-            return await _keyboardService.Edit(model);
+            var currentKeyboard = await _mediator.SendCommand(new UpdateKeyboardCommand(model));
+            return currentKeyboard;
         }
-
     }
 }

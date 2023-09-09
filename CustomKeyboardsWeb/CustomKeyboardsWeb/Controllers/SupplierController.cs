@@ -1,46 +1,49 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
-using CustomKeyboardsWeb.Application.Dto;
+﻿using CustomKeyboardsWeb.Application.Features.Commands.Suppliers;
+using CustomKeyboardsWeb.Application.Features.Queries.Suppliers;
+using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
+using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
-    [Route("api/v1.0/fornecedor/")]
+    [Route("api/v1.0/supplier/")]
     [ApiController]
-    public class SupplierController : ControllerBase
+    public class SupplierController : BaseController
     {
-        private readonly ISupplierService _supplierService;
+        private readonly IMediatorHandler _mediator;
 
-        public SupplierController(
-            ISupplierService supplierService)
+        public SupplierController(IMediatorHandler mediator)
         {
-            _supplierService = supplierService;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<List<SupplierDto>> Get()
+        public async Task<GetSupplierListQueryResponse> GetAll()
         {
-            return await _supplierService.GetAll();
+            var currentSupplierList = await _mediator.SendQuery(new GetSupplierListQuery());
+            return currentSupplierList;
         }
 
         [HttpGet("{id}")]
-        public async Task<SupplierDto> Get(int id)
+        public async Task<GetSupplierByIdQueryResponse> Get(Guid id)
         {
-            return await _supplierService.FindByIdAsync(id);
+            var currentSupplier = await _mediator.SendQuery(new GetSupplierByIdQuery(id));
+            return currentSupplier;
         }
 
         [HttpPost("save")]
-        [ValidateAntiForgeryToken]
-        public async Task<SupplierDto> Save(SupplierDto model)
+        public async Task<CreateSupplierCommandResponse> Save(SupplierViewModel model)
         {
-            return await _supplierService.Save(model);
+            var currentSupplier = await _mediator.SendCommand(new CreateSupplierCommand(model));
+            return currentSupplier;
         }
 
-        [HttpPost("update")]
-        [ValidateAntiForgeryToken]
-        public async Task<SupplierDto> Edit(SupplierDto model)
+        [HttpPut("update")]
+        public async Task<UpdateSupplierCommandResponse> Edit(SupplierViewModel model)
         {
-            return await _supplierService.Edit(model);
+            var currentSupplier = await _mediator.SendCommand(new UpdateSupplierCommand(model));
+            return currentSupplier;
         }
-
     }
 }

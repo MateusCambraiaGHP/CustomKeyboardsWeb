@@ -1,46 +1,49 @@
-﻿using CustomKeyboardsWeb.Application.Cummon.Interfaces;
-using CustomKeyboardsWeb.Application.Dto;
+﻿using CustomKeyboardsWeb.Application.Features.Commands.Switchies;
+using CustomKeyboardsWeb.Application.Features.Queries.Switchies;
+using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
+using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
     [Route("api/v1.0/switch/")]
     [ApiController]
-    public class SwitchController : ControllerBase
+    public class SwitchController : BaseController
     {
-        private readonly ISwitchService _switchService;
+        private readonly IMediatorHandler _mediator;
 
-        public SwitchController(
-            ISwitchService switchService)
+        public SwitchController(IMediatorHandler mediator)
         {
-            _switchService = switchService;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<List<SwitchDto>> Get()
+        public async Task<GetSwitchListQueryResponse> GetAll()
         {
-            return await _switchService.GetAll();
+            var currentSwitchList = await _mediator.SendQuery(new GetSwitchListQuery());
+            return currentSwitchList;
         }
 
         [HttpGet("{id}")]
-        public async Task<SwitchDto> Get(int id)
+        public async Task<GetSwitchByIdQueryResponse> Get(Guid id)
         {
-            return await _switchService.FindByIdAsync(id);
+            var currentSwitch = await _mediator.SendQuery(new GetSwitchByIdQuery(id));
+            return currentSwitch;
         }
 
         [HttpPost("save")]
-        [ValidateAntiForgeryToken]
-        public async Task<SwitchDto> Save(SwitchDto model)
+        public async Task<CreateSwitchCommandResponse> Save(SwitchViewModel model)
         {
-            return await _switchService.Save(model);
+            var currentSwitch = await _mediator.SendCommand(new CreateSwitchCommand(model));
+            return currentSwitch;
         }
 
-        [HttpPost("update")]
-        [ValidateAntiForgeryToken]
-        public async Task<SwitchDto> Edit(SwitchDto model)
+        [HttpPut("update")]
+        public async Task<UpdateSwitchCommandResponse> Edit(SwitchViewModel model)
         {
-            return await _switchService.Edit(model);
+            var currentSwitch = await _mediator.SendCommand(new UpdateSwitchCommand(model));
+            return currentSwitch;
         }
-
     }
 }
