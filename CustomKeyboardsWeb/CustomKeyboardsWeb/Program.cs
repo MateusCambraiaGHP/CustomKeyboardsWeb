@@ -45,26 +45,9 @@ builder.Services.AddSwaggerGen(options =>
 
 
 builder.Services.AddMediator();
-builder.Services.AddInfrastructure();
+builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddData();
-
-var jwtOptions = builder.Configuration.GetSection("Jwt").Get<JwtOptions>();
-
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = jwtOptions.Issuer,
-        ValidAudience = jwtOptions.Audience,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.SecretKey))
-    });
-
-builder.Services.ConfigureOptions<JwtOptionsSetup>();
-
 
 builder.Services.AddCors(options =>
 {
