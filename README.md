@@ -1,43 +1,47 @@
 
 # Custom Keyboards
 
-Um e-commerce de teclados custom onde os fornecedores pagam para plataforma para cadastrarem seus teclados e permite um controle sob a produção de seus teclados.
+An ecommerce made with the aim of applying complex concepts and studying them.
 
 
-## 🚀 Sobre mim
-Sou um desenvolvedor full stack, moro no Brasil e tenho 21 anos.
+## 🚀 About me
+I'm a full stack developer, I program in .net (C#), I'm 21 years old and I live in Brazil.
 
 
-## Variáveis de Ambiente
+## Environment variables
 
-Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
-
-`API_KEY`
-
-`ANOTHER_API_KEY`
+To run this project you need to download the docker on your computer.
 
 
-## Screenshots
+## Functionalities
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-## Funcionalidades
-
-- Temas dark e light
-- Preview em tempo real
-- Modo tela cheia
-- Multiplataforma
-
+- Entities Crud
 
 ## Autores
 
 - [@MateusCambraiaGHP](https://www.github.com/MateusCambraiaGHP)
 
 
-## Referência
+## Concepts, patterns, tools, frameworks, databases and languages
 
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+ - C#
+ - .Net
+ - Angular
+ - JavaScript
+ - Cqrs
+ - Redis
+ - Mysql
+ - DDD
+ - Clean Architecture
+ - Jwt authentication
+ - SOLID
+ - xUnit
+ - POO
+ - Docker compose
+ - Generic componentization(Angular)
+ - Entity Framework
+ - Yaml
+ - MediatR
+ - REST
+ - microsservices
 
