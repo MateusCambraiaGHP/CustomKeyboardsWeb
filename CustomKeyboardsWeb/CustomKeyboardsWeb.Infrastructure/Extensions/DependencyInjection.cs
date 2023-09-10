@@ -22,7 +22,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Extensions
 
             services.AddScoped<IJwtProvider, JwtProvider>();
             services.ConfigureOptions<JwtOptionsSetup>();
-            var jwtOptions = configuration.GetSection("Jwt").Get<JwtOptions>();
+            var jwtOptions = configuration.GetSection("JwtOptions").Get<JwtOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters

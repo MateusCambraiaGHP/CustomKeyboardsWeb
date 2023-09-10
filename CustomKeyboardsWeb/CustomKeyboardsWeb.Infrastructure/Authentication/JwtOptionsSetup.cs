@@ -1,12 +1,13 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace CustomKeyboardsWeb.Infrastructure.Authentication
+
 {
     public class JwtOptionsSetup : IConfigureOptions<JwtOptions>
     {
         private readonly IConfiguration _configuration;
-        private readonly string SectionName = "Jwt";
+        private readonly string SectionName = "JwtOptions";
 
         public JwtOptionsSetup(IConfiguration configuration)
         {

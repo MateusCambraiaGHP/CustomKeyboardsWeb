@@ -3,7 +3,6 @@ using CustomKeyboardsWeb.Core.Cummon.Extensions;
 using CustomKeyboardsWeb.Data.Common.Extensions;
 using CustomKeyboardsWeb.Infrastructure.Authentication;
 using CustomKeyboardsWeb.Infrastructure.Extensions;
-using CustomKeyboardsWeb.OptionsSetup;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
