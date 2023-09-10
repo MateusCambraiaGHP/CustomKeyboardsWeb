@@ -36,7 +36,7 @@ To run this project you need to download the docker on your computer.
  - Jwt authentication
  - SOLID
  - xUnit
- - POO
+ - OOP
  - Docker compose
  - Generic componentization(Angular)
  - Entity Framework
