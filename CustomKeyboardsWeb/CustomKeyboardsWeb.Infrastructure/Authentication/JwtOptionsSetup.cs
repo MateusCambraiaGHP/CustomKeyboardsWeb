@@ -1,8 +1,8 @@
-﻿using CustomKeyboardsWeb.Infrastructure.Authentication;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace CustomKeyboardsWeb.Infrastructure.OptionsSetup
+namespace CustomKeyboardsWeb.Infrastructure.Authentication
+
 {
     public class JwtOptionsSetup : IConfigureOptions<JwtOptions>
     {

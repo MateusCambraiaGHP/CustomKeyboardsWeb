@@ -3,7 +3,6 @@ using CustomKeyboardsWeb.Core.Cummon.Extensions;
 using CustomKeyboardsWeb.Data.Common.Extensions;
 using CustomKeyboardsWeb.Infrastructure.Authentication;
 using CustomKeyboardsWeb.Infrastructure.Extensions;
-using CustomKeyboardsWeb.Infrastructure.OptionsSetup;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -49,6 +48,16 @@ builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddData();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin();
+            builder.AllowAnyMethod();
+            builder.AllowAnyHeader();
+        });
+});
 var app = builder.Build();
 
 app.Services.MigrateDatabase();
