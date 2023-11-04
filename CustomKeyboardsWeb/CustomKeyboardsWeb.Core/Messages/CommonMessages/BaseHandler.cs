@@ -2,7 +2,7 @@
 using FluentValidation.Results;
 using MediatR;
 
-namespace CustomKeyboardsWeb.Core.Messages
+namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
 {
     public abstract class BaseHandler<TRequest, TResponse> : IDisposable, IRequestHandler<TRequest, TResponse>
         where TResponse : BaseHandlerResponse

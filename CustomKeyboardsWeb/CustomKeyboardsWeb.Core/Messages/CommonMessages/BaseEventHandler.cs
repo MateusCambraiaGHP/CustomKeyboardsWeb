@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace CustomKeyboardsWeb.Core.Messages
+namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
 {
     public abstract class BaseEventHandler<TEvent> : IDisposable, INotificationHandler<TEvent>
         where TEvent : Event

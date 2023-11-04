@@ -1,6 +1,6 @@
 ﻿using CustomKeyboardsWeb.Application.Features.Responses.Login;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Login;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 
 namespace CustomKeyboardsWeb.Application.Features.Commands.Login
 {

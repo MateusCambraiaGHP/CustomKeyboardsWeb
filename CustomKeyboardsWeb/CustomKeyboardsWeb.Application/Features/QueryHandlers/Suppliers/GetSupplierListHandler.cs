@@ -2,7 +2,7 @@
 using CustomKeyboardsWeb.Application.Features.Queries.Suppliers;
 using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using FluentValidation.Results;
 

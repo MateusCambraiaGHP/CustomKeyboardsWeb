@@ -1,8 +1,11 @@
-﻿using CustomKeyboardsWeb.Application.Features.Commands.Members;
+﻿using CustomKeyboardsWeb.Application.Dtos.Members;
+using CustomKeyboardsWeb.Application.Features.Commands.Members;
 using CustomKeyboardsWeb.Application.Features.Queries.Members;
 using CustomKeyboardsWeb.Application.Features.Responses.Members;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Members;
 using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
+using CustomKeyboardsWeb.Core.Messages.Notifications;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -13,10 +16,10 @@ namespace CustomKeyboardsWeb.Controllers
     {
         private readonly IMediatorHandler _mediator;
 
-        public MemberController(IMediatorHandler mediator)
-        {
-            _mediator = mediator;
-        }
+        public MemberController(
+            INotificationHandler<DomainNotification> notifications,
+            IMediatorHandler mediator)
+             : base(notifications, mediator) => _mediator = mediator;
 
         [HttpGet]
         public async Task<GetMemberListQueryResponse> GetAll()
@@ -33,14 +36,14 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpPost("save")]
-        public async Task<CreateMemberCommandResponse> Save(MemberViewModel model)
+        public async Task<CreateMemberCommandResponse> Save(MemberDto model)
         {
             var currentMember = await _mediator.SendCommand(new CreateMemberCommand(model));
             return currentMember;
         }
 
         [HttpPut("update")]
-        public async Task<UpdateMemberCommandResponse> Edit(MemberViewModel model)
+        public async Task<UpdateMemberCommandResponse> Edit(MemberDto model)
         {
             var currentMember = await _mediator.SendCommand(new UpdateMemberCommand(model));
             return currentMember;

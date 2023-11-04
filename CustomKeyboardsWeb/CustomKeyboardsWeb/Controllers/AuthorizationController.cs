@@ -2,6 +2,8 @@
 using CustomKeyboardsWeb.Application.Features.Responses.Login;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Login;
 using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
+using CustomKeyboardsWeb.Core.Messages.Notifications;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +15,10 @@ namespace CustomKeyboardsWeb.Controllers
     {
         private readonly IMediatorHandler _mediator;
 
-        public AuthorizationController(IMediatorHandler mediator)
-        {
-            _mediator = mediator;
-        }
+        public AuthorizationController(
+            INotificationHandler<DomainNotification> notifications,
+            IMediatorHandler mediator)
+             : base(notifications, mediator) => _mediator = mediator;
 
         [AllowAnonymous]
         [HttpPost("authorize")]

@@ -7,7 +7,7 @@ namespace CustomKeyboardsWeb.Application.Features.Validations.Switchies
     {
         public CreateSwitchCommandValidation()
         {
-            RuleFor(c => c.SwitchViewModel.Active)
+            RuleFor(c => c.SwitchDto.Active)
                 .NotEmpty().WithMessage("O active não pode ser vazio");
         }
     }

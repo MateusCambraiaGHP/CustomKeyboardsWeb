@@ -1,4 +1,4 @@
-﻿using CustomKeyboardsWeb.Core.Messages;
+﻿using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 
 namespace CustomKeyboardsWeb.Application.Features.Events

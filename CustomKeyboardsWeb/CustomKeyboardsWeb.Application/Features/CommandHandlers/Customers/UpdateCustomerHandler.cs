@@ -4,9 +4,9 @@ using CustomKeyboardsWeb.Application.Features.Responses.Customers;
 using CustomKeyboardsWeb.Application.Features.Validations.Customers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
 using CustomKeyboardsWeb.Core.Data;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
@@ -37,7 +37,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
                 if (!request.IsValid())
                     return ResponseOnFailValidation("", request.ValidationResult);
 
-                Customer customerMap = _mapper.Map<Customer>(request.CustomerViewModel);
+                Customer customerMap = _mapper.Map<Customer>(request.CustomerDto);
                 customerMap.CreatedBy = "Administrator";
                 await _customerRepository.Update(customerMap);
                 await _unitOfWork.CommitChangesAsync();

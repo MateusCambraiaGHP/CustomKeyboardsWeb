@@ -4,7 +4,7 @@ using CustomKeyboardsWeb.Application.Features.Responses.Members;
 using CustomKeyboardsWeb.Application.Features.Validations.Members;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Members;
 using CustomKeyboardsWeb.Core.Data;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
@@ -39,12 +39,12 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
                     return ResponseOnFailValidation("", request.ValidationResult);
 
                 var member = Member.Create(
-                    Email.Create(request.MemberViewModel.Email),
-                    Password.Create(request.MemberViewModel.Password),
-                    Name.Create(request.MemberViewModel.Name),
-                    Address.Create(request.MemberViewModel.Address),
-                    Phone.Create(request.MemberViewModel.Phone),
-                    request.MemberViewModel.Active);
+                    Email.Create(request.MemberDto.Email),
+                    Password.Create(request.MemberDto.Password),
+                    Name.Create(request.MemberDto.Name),
+                    Address.Create(request.MemberDto.Address),
+                    Phone.Create(request.MemberDto.Phone),
+                    request.MemberDto.Active);
 
                 await _memberRepository.Create(member);
                 await _unitOfWork.CommitChangesAsync();

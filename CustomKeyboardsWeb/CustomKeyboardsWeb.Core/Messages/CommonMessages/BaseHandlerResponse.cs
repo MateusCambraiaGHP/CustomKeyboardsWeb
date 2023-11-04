@@ -1,4 +1,4 @@
-﻿namespace CustomKeyboardsWeb.Core.Messages
+﻿namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
 {
     public class BaseHandlerResponse
     {

@@ -1,5 +1,7 @@
 ﻿using CustomKeyboardsWeb.Core.DomainObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 

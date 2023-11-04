@@ -4,7 +4,7 @@ using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.Validations.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
 using CustomKeyboardsWeb.Core.Data;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
@@ -39,14 +39,14 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
                     return ResponseOnFailValidation("", request.ValidationResult);
 
                 var _switch = Switch.Create(
-                    Name.Create(request.SwitchViewModel.Name),
-                    Color.Create(request.SwitchViewModel.Color),
-                    Price.Create(request.SwitchViewModel.Price),
-                    request.SwitchViewModel.Active);
+                    Name.Create(request.SwitchDto.Name),
+                    Color.Create(request.SwitchDto.Color),
+                    Price.Create(request.SwitchDto.Price),
+                    request.SwitchDto.Active);
 
                 await _switchRepository.Create(_switch);
                 await _unitOfWork.CommitChangesAsync();
-                var switchViewModel= _mapper.Map<SwitchViewModel>(_switch);
+                var switchViewModel= _mapper.Map<SwitchDto>(_switch);
 
                 return new CreateSwitchCommandResponse(switchViewModel);
             }

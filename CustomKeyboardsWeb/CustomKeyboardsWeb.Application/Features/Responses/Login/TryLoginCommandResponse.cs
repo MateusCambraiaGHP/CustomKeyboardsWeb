@@ -1,4 +1,4 @@
-﻿using CustomKeyboardsWeb.Core.Messages;
+﻿using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 
 namespace CustomKeyboardsWeb.Application.Features.Responses.Login
 {

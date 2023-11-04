@@ -1,13 +1,13 @@
 ﻿using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 
 namespace CustomKeyboardsWeb.Application.Features.Commands.Switchies
 {
     public class CreateSwitchCommand : Command<CreateSwitchCommandResponse>
     {
-        public SwitchViewModel SwitchViewModel { get; set; }
+        public SwitchDto SwitchDto { get; set; }
 
-        public CreateSwitchCommand(SwitchViewModel model) => SwitchViewModel = model;
+        public CreateSwitchCommand(SwitchDto model) => SwitchDto = model;
     }
 }

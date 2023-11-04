@@ -4,10 +4,10 @@ using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
 using CustomKeyboardsWeb.Application.Features.Validations.Keyboards;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
 using CustomKeyboardsWeb.Core.Data;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
@@ -39,11 +39,15 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
                     return ResponseOnFailValidation("", request.ValidationResult);
 
                 var keyboard = Keyboard.Create(
-                    Name.Create(request.KeyboardViewModel.Name),
-                    request.KeyboardViewModel.IdSwitch,
-                    request.KeyboardViewModel.IdKey,
-                    Price.Create(request.KeyboardViewModel.Price),
-                    request.KeyboardViewModel.Active);
+                    Name.Create(request.KeyboardDto.Name),
+                    request.KeyboardDto.IdSwitch,
+                    request.KeyboardDto.IdKey,
+                    Price.Create(request.KeyboardDto.Price),
+                    request.KeyboardDto.Active);
+
+                if(!keyboard.ValidationResult.IsValid)
+                    return ResponseOnFailValidation("", keyboard.ValidationResult.Errors);
+
                 await _keyboardRepository.Create(keyboard);
                 await _unitOfWork.CommitChangesAsync();
                 var keyboardViewModel = _mapper.Map<KeyboardViewModel>(keyboard);

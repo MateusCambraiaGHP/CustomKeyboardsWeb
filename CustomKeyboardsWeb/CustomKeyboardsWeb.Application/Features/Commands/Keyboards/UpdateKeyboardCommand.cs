@@ -1,13 +1,13 @@
-﻿using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
-using CustomKeyboardsWeb.Core.Messages;
+﻿using CustomKeyboardsWeb.Application.Dtos.Keyboards;
+using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 
 namespace CustomKeyboardsWeb.Application.Features.Commands.Keyboards
 {
     public class UpdateKeyboardCommand : Command<UpdateKeyboardCommandResponse>
     {
-        public KeyboardViewModel KeyboardViewModel { get; set; }
+        public KeyboardDto KeyboardDto { get; set; }
 
-        public UpdateKeyboardCommand(KeyboardViewModel model) => KeyboardViewModel = model;
+        public UpdateKeyboardCommand(KeyboardDto model) => KeyboardDto = model;
     }
 }

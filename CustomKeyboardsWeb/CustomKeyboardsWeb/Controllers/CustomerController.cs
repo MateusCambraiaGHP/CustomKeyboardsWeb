@@ -1,8 +1,10 @@
-﻿using CustomKeyboardsWeb.Application.Features.Commands.Customers;
+﻿using CustomKeyboardsWeb.Application.Dtos.Customers;
+using CustomKeyboardsWeb.Application.Features.Commands.Customers;
 using CustomKeyboardsWeb.Application.Features.Queries.Customers;
 using CustomKeyboardsWeb.Application.Features.Responses.Customers;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
 using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
+using CustomKeyboardsWeb.Core.Messages.Notifications;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -13,10 +15,10 @@ namespace CustomKeyboardsWeb.Controllers
     {
         private readonly IMediatorHandler _mediator;
 
-        public CustomerController(IMediatorHandler mediator)
-        {
-            _mediator = mediator;
-        }
+        public CustomerController(
+            INotificationHandler<DomainNotification> notifications,
+            IMediatorHandler mediator)
+             : base(notifications, mediator) => _mediator = mediator;
 
         [HttpGet]
         public async Task<GetCustomerListQueryResponse> GetAll()
@@ -33,14 +35,14 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpPost("save")]
-        public async Task<CreateCustomerCommandResponse> Save(CustomerViewModel model)
+        public async Task<CreateCustomerCommandResponse> Save(CustomerDto model)
         {
             var currentCustomer = await _mediator.SendCommand(new CreateCustomerCommand(model));
             return currentCustomer;
         }
 
         [HttpPut("update")]
-        public async Task<UpdateCustomerCommandResponse> Edit(CustomerViewModel model)
+        public async Task<UpdateCustomerCommandResponse> Edit(CustomerDto model)
         {
             var currentCustomer = await _mediator.SendCommand(new UpdateCustomerCommand(model));
             return currentCustomer;

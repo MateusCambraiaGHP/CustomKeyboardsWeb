@@ -2,7 +2,7 @@
 using CustomKeyboardsWeb.Application.Features.Queries.Switchies;
 using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using FluentValidation.Results;
 
@@ -27,7 +27,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Switchies
             try
             {
                 var currentSwitch = await _switchRepository.FindById(request.IdSwitch);
-                var switchMap = _mapper.Map<SwitchViewModel>(currentSwitch);
+                var switchMap = _mapper.Map<SwitchDto>(currentSwitch);
                 return new GetSwitchByIdQueryResponse(switchMap);
             }
             catch (Exception)

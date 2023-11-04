@@ -4,7 +4,7 @@ using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.Validations.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
 using CustomKeyboardsWeb.Core.Data;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using FluentValidation.Results;
@@ -37,11 +37,11 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
                 if (!request.IsValid())
                     return ResponseOnFailValidation("", request.ValidationResult);
 
-                var switchMap = _mapper.Map<Switch>(request.SwitchViewModel);
+                var switchMap = _mapper.Map<Switch>(request.SwitchDto);
                 switchMap.CreatedBy = "Administrator";
                 await _switchRepository.Update(switchMap);
                 await _unitOfWork.CommitChangesAsync();
-                var switchViewModel = _mapper.Map<SwitchViewModel>(request);
+                var switchViewModel = _mapper.Map<SwitchDto>(request);
 
                 return new UpdateSwitchCommandResponse(switchViewModel);
             }

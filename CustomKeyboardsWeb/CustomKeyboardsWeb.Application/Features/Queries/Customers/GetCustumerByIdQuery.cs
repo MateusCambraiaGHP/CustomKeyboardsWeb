@@ -1,5 +1,5 @@
 ﻿using CustomKeyboardsWeb.Application.Features.Responses.Customers;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 
 namespace CustomKeyboardsWeb.Application.Features.Queries.Customers
 {

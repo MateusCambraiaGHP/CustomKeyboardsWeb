@@ -4,7 +4,7 @@ using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
 using CustomKeyboardsWeb.Application.Features.Validations.Suppliers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
 using CustomKeyboardsWeb.Core.Data;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using FluentValidation.Results;
@@ -37,7 +37,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                 if (!request.IsValid())
                     return ResponseOnFailValidation("", request.ValidationResult);
 
-                var supplierMap = _mapper.Map<Supplier>(request.SupplierViewModel);
+                var supplierMap = _mapper.Map<Supplier>(request.SupplierDto);
                 supplierMap.CreatedBy = "Administrator";
                 await _supplierRepository.Update(supplierMap);
                 await _unitOfWork.CommitChangesAsync();

@@ -4,7 +4,7 @@ using CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 using Moq;
 
 namespace CustomKeyboardsWeb.Tests.Features.Queries.Customers

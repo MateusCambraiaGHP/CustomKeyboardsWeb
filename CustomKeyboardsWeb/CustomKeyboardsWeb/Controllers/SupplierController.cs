@@ -1,8 +1,11 @@
-﻿using CustomKeyboardsWeb.Application.Features.Commands.Suppliers;
+﻿using CustomKeyboardsWeb.Application.Dtos.Suppliers;
+using CustomKeyboardsWeb.Application.Features.Commands.Suppliers;
 using CustomKeyboardsWeb.Application.Features.Queries.Suppliers;
 using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
 using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
+using CustomKeyboardsWeb.Core.Messages.Notifications;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -13,10 +16,10 @@ namespace CustomKeyboardsWeb.Controllers
     {
         private readonly IMediatorHandler _mediator;
 
-        public SupplierController(IMediatorHandler mediator)
-        {
-            _mediator = mediator;
-        }
+        public SupplierController(
+            INotificationHandler<DomainNotification> notifications,
+            IMediatorHandler mediator)
+             : base(notifications, mediator) => _mediator = mediator;
 
         [HttpGet]
         public async Task<GetSupplierListQueryResponse> GetAll()
@@ -33,14 +36,14 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpPost("save")]
-        public async Task<CreateSupplierCommandResponse> Save(SupplierViewModel model)
+        public async Task<CreateSupplierCommandResponse> Save(SupplierDto model)
         {
             var currentSupplier = await _mediator.SendCommand(new CreateSupplierCommand(model));
             return currentSupplier;
         }
 
         [HttpPut("update")]
-        public async Task<UpdateSupplierCommandResponse> Edit(SupplierViewModel model)
+        public async Task<UpdateSupplierCommandResponse> Edit(SupplierDto model)
         {
             var currentSupplier = await _mediator.SendCommand(new UpdateSupplierCommand(model));
             return currentSupplier;

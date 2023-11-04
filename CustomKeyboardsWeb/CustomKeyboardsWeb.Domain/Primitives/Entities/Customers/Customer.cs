@@ -1,6 +1,6 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 
-namespace CustomKeyboardsWeb.Domain.Primitives.Entities
+namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Customers
 {
     public class Customer : AggregateRoot
     {
@@ -12,7 +12,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
         public Phone? Phone { get; private set; }
         public string CreatedBy { get; set; } = null!;
         public string? UpdatedBy { get; set; }
-      
+
         private Customer() { }
 
         private Customer(
