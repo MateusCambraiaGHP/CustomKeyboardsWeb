@@ -1,4 +1,4 @@
-﻿using CustomKeyboardsWeb.Domain.Primitives.Entities;
+﻿using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -50,6 +50,8 @@ namespace CustomKeyboardsWeb.Data.Mappings
                 .WithMany()
                 .HasForeignKey(e => e.IdSwitch)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            entity.Ignore(e => e.ValidationResult);
         }
     }
 }

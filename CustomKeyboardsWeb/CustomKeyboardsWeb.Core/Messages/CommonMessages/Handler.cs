@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace CustomKeyboardsWeb.Core.Messages
+namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
 {
     public abstract class Handler<TCommand> : BaseHandler<TCommand, BaseHandlerResponse>
        where TCommand : BaseMessage<BaseHandlerResponse>

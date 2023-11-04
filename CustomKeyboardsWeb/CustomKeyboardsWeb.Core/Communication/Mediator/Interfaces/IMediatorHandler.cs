@@ -1,4 +1,5 @@
-﻿using CustomKeyboardsWeb.Core.Messages;
+﻿using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Core.Messages.Notifications;
 
 namespace CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces
 {
@@ -10,6 +11,8 @@ namespace CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces
 
         Task<TResponse> SendQuery<TResponse>(BaseMessage<TResponse> query)
             where TResponse : BaseHandlerResponse;
+
+        Task PublishNotification<T>(T notificacao) where T : DomainNotification;
 
         Task PublishEvent<TEvent>(TEvent @event);
     }

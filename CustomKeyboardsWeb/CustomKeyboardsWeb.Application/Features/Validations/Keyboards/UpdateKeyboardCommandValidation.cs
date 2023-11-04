@@ -7,7 +7,7 @@ namespace CustomKeyboardsWeb.Application.Features.Validations.Keyboards
     {
         public UpdateKeyboardCommandValidation()
         {
-            RuleFor(c => c.KeyboardViewModel.Active)
+            RuleFor(c => c.KeyboardDto.Active)
                 .NotEmpty().WithMessage("O active não pode ser vazio");
         }
     }

@@ -4,11 +4,12 @@ using CustomKeyboardsWeb.Application.Features.Responses.Customers;
 using CustomKeyboardsWeb.Application.Features.Validations.Customers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
 using CustomKeyboardsWeb.Core.Data;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.DomainObjects;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
@@ -43,28 +44,28 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
                     return ResponseOnFailValidation("", request.ValidationResult);
 
                 var customer = Customer.Create(
-                            Name.Create(request.CustomerViewModel.Name),
-                            FantasyName.Create(request.CustomerViewModel.FantasyName),
-                            Cep.Create(request.CustomerViewModel.Cep),
-                            Address.Create(request.CustomerViewModel.Address),
-                            FederativeUnit.Create(request.CustomerViewModel.FederativeUnit),
-                            Phone.Create(request.CustomerViewModel.Phone),
-                            request.CustomerViewModel.Active);
+                            Name.Create(request.CustomerDto.Name),
+                            FantasyName.Create(request.CustomerDto.FantasyName),
+                            Cep.Create(request.CustomerDto.Cep),
+                            Address.Create(request.CustomerDto.Address),
+                            FederativeUnit.Create(request.CustomerDto.FederativeUnit),
+                            Phone.Create(request.CustomerDto.Phone),
+                            request.CustomerDto.Active);
 
                 await _customerRepository.Create(customer);
                 await _unitOfWork.CommitChangesAsync();
                 var customerViewModel = _mapper.Map<CustomerViewModel>(customer);
-                await _cacheService.RemoveAsync("customers", cancellationToken); 
+                await _cacheService.RemoveAsync("customers", cancellationToken);
 
                 return new CreateCustomerCommandResponse(customerViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 
-        public override  List<ValidationFailure> Validate(CreateCustomerCommand request)
+        public override List<ValidationFailure> Validate(CreateCustomerCommand request)
         {
             var erros = new CreateCustomerCommandValidation().Validate(request);
             return erros.Errors;

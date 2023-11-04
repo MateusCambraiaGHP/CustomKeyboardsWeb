@@ -4,7 +4,7 @@ using CustomKeyboardsWeb.Application.Cummon.Abstractions;
 using CustomKeyboardsWeb.Application.Features.Commands.Login;
 using CustomKeyboardsWeb.Application.Features.Responses.Login;
 using CustomKeyboardsWeb.Application.Features.Validations.Login;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;

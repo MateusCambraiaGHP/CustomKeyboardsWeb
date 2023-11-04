@@ -7,7 +7,7 @@ namespace CustomKeyboardsWeb.Application.Features.Validations.Customers
     {
         public UpdateCustomerCommandValidation()
         {
-            RuleFor(c => c.CustomerViewModel.Active)
+            RuleFor(c => c.CustomerDto.Active)
                 .NotEmpty().WithMessage("O active não pode ser vazio");
         }
     }

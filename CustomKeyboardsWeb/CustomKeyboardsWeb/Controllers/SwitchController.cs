@@ -3,6 +3,8 @@ using CustomKeyboardsWeb.Application.Features.Queries.Switchies;
 using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
 using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
+using CustomKeyboardsWeb.Core.Messages.Notifications;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -13,10 +15,10 @@ namespace CustomKeyboardsWeb.Controllers
     {
         private readonly IMediatorHandler _mediator;
 
-        public SwitchController(IMediatorHandler mediator)
-        {
-            _mediator = mediator;
-        }
+        public SwitchController(
+            INotificationHandler<DomainNotification> notifications,
+            IMediatorHandler mediator)
+             : base(notifications, mediator) => _mediator = mediator;
 
         [HttpGet]
         public async Task<GetSwitchListQueryResponse> GetAll()
@@ -33,14 +35,14 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpPost("save")]
-        public async Task<CreateSwitchCommandResponse> Save(SwitchViewModel model)
+        public async Task<CreateSwitchCommandResponse> Save(SwitchDto model)
         {
             var currentSwitch = await _mediator.SendCommand(new CreateSwitchCommand(model));
             return currentSwitch;
         }
 
         [HttpPut("update")]
-        public async Task<UpdateSwitchCommandResponse> Edit(SwitchViewModel model)
+        public async Task<UpdateSwitchCommandResponse> Edit(SwitchDto model)
         {
             var currentSwitch = await _mediator.SendCommand(new UpdateSwitchCommand(model));
             return currentSwitch;

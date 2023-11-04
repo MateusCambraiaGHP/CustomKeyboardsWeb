@@ -1,13 +1,13 @@
-﻿using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
-using CustomKeyboardsWeb.Core.Messages;
+﻿using CustomKeyboardsWeb.Application.Dtos.Suppliers;
+using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 
 namespace CustomKeyboardsWeb.Application.Features.Commands.Suppliers
 {
     public class CreateSupplierCommand : Command<CreateSupplierCommandResponse>
     {
-        public SupplierViewModel SupplierViewModel { get; set; }
+        public SupplierDto SupplierDto { get; set; }
 
-        public CreateSupplierCommand(SupplierViewModel model) => SupplierViewModel = model;
+        public CreateSupplierCommand(SupplierDto model) => SupplierDto = model;
     }
 }

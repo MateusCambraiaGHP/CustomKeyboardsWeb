@@ -1,5 +1,5 @@
 ﻿using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 
 namespace CustomKeyboardsWeb.Application.Features.Responses.Keys
 {

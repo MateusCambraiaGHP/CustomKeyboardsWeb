@@ -4,7 +4,7 @@ using CustomKeyboardsWeb.Application.Features.Responses.Keys;
 using CustomKeyboardsWeb.Application.Features.Validations.Keys;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
 using CustomKeyboardsWeb.Core.Data;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using FluentValidation.Results;
@@ -37,7 +37,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
                 if (!request.IsValid())
                     return ResponseOnFailValidation("", request.ValidationResult);
 
-                var keyMap = _mapper.Map<Key>(request.KeyViewModel);
+                var keyMap = _mapper.Map<Key>(request.KeyDto);
                 keyMap.CreatedBy = "Administrator";
                 await _keyRepository.Update(keyMap);
                 await _unitOfWork.CommitChangesAsync();

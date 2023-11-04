@@ -1,8 +1,10 @@
 ﻿using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using CustomKeyboardsWeb.Core.DomainObjects;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Data.Common.Interfaces;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;

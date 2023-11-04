@@ -4,7 +4,7 @@ using CustomKeyboardsWeb.Application.Features.Responses.Keys;
 using CustomKeyboardsWeb.Application.Features.Validations.Keys;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
 using CustomKeyboardsWeb.Core.Data;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
@@ -39,9 +39,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
                     return ResponseOnFailValidation("", request.ValidationResult);
 
                 var key = Key.Create(
-                    Name.Create(request.KeyViewModel.Name),
-                    Price.Create(request.KeyViewModel.Price),
-                    request.KeyViewModel.Active);
+                    Name.Create(request.KeyDto.Name),
+                    Price.Create(request.KeyDto.Price),
+                    request.KeyDto.Active);
 
                 await _keyRepository.Create(key);
                 await _unitOfWork.CommitChangesAsync();

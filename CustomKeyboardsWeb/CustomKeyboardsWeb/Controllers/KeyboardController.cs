@@ -1,8 +1,11 @@
-﻿using CustomKeyboardsWeb.Application.Features.Commands.Keyboards;
+﻿using CustomKeyboardsWeb.Application.Dtos.Keyboards;
+using CustomKeyboardsWeb.Application.Features.Commands.Keyboards;
 using CustomKeyboardsWeb.Application.Features.Queries.Keyboards;
 using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
 using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
+using CustomKeyboardsWeb.Core.Messages.Notifications;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
@@ -13,10 +16,10 @@ namespace CustomKeyboardsWeb.Controllers
     {
         private readonly IMediatorHandler _mediator;
 
-        public KeyboardController(IMediatorHandler mediator)
-        {
-            _mediator = mediator;
-        }
+        public KeyboardController(
+            INotificationHandler<DomainNotification> notifications,
+            IMediatorHandler mediator)
+             : base(notifications, mediator) => _mediator = mediator;
 
         [HttpGet]
         public async Task<GetKeyboardListQueryResponse> GetAll()
@@ -33,14 +36,14 @@ namespace CustomKeyboardsWeb.Controllers
         }
 
         [HttpPost("save")]
-        public async Task<CreateKeyboardCommandResponse> Save(KeyboardViewModel model)
+        public async Task<CreateKeyboardCommandResponse> Save(KeyboardDto model)
         {
             var currentKeyboard = await _mediator.SendCommand(new CreateKeyboardCommand(model));
             return currentKeyboard;
         }
 
         [HttpPut("update")]
-        public async Task<UpdateKeyboardCommandResponse> Edit(KeyboardViewModel model)
+        public async Task<UpdateKeyboardCommandResponse> Edit(KeyboardDto model)
         {
             var currentKeyboard = await _mediator.SendCommand(new UpdateKeyboardCommand(model));
             return currentKeyboard;

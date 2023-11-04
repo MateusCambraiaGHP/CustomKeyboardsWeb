@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 
 namespace CustomKeyboardsWeb.Application.Cummon.Extensions.MappingProfiles
 {

@@ -5,7 +5,7 @@ using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
 using CustomKeyboardsWeb.Application.Features.Validations.Suppliers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
 using CustomKeyboardsWeb.Core.Data;
-using CustomKeyboardsWeb.Core.Messages;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
@@ -38,13 +38,13 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                     return ResponseOnFailValidation("", request.ValidationResult);
 
                 var supplier = Supplier.Create(
-                    Name.Create(request.SupplierViewModel.Name),
-                    FantasyName.Create(request.SupplierViewModel.FantasyName),
-                    Cep.Create(request.SupplierViewModel.Cep),
-                    Address.Create(request.SupplierViewModel.Adress),
-                    FederativeUnit.Create(request.SupplierViewModel.FederativeUnit),
-                    Phone.Create(request.SupplierViewModel.Phone),
-                    request.SupplierViewModel.Active);
+                    Name.Create(request.SupplierDto.Name),
+                    FantasyName.Create(request.SupplierDto.FantasyName),
+                    Cep.Create(request.SupplierDto.Cep),
+                    Address.Create(request.SupplierDto.Adress),
+                    FederativeUnit.Create(request.SupplierDto.FederativeUnit),
+                    Phone.Create(request.SupplierDto.Phone),
+                    request.SupplierDto.Active);
 
                 supplier.AddEvent(new CreateCustomerEvent(supplier));
 

@@ -1,6 +1,6 @@
 ﻿namespace CustomKeyboardsWeb.Application.Features.ViewModel.Switchies
 {
-    public class SwitchViewModel
+    public class SwitchDto
     {
         public Guid? Id { get; set; }
         public string? Active { get; set; }

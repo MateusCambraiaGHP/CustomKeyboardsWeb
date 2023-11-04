@@ -1,6 +1,7 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
+using FluentValidation.Results;
 
-namespace CustomKeyboardsWeb.Domain.Primitives.Entities
+namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards
 {
     public class Keyboard : AggregateRoot
     {
@@ -12,6 +13,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
         public Key Key { get; private set; }
         public string CreatedBy { get; set; }
         public string? UpdatedBy { get; set; }
+        public ValidationResult ValidationResult { get; private set; }
 
         private Keyboard() { }
 
@@ -31,6 +33,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
             Active = active;
             CreatedBy = createdBy;
             UpdatedBy = updatedBy;
+            ValidationResult = Validate();
         }
 
         public static Keyboard Create(
@@ -48,6 +51,12 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities
                 active,
                 "Administrator",
                 null);
+        }
+
+        private ValidationResult Validate()
+        {
+            var erros = new KeyboardValidator().Validate(this);
+            return erros;
         }
     }
 }

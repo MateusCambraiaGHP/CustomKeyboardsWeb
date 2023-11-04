@@ -1,13 +1,13 @@
-﻿using CustomKeyboardsWeb.Application.Features.Responses.Customers;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
-using CustomKeyboardsWeb.Core.Messages;
+﻿using CustomKeyboardsWeb.Application.Dtos.Customers;
+using CustomKeyboardsWeb.Application.Features.Responses.Customers;
+using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 
 namespace CustomKeyboardsWeb.Application.Features.Commands.Customers
 {
     public class CreateCustomerCommand : Command<CreateCustomerCommandResponse>
     {
-        public CustomerViewModel CustomerViewModel { get; set; }
+        public CustomerDto CustomerDto { get; set; }
 
-        public CreateCustomerCommand(CustomerViewModel model) => CustomerViewModel = model;
+        public CreateCustomerCommand(CustomerDto model) => CustomerDto = model;
     }
 }
