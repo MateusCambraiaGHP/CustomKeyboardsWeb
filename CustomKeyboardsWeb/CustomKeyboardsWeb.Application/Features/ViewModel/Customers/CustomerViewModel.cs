@@ -12,7 +12,7 @@
         public string? Phone { get; set; }
         public string CreatedBy { get; set; } = "Administrator";
         public string? UpdatedBy { get; set; }
-        public DateTime InsertionDate { get; protected set; }
-        public DateTime LastModification { get; protected set; }
+        public DateTime InsertionDate { get; set; }
+        public DateTime LastModification { get; set; }
     }
 }
