@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Suppliers
         {
             try
             {
-                var listSupplier = await _supplierRepository.GetAll();
+                var listSupplier = await _supplierRepository.GetAsync(null, null, null);
                 var listSupplierMap = _mapper.Map<List<SupplierViewModel>>(listSupplier);
                 return new GetSupplierListQueryResponse(listSupplierMap);
             }

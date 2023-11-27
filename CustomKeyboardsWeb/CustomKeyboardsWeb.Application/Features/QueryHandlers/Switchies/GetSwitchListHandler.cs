@@ -3,6 +3,7 @@ using CustomKeyboardsWeb.Application.Features.Queries.Switchies;
 using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Data.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using FluentValidation.Results;
 
@@ -26,7 +27,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Switchies
         {
             try
             {
-                var listSwitch = await _switchRepository.GetAll();
+                var listSwitch = await _switchRepository.GetAsync(null, null, null);
                 var listSwitchMap = _mapper.Map<List<SwitchDto>>(listSwitch);
                 return new GetSwitchListQueryResponse(listSwitchMap);
             }

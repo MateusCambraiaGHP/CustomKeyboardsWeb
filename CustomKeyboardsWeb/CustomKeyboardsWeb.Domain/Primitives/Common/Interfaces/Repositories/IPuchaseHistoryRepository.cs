@@ -1,4 +1,5 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using System.Linq.Expressions;
 
 namespace CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories
 {
@@ -6,7 +7,9 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories
     {
         Task Create(PuchaseHistory model);
         Task<PuchaseHistory> Update(PuchaseHistory model);
-        Task<PuchaseHistory> FindById(Guid id);
-        Task<List<PuchaseHistory>> GetAll();
+        Task<List<PuchaseHistory>> GetAsync(
+            Expression<Func<PuchaseHistory, bool>> filter,
+            Func<IQueryable<PuchaseHistory>, IOrderedQueryable<PuchaseHistory>> orderBy,
+            params Expression<Func<PuchaseHistory, object>>[] includes);
     }
 }

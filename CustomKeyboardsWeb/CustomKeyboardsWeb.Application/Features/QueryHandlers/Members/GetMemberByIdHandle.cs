@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Members
         {
             try
             {
-                var currentMember = await _memberRepository.FindById(request.IdMember);
+                var currentMember = await _memberRepository.GetAsync(mb => mb.Id == request.IdMember, null, null);
                 var memberMap = _mapper.Map<MemberViewModel>(currentMember);
                 return new GetMemberByIdQueryResponse(memberMap);
             }

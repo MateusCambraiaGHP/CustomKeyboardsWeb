@@ -2,9 +2,14 @@
 using CustomKeyboardsWeb.Application.Features.Queries.Keyboards;
 using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
+using CustomKeyboardsWeb.Core.DomainObjects;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Data.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
 using FluentValidation.Results;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
 {
@@ -26,7 +31,8 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
         {
             try
             {
-                var listKeyboard = await _keyboardRepository.GetAll();
+                var includes = new Expression<Func<Keyboard, object>>[] { kb => kb.Key, kb => kb.Switch };
+                var listKeyboard = await _keyboardRepository.GetAsync(null, null, includes);
                 var listKeyboardMap = _mapper.Map<List<KeyboardViewModel>>(listKeyboard);
                 foreach (var keyboard in listKeyboardMap)
                 {

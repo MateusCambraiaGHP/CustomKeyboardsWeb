@@ -4,7 +4,9 @@ using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
 using FluentValidation.Results;
+using System.Linq.Expressions;
 
 namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
 {
@@ -16,7 +18,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
         public GetKeyboardByIdHandler(
             IKeyboardRepository keyboardRepository,
             IMapper mapper)
-            :base(mapper)
+            : base(mapper)
         {
             _keyboardRepository = keyboardRepository;
             _mapper = mapper;
@@ -26,7 +28,12 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
         {
             try
             {
-                var currentKeyboard = await _keyboardRepository.FindById(request.IdKeyboard);
+                var includes = new Expression<Func<Keyboard, object>>[] { kb => kb.Key, kb => kb.Switch };
+
+                var currentKeyboard = await _keyboardRepository.GetAsync(
+                    kb => kb.Id == request.IdKeyboard, 
+                    null, 
+                    includes);
                 var keyboardMap = _mapper.Map<KeyboardViewModel>(currentKeyboard);
 
                 return new GetKeyboardByIdQueryResponse(keyboardMap);

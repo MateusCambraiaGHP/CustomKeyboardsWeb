@@ -2,6 +2,7 @@
 using CustomKeyboardsWeb.Core.DomainObjects;
 using CustomKeyboardsWeb.Data.Common.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace CustomKeyboardsWeb.Data.Repositories
 {
@@ -22,24 +23,31 @@ namespace CustomKeyboardsWeb.Data.Repositories
             await _dbSet.AddAsync(entityModel);
         }
 
+        public virtual async Task<List<TEntity>> GetAsync(
+            Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Expression<Func<TEntity, object>>[] includes = null)
+        {
+            IQueryable<TEntity> query = _dbSet;
+
+            if (filter != null)
+                query = query.Where(filter);
+
+            if (includes != null)
+            {
+                foreach (var include in includes)
+                {
+                    query = query.Include(include);
+                }
+            }
+
+            return await (orderBy is not null ? orderBy(query) : query).ToListAsync();
+        }
+
         public virtual async Task<TEntity> Update(TEntity entityModel)
         {
             _dbSet.Update(entityModel);
             return entityModel;
-        }
-
-        public virtual async Task<TEntity> FindById(Guid id)
-        {
-            var currentEntity = await _dbSet.AsNoTracking()
-                .Where(c => c.Id == id).FirstOrDefaultAsync();
-            return currentEntity;
-        }
-
-        public virtual async Task<List<TEntity>> GetAll()
-        {
-            List<TEntity> currentEntity = await _dbSet.ToListAsync();
-            currentEntity = currentEntity == null ? new List<TEntity>() : currentEntity;
-            return currentEntity;
         }
     }
 }

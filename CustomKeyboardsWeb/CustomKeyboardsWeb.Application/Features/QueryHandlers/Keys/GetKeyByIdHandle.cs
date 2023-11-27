@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keys
         {
             try
             {
-                var currentKey = await _keyRepository.FindById(request.IdKey);
+                var currentKey = await _keyRepository.GetAsync(k => k.Id == request.IdKey, null, null);
                 var keyMap = _mapper.Map<KeyViewModel>(currentKey);
                 return new GetKeyByIdQueryResponse(keyMap);
             }

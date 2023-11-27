@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keys
         {
             try
             {
-                var listKey = await _keyRepository.GetAll();
+                var listKey = await _keyRepository.GetAsync(null, null, null);
                 var listKeyMap = _mapper.Map<List<KeyViewModel>>(listKey);
                 return new GetKeyListQueryResponse(listKeyMap);
             }

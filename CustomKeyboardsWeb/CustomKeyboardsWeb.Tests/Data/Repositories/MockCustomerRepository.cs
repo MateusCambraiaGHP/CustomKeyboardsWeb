@@ -2,6 +2,7 @@
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 using Moq;
+using System.Linq.Expressions;
 
 namespace CustomKeyboardsWeb.Tests.Data.Repositories
 {
@@ -12,8 +13,16 @@ namespace CustomKeyboardsWeb.Tests.Data.Repositories
             var mock = new Mock<ICustomerRepository>();
 
             mock.Setup(c => c.Create(It.IsAny<Customer>()));
-            mock.Setup(c => c.FindById(It.IsAny<Guid>()))
-                .Returns((Guid id) => Task.FromResult(CustomersMock().FirstOrDefault(cm => cm.Id == id)));
+            mock.Setup(customerRepository => customerRepository.GetAsync(null, null, null))
+                .ReturnsAsync((Expression<Func<Customer, bool>> filter,
+                                Func<IQueryable<Customer>, IOrderedQueryable<Customer>> orderBy,
+                                Expression<Func<Customer, object>>[] includes) =>
+                {
+                    var customers = CustomersMock();
+                    var filteredCustomers = customers.ToList();
+                    return filteredCustomers;
+                });
+
 
 
             return mock;
