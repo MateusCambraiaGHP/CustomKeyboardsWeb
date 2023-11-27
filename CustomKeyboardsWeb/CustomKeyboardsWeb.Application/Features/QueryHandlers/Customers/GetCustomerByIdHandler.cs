@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers
         {
             try
             {
-                var currentCustomer = await _customerRepository.FindById(request.IdCustomer);
+                var currentCustomer = await _customerRepository.GetAsync(cu => cu.Id == request.IdCustomer, null, null);
                 var customerMap = _mapper.Map<CustomerViewModel>(currentCustomer);
 
                 return new GetCustomerByIdQueryResponse(customerMap);

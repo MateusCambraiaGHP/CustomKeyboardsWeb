@@ -5,7 +5,6 @@ using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
-using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers
@@ -36,7 +35,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers
 
                 if (customerResponse is not null) return customerResponse;
 
-                var listCustomer = await _customerRepository.GetAll() ?? new List<Customer>();
+                var listCustomer = await _customerRepository.GetAsync(null, null, null);
                 var listCustomerMap = _mapper.Map<List<CustomerViewModel>>(listCustomer);
 
                 customerResponse = new GetCustomerListQueryResponse(listCustomerMap);

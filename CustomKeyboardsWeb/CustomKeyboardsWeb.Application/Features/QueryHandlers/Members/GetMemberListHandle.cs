@@ -26,7 +26,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Members
         {
             try
             {
-                var listMember = await _memberRepository.GetAll();
+                var listMember = await _memberRepository.GetAsync(null, null, null);
                 var listMemberMap = _mapper.Map<List<MemberViewModel>>(listMember);
                 return new GetMemberListQueryResponse(listMemberMap);
             }

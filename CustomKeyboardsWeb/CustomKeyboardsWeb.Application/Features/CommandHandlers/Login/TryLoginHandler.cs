@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.Execution;
 using CustomKeyboardsWeb.Application.Cummon.Abstractions;
 using CustomKeyboardsWeb.Application.Features.Commands.Login;
 using CustomKeyboardsWeb.Application.Features.Responses.Login;
@@ -7,7 +6,6 @@ using CustomKeyboardsWeb.Application.Features.Validations.Login;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using FluentValidation.Results;
 using Member = CustomKeyboardsWeb.Domain.Primitives.Entities.Member;
 
@@ -45,14 +43,14 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Login
                     Name.Create(""),
                     Address.Create(""),
                     Phone.Create(""),
-                    "");
+                "");
 
-                var currentMember = await _memberRepository.FindByEmailAndPasswork(member);
+                var currentMember = await _memberRepository.GetAsync(m => m.Email == member.Email && m.Password == member.Password, null, null);
 
-                if (currentMember is null)
+                if (currentMember.FirstOrDefault() is null)
                     return new TryLoginCommandResponse(false, "Não foi possivel gerar o token");
 
-                string token = _jwtProvider.GenerateToken(currentMember);
+                string token = _jwtProvider.GenerateToken(currentMember.FirstOrDefault());
 
                 return new TryLoginCommandResponse(token);
             }
