@@ -1,17 +1,15 @@
-﻿using CustomKeyboardsWeb.Application.Features.ViewModel.Commom;
-
-namespace CustomKeyboardsWeb.Data.Caching
+﻿namespace CustomKeyboardsWeb.Data.Caching
 {
     public interface ICacheService
     {
         Task<IEnumerable<T>?> GetAll<T>(string key)
-            where T : BaseViewModel;
+            where T : class;
         Task<T> GetData<T>(string key, string id)
-            where T : BaseViewModel;
+            where T : class;
         bool RemovePost(string key, string id);
         T SetPost<T>(string key, T post)
-            where T : BaseViewModel;
-        List<T> SetPost<T>(string key, List<T> posts)
-            where T : BaseViewModel;
+            where T : class;
+        List<T> SetPost<T>(string key, List<T> data)
+            where T : class;
     }
 }
