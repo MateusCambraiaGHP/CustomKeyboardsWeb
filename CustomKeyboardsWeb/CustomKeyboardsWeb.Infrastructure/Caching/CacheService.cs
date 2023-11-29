@@ -1,6 +1,4 @@
-﻿using CustomKeyboardsWeb.Application.Features.ViewModel.Commom;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
-using CustomKeyboardsWeb.Data.Caching;
+﻿using CustomKeyboardsWeb.Data.Caching;
 using StackExchange.Redis;
 using System.Text.Json;
 
@@ -18,7 +16,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Caching
         }
 
         public async Task<IEnumerable<T>?> GetAll<T>(string key)
-            where T : BaseViewModel
+            where T : class
         {
             var value = _db.HashGetAll(key);
             if (value.Length > 0)
@@ -32,7 +30,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Caching
         }
 
         public Task<T> GetData<T>(string key, string id)
-            where T : BaseViewModel
+            where T : class
         {
             var value = _db.HashGet(key, id);
             if (!value.IsNullOrEmpty)
@@ -49,33 +47,33 @@ namespace CustomKeyboardsWeb.Infrastructure.Caching
             return isDeleted;
         }
 
-        public T SetPost<T>(string key, T post)
-            where T : BaseViewModel
+        public T SetPost<T>(string key, T data)
+            where T : class
         {
             var expirationTime = DateTimeOffset.Now.AddMinutes(60);
             var expiration = expirationTime.DateTime.Subtract(DateTime.Now);
-            var serializedObject = JsonSerializer.Serialize(post);
+            var serializedObject = JsonSerializer.Serialize(data);
             _db.HashSet(key, new HashEntry[]
             {
                 new HashEntry(key, serializedObject)
             });
             _db.KeyExpire(key, expiration);
-            return post;
+            return data;
         }
 
-        public List<T> SetPost<T>(string key, List<T> posts)
-            where T : BaseViewModel
+        public List<T> SetPost<T>(string key, List<T> data)
+            where T : class
         {
             var expirationTime = DateTimeOffset.Now.AddMinutes(60);
             var expiration = expirationTime.DateTime.Subtract(DateTime.Now);
 
-            var serializedObject = JsonSerializer.Serialize(posts);
+            var serializedObject = JsonSerializer.Serialize(data);
             _db.HashSet(key, new HashEntry[]
             {
                 new HashEntry(key, serializedObject)
             });
             _db.KeyExpire(key, expiration);
-            return posts;
+            return data;
         }
     }
 }
