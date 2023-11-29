@@ -3,8 +3,8 @@ using CustomKeyboardsWeb.Application.Dtos.Customers;
 using CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers;
 using CustomKeyboardsWeb.Application.Features.Commands.Customers;
 using CustomKeyboardsWeb.Core.Data;
+using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
-using CustomKeyboardsWeb.Tests.Application.Shared;
 using CustomKeyboardsWeb.Tests.Application.Shared.Mocks;
 using CustomKeyboardsWeb.Tests.Data.Repositories;
 using Moq;
@@ -16,12 +16,14 @@ namespace CustomKeyboardsWeb.Tests.Application.Features.Customers.Commands
         private readonly Mock<ICustomerRepository> _customerRepository;
         private readonly Mock<IMapper> _mapper;
         private readonly Mock<IUnitOfWork> _unitOfWork;
+        private readonly Mock<ICacheService> _cacheService;
 
         public CreateCustomerCommandTests()
         {
             _customerRepository = MockCustomerRepository.GetMock();
             _mapper = MockMapper.GetMock();
             _unitOfWork = MockUnitOfWork.GetMock();
+            _cacheService = MockCacheService.GetMock();
         }
 
         [Fact]
@@ -41,7 +43,8 @@ namespace CustomKeyboardsWeb.Tests.Application.Features.Customers.Commands
             var handler = new CreateCustomerHandler(
                 _customerRepository.Object,
                 _mapper.Object,
-                _unitOfWork.Object);
+                _unitOfWork.Object,
+                _cacheService.Object);
 
             //Act
             var response = await handler.Handle(new CreateCustomerCommand(commandDto), CancellationToken.None);

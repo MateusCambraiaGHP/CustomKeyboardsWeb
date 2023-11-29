@@ -1,60 +1,81 @@
-﻿using CustomKeyboardsWeb.Data.Caching;
-using Microsoft.Extensions.Caching.Distributed;
-using Newtonsoft.Json;
-using System.Collections.Concurrent;
+﻿using CustomKeyboardsWeb.Application.Features.ViewModel.Commom;
+using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
+using CustomKeyboardsWeb.Data.Caching;
+using StackExchange.Redis;
+using System.Text.Json;
 
 namespace CustomKeyboardsWeb.Infrastructure.Caching
 {
     public class CacheService : ICacheService
     {
-        private readonly IDistributedCache _distributedCache;
-        private static readonly ConcurrentDictionary<string, bool> CacheKeys = new();
+        private readonly IConnectionMultiplexer _redis;
+        private IDatabase _db;
 
-        public CacheService(IDistributedCache distributedCache)
+        public CacheService(IConnectionMultiplexer redis)
         {
-            _distributedCache = distributedCache;
+            _redis = redis;
+            _db = _redis.GetDatabase();
         }
 
-        public async Task<T?> GetAsync<T>(string key, CancellationToken cancellationToken = default) 
-            where T : class
+        public async Task<IEnumerable<T>?> GetAll<T>(string key)
+            where T : BaseViewModel
         {
-            string? cacheValue = await _distributedCache.GetStringAsync(
-                key,
-                cancellationToken);
+            var value = _db.HashGetAll(key);
+            if (value.Length > 0)
+            {
+                var jsonString = value.First().Value;
+                var result = JsonSerializer.Deserialize<List<T>>(jsonString);
+                return result;
+            }
 
-            if (cacheValue is null) return null;
-
-            T? value = JsonConvert.DeserializeObject<T>(cacheValue);
-
-            return value;
+            return null;
         }
 
-        public async Task RemoveAsync(string key, CancellationToken cancellationToken = default)
+        public Task<T> GetData<T>(string key, string id)
+            where T : BaseViewModel
         {
-            await _distributedCache.RemoveAsync(key, cancellationToken);
-
-            CacheKeys.TryRemove(key, out bool _);
+            var value = _db.HashGet(key, id);
+            if (!value.IsNullOrEmpty)
+            {
+                var obj = JsonSerializer.Deserialize<T>(value);
+                return Task.FromResult(obj);
+            }
+            return null;
         }
 
-        public async Task RemoveByPrefixAsync(string prefixKey, CancellationToken cancellationToken = default)
+        public bool RemovePost(string key, string id)
         {
-
-            IEnumerable<Task> tasks = CacheKeys
-                .Keys
-                .Where(k => k.StartsWith(prefixKey))
-                .Select(k => RemoveAsync(k, cancellationToken));
-
-            await Task.WhenAll(tasks);
+            bool isDeleted = _db.HashDelete(key, id);
+            return isDeleted;
         }
 
-        public async Task SetAsync<T>(string key, T value, CancellationToken cancelationToken = default) 
-            where T : class
+        public T SetPost<T>(string key, T post)
+            where T : BaseViewModel
         {
-            string cacheValue = JsonConvert.SerializeObject(value);
+            var expirationTime = DateTimeOffset.Now.AddMinutes(60);
+            var expiration = expirationTime.DateTime.Subtract(DateTime.Now);
+            var serializedObject = JsonSerializer.Serialize(post);
+            _db.HashSet(key, new HashEntry[]
+            {
+                new HashEntry(key, serializedObject)
+            });
+            _db.KeyExpire(key, expiration);
+            return post;
+        }
 
-            await _distributedCache.SetStringAsync(key, cacheValue, cancelationToken);
+        public List<T> SetPost<T>(string key, List<T> posts)
+            where T : BaseViewModel
+        {
+            var expirationTime = DateTimeOffset.Now.AddMinutes(60);
+            var expiration = expirationTime.DateTime.Subtract(DateTime.Now);
 
-            CacheKeys.TryAdd(key, false);
+            var serializedObject = JsonSerializer.Serialize(posts);
+            _db.HashSet(key, new HashEntry[]
+            {
+                new HashEntry(key, serializedObject)
+            });
+            _db.KeyExpire(key, expiration);
+            return posts;
         }
     }
 }
