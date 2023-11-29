@@ -17,7 +17,10 @@ namespace CustomKeyboardsWeb.Infrastructure.Extensions
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            var redis = ConnectionMultiplexer.Connect($"{configuration["Redis:Host"]}:{int.Parse(configuration["Redis:Port"])}");
+            var redisConfiguration = ConfigurationOptions.Parse($"{configuration["Redis:Host"]}:{configuration["Redis:Port"]}");
+            redisConfiguration.AbortOnConnectFail = false;
+
+            var redis = ConnectionMultiplexer.Connect(redisConfiguration);
             services.AddSingleton<IConnectionMultiplexer>(redis);
 
             services.AddScoped<IJwtProvider, JwtProvider>();

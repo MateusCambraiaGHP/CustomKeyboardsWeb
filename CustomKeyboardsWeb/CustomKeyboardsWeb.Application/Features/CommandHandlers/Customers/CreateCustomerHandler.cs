@@ -18,16 +18,19 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
         private readonly ICustomerRepository _customerRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICacheService _cacheService;
 
         public CreateCustomerHandler(
             ICustomerRepository customerRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork,
+            ICacheService cacheService)
             : base(mapper)
         {
             _customerRepository = customerRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _cacheService = cacheService;
         }
 
         public override async Task<CreateCustomerCommandResponse> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
@@ -50,6 +53,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
 
                 await _customerRepository.Create(customer);
                 await _unitOfWork.CommitChangesAsync();
+                _cacheService.RemovePost(nameof(CustomerViewModel), nameof(CustomerViewModel));
                 var customerViewModel = _mapper.Map<CustomerViewModel>(customer);
 
                 return new CreateCustomerCommandResponse(customerViewModel);

@@ -5,6 +5,7 @@ using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers
@@ -30,21 +31,22 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers
         {
             try
             {
-                var customerResponse = await _cacheService
-                    .GetAsync<GetCustomerListQueryResponse>("customers", cancellationToken);
-
-                if (customerResponse is not null) return customerResponse;
+                var cache = await _cacheService.GetAll<CustomerViewModel>(nameof(CustomerViewModel));
+                if (cache != null)
+                {
+                    var mapRes = cache.ToList();
+                    return new GetCustomerListQueryResponse(mapRes);
+                }
 
                 var listCustomer = await _customerRepository.GetAsync(null, null, null);
                 var listCustomerMap = _mapper.Map<List<CustomerViewModel>>(listCustomer);
-
-                customerResponse = new GetCustomerListQueryResponse(listCustomerMap);
-                await _cacheService.SetAsync("customers", customerResponse, cancellationToken);
+                _cacheService.SetPost<CustomerViewModel>(nameof(CustomerViewModel), listCustomerMap);
 
                 return new GetCustomerListQueryResponse(listCustomerMap);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                var a = ex;
                 throw;
             }
         }

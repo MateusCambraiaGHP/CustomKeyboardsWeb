@@ -32,9 +32,9 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Customers
             Address = address;
             FederativeUnit = federativeUnit;
             Phone = phone;
-            Active = active;
             CreatedBy = createdBy;
             UpdatedBy = updatedBy;
+            Active = active;
         }
 
         public static Customer Create(
