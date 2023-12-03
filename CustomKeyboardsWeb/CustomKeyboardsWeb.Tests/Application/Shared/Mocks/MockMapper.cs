@@ -20,8 +20,8 @@ namespace CustomKeyboardsWeb.Tests.Application.Shared.Mocks
 
         private static void SetupCustomer(Mock<IMapper> mock)
         {
-            mock.Setup(m => m.Map<Customer>(It.IsAny<CustomerDto>()))
-                   .Returns((CustomerDto dto) => Customer.Create(
+            mock.Setup(m => m.Map<Customer>(It.IsAny<CreateCustomerDto>()))
+                   .Returns((CreateCustomerDto dto) => Customer.Create(
                        name: Name.Create("TesteCreate"),
                        fantasyName: FantasyName.Create("TesteCreate"),
                        cep: Cep.Create("TesteCreate"),

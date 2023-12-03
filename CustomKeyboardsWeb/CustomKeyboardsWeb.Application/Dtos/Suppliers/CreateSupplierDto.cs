@@ -1,9 +1,8 @@
-﻿using CustomKeyboardsWeb.Application.Features.ViewModel.Commom;
-
-namespace CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers
+﻿namespace CustomKeyboardsWeb.Application.Dtos.Suppliers
 {
-    public class SupplierViewModel : BaseViewModel
+    public class CreateSupplierDto
     {
+        public string? Active { get; set; }
         public string? Name { get; set; }
         public string? FantasyName { get; set; }
         public string? Cep { get; set; }

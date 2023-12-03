@@ -1,6 +1,6 @@
 ﻿namespace CustomKeyboardsWeb.Application.Dtos.Keyboards
 {
-    public class KeyboardDto
+    public class CreateKeyboardDto
     {
         public string? Active { get; set; }
         public string? Name { get; set; }

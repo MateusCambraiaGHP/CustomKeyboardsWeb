@@ -1,12 +1,10 @@
-﻿namespace CustomKeyboardsWeb.Application.Features.ViewModel.Keys
+﻿using CustomKeyboardsWeb.Application.Features.ViewModel.Commom;
+
+namespace CustomKeyboardsWeb.Application.Features.ViewModel.Keys
 {
-    public class KeyViewModel
+    public class KeyViewModel : BaseViewModel
     {
-        public Guid? Id { get; set; }
-        public string? Active { get; set; }
         public string? Name { get; set; }
         public double Price { get; set; }
-        public DateTime InsertionDate { get; protected set; }
-        public DateTime LastModification { get; protected set; }
     }
 }

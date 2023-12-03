@@ -5,11 +5,11 @@ namespace CustomKeyboardsWeb.Application.Features.Responses.Switchies
 {
     public class UpdateSwitchCommandResponse : BaseHandlerResponse
     {
-        public SwitchDto Switch { get; set; }
+        public SwitchViewModel Switch { get; set; }
 
         public UpdateSwitchCommandResponse() { }
 
-        public UpdateSwitchCommandResponse(SwitchDto @switch)
+        public UpdateSwitchCommandResponse(SwitchViewModel @switch)
             : base() => Switch = @switch;
 
         public UpdateSwitchCommandResponse(bool success, string message = "")

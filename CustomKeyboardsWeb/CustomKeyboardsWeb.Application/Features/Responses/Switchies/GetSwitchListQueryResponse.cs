@@ -5,12 +5,12 @@ namespace CustomKeyboardsWeb.Application.Features.Responses.Switchies
 {
     public class GetSwitchListQueryResponse : BaseHandlerResponse
     {
-        public List<SwitchDto> Switchies { get; set; }
+        public List<SwitchViewModel> Switchies { get; set; }
 
         public GetSwitchListQueryResponse()
             : base() { }
 
-        public GetSwitchListQueryResponse(List<SwitchDto> switchViewModelList)
+        public GetSwitchListQueryResponse(List<SwitchViewModel> switchViewModelList)
             : base() => Switchies = switchViewModelList;
 
         public GetSwitchListQueryResponse(bool success, string message)

@@ -1,7 +1,7 @@
-﻿using CustomKeyboardsWeb.Application.Features.Commands.Switchies;
+﻿using CustomKeyboardsWeb.Application.Dtos.Switchies;
+using CustomKeyboardsWeb.Application.Features.Commands.Switchies;
 using CustomKeyboardsWeb.Application.Features.Queries.Switchies;
 using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
 using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using CustomKeyboardsWeb.Core.Messages.Notifications;
 using MediatR;
@@ -34,15 +34,15 @@ namespace CustomKeyboardsWeb.Controllers
             return currentSwitch;
         }
 
-        [HttpPost("save")]
-        public async Task<CreateSwitchCommandResponse> Save(SwitchDto model)
+        [HttpPost("create")]
+        public async Task<CreateSwitchCommandResponse> Create(CreateSwitchDto model)
         {
             var currentSwitch = await _mediator.SendCommand(new CreateSwitchCommand(model));
             return currentSwitch;
         }
 
         [HttpPut("update")]
-        public async Task<UpdateSwitchCommandResponse> Edit(SwitchDto model)
+        public async Task<UpdateSwitchCommandResponse> Update(UpdateSwitchDto model)
         {
             var currentSwitch = await _mediator.SendCommand(new UpdateSwitchCommand(model));
             return currentSwitch;

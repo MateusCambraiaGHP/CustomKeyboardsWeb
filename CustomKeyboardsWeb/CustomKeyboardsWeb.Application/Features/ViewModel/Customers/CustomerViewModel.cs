@@ -1,4 +1,4 @@
-﻿using CustomKeyboardsWeb.Application.Features.CommandHandlers.Commom;
+﻿using CustomKeyboardsWeb.Application.Features.ViewModel.Commom;
 using System.Text.Json.Serialization;
 
 namespace CustomKeyboardsWeb.Application.Features.ViewModel.Customers

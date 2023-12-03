@@ -6,8 +6,8 @@ namespace CustomKeyboardsWeb.Application.Features.Commands.Keyboards
 {
     public class UpdateKeyboardCommand : Command<UpdateKeyboardCommandResponse>
     {
-        public KeyboardDto KeyboardDto { get; set; }
+        public UpdateKeyboardDto KeyboardDto { get; set; }
 
-        public UpdateKeyboardCommand(KeyboardDto model) => KeyboardDto = model;
+        public UpdateKeyboardCommand(UpdateKeyboardDto model) => KeyboardDto = model;
     }
 }

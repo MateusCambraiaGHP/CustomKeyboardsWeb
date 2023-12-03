@@ -1,13 +1,11 @@
-﻿namespace CustomKeyboardsWeb.Application.Features.ViewModel.Switchies
+﻿using CustomKeyboardsWeb.Application.Features.ViewModel.Commom;
+
+namespace CustomKeyboardsWeb.Application.Features.ViewModel.Switchies
 {
-    public class SwitchDto
+    public class SwitchViewModel : BaseViewModel
     {
-        public Guid? Id { get; set; }
-        public string? Active { get; set; }
         public string? Name { get; set; }
         public string? Color { get; set; }
         public double Price { get; set; }
-        public DateTime InsertionDate { get; protected set; }
-        public DateTime LastModification { get; protected set; }
     }
 }
