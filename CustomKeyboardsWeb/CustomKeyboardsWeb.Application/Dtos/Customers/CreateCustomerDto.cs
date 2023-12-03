@@ -1,6 +1,6 @@
 ﻿namespace CustomKeyboardsWeb.Application.Dtos.Customers
 {
-    public class CustomerDto
+    public class CreateCustomerDto
     {
         public string? Active { get; set; }
         public string? Name { get; set; }

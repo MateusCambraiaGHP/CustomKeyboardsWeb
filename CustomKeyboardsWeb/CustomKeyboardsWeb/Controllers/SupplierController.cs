@@ -2,7 +2,6 @@
 using CustomKeyboardsWeb.Application.Features.Commands.Suppliers;
 using CustomKeyboardsWeb.Application.Features.Queries.Suppliers;
 using CustomKeyboardsWeb.Application.Features.Responses.Suppliers;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
 using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using CustomKeyboardsWeb.Core.Messages.Notifications;
 using MediatR;
@@ -35,15 +34,15 @@ namespace CustomKeyboardsWeb.Controllers
             return currentSupplier;
         }
 
-        [HttpPost("save")]
-        public async Task<CreateSupplierCommandResponse> Save(SupplierDto model)
+        [HttpPost("create")]
+        public async Task<CreateSupplierCommandResponse> Create(CreateSupplierDto model)
         {
             var currentSupplier = await _mediator.SendCommand(new CreateSupplierCommand(model));
             return currentSupplier;
         }
 
         [HttpPut("update")]
-        public async Task<UpdateSupplierCommandResponse> Edit(SupplierDto model)
+        public async Task<UpdateSupplierCommandResponse> Update(UpdateSupplierDto model)
         {
             var currentSupplier = await _mediator.SendCommand(new UpdateSupplierCommand(model));
             return currentSupplier;

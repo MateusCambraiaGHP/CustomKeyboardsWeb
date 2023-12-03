@@ -34,15 +34,15 @@ namespace CustomKeyboardsWeb.Controllers
             return currentCustomer;
         }
 
-        [HttpPost("save")]
-        public async Task<CreateCustomerCommandResponse> Save(CustomerDto model)
+        [HttpPost("create")]
+        public async Task<CreateCustomerCommandResponse> Create(CreateCustomerDto model)
         {
             var currentCustomer = await _mediator.SendCommand(new CreateCustomerCommand(model));
             return currentCustomer;
         }
 
         [HttpPut("update")]
-        public async Task<UpdateCustomerCommandResponse> Edit(CustomerDto model)
+        public async Task<UpdateCustomerCommandResponse> Update(UpdateCustomerDto model)
         {
             var currentCustomer = await _mediator.SendCommand(new UpdateCustomerCommand(model));
             return currentCustomer;

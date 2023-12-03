@@ -8,7 +8,7 @@ namespace CustomKeyboardsWeb.Application.Cummon.Extensions.MappingProfiles
     {
         public CustomerMappingProfile()
         {
-            CreateMap<CustomerViewModel, Customer>().ReverseMap();
+            CreateMap<Customer, CustomerViewModel>().ReverseMap();
         }
     }
 }

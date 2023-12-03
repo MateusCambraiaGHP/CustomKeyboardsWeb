@@ -6,8 +6,8 @@ namespace CustomKeyboardsWeb.Application.Features.Commands.Keys
 {
     public class CreateKeyCommand : Command<CreateKeyCommandResponse>
     {
-        public KeyDto KeyDto { get; set; }
+        public CreateKeyDto KeyDto { get; set; }
 
-        public CreateKeyCommand(KeyDto model) => KeyDto = model;
+        public CreateKeyCommand(CreateKeyDto model) => KeyDto = model;
     }
 }

@@ -11,7 +11,7 @@ namespace CustomKeyboardsWeb.Application.Features.Responses.Customers
             : base() { }
 
         public GetCustomerByIdQueryResponse(CustomerViewModel customerViewModel)
-            : base("Cliente criado com sucesso") => Customer = customerViewModel;
+            : base("Cliente encontrado com sucesso") => Customer = customerViewModel;
 
         public GetCustomerByIdQueryResponse(bool success, string message)
             : base(success, message) { }

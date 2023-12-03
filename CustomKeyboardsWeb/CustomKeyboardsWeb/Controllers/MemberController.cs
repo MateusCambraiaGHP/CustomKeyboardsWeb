@@ -2,7 +2,6 @@
 using CustomKeyboardsWeb.Application.Features.Commands.Members;
 using CustomKeyboardsWeb.Application.Features.Queries.Members;
 using CustomKeyboardsWeb.Application.Features.Responses.Members;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Members;
 using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using CustomKeyboardsWeb.Core.Messages.Notifications;
 using MediatR;
@@ -35,15 +34,15 @@ namespace CustomKeyboardsWeb.Controllers
             return currentMember;
         }
 
-        [HttpPost("save")]
-        public async Task<CreateMemberCommandResponse> Save(MemberDto model)
+        [HttpPost("create")]
+        public async Task<CreateMemberCommandResponse> Create(CreateMemberDto model)
         {
             var currentMember = await _mediator.SendCommand(new CreateMemberCommand(model));
             return currentMember;
         }
 
         [HttpPut("update")]
-        public async Task<UpdateMemberCommandResponse> Edit(MemberDto model)
+        public async Task<UpdateMemberCommandResponse> Update(UpdateMemberDto model)
         {
             var currentMember = await _mediator.SendCommand(new UpdateMemberCommand(model));
             return currentMember;

@@ -2,7 +2,6 @@
 using CustomKeyboardsWeb.Application.Features.Commands.Keys;
 using CustomKeyboardsWeb.Application.Features.Queries.Keys;
 using CustomKeyboardsWeb.Application.Features.Responses.Keys;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
 using CustomKeyboardsWeb.Core.Communication.Mediator.Interfaces;
 using CustomKeyboardsWeb.Core.Messages.Notifications;
 using MediatR;
@@ -35,15 +34,15 @@ namespace CustomKeyboardsWeb.Controllers
             return currentKey;
         }
 
-        [HttpPost("save")]
-        public async Task<CreateKeyCommandResponse> Save(KeyDto model)
+        [HttpPost("create")]
+        public async Task<CreateKeyCommandResponse> Create(CreateKeyDto model)
         {
             var currentKey = await _mediator.SendCommand(new CreateKeyCommand(model));
             return currentKey;
         }
 
         [HttpPut("update")]
-        public async Task<UpdateKeyCommandResponse> Edit(KeyDto model)
+        public async Task<UpdateKeyCommandResponse> Update(UpdateKeyDto model)
         {
             var currentKey = await _mediator.SendCommand(new UpdateKeyCommand(model));
             return currentKey;

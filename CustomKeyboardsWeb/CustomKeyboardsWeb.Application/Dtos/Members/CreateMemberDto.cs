@@ -1,6 +1,6 @@
 ﻿namespace CustomKeyboardsWeb.Application.Dtos.Members
 {
-    public class MemberDto
+    public class CreateMemberDto
     {
         public string Email { get; set; }
         public string Password { get; set; }

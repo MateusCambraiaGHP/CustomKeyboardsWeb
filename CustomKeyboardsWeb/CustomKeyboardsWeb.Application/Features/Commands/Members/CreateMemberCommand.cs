@@ -6,8 +6,8 @@ namespace CustomKeyboardsWeb.Application.Features.Commands.Members
 {
     public class CreateMemberCommand : Command<CreateMemberCommandResponse>
     {
-        public MemberDto MemberDto { get; set; }
+        public CreateMemberDto MemberDto { get; set; }
 
-        public CreateMemberCommand(MemberDto model) => MemberDto = model;
+        public CreateMemberCommand(CreateMemberDto model) => MemberDto = model;
     }
 }

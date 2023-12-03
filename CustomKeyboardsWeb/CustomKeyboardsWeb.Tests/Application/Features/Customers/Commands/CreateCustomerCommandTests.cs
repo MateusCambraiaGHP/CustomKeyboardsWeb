@@ -30,7 +30,7 @@ namespace CustomKeyboardsWeb.Tests.Application.Features.Customers.Commands
         public async Task ShouldCreate_Customer_ValidData_ReturnSucess()
         {
             //Arrange
-            var commandDto = new CustomerDto
+            var commandDto = new CreateCustomerDto
             {
                 Name = "TesteCreate",
                 FantasyName = "TesteCreate",

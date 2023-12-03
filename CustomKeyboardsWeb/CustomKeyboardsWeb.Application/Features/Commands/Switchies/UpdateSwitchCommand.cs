@@ -6,8 +6,8 @@ namespace CustomKeyboardsWeb.Application.Features.Commands.Switchies
 {
     public class UpdateSwitchCommand : Command<UpdateSwitchCommandResponse>
     {
-        public SwitchDto SwitchDto { get; set; }
+        public UpdateSwitchDto SwitchDto { get; set; }
 
-        public UpdateSwitchCommand(SwitchDto model) => SwitchDto = model;
+        public UpdateSwitchCommand(UpdateSwitchDto model) => SwitchDto = model;
     }
 }
