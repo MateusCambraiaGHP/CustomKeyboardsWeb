@@ -1,4 +1,4 @@
-﻿namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Commom
+﻿namespace CustomKeyboardsWeb.Application.Features.ViewModel.Commom
 {
     public abstract class BaseViewModel
     {

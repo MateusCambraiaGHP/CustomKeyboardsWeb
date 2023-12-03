@@ -8,7 +8,7 @@ namespace CustomKeyboardsWeb.Application.Cummon.Extensions.MappingProfiles
     {
         public SwitchMappingProfile()
         {
-            CreateMap<Switch, SwitchDto>().ReverseMap();
+            CreateMap<Switch, SwitchViewModel>().ReverseMap();
         }
     }
 }

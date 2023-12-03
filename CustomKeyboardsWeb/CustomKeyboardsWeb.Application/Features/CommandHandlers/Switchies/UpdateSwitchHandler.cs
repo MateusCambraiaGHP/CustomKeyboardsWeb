@@ -41,7 +41,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
                 switchMap.CreatedBy = "Administrator";
                 await _switchRepository.Update(switchMap);
                 await _unitOfWork.CommitChangesAsync();
-                var switchViewModel = _mapper.Map<SwitchDto>(request);
+                var switchViewModel = _mapper.Map<SwitchViewModel>(request);
 
                 return new UpdateSwitchCommandResponse(switchViewModel);
             }

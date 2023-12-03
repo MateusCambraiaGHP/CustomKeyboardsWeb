@@ -27,7 +27,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Switchies
             try
             {
                 var currentSwitch = await _switchRepository.GetAsync(kb => kb.Id == request.IdSwitch, null, null);
-                var switchMap = _mapper.Map<SwitchDto>(currentSwitch);
+                var switchMap = _mapper.Map<SwitchViewModel>(currentSwitch);
                 return new GetSwitchByIdQueryResponse(switchMap);
             }
             catch (Exception)

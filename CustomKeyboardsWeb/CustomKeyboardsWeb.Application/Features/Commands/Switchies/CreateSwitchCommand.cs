@@ -1,5 +1,5 @@
-﻿using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
+﻿using CustomKeyboardsWeb.Application.Dtos.Switchies;
+using CustomKeyboardsWeb.Application.Features.Responses.Switchies;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 
 namespace CustomKeyboardsWeb.Application.Features.Commands.Switchies
