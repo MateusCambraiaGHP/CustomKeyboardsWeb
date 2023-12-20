@@ -40,7 +40,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on create customer", request.ValidationResult);
 
                 var customer = Customer.Create(
                             Name.Create(request.CustomerDto.Name),

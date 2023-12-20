@@ -35,7 +35,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on update member", request.ValidationResult);
 
                 var memberMap = _mapper.Map<Member>(request.MemberDto);
                 memberMap.CreatedBy = "Administrator";
@@ -45,9 +45,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
 
                 return new UpdateMemberCommandResponse(memberViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

@@ -7,9 +7,6 @@ namespace CustomKeyboardsWeb.Application.Features.Events
     {
         public Supplier Supplier { get; set; }
 
-        public CreateCustomerEvent(Supplier supplier)
-        {
-            Supplier = supplier;
-        }
+        public CreateCustomerEvent(Supplier supplier) => Supplier = supplier;
     }
 }

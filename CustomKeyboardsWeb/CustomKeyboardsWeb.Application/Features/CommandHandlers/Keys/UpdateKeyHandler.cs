@@ -35,7 +35,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on update key", request.ValidationResult);
 
                 var keyMap = _mapper.Map<Key>(request.KeyDto);
                 keyMap.CreatedBy = "Administrator";
@@ -45,9 +45,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
 
                 return new UpdateKeyCommandResponse(keyViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

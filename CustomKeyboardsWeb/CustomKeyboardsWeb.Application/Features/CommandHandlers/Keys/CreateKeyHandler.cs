@@ -36,7 +36,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on create key", request.ValidationResult);
 
                 var key = Key.Create(
                     Name.Create(request.KeyDto.Name),
@@ -49,9 +49,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
 
                 return new CreateKeyCommandResponse(keyViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

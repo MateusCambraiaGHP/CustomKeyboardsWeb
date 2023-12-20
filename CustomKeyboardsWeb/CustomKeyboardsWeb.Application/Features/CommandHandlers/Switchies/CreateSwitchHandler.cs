@@ -36,7 +36,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on create switch", request.ValidationResult);
 
                 var _switch = Switch.Create(
                     Name.Create(request.SwitchDto.Name),
@@ -50,9 +50,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
 
                 return new CreateSwitchCommandResponse(switchViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

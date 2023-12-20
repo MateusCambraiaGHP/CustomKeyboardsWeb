@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CustomKeyboardsWeb.Application.Dtos.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
 using Switch = CustomKeyboardsWeb.Domain.Primitives.Entities.Switch;
 
@@ -9,6 +10,7 @@ namespace CustomKeyboardsWeb.Application.Cummon.Extensions.MappingProfiles
         public SwitchMappingProfile()
         {
             CreateMap<Switch, SwitchViewModel>().ReverseMap();
+            CreateMap<Switch, UpdateSwitchDto>().ReverseMap();
         }
     }
 }

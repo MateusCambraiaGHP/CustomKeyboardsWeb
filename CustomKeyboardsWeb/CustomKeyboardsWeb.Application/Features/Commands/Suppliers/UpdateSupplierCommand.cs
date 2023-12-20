@@ -6,7 +6,7 @@ namespace CustomKeyboardsWeb.Application.Features.Commands.Suppliers
 {
     public class UpdateSupplierCommand : Command<UpdateSupplierCommandResponse>
     {
-        public UpdateSupplierDto SupplierDto { get; set; }
+        public UpdateSupplierDto SupplierDto { get; init; }
 
         public UpdateSupplierCommand(UpdateSupplierDto model) => SupplierDto = model;
     }

@@ -36,7 +36,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on create member", request.ValidationResult);
 
                 var member = Member.Create(
                     Email.Create(request.MemberDto.Email),
@@ -52,9 +52,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
 
                 return new CreateMemberCommandResponse(memberViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

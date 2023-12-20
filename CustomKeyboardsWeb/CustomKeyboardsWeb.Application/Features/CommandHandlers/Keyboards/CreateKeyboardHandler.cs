@@ -36,7 +36,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on create keyboard", request.ValidationResult);
 
                 var keyboard = Keyboard.Create(
                     Name.Create(request.KeyboardDto.Name),
@@ -54,10 +54,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
 
                 return new CreateKeyboardCommandResponse(keyboardViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                var keyboardDtoMap = _mapper.Map<KeyboardViewModel>(request);
-                return new CreateKeyboardCommandResponse(keyboardDtoMap);
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

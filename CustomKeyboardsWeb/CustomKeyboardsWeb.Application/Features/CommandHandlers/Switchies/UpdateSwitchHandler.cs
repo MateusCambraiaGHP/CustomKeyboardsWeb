@@ -35,7 +35,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on update switch", request.ValidationResult);
 
                 var switchMap = _mapper.Map<Switch>(request.SwitchDto);
                 switchMap.CreatedBy = "Administrator";
@@ -45,9 +45,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
 
                 return new UpdateSwitchCommandResponse(switchViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

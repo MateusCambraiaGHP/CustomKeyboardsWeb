@@ -35,7 +35,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on create supplier", request.ValidationResult);
 
                 var supplier = Supplier.Create(
                     Name.Create(request.SupplierDto.Name),
@@ -54,9 +54,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                 
                 return new CreateSupplierCommandResponse(supplierViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

@@ -35,7 +35,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Login
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("cannot possible generate token, invalid user", request.ValidationResult);
 
                 var member = Member.Create(
                     Email.Create(request.LoginViewModel.Email),
@@ -48,15 +48,15 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Login
                 var currentMember = await _memberRepository.GetAsync(m => m.Email == member.Email && m.Password == member.Password, null, null);
 
                 if (currentMember.FirstOrDefault() is null)
-                    return new TryLoginCommandResponse(false, "Não foi possivel gerar o token");
+                    return new TryLoginCommandResponse(false, "cannot possible generate token, the user dont exists");
 
                 string token = _jwtProvider.GenerateToken(currentMember.FirstOrDefault());
 
                 return new TryLoginCommandResponse(token);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

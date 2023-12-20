@@ -35,7 +35,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on update supplier", request.ValidationResult);
 
                 var supplierMap = _mapper.Map<Supplier>(request.SupplierDto);
                 supplierMap.CreatedBy = "Administrator";
@@ -45,9 +45,9 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
 
                 return new UpdateSupplierCommandResponse(supplierViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

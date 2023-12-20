@@ -6,7 +6,7 @@ namespace CustomKeyboardsWeb.Application.Features.Commands.Customers
 {
     public class CreateCustomerCommand : Command<CreateCustomerCommandResponse>
     {
-        public CreateCustomerDto CustomerDto { get; set; }
+        public CreateCustomerDto CustomerDto { get; init; }
 
         public CreateCustomerCommand(CreateCustomerDto model) => CustomerDto = model;
     }

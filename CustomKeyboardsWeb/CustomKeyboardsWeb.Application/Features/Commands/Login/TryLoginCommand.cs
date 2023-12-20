@@ -6,7 +6,7 @@ namespace CustomKeyboardsWeb.Application.Features.Commands.Login
 {
     public class TryLoginCommand : Command<TryLoginCommandResponse>
     {
-        public LoginViewModel LoginViewModel { get; set; }
+        public LoginViewModel LoginViewModel { get; init; }
 
         public TryLoginCommand(LoginViewModel model) => LoginViewModel = model;
     }
