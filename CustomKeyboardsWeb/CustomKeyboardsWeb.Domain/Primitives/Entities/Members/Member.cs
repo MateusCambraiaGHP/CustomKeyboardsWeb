@@ -1,6 +1,6 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 
-namespace CustomKeyboardsWeb.Domain.Primitives.Entities
+namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Members
 {
     public class Member : AggregateRoot
     {

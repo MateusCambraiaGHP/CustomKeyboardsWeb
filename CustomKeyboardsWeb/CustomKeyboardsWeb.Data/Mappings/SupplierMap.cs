@@ -1,4 +1,4 @@
-﻿using CustomKeyboardsWeb.Domain.Primitives.Entities;
+﻿using CustomKeyboardsWeb.Domain.Primitives.Entities.Suppliers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

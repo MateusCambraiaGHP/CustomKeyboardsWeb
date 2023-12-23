@@ -1,4 +1,6 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Keys;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Switchies;
 using FluentValidation.Results;
 
 namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards

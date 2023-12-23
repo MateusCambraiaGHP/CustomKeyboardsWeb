@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Dtos.Keys;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Keys;
 
 namespace CustomKeyboardsWeb.Application.Cummon.Extensions.MappingProfiles
 {

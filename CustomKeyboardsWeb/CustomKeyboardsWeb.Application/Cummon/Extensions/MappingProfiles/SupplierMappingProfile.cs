@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Dtos.Suppliers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Suppliers;
 
-namespace CustomKeyboardsWeb.Data.Common.Extensions.MappingProfiles
+namespace CustomKeyboardsWeb.Application.Cummon.Extensions.MappingProfiles
 {
     public class SupplierMappingProfile : Profile
     {

@@ -1,4 +1,4 @@
-﻿using CustomKeyboardsWeb.Domain.Primitives.Entities;
+﻿using CustomKeyboardsWeb.Domain.Primitives.Entities.Members;
 
 namespace CustomKeyboardsWeb.Application.Cummon.Abstractions
 {

@@ -1,6 +1,7 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Suppliers;
 
 namespace CustomKeyboardsWeb.Domain.Primitives.Entities
 {
