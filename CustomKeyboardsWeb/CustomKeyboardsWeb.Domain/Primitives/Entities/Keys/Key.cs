@@ -1,45 +1,40 @@
 ﻿using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 
-namespace CustomKeyboardsWeb.Domain.Primitives.Entities
+namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Keys
 {
-    public class Switch : AggregateRoot
+    public class Key : AggregateRoot
     {
         public Name Name { get; private set; }
-        public Color Color { get; private set; }
         public Price Price { get; private set; }
         public string CreatedBy { get; set; }
         public string? UpdatedBy { get; set; }
 
-        private Switch() { }
+        protected Key() { }
 
-        private Switch(
+        private Key(
             Name name,
-            Color color,
             Price price,
             string active,
             string createdBy,
             string? updatedBy)
         {
             Name = name;
-            Color = color;
             Price = price;
             Active = active;
             CreatedBy = createdBy;
             UpdatedBy = updatedBy;
         }
 
-        public static Switch Create(
+        public static Key Create(
             Name name,
-            Color color,
             Price price,
             string active)
         {
-            return new Switch(
+            return new Key(
                 name,
-                color,
                 price,
                 active,
-                "Administator",
+                "Administrator",
                 null);
         }
     }

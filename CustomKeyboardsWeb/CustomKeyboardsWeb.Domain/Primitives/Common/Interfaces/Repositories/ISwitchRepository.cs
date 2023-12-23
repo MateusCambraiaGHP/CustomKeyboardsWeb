@@ -1,4 +1,4 @@
-﻿using CustomKeyboardsWeb.Domain.Primitives.Entities;
+﻿using CustomKeyboardsWeb.Domain.Primitives.Entities.Switchies;
 using System.Linq.Expressions;
 
 namespace CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories

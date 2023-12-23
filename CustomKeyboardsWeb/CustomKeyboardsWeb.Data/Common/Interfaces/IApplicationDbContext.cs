@@ -2,6 +2,10 @@
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Keys;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Members;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Suppliers;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Switchies;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 

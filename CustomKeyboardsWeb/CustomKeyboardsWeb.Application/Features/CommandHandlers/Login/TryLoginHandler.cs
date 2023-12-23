@@ -7,7 +7,7 @@ using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using FluentValidation.Results;
-using Member = CustomKeyboardsWeb.Domain.Primitives.Entities.Member;
+using Member = CustomKeyboardsWeb.Domain.Primitives.Entities.Members.Member;
 
 namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Login
 {

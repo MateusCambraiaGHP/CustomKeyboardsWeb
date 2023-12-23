@@ -1,5 +1,6 @@
 ﻿using CustomKeyboardsWeb.Application.Features.ViewModel.Commom;
-using CustomKeyboardsWeb.Domain.Primitives.Entities;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Keys;
+using CustomKeyboardsWeb.Domain.Primitives.Entities.Switchies;
 
 namespace CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards
 {
