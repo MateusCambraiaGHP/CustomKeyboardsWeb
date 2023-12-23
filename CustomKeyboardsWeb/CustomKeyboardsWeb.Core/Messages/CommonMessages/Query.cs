@@ -1,6 +1,4 @@
 ﻿namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
 {
-    public abstract class Query<TResponse> : BaseMessage<TResponse>
-    {
-    }
+    public abstract class Query<TResponse> : BaseMessage<TResponse> { }
 }

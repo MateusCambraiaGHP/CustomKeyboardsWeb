@@ -6,10 +6,7 @@
         public string Message { get; set; }
         public List<string> ValidationErrors { get; set; }
 
-        public BaseHandlerResponse()
-        {
-            Success = true;
-        }
+        public BaseHandlerResponse() => Success = true;
 
         public BaseHandlerResponse(string message = "")
         {

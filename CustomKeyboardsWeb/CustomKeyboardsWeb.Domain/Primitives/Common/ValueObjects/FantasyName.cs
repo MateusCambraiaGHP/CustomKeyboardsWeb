@@ -2,19 +2,12 @@
 {
     public class FantasyName : ValueObject
     {
-        private FantasyName() { }
-
-        public FantasyName(string value)
-        {
-            Value = value;
-        }
-
         public string Value { get; }
 
-        public static FantasyName Create(string fantasyName)
-        {
-            return new FantasyName(fantasyName);
-        }
+        private FantasyName() { }
+        public FantasyName(string value) => Value = value;
+
+        public static FantasyName Create(string fantasyName) => new FantasyName(fantasyName);
 
         public override IEnumerable<object> GetAtomicValues()
         {

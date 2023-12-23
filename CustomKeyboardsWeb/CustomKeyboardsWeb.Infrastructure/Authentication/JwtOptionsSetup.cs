@@ -9,14 +9,8 @@ namespace CustomKeyboardsWeb.Infrastructure.Authentication
         private readonly IConfiguration _configuration;
         private readonly string SectionName = "JwtOptions";
 
-        public JwtOptionsSetup(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+        public JwtOptionsSetup(IConfiguration configuration) => _configuration = configuration;
 
-        public void Configure(JwtOptions options)
-        {
-            _configuration.GetSection(SectionName).Bind(options);
-        }
+        public void Configure(JwtOptions options) => _configuration.GetSection(SectionName).Bind(options);
     }
 }

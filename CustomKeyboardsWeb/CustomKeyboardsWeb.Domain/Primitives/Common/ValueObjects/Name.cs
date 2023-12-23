@@ -2,19 +2,12 @@
 {
     public class Name : ValueObject
     {
-        private Name() { }
-
-        public Name(string value)
-        {
-            Value = value;
-        }
-
         public string Value { get; }
 
-        public static Name Create(string name)
-        {
-            return new Name(name);
-        }
+        private Name() { }
+        public Name(string value) => Value = value;
+
+        public static Name Create(string name) => new Name(name);
 
         public override IEnumerable<object> GetAtomicValues()
         {

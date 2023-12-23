@@ -2,19 +2,12 @@
 {
     public class Price : ValueObject
     {
-        private Price() { }
-
-        public Price(double value)
-        {
-            Value = value;
-        }
-
         public double Value { get; }
 
-        public static Price Create(double price)
-        {
-            return new Price(price);
-        }
+        private Price() { }
+        public Price(double value) => Value = value;
+
+        public static Price Create(double price) => new Price(price);
 
         public override IEnumerable<object> GetAtomicValues()
         {

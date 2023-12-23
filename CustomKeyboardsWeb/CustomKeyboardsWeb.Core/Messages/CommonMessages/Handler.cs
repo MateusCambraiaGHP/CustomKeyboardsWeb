@@ -6,9 +6,7 @@ namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
        where TCommand : BaseMessage<BaseHandlerResponse>
     {
         protected Handler(IMapper mapper)
-            : base(mapper)
-        {
-        }
+            : base(mapper) { }
     }
 
     public abstract class Handler<TCommand, T> : BaseHandler<TCommand, T>
@@ -16,8 +14,6 @@ namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
         where TCommand : BaseMessage<T>
     {
         protected Handler(IMapper mapper)
-            : base(mapper)
-        {
-        }
+            : base(mapper) { }
     }
 }

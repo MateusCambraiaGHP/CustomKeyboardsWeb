@@ -6,9 +6,6 @@ namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
     {
         public DateTime Timestamp { get; private set; }
 
-        protected Event()
-        {
-            Timestamp = DateTime.UtcNow;
-        }
+        protected Event() => Timestamp = DateTime.UtcNow;
     }
 }

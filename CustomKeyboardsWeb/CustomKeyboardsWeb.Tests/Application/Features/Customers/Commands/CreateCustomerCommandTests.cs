@@ -54,5 +54,208 @@ namespace CustomKeyboardsWeb.Tests.Application.Features.Customers.Commands
             Assert.True(response.ValidationErrors == null);
             Assert.True(response.Customer != null);
         }
+
+        [Fact]
+        public async Task ShouldCreate_Customer_WithoutName_ReturnError()
+        {
+            //Arrange
+            var commandDto = new CreateCustomerDto
+            {
+                Name = "",
+                FantasyName = "TesteCreate",
+                Cep = "TesteCreate",
+                Address = "TesteCreate",
+                FederativeUnit = "MG",
+                Phone = "31997876723",
+                Active = "1"
+            };
+            var handler = new CreateCustomerHandler(
+                _customerRepository.Object,
+                _mapper.Object,
+                _unitOfWork.Object,
+                _cacheService.Object);
+
+            //Act
+            var response = await handler.Handle(new CreateCustomerCommand(commandDto), CancellationToken.None);
+
+            //Assert
+            Assert.True(response.Success == false);
+            Assert.True(response.ValidationErrors != null);
+            Assert.True(response.Customer == null);
+        }
+
+        [Fact]
+        public async Task ShouldCreate_Customer_WithoutFantasyName_ReturnError()
+        {
+            //Arrange
+            var commandDto = new CreateCustomerDto
+            {
+                Name = "TesteCreate",
+                FantasyName = "",
+                Cep = "TesteCreate",
+                Address = "TesteCreate",
+                FederativeUnit = "MG",
+                Phone = "31997876723",
+                Active = "1"
+            };
+            var handler = new CreateCustomerHandler(
+                _customerRepository.Object,
+                _mapper.Object,
+                _unitOfWork.Object,
+                _cacheService.Object);
+
+            //Act
+            var response = await handler.Handle(new CreateCustomerCommand(commandDto), CancellationToken.None);
+
+            //Assert
+            Assert.True(response.Success == false);
+            Assert.True(response.ValidationErrors != null);
+            Assert.True(response.Customer == null);
+        }
+
+        [Fact]
+        public async Task ShouldCreate_Customer_WithoutCep_ReturnError()
+        {
+            //Arrange
+            var commandDto = new CreateCustomerDto
+            {
+                Name = "TesteCreate",
+                FantasyName = "TesteCreate",
+                Cep = "",
+                Address = "TesteCreate",
+                FederativeUnit = "MG",
+                Phone = "31997876723",
+                Active = "1"
+            };
+            var handler = new CreateCustomerHandler(
+                _customerRepository.Object,
+                _mapper.Object,
+                _unitOfWork.Object,
+                _cacheService.Object);
+
+            //Act
+            var response = await handler.Handle(new CreateCustomerCommand(commandDto), CancellationToken.None);
+
+            //Assert
+            Assert.True(response.Success == false);
+            Assert.True(response.ValidationErrors != null);
+            Assert.True(response.Customer == null);
+        }
+
+        [Fact]
+        public async Task ShouldCreate_Customer_WithoutAddress_ReturnError()
+        {
+            //Arrange
+            var commandDto = new CreateCustomerDto
+            {
+                Name = "TesteCreate",
+                FantasyName = "TesteCreate",
+                Cep = "TesteCreate",
+                Address = "",
+                FederativeUnit = "MG",
+                Phone = "31997876723",
+                Active = "1"
+            };
+            var handler = new CreateCustomerHandler(
+                _customerRepository.Object,
+                _mapper.Object,
+                _unitOfWork.Object,
+                _cacheService.Object);
+
+            //Act
+            var response = await handler.Handle(new CreateCustomerCommand(commandDto), CancellationToken.None);
+
+            //Assert
+            Assert.True(response.Success == false);
+            Assert.True(response.ValidationErrors != null);
+            Assert.True(response.Customer == null);
+        }
+
+        [Fact]
+        public async Task ShouldCreate_Customer_WithoutFederativeUnit_ReturnError()
+        {
+            //Arrange
+            var commandDto = new CreateCustomerDto
+            {
+                Name = "TesteCreate",
+                FantasyName = "TesteCreate",
+                Cep = "TesteCreate",
+                Address = "TesteCreate",
+                FederativeUnit = "",
+                Phone = "31997876723",
+                Active = "1"
+            };
+            var handler = new CreateCustomerHandler(
+                _customerRepository.Object,
+                _mapper.Object,
+                _unitOfWork.Object,
+                _cacheService.Object);
+
+            //Act
+            var response = await handler.Handle(new CreateCustomerCommand(commandDto), CancellationToken.None);
+
+            //Assert
+            Assert.True(response.Success == false);
+            Assert.True(response.ValidationErrors != null);
+            Assert.True(response.Customer == null);
+        }
+
+        [Fact]
+        public async Task ShouldCreate_Customer_WithoutActive_ReturnError()
+        {
+            //Arrange
+            var commandDto = new CreateCustomerDto
+            {
+                Name = "TesteCreate",
+                FantasyName = "TesteCreate",
+                Cep = "TesteCreate",
+                Address = "TesteCreate",
+                FederativeUnit = "MG",
+                Phone = "31997876723",
+                Active = ""
+            };
+            var handler = new CreateCustomerHandler(
+                _customerRepository.Object,
+                _mapper.Object,
+                _unitOfWork.Object,
+                _cacheService.Object);
+
+            //Act
+            var response = await handler.Handle(new CreateCustomerCommand(commandDto), CancellationToken.None);
+
+            //Assert
+            Assert.True(response.Success == false);
+            Assert.True(response.ValidationErrors != null);
+            Assert.True(response.Customer == null);
+        }
+
+        [Fact]
+        public async Task ShouldCreate_Customer_WithoutPhone_ReturnError()
+        {
+            //Arrange
+            var commandDto = new CreateCustomerDto
+            {
+                Name = "TesteCreate",
+                FantasyName = "TesteCreate",
+                Cep = "TesteCreate",
+                Address = "TesteCreate",
+                FederativeUnit = "MG",
+                Phone = "",
+                Active = "1"
+            };
+            var handler = new CreateCustomerHandler(
+                _customerRepository.Object,
+                _mapper.Object,
+                _unitOfWork.Object,
+                _cacheService.Object);
+
+            //Act
+            var response = await handler.Handle(new CreateCustomerCommand(commandDto), CancellationToken.None);
+
+            //Assert
+            Assert.True(response.Success == false);
+            Assert.True(response.ValidationErrors != null);
+            Assert.True(response.Customer == null);
+        }
     }
 }

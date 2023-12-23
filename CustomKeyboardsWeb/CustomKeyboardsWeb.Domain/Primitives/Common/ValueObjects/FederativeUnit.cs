@@ -2,19 +2,12 @@
 {
     public class FederativeUnit : ValueObject
     {
-        private FederativeUnit() { }
-
-        public FederativeUnit(string value)
-        {
-            Value = value;
-        }
-
         public string Value { get; }
 
-        public static FederativeUnit Create(string federativeUnit)
-        {
-            return new FederativeUnit(federativeUnit);
-        }
+        private FederativeUnit() { }
+        public FederativeUnit(string value) => Value = value;
+
+        public static FederativeUnit Create(string federativeUnit) => new FederativeUnit(federativeUnit);
 
         public override IEnumerable<object> GetAtomicValues()
         {

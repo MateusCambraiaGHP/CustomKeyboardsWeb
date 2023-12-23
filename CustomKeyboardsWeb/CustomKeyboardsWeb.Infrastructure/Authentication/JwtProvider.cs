@@ -12,14 +12,11 @@ namespace CustomKeyboardsWeb.Infrastructure.Authentication
     {
         private readonly JwtOptions _jwtOptions;
 
-        public JwtProvider(IOptions<JwtOptions> options)
-        {
-            _jwtOptions = options.Value;
-        }
+        public JwtProvider(IOptions<JwtOptions> options) => _jwtOptions = options.Value;
 
         public string GenerateToken(Member member)
         {
-            var claims = new Claim[] { 
+            var claims = new Claim[] {
                 new Claim(JwtRegisteredClaimNames.Sub, member.Id.ToString()),
                 new(JwtRegisteredClaimNames.Email, member.Email.Value)
             };
