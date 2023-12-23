@@ -5,6 +5,7 @@ using CustomKeyboardsWeb.Application.Features.Validations.Switchies;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Switchies;
 using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
@@ -17,16 +18,19 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
         private readonly ISwitchRepository _switchRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICacheService _cacheService;
 
         public CreateSwitchHandler(
             ISwitchRepository switchRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork)
-            :base(mapper)
+            IUnitOfWork unitOfWork,
+            ICacheService cacheService)
+            : base(mapper)
         {
             _switchRepository = switchRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _cacheService = cacheService;
         }
 
         public override async Task<CreateSwitchCommandResponse> Handle(CreateSwitchCommand request, CancellationToken cancellationToken)
@@ -46,7 +50,8 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
 
                 await _switchRepository.Create(_switch);
                 await _unitOfWork.CommitChangesAsync();
-                var switchViewModel= _mapper.Map<SwitchViewModel>(_switch);
+                var switchViewModel = _mapper.Map<SwitchViewModel>(_switch);
+                _cacheService.RemovePost(nameof(SwitchViewModel), nameof(SwitchViewModel));
 
                 return new CreateSwitchCommandResponse(switchViewModel);
             }

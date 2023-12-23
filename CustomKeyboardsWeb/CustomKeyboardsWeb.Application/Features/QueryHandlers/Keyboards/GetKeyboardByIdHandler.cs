@@ -31,8 +31,8 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
                 var includes = new Expression<Func<Keyboard, object>>[] { kb => kb.Key, kb => kb.Switch };
 
                 var currentKeyboard = await _keyboardRepository.GetAsync(
-                    kb => kb.Id == request.IdKeyboard, 
-                    null, 
+                    kb => kb.Id == request.IdKeyboard,
+                    null,
                     includes);
                 var keyboardMap = _mapper.Map<KeyboardViewModel>(currentKeyboard);
 

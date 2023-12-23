@@ -16,7 +16,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Switchies
         public GetSwitchByIdHandler(
             ISwitchRepository switchRepository,
             IMapper mapper)
-            :base(mapper)
+            : base(mapper)
         {
             _switchRepository = switchRepository;
             _mapper = mapper;

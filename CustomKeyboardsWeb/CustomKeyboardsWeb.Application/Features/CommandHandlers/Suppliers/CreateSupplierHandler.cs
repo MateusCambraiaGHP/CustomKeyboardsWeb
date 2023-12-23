@@ -6,6 +6,7 @@ using CustomKeyboardsWeb.Application.Features.Validations.Suppliers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
 using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
@@ -17,15 +18,18 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
     {
         private readonly ISupplierRepository _supplierRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICacheService _cacheService;
 
         public CreateSupplierHandler(
             ISupplierRepository supplierRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork)
-            :base(mapper)
+            IUnitOfWork unitOfWork,
+            ICacheService cacheService)
+            : base(mapper)
         {
             _supplierRepository = supplierRepository;
             _unitOfWork = unitOfWork;
+            _cacheService = cacheService;
         }
 
         public override async Task<CreateSupplierCommandResponse> Handle(CreateSupplierCommand request, CancellationToken cancellationToken)
@@ -51,7 +55,8 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                 await _supplierRepository.Create(supplier);
                 await _unitOfWork.CommitChangesAsync();
                 var supplierViewModel = _mapper.Map<SupplierViewModel>(supplier);
-                
+                _cacheService.RemovePost(nameof(SupplierViewModel), nameof(SupplierViewModel));
+
                 return new CreateSupplierCommandResponse(supplierViewModel);
             }
             catch (Exception ex)

@@ -5,6 +5,7 @@ using CustomKeyboardsWeb.Application.Features.Validations.Members;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Members;
 using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
@@ -17,16 +18,19 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
         private readonly IMemberRepository _memberRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICacheService _cacheService;
 
         public CreateMemberHandler(
             IMemberRepository memberRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork)
-            :base(mapper)
+            IUnitOfWork unitOfWork,
+            ICacheService cacheService)
+            : base(mapper)
         {
             _memberRepository = memberRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _cacheService = cacheService;
         }
 
         public override async Task<CreateMemberCommandResponse> Handle(CreateMemberCommand request, CancellationToken cancellationToken)
@@ -49,6 +53,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
                 await _memberRepository.Create(member);
                 await _unitOfWork.CommitChangesAsync();
                 var memberViewModel = _mapper.Map<MemberViewModel>(member);
+                _cacheService.RemovePost(nameof(MemberViewModel), nameof(MemberViewModel));
 
                 return new CreateMemberCommandResponse(memberViewModel);
             }
