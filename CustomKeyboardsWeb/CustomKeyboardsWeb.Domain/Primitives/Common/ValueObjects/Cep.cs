@@ -1,22 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects
+﻿namespace CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects
 {
     public class Cep : ValueObject
     {
-        private Cep() { }
-
-        public Cep(string value)
-        {
-            Value = value;
-        }
-
         public string Value { get; }
+        
+        private Cep() { }
+        public Cep(string value) => Value = value;
 
-        public static Cep Create(string cep)
-        {
-            return new Cep(cep);
-        }
+        public static Cep Create(string cep) => new Cep(cep);
 
         public override IEnumerable<object> GetAtomicValues()
         {

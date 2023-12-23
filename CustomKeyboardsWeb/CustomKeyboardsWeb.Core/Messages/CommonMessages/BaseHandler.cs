@@ -10,10 +10,7 @@ namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
     {
         protected IMapper _mapper;
 
-        public BaseHandler(IMapper mapper)
-        {
-            _mapper = mapper;
-        }
+        public BaseHandler(IMapper mapper) => _mapper = mapper;
 
         public abstract Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken);
 
@@ -34,9 +31,6 @@ namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
             return response;
         }
 
-        public virtual void Dispose()
-        {
-            _mapper = null;
-        }
+        public virtual void Dispose() => _mapper = null;
     }
 }

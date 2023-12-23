@@ -14,9 +14,6 @@ namespace CustomKeyboardsWeb.Core.Messages.CommonMessages
             ValidationResult = new List<ValidationFailure>();
         }
 
-        public virtual bool IsValid()
-        {
-            return ValidationResult.Count == 0;
-        }
+        public virtual bool IsValid() => ValidationResult.Count == 0;
     }
 }

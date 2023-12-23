@@ -2,19 +2,12 @@
 {
     public class Password : ValueObject
     {
-        private Password() { }
-
-        public Password(string value)
-        {
-            Value = value;
-        }
-
         public string Value { get; }
 
-        public static Password Create(string name)
-        {
-            return new Password(name);
-        }
+        private Password() { }
+        public Password(string value) => Value = value;
+
+        public static Password Create(string name) => new Password(name);
 
         public override IEnumerable<object> GetAtomicValues()
         {

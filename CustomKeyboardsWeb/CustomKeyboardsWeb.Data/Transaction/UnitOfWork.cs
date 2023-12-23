@@ -7,10 +7,7 @@ namespace CustomKeyboardsWeb.Data.Transaction
     {
         private readonly IApplicationDbContext _applicationDbContext;
 
-        public UnitOfWork(IApplicationDbContext applicationDbContext)
-        {
-            _applicationDbContext = applicationDbContext;
-        }
+        public UnitOfWork(IApplicationDbContext applicationDbContext) => _applicationDbContext = applicationDbContext;
 
         public async Task CommitChangesAsync() => await _applicationDbContext.Save();
     }

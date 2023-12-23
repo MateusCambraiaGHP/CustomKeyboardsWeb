@@ -7,9 +7,7 @@
         public override bool Equals(object? obj) => obj is ValueObject other && ValuesAreEqual(other);
 
         public override int GetHashCode() => GetAtomicValues()
-                                                .Aggregate(
-                                                       default(int),
-                                                       HashCode.Combine);
+                                                .Aggregate(default(int), HashCode.Combine);
 
         public bool ValuesAreEqual(ValueObject other) => GetAtomicValues().SequenceEqual(other.GetAtomicValues());
 

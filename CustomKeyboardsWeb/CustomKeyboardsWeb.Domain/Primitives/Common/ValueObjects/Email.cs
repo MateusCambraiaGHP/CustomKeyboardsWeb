@@ -2,19 +2,12 @@
 {
     public class Email : ValueObject
     {
-        private Email() { }
-
-        public Email(string value)
-        {
-            Value = value;
-        }
-
         public string Value { get; }
 
-        public static Email Create(string name)
-        {
-            return new Email(name);
-        }
+        private Email() { }
+        public Email(string value) => Value = value;
+
+        public static Email Create(string name) => new Email(name);
 
         public override IEnumerable<object> GetAtomicValues()
         {
