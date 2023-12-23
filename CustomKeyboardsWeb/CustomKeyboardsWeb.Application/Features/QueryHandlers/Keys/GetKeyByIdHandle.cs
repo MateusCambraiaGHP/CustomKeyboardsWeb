@@ -16,7 +16,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keys
         public GetKeyByIdHandle(
             IKeyRepository keyRepository,
             IMapper mapper)
-            :base(mapper)
+            : base(mapper)
         {
             _keyRepository = keyRepository;
             _mapper = mapper;

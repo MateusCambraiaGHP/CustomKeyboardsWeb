@@ -6,7 +6,7 @@ namespace CustomKeyboardsWeb.Application.Features.Commands.Switchies
 {
     public class CreateSwitchCommand : Command<CreateSwitchCommandResponse>
     {
-        public CreateSwitchDto SwitchDto { get; set; }
+        public CreateSwitchDto SwitchDto { get; init; }
 
         public CreateSwitchCommand(CreateSwitchDto model) => SwitchDto = model;
     }

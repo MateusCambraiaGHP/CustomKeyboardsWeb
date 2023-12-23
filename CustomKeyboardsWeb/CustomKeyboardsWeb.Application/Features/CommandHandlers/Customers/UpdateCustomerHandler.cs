@@ -5,6 +5,7 @@ using CustomKeyboardsWeb.Application.Features.Validations.Customers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
 using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 using FluentValidation.Results;
@@ -16,16 +17,19 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
         private readonly ICustomerRepository _customerRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICacheService _cacheService;
 
         public UpdateCustomerHandler(
             ICustomerRepository customerRepository,
             IUnitOfWork unitOfWork,
-            IMapper mapper)
+            IMapper mapper,
+            ICacheService cacheService)
             : base(mapper)
         {
             _customerRepository = customerRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _cacheService = cacheService;
         }
 
         public override async Task<UpdateCustomerCommandResponse> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
@@ -35,19 +39,20 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on update customer", request.ValidationResult);
 
                 Customer customerMap = _mapper.Map<Customer>(request.CustomerDto);
                 customerMap.CreatedBy = "Administrator";
                 await _customerRepository.Update(customerMap);
                 await _unitOfWork.CommitChangesAsync();
                 var customerViewModel = _mapper.Map<CustomerViewModel>(customerMap);
+                _cacheService.RemovePost(nameof(CustomerViewModel), nameof(CustomerViewModel));
 
                 return new UpdateCustomerCommandResponse(customerViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

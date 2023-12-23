@@ -6,6 +6,7 @@ using CustomKeyboardsWeb.Application.Features.Validations.Suppliers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Suppliers;
 using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
@@ -17,15 +18,18 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
     {
         private readonly ISupplierRepository _supplierRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICacheService _cacheService;
 
         public CreateSupplierHandler(
             ISupplierRepository supplierRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork)
-            :base(mapper)
+            IUnitOfWork unitOfWork,
+            ICacheService cacheService)
+            : base(mapper)
         {
             _supplierRepository = supplierRepository;
             _unitOfWork = unitOfWork;
+            _cacheService = cacheService;
         }
 
         public override async Task<CreateSupplierCommandResponse> Handle(CreateSupplierCommand request, CancellationToken cancellationToken)
@@ -35,7 +39,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on create supplier", request.ValidationResult);
 
                 var supplier = Supplier.Create(
                     Name.Create(request.SupplierDto.Name),
@@ -51,12 +55,13 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                 await _supplierRepository.Create(supplier);
                 await _unitOfWork.CommitChangesAsync();
                 var supplierViewModel = _mapper.Map<SupplierViewModel>(supplier);
-                
+                _cacheService.RemovePost(nameof(SupplierViewModel), nameof(SupplierViewModel));
+
                 return new CreateSupplierCommandResponse(supplierViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

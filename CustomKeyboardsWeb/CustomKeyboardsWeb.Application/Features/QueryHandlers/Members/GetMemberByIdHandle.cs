@@ -16,7 +16,7 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Members
         public GetMemberByIdHandle(
             IMemberRepository memberRepository,
             IMapper mapper)
-            :base(mapper)
+            : base(mapper)
         {
             _memberRepository = memberRepository;
             _mapper = mapper;

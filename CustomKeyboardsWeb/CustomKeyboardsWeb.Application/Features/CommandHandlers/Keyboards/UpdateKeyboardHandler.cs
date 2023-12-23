@@ -5,6 +5,7 @@ using CustomKeyboardsWeb.Application.Features.Validations.Keyboards;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
 using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
 using FluentValidation.Results;
@@ -16,16 +17,19 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
         private readonly IKeyboardRepository _keyboardRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICacheService _cacheService;
 
         public UpdateKeyboardHandler(
             IKeyboardRepository keyboardRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork)
-            :base(mapper)
+            IUnitOfWork unitOfWork,
+            ICacheService cacheService)
+            : base(mapper)
         {
             _keyboardRepository = keyboardRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _cacheService = cacheService;
         }
 
         public override async Task<UpdateKeyboardCommandResponse> Handle(UpdateKeyboardCommand request, CancellationToken cancellationToken)
@@ -35,19 +39,20 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on update keyboard", request.ValidationResult);
 
                 var keyboardMap = _mapper.Map<Keyboard>(request.KeyboardDto);
                 keyboardMap.CreatedBy = "Administrator";
                 await _keyboardRepository.Update(keyboardMap);
                 await _unitOfWork.CommitChangesAsync();
                 var keyboardViewModel = _mapper.Map<KeyboardViewModel>(keyboardMap);
+                _cacheService.RemovePost(nameof(KeyboardViewModel), nameof(KeyboardViewModel));
 
                 return new UpdateKeyboardCommandResponse(keyboardViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

@@ -5,6 +5,7 @@ using CustomKeyboardsWeb.Application.Features.Validations.Keys;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
 using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using FluentValidation.Results;
@@ -16,16 +17,19 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
         private readonly IKeyRepository _keyRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICacheService _cacheService;
 
         public UpdateKeyHandler(
             IKeyRepository keyRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork)
-            :base(mapper)
+            IUnitOfWork unitOfWork,
+            ICacheService cacheService)
+            : base(mapper)
         {
             _keyRepository = keyRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _cacheService = cacheService;
         }
 
         public override async Task<UpdateKeyCommandResponse> Handle(UpdateKeyCommand request, CancellationToken cancellationToken)
@@ -35,19 +39,20 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on update key", request.ValidationResult);
 
                 var keyMap = _mapper.Map<Key>(request.KeyDto);
                 keyMap.CreatedBy = "Administrator";
                 await _keyRepository.Update(keyMap);
                 await _unitOfWork.CommitChangesAsync();
                 var keyViewModel = _mapper.Map<KeyViewModel>(keyMap);
+                _cacheService.RemovePost(nameof(KeyViewModel), nameof(KeyViewModel));
 
                 return new UpdateKeyCommandResponse(keyViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

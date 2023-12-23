@@ -2,13 +2,11 @@
 using CustomKeyboardsWeb.Application.Features.Queries.Keyboards;
 using CustomKeyboardsWeb.Application.Features.Responses.Keyboards;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keyboards;
-using CustomKeyboardsWeb.Core.DomainObjects;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
-using CustomKeyboardsWeb.Data.Repositories;
+using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
 using FluentValidation.Results;
-using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
 namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
@@ -17,14 +15,17 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
     {
         private readonly IKeyboardRepository _keyboardRepository;
         private readonly IMapper _mapper;
+        private readonly ICacheService _cacheService;
 
         public GetKeyBoardListHandle(
             IKeyboardRepository keyboardRepository,
-            IMapper mapper)
-            :base(mapper)
+            IMapper mapper,
+            ICacheService cacheService)
+            : base(mapper)
         {
             _keyboardRepository = keyboardRepository;
             _mapper = mapper;
+            _cacheService = cacheService;
         }
 
         public override async Task<GetKeyboardListQueryResponse> Handle(GetKeyboardListQuery request, CancellationToken cancellationToken)
@@ -38,6 +39,8 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
                 {
                     keyboard.Price += keyboard.Switch.Price.Value + keyboard.Key.Price.Value;
                 }
+
+                _cacheService.SetPost<KeyboardViewModel>(nameof(KeyboardViewModel), listKeyboardMap);
                 return new GetKeyboardListQueryResponse(listKeyboardMap);
             }
             catch (Exception)

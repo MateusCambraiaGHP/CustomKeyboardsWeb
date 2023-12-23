@@ -5,6 +5,7 @@ using CustomKeyboardsWeb.Application.Features.Validations.Keys;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
 using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
+using CustomKeyboardsWeb.Data.Caching;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
@@ -17,16 +18,19 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
         private readonly IKeyRepository _keyRepository;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ICacheService _cacheService;
 
         public CreateKeyHandler(
             IKeyRepository keyRepository,
             IMapper mapper,
-            IUnitOfWork unitOfWork)
-            :base(mapper)
+            IUnitOfWork unitOfWork,
+            ICacheService cacheService)
+            : base(mapper)
         {
             _keyRepository = keyRepository;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _cacheService = cacheService;
         }
 
         public override async Task<CreateKeyCommandResponse> Handle(CreateKeyCommand request, CancellationToken cancellationToken)
@@ -36,7 +40,7 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
-                    return ResponseOnFailValidation("", request.ValidationResult);
+                    return ResponseOnFailValidation("fail on create key", request.ValidationResult);
 
                 var key = Key.Create(
                     Name.Create(request.KeyDto.Name),
@@ -46,12 +50,13 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
                 await _keyRepository.Create(key);
                 await _unitOfWork.CommitChangesAsync();
                 var keyViewModel = _mapper.Map<KeyViewModel>(key);
+                _cacheService.RemovePost(nameof(KeyViewModel), nameof(KeyViewModel));
 
                 return new CreateKeyCommandResponse(keyViewModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                return ResponseOnFailValidation(ex.Message, request.ValidationResult);
             }
         }
 

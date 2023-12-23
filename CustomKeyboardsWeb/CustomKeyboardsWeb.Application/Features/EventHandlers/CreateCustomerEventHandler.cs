@@ -1,13 +1,9 @@
-﻿using AutoMapper;
-using CustomKeyboardsWeb.Application.Features.Events;
-using CustomKeyboardsWeb.Application.Features.Responses.Customers;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
+﻿using CustomKeyboardsWeb.Application.Features.Events;
 using CustomKeyboardsWeb.Core.Data;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Common.ValueObjects;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
-using MediatR;
 
 namespace CustomKeyboardsWeb.Application.Features.EventHandlers
 {
@@ -37,12 +33,11 @@ namespace CustomKeyboardsWeb.Application.Features.EventHandlers
                     Phone.Create(notification.Supplier.Phone.ToString()),
                     notification.Supplier.Active.ToString());
 
-                 _customerRepository.Create(customer);
+                _customerRepository.Create(customer);
                 _unitOfWork.CommitChangesAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
             }
 
             return Task.CompletedTask;

@@ -6,7 +6,7 @@ namespace CustomKeyboardsWeb.Application.Features.Commands.Keys
 {
     public class UpdateKeyCommand : Command<UpdateKeyCommandResponse>
     {
-        public UpdateKeyDto KeyDto { get; set; }
+        public UpdateKeyDto KeyDto { get; init; }
 
         public UpdateKeyCommand(UpdateKeyDto model) => KeyDto = model;
     }
