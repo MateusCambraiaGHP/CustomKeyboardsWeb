@@ -14,7 +14,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
     public class GetKeyBoardListHandle : Handler<GetKeyboardListQuery, GetKeyboardListQueryResponse>
     {
         private readonly IKeyboardRepository _keyboardRepository;
-        private readonly IMapper _mapper;
         private readonly ICacheService _cacheService;
 
         public GetKeyBoardListHandle(
@@ -24,7 +23,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
             : base(mapper)
         {
             _keyboardRepository = keyboardRepository;
-            _mapper = mapper;
             _cacheService = cacheService;
         }
 

@@ -16,7 +16,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
     public class CreateSwitchHandler : Handler<CreateSwitchCommand, CreateSwitchCommandResponse>
     {
         private readonly ISwitchRepository _switchRepository;
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICacheService _cacheService;
 
@@ -28,7 +27,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
             : base(mapper)
         {
             _switchRepository = switchRepository;
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _cacheService = cacheService;
         }

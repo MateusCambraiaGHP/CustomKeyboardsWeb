@@ -9,8 +9,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Members
         public Name Name { get; set; }
         public Address Address { get; set; }
         public Phone Phone { get; set; }
-        public string CreatedBy { get; set; } = null!;
-        public string? UpdatedBy { get; set; }
+        public string? Token { get; private set; }
 
         public Member() { }
 
@@ -20,9 +19,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Members
             Name name,
             Address address,
             Phone phone,
-            string active,
-            string createdBy,
-            string? updatedBy)
+            string active)
         {
             Email = email;
             Password = password;
@@ -30,8 +27,6 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Members
             Address = address;
             Phone = phone;
             Active = active;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
         }
 
         public static Member Create(
@@ -48,9 +43,9 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Members
                 name,
                 address,
                 phone,
-                active,
-                "Administrator",
-                null);
+                active);
         }
+
+        public void SetToken(string token) => Token = token;
     }
 }

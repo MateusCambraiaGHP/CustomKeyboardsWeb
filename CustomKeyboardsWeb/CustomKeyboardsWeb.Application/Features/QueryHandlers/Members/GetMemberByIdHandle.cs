@@ -11,7 +11,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Members
     public class GetMemberByIdHandle : Handler<GetMemberByIdQuery, GetMemberByIdQueryResponse>
     {
         private readonly IMemberRepository _memberRepository;
-        private readonly IMapper _mapper;
 
         public GetMemberByIdHandle(
             IMemberRepository memberRepository,
@@ -19,7 +18,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Members
             : base(mapper)
         {
             _memberRepository = memberRepository;
-            _mapper = mapper;
         }
 
         public override async Task<GetMemberByIdQueryResponse> Handle(GetMemberByIdQuery request, CancellationToken cancellationToken)

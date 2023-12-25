@@ -12,7 +12,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Switchies
     public class GetSwitchListHandler : Handler<GetSwitchListQuery, GetSwitchListQueryResponse>
     {
         private readonly ISwitchRepository _switchRepository;
-        private readonly IMapper _mapper;
         private readonly ICacheService _cacheService;
 
         public GetSwitchListHandler(
@@ -22,7 +21,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Switchies
             : base(mapper)
         {
             _switchRepository = switchRepository;
-            _mapper = mapper;
             _cacheService = cacheService;
         }
 

@@ -16,7 +16,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
     public class CreateKeyboardHandler : Handler<CreateKeyboardCommand, CreateKeyboardCommandResponse>
     {
         private readonly IKeyboardRepository _keyboardRepository;
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICacheService _cacheService;
 
@@ -28,7 +27,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keyboards
             : base(mapper)
         {
             _keyboardRepository = keyboardRepository;
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _cacheService = cacheService;
         }

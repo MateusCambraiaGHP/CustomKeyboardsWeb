@@ -12,7 +12,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers
     public class GetCustomerListHandler : Handler<GetCustomerListQuery, GetCustomerListQueryResponse>
     {
         private readonly ICustomerRepository _customerRepository;
-        private readonly IMapper _mapper;
         private readonly ICacheService _cacheService;
 
         public GetCustomerListHandler(
@@ -22,7 +21,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers
             : base(mapper)
         {
             _customerRepository = customerRepository;
-            _mapper = mapper;
             _cacheService = cacheService;
         }
 

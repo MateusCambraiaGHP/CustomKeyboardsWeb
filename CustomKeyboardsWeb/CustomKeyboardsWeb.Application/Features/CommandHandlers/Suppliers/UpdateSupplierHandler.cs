@@ -15,7 +15,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
     public class UpdateSupplierHandler : Handler<UpdateSupplierCommand, UpdateSupplierCommandResponse>
     {
         private readonly ISupplierRepository _supplierRepository;
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICacheService _cacheService;
 
@@ -27,7 +26,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
             : base(mapper)
         {
             _supplierRepository = supplierRepository;
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _cacheService = cacheService;
         }
@@ -42,7 +40,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Suppliers
                     return ResponseOnFailValidation("fail on update supplier", request.ValidationResult);
 
                 var supplierMap = _mapper.Map<Supplier>(request.SupplierDto);
-                supplierMap.CreatedBy = "Administrator";
                 await _supplierRepository.Update(supplierMap);
                 await _unitOfWork.CommitChangesAsync();
                 var supplierViewModel = _mapper.Map<SupplierViewModel>(request);

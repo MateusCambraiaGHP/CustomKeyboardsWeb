@@ -12,7 +12,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Suppliers
     public class GetSupplierListHandler : Handler<GetSupplierListQuery, GetSupplierListQueryResponse>
     {
         private readonly ISupplierRepository _supplierRepository;
-        private readonly IMapper _mapper;
         private readonly ICacheService _cacheService;
 
         public GetSupplierListHandler(
@@ -22,7 +21,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Suppliers
             : base(mapper)
         {
             _supplierRepository = supplierRepository;
-            _mapper = mapper;
             _cacheService = cacheService;
         }
 

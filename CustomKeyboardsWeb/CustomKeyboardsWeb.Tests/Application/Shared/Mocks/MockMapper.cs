@@ -42,12 +42,12 @@ namespace CustomKeyboardsWeb.Tests.Application.Shared.Mocks
                        Active = customer.Active,
                        Address = customer.Address.Value,
                        Cep = customer.Cep.Value,
-                       CreatedBy = customer.CreatedBy,
+                       InsertionBy = customer.InsertionBy,
                        FederativeUnit = customer.FederativeUnit.Value,
                        LastModification = customer.LastModification,
                        Name = customer.Name.Value,
                        Phone = customer.Phone.Value,
-                       UpdatedBy = customer.UpdatedBy
+                       ModificationBy = customer.ModificationBy
                    });
         }
     }

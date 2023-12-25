@@ -16,7 +16,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
     public class CreateMemberHandler : Handler<CreateMemberCommand, CreateMemberCommandResponse>
     {
         private readonly IMemberRepository _memberRepository;
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICacheService _cacheService;
 
@@ -28,7 +27,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
             : base(mapper)
         {
             _memberRepository = memberRepository;
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _cacheService = cacheService;
         }

@@ -11,7 +11,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers
     public class GetCustomerByIdHandler : Handler<GetCustumerByIdQuery, GetCustomerByIdQueryResponse>
     {
         private readonly ICustomerRepository _customerRepository;
-        private readonly IMapper _mapper;
 
         public GetCustomerByIdHandler(
             ICustomerRepository customerRepository,
@@ -19,7 +18,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Customers
             : base(mapper)
         {
             _customerRepository = customerRepository;
-            _mapper = mapper;
         }
 
         public override async Task<GetCustomerByIdQueryResponse> Handle(GetCustumerByIdQuery request, CancellationToken cancellationToken)

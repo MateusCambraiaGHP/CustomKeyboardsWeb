@@ -7,8 +7,6 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Switchies
         public Name Name { get; private set; }
         public Color Color { get; private set; }
         public Price Price { get; private set; }
-        public string CreatedBy { get; set; }
-        public string? UpdatedBy { get; set; }
 
         private Switch() { }
 
@@ -16,16 +14,12 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Switchies
             Name name,
             Color color,
             Price price,
-            string active,
-            string createdBy,
-            string? updatedBy)
+            string active)
         {
             Name = name;
             Color = color;
             Price = price;
             Active = active;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
         }
 
         public static Switch Create(
@@ -38,9 +32,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Switchies
                 name,
                 color,
                 price,
-                active,
-                "Administator",
-                null);
+                active);
         }
     }
 }

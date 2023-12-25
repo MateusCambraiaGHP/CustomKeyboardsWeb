@@ -11,7 +11,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Suppliers
     public class GetSupplierByIdHandler : Handler<GetSupplierByIdQuery, GetSupplierByIdQueryResponse>
     {
         private readonly ISupplierRepository _supplierRepository;
-        private readonly IMapper _mapper;
 
         public GetSupplierByIdHandler(
             ISupplierRepository supplierRepository,
@@ -19,7 +18,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Suppliers
             : base(mapper)
         {
             _supplierRepository = supplierRepository;
-            _mapper = mapper;
         }
 
         public override async Task<GetSupplierByIdQueryResponse> Handle(GetSupplierByIdQuery request, CancellationToken cancellationToken)

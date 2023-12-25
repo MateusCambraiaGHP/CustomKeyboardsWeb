@@ -15,7 +15,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
     public class UpdateKeyHandler : Handler<UpdateKeyCommand, UpdateKeyCommandResponse>
     {
         private readonly IKeyRepository _keyRepository;
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICacheService _cacheService;
 
@@ -27,7 +26,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
             : base(mapper)
         {
             _keyRepository = keyRepository;
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _cacheService = cacheService;
         }
@@ -42,7 +40,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Keys
                     return ResponseOnFailValidation("fail on update key", request.ValidationResult);
 
                 var keyMap = _mapper.Map<Key>(request.KeyDto);
-                keyMap.CreatedBy = "Administrator";
                 await _keyRepository.Update(keyMap);
                 await _unitOfWork.CommitChangesAsync();
                 var keyViewModel = _mapper.Map<KeyViewModel>(keyMap);

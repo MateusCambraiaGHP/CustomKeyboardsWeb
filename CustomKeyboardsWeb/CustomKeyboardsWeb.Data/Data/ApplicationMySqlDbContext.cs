@@ -2,6 +2,7 @@
 using CustomKeyboardsWeb.Core.DomainObjects;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Data.Common.Interfaces;
+using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
 using CustomKeyboardsWeb.Domain.Primitives.Entities;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Customers;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Keyboards;
@@ -9,6 +10,7 @@ using CustomKeyboardsWeb.Domain.Primitives.Entities.Keys;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Members;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Suppliers;
 using CustomKeyboardsWeb.Domain.Primitives.Entities.Switchies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
@@ -19,11 +21,12 @@ namespace CustomKeyboardsWeb.Data.Data
     {
         private IConfiguration _configuration { get; set; }
         private readonly IMediatorHandler _mediator;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-
-        public ApplicationMySqlDbContext(IConfiguration configuration)
+        public ApplicationMySqlDbContext(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -54,20 +57,24 @@ namespace CustomKeyboardsWeb.Data.Data
                 .Where(e => e.Entity is EntityBase &&
                     (e.State == EntityState.Added ||
                      e.State == EntityState.Modified));
+            var httpContext = _httpContextAccessor.HttpContext;
+            string token = httpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+            var currentMember = await Member.SingleOrDefaultAsync(mb => mb.Token == token);
 
             foreach (var entry in entries)
             {
                 var entity = ((EntityBase)entry.Entity);
-                entity.SetLastModification(DateTime.Now);
+                entity.SetLastModification(DateTime.Now, currentMember?.Email.Value);
 
                 switch (entry.State)
                 {
                     case EntityState.Detached:
                     case EntityState.Modified:
                         entry.Property(nameof(entity.InsertionDate)).IsModified = false;
+                        entry.Property(nameof(entity.InsertionBy)).IsModified = false;
                         break;
                     case EntityState.Added:
-                        entity.SetInsertionDate(DateTime.Now);
+                        entity.SetInsertionDate(DateTime.Now, currentMember?.Email.Value);
                         break;
                 }
             }

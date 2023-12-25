@@ -28,15 +28,14 @@ namespace CustomKeyboardsWeb.Data.Mappings
             entity.Property(e => e.InsertionDate)
                 .HasColumnType("datetime");
 
-            entity.Property(e => e.CreatedBy)
+            entity.Property(e => e.InsertionBy)
                 .HasMaxLength(20);
 
             entity.Property(e => e.LastModification)
                 .HasColumnType("datetime");
 
-            entity.Property(e => e.UpdatedBy)
+            entity.Property(e => e.ModificationBy)
                 .HasMaxLength(20);
-
         }
     }
 }

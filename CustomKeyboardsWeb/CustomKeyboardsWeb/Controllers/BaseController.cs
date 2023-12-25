@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomKeyboardsWeb.Controllers
 {
-    //[Authorize]
-    public abstract class BaseController : ControllerBase 
+    [Authorize]
+    public abstract class BaseController : ControllerBase
     {
         private readonly DomainNotificationHandler _notifications;
         private readonly IMediatorHandler _mediator;

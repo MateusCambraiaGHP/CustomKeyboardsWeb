@@ -6,23 +6,17 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Keys
     {
         public Name Name { get; private set; }
         public Price Price { get; private set; }
-        public string CreatedBy { get; set; }
-        public string? UpdatedBy { get; set; }
 
         protected Key() { }
 
         private Key(
             Name name,
             Price price,
-            string active,
-            string createdBy,
-            string? updatedBy)
+            string active)
         {
             Name = name;
             Price = price;
             Active = active;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
         }
 
         public static Key Create(
@@ -33,9 +27,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Keys
             return new Key(
                 name,
                 price,
-                active,
-                "Administrator",
-                null);
+                active);
         }
     }
 }

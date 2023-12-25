@@ -42,7 +42,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Switchies
                     return ResponseOnFailValidation("fail on update switch", request.ValidationResult);
 
                 var switchMap = _mapper.Map<Switch>(request.SwitchDto);
-                switchMap.CreatedBy = "Administrator";
                 await _switchRepository.Update(switchMap);
                 await _unitOfWork.CommitChangesAsync();
                 var switchViewModel = _mapper.Map<SwitchViewModel>(request);

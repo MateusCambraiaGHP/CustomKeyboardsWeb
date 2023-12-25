@@ -4,6 +4,7 @@ using CustomKeyboardsWeb.Data.Data;
 using CustomKeyboardsWeb.Data.Repositories;
 using CustomKeyboardsWeb.Data.Transaction;
 using CustomKeyboardsWeb.Domain.Primitives.Common.Interfaces.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -22,6 +23,7 @@ namespace CustomKeyboardsWeb.Data.Common.Extensions
             services.AddScoped<IPuchaseHistoryRepository, PuchaseHistoryRepository>();
             services.AddScoped<ISwitchRepository, SwitchRepository>();
             services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             Assembly assembly = Assembly.GetExecutingAssembly();
             var mappingProfiles = assembly.GetTypes().Where(a => a.Name.Contains("MappingProfile"));

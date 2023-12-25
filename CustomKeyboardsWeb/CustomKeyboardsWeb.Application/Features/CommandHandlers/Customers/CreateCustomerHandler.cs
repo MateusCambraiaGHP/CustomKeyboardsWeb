@@ -16,7 +16,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
     public class CreateCustomerHandler : Handler<CreateCustomerCommand, CreateCustomerCommandResponse>
     {
         private readonly ICustomerRepository _customerRepository;
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICacheService _cacheService;
 
@@ -28,7 +27,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
             : base(mapper)
         {
             _customerRepository = customerRepository;
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _cacheService = cacheService;
         }

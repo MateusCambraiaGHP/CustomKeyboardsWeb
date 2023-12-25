@@ -11,7 +11,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Switchies
     public class GetSwitchByIdHandler : Handler<GetSwitchByIdQuery, GetSwitchByIdQueryResponse>
     {
         private readonly ISwitchRepository _switchRepository;
-        private readonly IMapper _mapper;
 
         public GetSwitchByIdHandler(
             ISwitchRepository switchRepository,
@@ -19,7 +18,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Switchies
             : base(mapper)
         {
             _switchRepository = switchRepository;
-            _mapper = mapper;
         }
 
         public override async Task<GetSwitchByIdQueryResponse> Handle(GetSwitchByIdQuery request, CancellationToken cancellationToken)

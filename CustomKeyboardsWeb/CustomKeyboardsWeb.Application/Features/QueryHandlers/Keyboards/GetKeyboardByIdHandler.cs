@@ -13,7 +13,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
     public class GetKeyboardByIdHandler : Handler<GetKeyboardByIdQuery, GetKeyboardByIdQueryResponse>
     {
         private readonly IKeyboardRepository _keyboardRepository;
-        private readonly IMapper _mapper;
 
         public GetKeyboardByIdHandler(
             IKeyboardRepository keyboardRepository,
@@ -21,7 +20,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keyboards
             : base(mapper)
         {
             _keyboardRepository = keyboardRepository;
-            _mapper = mapper;
         }
 
         public override async Task<GetKeyboardByIdQueryResponse> Handle(GetKeyboardByIdQuery request, CancellationToken cancellationToken)

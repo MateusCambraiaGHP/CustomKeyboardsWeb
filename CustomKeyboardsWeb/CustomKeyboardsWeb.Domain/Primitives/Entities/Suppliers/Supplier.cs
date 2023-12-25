@@ -10,8 +10,6 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Suppliers
         public Address Address { get; private set; }
         public FederativeUnit FederativeUnit { get; private set; }
         public Phone? Phone { get; private set; }
-        public string CreatedBy { get; set; }
-        public string? UpdatedBy { get; set; }
 
         private Supplier() { }
 
@@ -22,9 +20,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Suppliers
             Address address,
             FederativeUnit federativeUnit,
             Phone? phone,
-            string active,
-            string createdBy,
-            string? updatedBy)
+            string active)
         {
             Name = name;
             FantasyName = fantasyName;
@@ -33,8 +29,6 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Suppliers
             FederativeUnit = federativeUnit;
             Phone = phone;
             Active = active;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
         }
 
         public static Supplier Create(
@@ -53,9 +47,7 @@ namespace CustomKeyboardsWeb.Domain.Primitives.Entities.Suppliers
                 address,
                 federativeUnit,
                 phone,
-                active,
-                "Administrator",
-                null);
+                active);
         }
     }
 }

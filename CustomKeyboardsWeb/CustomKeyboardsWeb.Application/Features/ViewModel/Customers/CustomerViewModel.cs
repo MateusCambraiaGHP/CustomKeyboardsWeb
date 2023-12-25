@@ -14,16 +14,16 @@ namespace CustomKeyboardsWeb.Application.Features.ViewModel.Customers
 
         [JsonConstructor]
         public CustomerViewModel(
-            Guid? id,
-            string? active,
+            Guid id,
+            string active,
             string? name,
             string? fantasyName,
             string? cep,
             string? address,
             string? federativeUnit,
             string? phone,
-            string createdBy,
-            string? updatedBy,
+            string insertionBy,
+            string? modificationBy,
             DateTime insertionDate,
             DateTime lastModification)
         {
@@ -35,8 +35,8 @@ namespace CustomKeyboardsWeb.Application.Features.ViewModel.Customers
             Address = address;
             FederativeUnit = federativeUnit;
             Phone = phone;
-            CreatedBy = createdBy;
-            UpdatedBy = updatedBy;
+            InsertionBy = insertionBy;
+            ModificationBy = modificationBy;
             InsertionDate = insertionDate;
             LastModification = lastModification;
         }

@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Features.Queries.Members;
 using CustomKeyboardsWeb.Application.Features.Responses.Members;
-using CustomKeyboardsWeb.Application.Features.ViewModel.Keys;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Members;
 using CustomKeyboardsWeb.Core.Messages.CommonMessages;
 using CustomKeyboardsWeb.Data.Caching;
@@ -13,7 +12,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Members
     public class GetMemberListHandle : Handler<GetMemberListQuery, GetMemberListQueryResponse>
     {
         private readonly IMemberRepository _memberRepository;
-        private readonly IMapper _mapper;
         private readonly ICacheService _cacheService;
 
         public GetMemberListHandle(
@@ -23,7 +21,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Members
             : base(mapper)
         {
             _memberRepository = memberRepository;
-            _mapper = mapper;
             _cacheService = cacheService;
         }
 

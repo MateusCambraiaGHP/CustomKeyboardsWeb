@@ -11,7 +11,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keys
     public class GetKeyByIdHandle : Handler<GetKeyByIdQuery, GetKeyByIdQueryResponse>
     {
         private readonly IKeyRepository _keyRepository;
-        private readonly IMapper _mapper;
 
         public GetKeyByIdHandle(
             IKeyRepository keyRepository,
@@ -19,7 +18,6 @@ namespace CustomKeyboardsWeb.Application.Features.QueryHandlers.Keys
             : base(mapper)
         {
             _keyRepository = keyRepository;
-            _mapper = mapper;
         }
 
         public override async Task<GetKeyByIdQueryResponse> Handle(GetKeyByIdQuery request, CancellationToken cancellationToken)

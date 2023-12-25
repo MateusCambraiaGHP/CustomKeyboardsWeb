@@ -15,7 +15,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
     public class UpdateCustomerHandler : Handler<UpdateCustomerCommand, UpdateCustomerCommandResponse>
     {
         private readonly ICustomerRepository _customerRepository;
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICacheService _cacheService;
 
@@ -28,7 +27,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
         {
             _customerRepository = customerRepository;
             _unitOfWork = unitOfWork;
-            _mapper = mapper;
             _cacheService = cacheService;
         }
 
@@ -36,16 +34,17 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
         {
             try
             {
+                var currentCustomer = await _customerRepository.GetAsync(cu => cu.Id == request.CustomerDto.Id, null, null);
                 request.ValidationResult = Validate(request);
 
                 if (!request.IsValid())
                     return ResponseOnFailValidation("fail on update customer", request.ValidationResult);
 
-                Customer customerMap = _mapper.Map<Customer>(request.CustomerDto);
-                customerMap.CreatedBy = "Administrator";
+                var customerMap = _mapper.Map(request.CustomerDto, currentCustomer.FirstOrDefault());
                 await _customerRepository.Update(customerMap);
                 await _unitOfWork.CommitChangesAsync();
-                var customerViewModel = _mapper.Map<CustomerViewModel>(customerMap);
+                var updatedCustomer = await _customerRepository.GetAsync(cu => cu.Id == request.CustomerDto.Id, null, null);
+                var customerViewModel = _mapper.Map<CustomerViewModel>(updatedCustomer.FirstOrDefault());
                 _cacheService.RemovePost(nameof(CustomerViewModel), nameof(CustomerViewModel));
 
                 return new UpdateCustomerCommandResponse(customerViewModel);

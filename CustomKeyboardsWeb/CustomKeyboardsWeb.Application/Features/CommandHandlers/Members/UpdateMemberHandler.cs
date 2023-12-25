@@ -15,7 +15,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
     public class UpdateMemberHandler : Handler<UpdateMemberCommand, UpdateMemberCommandResponse>
     {
         private readonly IMemberRepository _memberRepository;
-        private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICacheService _cacheService;
 
@@ -27,7 +26,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
             : base(mapper)
         {
             _memberRepository = memberRepository;
-            _mapper = mapper;
             _unitOfWork = unitOfWork;
             _cacheService = cacheService;
         }
@@ -42,7 +40,6 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Members
                     return ResponseOnFailValidation("fail on update member", request.ValidationResult);
 
                 var memberMap = _mapper.Map<Member>(request.MemberDto);
-                memberMap.CreatedBy = "Administrator";
                 await _memberRepository.Update(memberMap);
                 await _unitOfWork.CommitChangesAsync();
                 var memberViewModel = _mapper.Map<MemberViewModel>(memberMap);
