@@ -43,13 +43,13 @@ namespace CustomKeyboardsWeb.Data.Mappings
                 .HasColumnType("datetime");
 
             entity.Property(e => e.InsertionBy)
-                .HasMaxLength(20);
+                .HasMaxLength(70);
 
             entity.Property(e => e.LastModification)
                 .HasColumnType("datetime");
 
             entity.Property(e => e.ModificationBy)
-                .HasMaxLength(20);
+                .HasMaxLength(70);
 
         }
     }

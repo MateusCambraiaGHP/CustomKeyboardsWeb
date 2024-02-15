@@ -3,6 +3,7 @@ using System;
 using CustomKeyboardsWeb.Data.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CustomKeyboardsWeb.Data.Migrations
 {
     [DbContext(typeof(ApplicationMySqlDbContext))]
-    partial class ApplicationMySqlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231225203611_M_EntityBase_AddMoreCaracteresFromAuditablesEntity_M")]
+    partial class M_EntityBase_AddMoreCaracteresFromAuditablesEntity_M
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

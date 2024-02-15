@@ -1,7 +1,8 @@
 ﻿using CustomKeyboardsWeb.Application.Cummon.Abstractions;
 using CustomKeyboardsWeb.Data.Caching;
+using CustomKeyboardsWeb.Data.Common.Interfaces;
 using CustomKeyboardsWeb.Infrastructure.Authentication;
-using CustomKeyboardsWeb.Infrastructure.Caching;
+using CustomKeyboardsWeb.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +42,7 @@ namespace CustomKeyboardsWeb.Infrastructure.Extensions
 
             services.AddDistributedMemoryCache();
             services.AddSingleton<ICacheService, CacheService>();
+            services.AddSingleton<IEmailService, EmailService>();
 
             return services;
         }

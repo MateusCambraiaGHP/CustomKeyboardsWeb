@@ -23,10 +23,14 @@ namespace CustomKeyboardsWeb.Data.Data
         private readonly IMediatorHandler _mediator;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ApplicationMySqlDbContext(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
+        public ApplicationMySqlDbContext(
+            IConfiguration configuration,
+            IHttpContextAccessor httpContextAccessor,
+            IMediatorHandler mediator)
         {
             _configuration = configuration;
             _httpContextAccessor = httpContextAccessor;
+            _mediator = mediator;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -60,7 +64,6 @@ namespace CustomKeyboardsWeb.Data.Data
             var httpContext = _httpContextAccessor.HttpContext;
             string token = httpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
             var currentMember = await Member.SingleOrDefaultAsync(mb => mb.Token == token);
-
             foreach (var entry in entries)
             {
                 var entity = ((EntityBase)entry.Entity);

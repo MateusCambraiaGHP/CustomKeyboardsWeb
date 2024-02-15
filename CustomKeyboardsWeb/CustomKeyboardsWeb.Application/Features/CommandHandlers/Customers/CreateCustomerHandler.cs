@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CustomKeyboardsWeb.Application.Features.Commands.Customers;
+using CustomKeyboardsWeb.Application.Features.Events;
 using CustomKeyboardsWeb.Application.Features.Responses.Customers;
 using CustomKeyboardsWeb.Application.Features.Validations.Customers;
 using CustomKeyboardsWeb.Application.Features.ViewModel.Customers;
@@ -46,9 +47,10 @@ namespace CustomKeyboardsWeb.Application.Features.CommandHandlers.Customers
                             Cep.Create(request.CustomerDto.Cep),
                             Address.Create(request.CustomerDto.Address),
                             FederativeUnit.Create(request.CustomerDto.FederativeUnit),
-                            Phone.Create(request.CustomerDto.Phone),
-                            request.CustomerDto.Active);
+                Phone.Create(request.CustomerDto.Phone),
+                request.CustomerDto.Active);
 
+                customer.AddEvent(new TrySendEmailEvent("Cliente criado com sucesso"));
                 await _customerRepository.Create(customer);
                 await _unitOfWork.CommitChangesAsync();
                 _cacheService.RemovePost(nameof(CustomerViewModel), nameof(CustomerViewModel));

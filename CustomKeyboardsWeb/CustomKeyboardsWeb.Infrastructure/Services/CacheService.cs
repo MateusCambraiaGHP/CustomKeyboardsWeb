@@ -2,7 +2,7 @@
 using StackExchange.Redis;
 using System.Text.Json;
 
-namespace CustomKeyboardsWeb.Infrastructure.Caching
+namespace CustomKeyboardsWeb.Infrastructure.Services
 {
     public class CacheService : ICacheService
     {

@@ -6,7 +6,8 @@ using System.Linq.Expressions;
 
 namespace CustomKeyboardsWeb.Data.Repositories
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity
+    public abstract class Repository<TEntity> : IRepository<TEntity> 
+        where TEntity : Entity
     {
         protected readonly IApplicationDbContext _context;
         protected readonly DbSet<TEntity> _dbSet;
